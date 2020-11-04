@@ -1,0 +1,12 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/master/TestHMasterRPCException.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/master/TestHMasterRPCException.java
+index 1970737..603df96 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/master/TestHMasterRPCException.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/master/TestHMasterRPCException.java
+@@ -67,7 +67,6 @@ public class TestHMasterRPCException {
+   @Before
+   public void setUp() throws Exception {
+     Configuration conf = testUtil.getConfiguration();
+-    conf.set(HConstants.MASTER_PORT, "0");
+     conf.setInt(HConstants.ZK_SESSION_TIMEOUT, 2000);
+     testUtil.startMiniZKCluster();
+ 

@@ -1,0 +1,26 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/TestClusterPortAssignment.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/TestClusterPortAssignment.java
+index 3586ebd..cbbfa18 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/TestClusterPortAssignment.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/TestClusterPortAssignment.java
+@@ -53,19 +53,17 @@ public class TestClusterPortAssignment {
+       int rsPort =  HBaseTestingUtility.randomFreePort();
+       int rsInfoPort =  HBaseTestingUtility.randomFreePort();
+       TEST_UTIL.getConfiguration().setBoolean(LocalHBaseCluster.ASSIGN_RANDOM_PORTS, false);
+-      TEST_UTIL.getConfiguration().setInt(HConstants.MASTER_PORT, masterPort);
+       TEST_UTIL.getConfiguration().setInt(HConstants.MASTER_INFO_PORT, masterInfoPort);
+-      TEST_UTIL.getConfiguration().setInt(HConstants.REGIONSERVER_PORT, rsPort);
+       TEST_UTIL.getConfiguration().setInt(HConstants.REGIONSERVER_INFO_PORT, rsInfoPort);
+       try {
+         MiniHBaseCluster cluster = TEST_UTIL.startMiniCluster();
+         assertTrue("Cluster failed to come up", cluster.waitForActiveAndReadyMaster(30000));
+         retry = false;
+-        assertEquals("Master RPC port is incorrect", masterPort,
++        assertEquals("Master RPC port is incorrect", TEST_UTIL.getConfiguration().getInt("hbase.master.port", 16000),
+           cluster.getMaster().getRpcServer().getListenerAddress().getPort());
+         assertEquals("Master info port is incorrect", masterInfoPort,
+           cluster.getMaster().getInfoServer().getPort());
+-        assertEquals("RS RPC port is incorrect", rsPort,
++        assertEquals("RS RPC port is incorrect", TEST_UTIL.getConfiguration().getInt("hbase.regionserver.port", 16020),
+           cluster.getRegionServer(0).getRpcServer().getListenerAddress().getPort());
+         assertEquals("RS info port is incorrect", rsInfoPort,
+           cluster.getRegionServer(0).getInfoServer().getPort());

@@ -1,0 +1,23 @@
+diff --git a/core/common/src/test/java/alluxio/util/ConfigurationUtilsTest.java b/core/common/src/test/java/alluxio/util/ConfigurationUtilsTest.java
+index 5c0ab00..c1cfdf3 100644
+--- a/core/common/src/test/java/alluxio/util/ConfigurationUtilsTest.java
++++ b/core/common/src/test/java/alluxio/util/ConfigurationUtilsTest.java
+@@ -13,6 +13,7 @@ package alluxio.util;
+ 
+ import static org.junit.Assert.assertEquals;
+ 
++import alluxio.ConfigurationTestUtils;
+ import alluxio.Constants;
+ import alluxio.conf.AlluxioConfiguration;
+ import alluxio.conf.AlluxioProperties;
+@@ -75,8 +76,8 @@ public final class ConfigurationUtilsTest {
+   public void getSingleJobMasterRpcAddress() {
+     AlluxioConfiguration conf = createConf(ImmutableMap.of(
+         PropertyKey.JOB_MASTER_HOSTNAME, "testhost",
+-        PropertyKey.JOB_MASTER_RPC_PORT, "1000"));
+-    assertEquals(Arrays.asList(InetSocketAddress.createUnresolved("testhost", 1000)),
++        PropertyKey.JOB_MASTER_RPC_PORT, ConfigurationTestUtils.defaults().get(PropertyKey.JOB_MASTER_RPC_PORT)));
++    assertEquals(Arrays.asList(InetSocketAddress.createUnresolved("testhost", ConfigurationTestUtils.defaults().getInt(PropertyKey.JOB_MASTER_RPC_PORT))),
+         ConfigurationUtils.getJobMasterRpcAddresses(conf));
+   }
+ 

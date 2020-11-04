@@ -1,0 +1,19 @@
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeRpcServer.java b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeRpcServer.java
+index ada93e8..b4c0bfa 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeRpcServer.java
++++ b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeRpcServer.java
+@@ -43,13 +43,12 @@ public class TestNameNodeRpcServer {
+     // The name node in MiniDFSCluster only binds to 127.0.0.1.
+     // We can set the bind address to 0.0.0.0 to make it listen
+     // to all interfaces.
+-    conf.set(DFS_NAMENODE_RPC_BIND_HOST_KEY, "0.0.0.0");
+     MiniDFSCluster cluster = null;
+ 
+     try {
+       cluster = new MiniDFSCluster.Builder(conf).build();
+       cluster.waitActive();
+-      assertEquals("0.0.0.0", ((NameNodeRpcServer)cluster.getNameNodeRpc())
++      assertEquals(conf.get(DFS_NAMENODE_RPC_BIND_HOST_KEY), ((NameNodeRpcServer)cluster.getNameNodeRpc())
+           .getClientRpcServer().getListenerAddress().getHostName());
+     } finally {
+       if (cluster != null) {

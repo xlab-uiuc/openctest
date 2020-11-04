@@ -1,0 +1,22 @@
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestBackupNode.java b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestBackupNode.java
+index 1a70795..aaa8060 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestBackupNode.java
++++ b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestBackupNode.java
+@@ -98,8 +98,6 @@ public class TestBackupNode {
+     c.set(DFSConfigKeys.DFS_NAMENODE_NAME_DIR_KEY, dirs);
+     c.set(DFSConfigKeys.DFS_NAMENODE_EDITS_DIR_KEY,
+         "${" + DFSConfigKeys.DFS_NAMENODE_NAME_DIR_KEY + "}");
+-    c.set(DFSConfigKeys.DFS_NAMENODE_BACKUP_ADDRESS_KEY,
+-        "127.0.0.1:0");
+     c.set(DFSConfigKeys.DFS_NAMENODE_BACKUP_HTTP_ADDRESS_KEY,
+             "127.0.0.1:0");
+ 
+@@ -154,8 +152,6 @@ public class TestBackupNode {
+     c.set(DFSConfigKeys.DFS_NAMENODE_NAME_DIR_KEY, dirs);
+     c.set(DFSConfigKeys.DFS_NAMENODE_EDITS_DIR_KEY,
+         "${" + DFSConfigKeys.DFS_NAMENODE_NAME_DIR_KEY + "}");
+-    c.set(DFSConfigKeys.DFS_NAMENODE_BACKUP_ADDRESS_KEY,
+-        "127.0.0.1:0");
+     c.set(DFSConfigKeys.DFS_NAMENODE_BACKUP_HTTP_ADDRESS_KEY,
+         "127.0.0.1:0");
+ 

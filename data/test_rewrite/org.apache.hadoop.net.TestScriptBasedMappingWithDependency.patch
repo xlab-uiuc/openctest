@@ -1,0 +1,24 @@
+diff --git a/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMappingWithDependency.java b/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMappingWithDependency.java
+index 77da45b..db3bdff 100644
+--- a/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMappingWithDependency.java
++++ b/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMappingWithDependency.java
+@@ -37,7 +37,6 @@ public class TestScriptBasedMappingWithDependency extends TestCase {
+     Configuration conf = new Configuration();
+     conf.setInt(ScriptBasedMapping.SCRIPT_ARG_COUNT_KEY,
+                 ScriptBasedMapping.MIN_ALLOWABLE_ARGS - 1);
+-    conf.set(ScriptBasedMapping.SCRIPT_FILENAME_KEY, "any-filename-1");
+     conf.set(ScriptBasedMappingWithDependency.DEPENDENCY_SCRIPT_FILENAME_KEY, 
+         "any-filename-2");
+     conf.setInt(ScriptBasedMapping.SCRIPT_ARG_COUNT_KEY, 10);
+@@ -64,11 +63,8 @@ public class TestScriptBasedMappingWithDependency extends TestCase {
+   @Test
+   public void testFilenameMeansMultiSwitch() throws Throwable {
+     Configuration conf = new Configuration();
+-    conf.set(ScriptBasedMapping.SCRIPT_FILENAME_KEY, "any-filename");
+     ScriptBasedMapping mapping = createMapping(conf);
+     assertFalse("Expected to be multi switch", mapping.isSingleSwitch());
+-    mapping.setConf(new Configuration());
+-    assertTrue("Expected to be single switch", mapping.isSingleSwitch());
+   }
+ 
+   @Test

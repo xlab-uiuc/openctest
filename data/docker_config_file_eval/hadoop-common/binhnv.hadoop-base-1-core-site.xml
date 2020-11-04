@@ -1,0 +1,81 @@
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://{{ .Env.HD_NAMENODE_HOSTNAME }}:9000</value>
+    </property>
+    <property>
+        <name>hadoop.http.staticuser.user</name>
+        <value>{{ .Env.HADOOP_HDFS_USER }}</value>
+    </property>
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>kerberos</value>
+    </property>
+    <!-- Hive impersonate -->
+    <property>
+        <name>hadoop.proxyuser.hive.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hive.groups</name>
+        <value>*</value>
+    </property>
+    <!-- <property>
+      <name>hadoop.ssl.require.client.cert</name>
+      <value>false</value>
+      <final>true</final>
+    </property>
+    <property>
+      <name>hadoop.ssl.hostname.verifier</name>
+      <value>ALLOW_ALL</value>
+      <final>true</final>
+    </property>
+    <property>
+      <name>hadoop.ssl.keystores.factory.class</name>
+      <value>org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory</value>
+      <final>true</final>
+    </property>
+    <property>
+      <name>hadoop.ssl.server.conf</name>
+      <value>ssl-server.xml</value>
+      <final>true</final>
+    </property>
+    <property>
+      <name>hadoop.ssl.client.conf</name>
+      <value>ssl-client.xml</value>
+      <final>true</final>
+    </property>
+    <property>
+      <name>hadoop.ssl.enabled</name>
+      <value>true</value>
+    </property> -->
+    <!-- Web console -->
+    <!-- <property>
+        <name>hadoop.http.filter.initializers</name>
+        <value>org.apache.hadoop.security.AuthenticationFilterInitializer</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.type</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.signature.secret.file</name>
+        <value>/etc/security/hadoop/http_secret</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.cookie.domain</name>
+        <value>{{ .Env.KRB_DEFAULT_REALM }}</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.simple.anonymous.allowed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.kerberos.principal</name>
+        <value>HTTP/hadoop@{{ .Env.KRB_DEFAULT_REALM }}</value>
+    </property>
+    <property>
+        <name>hadoop.http.authentication.kerberos.keytab</name>
+        <value>{{ .Env.KRB_KEYTAB_DIR }}/hadoop_services.keytab</value>
+    </property> -->
+</configuration>

@@ -1,0 +1,32 @@
+dataDir		the location to store the in-memory database snapshots and, unless specified otherwise, the transaction log of updates to the database.
+dataLogDir		
+clientPort		the port to listen for client connections
+localSessionsEnabled	false	
+localSessionsUpgradingEnabled	false	
+clientPortAddress		the address (ipv4, ipv6 or hostname) to listen for client connections; that is, the address that clients attempt to connect to. This is optional, by default we bind in such a way that any connection to the clientPort for any address/interface/nic on the server will be accepted.
+secureClientPort		
+secureClientPortAddress		
+tickTime	3000	the basic time unit in milliseconds used by ZooKeeper. It is used to do heartbeats and the minimum session timeout will be twice the tickTime.
+maxClientCnxns	60	Limits the number of concurrent connections (at the socket level) that a single client, identified by IP address, may make to a single member of the ZooKeeper ensemble. This is used to prevent certain classes of DoS attacks, including file descriptor exhaustion. The default is 10. Setting this to 0 entirely removes the limit on concurrent connections.
+minSessionTimeout	-1	
+maxSessionTimeout	-1	
+initLimit		Amount of time, in ticks (see tickTime), to allow followers to connect and sync to a leader. Increased this value as needed, if the amount of data managed by ZooKeeper is large.
+syncLimit		
+electionAlg	3	
+quorumListenOnAllIPs	false	
+peerType	participant	
+syncEnabled	true	
+autopurge.snapRetainCount	3	
+autopurge.purgeInterval	0	
+standaloneEnabled	true	
+reconfigEnabled	false	
+sslQuorum	false	
+portUnification	false	
+sslQuorumReloadCertFiles	false	
+quorum.auth.enableSasl	false	
+quorum.auth.serverRequireSasl	false	
+quorum.auth.learnerRequireSasl	false	
+quorum.auth.learner.saslLoginContext	QuorumLearner	
+quorum.auth.server.saslLoginContext	QuorumServer	
+quorum.auth.kerberos.servicePrincipal	zkquorum/localhost	
+quorum.cnxn.threads.size		

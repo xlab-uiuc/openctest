@@ -1,0 +1,19 @@
+<configuration>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/hdata</value>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://hadoop-master:9820</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.root.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.root.hosts</name>
+        <value>*</value>
+    </property>
+</configuration>

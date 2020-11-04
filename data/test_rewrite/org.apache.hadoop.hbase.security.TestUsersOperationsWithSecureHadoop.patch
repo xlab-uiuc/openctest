@@ -1,0 +1,18 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/security/TestUsersOperationsWithSecureHadoop.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/security/TestUsersOperationsWithSecureHadoop.java
+index d240f91..fb90270 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/security/TestUsersOperationsWithSecureHadoop.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/security/TestUsersOperationsWithSecureHadoop.java
+@@ -139,13 +139,9 @@ public class TestUsersOperationsWithSecureHadoop {
+     String clientKeytab = getClientKeytabForTesting();
+     String clientPrincipal = getClientPrincipalForTesting();
+     Configuration conf = getSecuredConfiguration();
+-    conf.set(AuthUtil.HBASE_CLIENT_KEYTAB_FILE, clientKeytab);
+-    conf.set(AuthUtil.HBASE_CLIENT_KERBEROS_PRINCIPAL, clientPrincipal);
+     UserGroupInformation.setConfiguration(conf);
+ 
+     User user = AuthUtil.loginClient(conf);
+     assertTrue(user.isLoginFromKeytab());
+-    assertEquals(CLIENT_NAME, user.getShortName());
+-    assertEquals(getClientPrincipalForTesting(), user.getName());
+   }
+ }

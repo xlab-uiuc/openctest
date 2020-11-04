@@ -1,0 +1,20 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/regionserver/TestRegionServerReportForDuty.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/regionserver/TestRegionServerReportForDuty.java
+index aaf2d2e..b0a868b 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/regionserver/TestRegionServerReportForDuty.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/regionserver/TestRegionServerReportForDuty.java
+@@ -174,7 +174,6 @@ public class TestRegionServerReportForDuty {
+ 
+     // Start a master and wait for it to become the active/primary master.
+     // Use a random unique port
+-    cluster.getConfiguration().setInt(HConstants.MASTER_PORT, HBaseTestingUtility.randomFreePort());
+     // master has a rs. defaultMinToStart = 2
+     boolean tablesOnMaster = LoadBalancer.isTablesOnMaster(testUtil.getConfiguration());
+     cluster.getConfiguration().setInt(ServerManager.WAIT_ON_REGIONSERVERS_MINTOSTART, tablesOnMaster? 2: 1);
+@@ -203,7 +202,6 @@ public class TestRegionServerReportForDuty {
+ 
+     // Start a new master and use another random unique port
+     // Also let it wait for exactly 2 region severs to report in.
+-    cluster.getConfiguration().setInt(HConstants.MASTER_PORT, HBaseTestingUtility.randomFreePort());
+     cluster.getConfiguration().setInt(ServerManager.WAIT_ON_REGIONSERVERS_MINTOSTART,
+       tablesOnMaster? 3: 2);
+     cluster.getConfiguration().setInt(ServerManager.WAIT_ON_REGIONSERVERS_MAXTOSTART,

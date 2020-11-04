@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Copyright 2009 The Apache Software Foundation
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://HDFS_NAMESPACE_ID/HBASE_HDFS_ROOTDIR</value>
+  </property>
+
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://HDFS_NAMESPACE_ID</value>
+  </property>
+
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>ZK_QUORUM</value>
+  </property>
+
+  <property>
+    <name>zookeeper.znode.parent</name>
+    <value>HBASE_ZNODE_PARENT</value>
+  </property>
+  
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+    <description>The mode the cluster will be in. Possible values are
+    false: standalone and pseudo-distributed setups with managed Zookeeper
+    true: fully-distributed with unmanaged Zookeeper Quorum (see hbase-env.sh)
+    </description>
+  </property>
+  
+  <property>
+    <name>hbase.client.pause</name>
+    <value>500</value>
+    <description>shorter pause time for clients, to minimize the time before connection retries.
+    </description>
+  </property>
+
+  <property>
+    <name>dfs.support.append</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hbase.hregion.memstore.block.multiplier</name>
+    <value>4</value>
+    <description>Blocks updated to region when mem size > memstore times multiplier</description>
+  </property>
+
+  <property>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.domain.socket.path</name>
+    <value>/var/run/hadoop-hdfs/dn_socket</value>
+  </property>
+
+  <property>
+    <name>hbase.client.scanner.timeout.period</name>
+    <value>120000</value>
+    <description>Increased the timeout for complex processings.</description>
+  </property>
+  <property>
+    <name>hbase.regionserver.handler.count</name>
+    <value>100</value>
+    <description>Count of RPC Listener instances spun up on RegionServers.</description>
+  </property>
+  <property>
+    <name>zookeeper.session.timeout</name>
+    <value>30000</value>
+  </property>
+
+  <property>
+    <name>hbase.regionserver.info.bindAddress</name>
+    <value>0.0.0.0</value>
+    <description>The address for the HBase RegionServer web UI</description>
+  </property>
+
+  <property>
+    <name>hbase.master.info.bindAddress</name>
+    <value>0.0.0.0</value>
+    <description>The bind address for the HBase Master web UI
+    </description>
+  </property>
+
+  <property>
+    <name>hbase.snapshot.enabled</name>
+    <value>true</value>
+  </property>
+</configuration>

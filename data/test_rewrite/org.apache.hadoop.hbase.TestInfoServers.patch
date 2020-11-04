@@ -1,0 +1,12 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/TestInfoServers.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/TestInfoServers.java
+index 13ada17..3044d45 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/TestInfoServers.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/TestInfoServers.java
+@@ -61,7 +61,6 @@ public class TestInfoServers {
+     // The info servers do not run in tests by default.
+     // Set them to ephemeral ports so they will start
+     UTIL.getConfiguration().setInt(HConstants.MASTER_INFO_PORT, 0);
+-    UTIL.getConfiguration().setInt(HConstants.REGIONSERVER_INFO_PORT, 0);
+ 
+     //We need to make sure that the server can be started as read only.
+     UTIL.getConfiguration().setBoolean("hbase.master.ui.readonly", true);

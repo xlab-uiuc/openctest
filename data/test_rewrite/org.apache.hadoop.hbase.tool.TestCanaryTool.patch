@@ -1,0 +1,13 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/tool/TestCanaryTool.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/tool/TestCanaryTool.java
+index d796410..cee7f6f 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/tool/TestCanaryTool.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/tool/TestCanaryTool.java
+@@ -302,8 +302,6 @@ public class TestCanaryTool {
+   private void testZookeeperCanaryWithArgs(String[] args) throws Exception {
+     Integer port =
+       Iterables.getOnlyElement(testingUtility.getZkCluster().getClientPortList(), null);
+-    testingUtility.getConfiguration().set(HConstants.ZOOKEEPER_QUORUM,
+-      "localhost:" + port + "/hbase");
+     ExecutorService executor = new ScheduledThreadPoolExecutor(2);
+     CanaryTool.ZookeeperStdOutSink sink = spy(new CanaryTool.ZookeeperStdOutSink());
+     CanaryTool canary = new CanaryTool(executor, sink);

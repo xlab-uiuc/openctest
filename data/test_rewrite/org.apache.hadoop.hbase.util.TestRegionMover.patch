@@ -1,0 +1,15 @@
+diff --git a/hbase-server/src/test/java/org/apache/hadoop/hbase/util/TestRegionMover.java b/hbase-server/src/test/java/org/apache/hadoop/hbase/util/TestRegionMover.java
+index 670248d..41687c3 100644
+--- a/hbase-server/src/test/java/org/apache/hadoop/hbase/util/TestRegionMover.java
++++ b/hbase-server/src/test/java/org/apache/hadoop/hbase/util/TestRegionMover.java
+@@ -182,9 +182,8 @@ public class TestRegionMover {
+     final int PORT = 16021;
+     Configuration conf = TEST_UTIL.getConfiguration();
+     String originalPort = conf.get(HConstants.REGIONSERVER_PORT);
+-    conf.set(HConstants.REGIONSERVER_PORT, Integer.toString(PORT));
+     RegionMoverBuilder rmBuilder = new RegionMoverBuilder(rsName, conf);
+-    assertEquals(PORT, rmBuilder.port);
++    assertEquals(TEST_UTIL.getConfiguration().getInt(HConstants.REGIONSERVER_PORT, 16020), rmBuilder.port);
+     if (originalPort != null) {
+       conf.set(HConstants.REGIONSERVER_PORT, originalPort);
+     }

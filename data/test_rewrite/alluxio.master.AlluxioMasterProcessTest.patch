@@ -1,0 +1,33 @@
+diff --git a/core/server/master/src/test/java/alluxio/master/AlluxioMasterProcessTest.java b/core/server/master/src/test/java/alluxio/master/AlluxioMasterProcessTest.java
+index c3cbe05..36b9606 100644
+--- a/core/server/master/src/test/java/alluxio/master/AlluxioMasterProcessTest.java
++++ b/core/server/master/src/test/java/alluxio/master/AlluxioMasterProcessTest.java
+@@ -20,6 +20,7 @@ import alluxio.master.journal.noop.NoopJournalSystem;
+ import alluxio.master.journal.raft.RaftJournalConfiguration;
+ import alluxio.master.journal.raft.RaftJournalSystem;
+ import alluxio.util.CommonUtils;
++import alluxio.util.ConfigurationUtils;
+ import alluxio.util.io.FileUtils;
+ import alluxio.util.io.PathUtils;
+ import alluxio.util.network.NetworkAddressUtils;
+@@ -63,7 +64,6 @@ public final class AlluxioMasterProcessTest {
+     mRpcPort = mRpcPortRule.getPort();
+     mWebPort = mWebPortRule.getPort();
+     ServerConfiguration.set(PropertyKey.MASTER_RPC_PORT, mRpcPort);
+-    ServerConfiguration.set(PropertyKey.MASTER_WEB_PORT, mWebPort);
+     ServerConfiguration.set(PropertyKey.MASTER_METASTORE_DIR, mFolder.getRoot().getAbsolutePath());
+   }
+ 
+@@ -137,10 +137,10 @@ public final class AlluxioMasterProcessTest {
+     waitForServing(ServiceType.MASTER_RPC);
+     waitForServing(ServiceType.MASTER_WEB);
+     assertTrue(isBound(mRpcPort));
+-    assertTrue(isBound(mWebPort));
++    assertTrue(isBound(Integer.parseInt(ConfigurationUtils.defaults().get(PropertyKey.MASTER_WEB_PORT))));
+     master.stop();
+     assertFalse(isBound(mRpcPort));
+-    assertFalse(isBound(mWebPort));
++    assertFalse(isBound(Integer.parseInt(ConfigurationUtils.defaults().get(PropertyKey.MASTER_WEB_PORT))));
+   }
+ 
+   private void waitForServing(ServiceType service) throws TimeoutException, InterruptedException {

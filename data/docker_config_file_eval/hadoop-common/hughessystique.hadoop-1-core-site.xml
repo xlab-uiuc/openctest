@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+	  <name>fs.defaultFS</name>
+	  <value>hdfs://ns1</value>
+	</property>
+	
+	<property>
+		<name>io.file.buffer.size</name>
+		<value>131072</value>
+	</property>
+	
+    <property>
+        <name>hadoop.proxyuser.hue.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.hue.groups</name>
+        <value>*</value>
+    </property>
+	
+	 <!--zookeeper cluster whereabouts to detect and manage automatic name node failures-->
+	<property>
+		<name>ha.zookeeper.quorum</name>
+		<value>zk1.example.com:2181</value>
+	</property>
+	
+</configuration>

@@ -1,0 +1,16 @@
+diff --git a/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMapping.java b/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMapping.java
+index e201787..7cd89f7 100644
+--- a/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMapping.java
++++ b/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/net/TestScriptBasedMapping.java
+@@ -60,11 +60,8 @@ public class TestScriptBasedMapping extends TestCase {
+   @Test
+   public void testFilenameMeansMultiSwitch() throws Throwable {
+     Configuration conf = new Configuration();
+-    conf.set(ScriptBasedMapping.SCRIPT_FILENAME_KEY, "any-filename");
+     ScriptBasedMapping mapping = createMapping(conf);
+     assertFalse("Expected to be multi switch", mapping.isSingleSwitch());
+-    mapping.setConf(new Configuration());
+-    assertTrue("Expected to be single switch", mapping.isSingleSwitch());
+   }
+ 
+   @Test

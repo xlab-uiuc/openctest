@@ -1,0 +1,523 @@
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/ClientRequestTimeoutTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/ClientRequestTimeoutTest.java
+index 8fcc371..f31d15d 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/ClientRequestTimeoutTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/ClientRequestTimeoutTest.java
+@@ -48,6 +48,7 @@ public class ClientRequestTimeoutTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;127.0.0.1:"
+                     + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/InvalidSnapCountTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/InvalidSnapCountTest.java
+index cd5af81..f5f4452 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/InvalidSnapCountTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/InvalidSnapCountTest.java
+@@ -24,6 +24,7 @@ import java.io.File;
+ import java.io.FileWriter;
+ import java.io.IOException;
+ 
++import org.apache.zookeeper.server.quorum.QuorumPeerTestBase;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.apache.zookeeper.WatchedEvent;
+@@ -102,7 +103,7 @@ public class InvalidSnapCountTest extends ZKTestCase implements Watcher {
+     @Test
+     public void testInvalidSnapCount() throws Exception {
+ 
+-        final int CLIENT_PORT = 3181;
++        final int CLIENT_PORT = Integer.parseInt(QuorumPeerTestBase.MainThread.getPortFromFile("clientPort"));
+ 
+         MainThread main = new MainThread(CLIENT_PORT);
+         main.start();
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/ZooKeeperServerMainTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/ZooKeeperServerMainTest.java
+index 01b6560..8102c90 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/ZooKeeperServerMainTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/ZooKeeperServerMainTest.java
+@@ -22,8 +22,10 @@ import static org.apache.zookeeper.test.ClientBase.CONNECTION_TIMEOUT;
+ import static org.junit.Assert.fail;
+ 
+ import java.io.File;
++import java.io.FileNotFoundException;
+ import java.io.FileWriter;
+ import java.io.IOException;
++import java.util.Scanner;
+ import java.util.concurrent.CountDownLatch;
+ import java.util.concurrent.TimeUnit;
+ 
+@@ -154,7 +156,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     public void testNonRecoverableError() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+ 
+         MainThread main = new MainThread(CLIENT_PORT, true, null);
+         main.start();
+@@ -211,7 +213,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     @Test(timeout = 30000)
+     public void testReadOnlySnapshotDir() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+ 
+         // Start up the ZK server to automatically create the necessary directories
+         // and capture the directory where data is stored
+@@ -251,7 +253,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     @Test(timeout = 30000)
+     public void testReadOnlyTxnLogDir() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+ 
+         // Start up the ZK server to automatically create the necessary directories
+         // and capture the directory where data is stored
+@@ -289,7 +291,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     public void testStandalone() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+ 
+         MainThread main = new MainThread(CLIENT_PORT, true, null);
+         main.start();
+@@ -352,7 +354,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     public void testWithAutoCreateDataLogDir() throws Exception {
+         ClientBase.setupTestEnv();
+         System.setProperty(FileTxnSnapLog.ZOOKEEPER_DATADIR_AUTOCREATE, "true");
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+ 
+         MainThread main = new MainThread(CLIENT_PORT, false, null);
+         String args[] = new String[1];
+@@ -418,7 +420,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     public void testWithOnlyMinSessionTimeout() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+         final int tickTime = 2000;
+         final int minSessionTimeout = tickTime * 2 - 100;
+         int maxSessionTimeout = 20 * tickTime;
+@@ -450,7 +452,7 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+     public void testMinMaxSessionTimeOut() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(getPortFromFile("clientPort"));
+         final int tickTime = 2000;
+         final int minSessionTimeout = tickTime * 2 - 100;
+         final int maxSessionTimeout = 20 * tickTime + 1000;
+@@ -564,4 +566,17 @@ public class ZooKeeperServerMainTest extends ZKTestCase implements Watcher {
+             clientConnected.countDown();
+         }
+     }
++
++    public static String getPortFromFile(String port) {
++        try {
++            Scanner myReader = new Scanner(new File("ctest.cfg"));
++            while (myReader.hasNextLine()) {
++                String data = myReader.nextLine();
++                if (data.startsWith(port)) return data.substring(port.length() + 1);
++            }
++            myReader.close();
++        } catch (FileNotFoundException e) {
++        }
++        return null;
++    }
+ }
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/admin/JettyAdminServerTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/admin/JettyAdminServerTest.java
+index bc8aab6..c2a0ae9 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/admin/JettyAdminServerTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/admin/JettyAdminServerTest.java
+@@ -70,7 +70,7 @@ public class JettyAdminServerTest extends ZKTestCase{
+     public void testStandalone() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(QuorumPeerTestBase.MainThread.getPortFromFile("clientPort"));
+ 
+         ZooKeeperServerMainTest.MainThread main = new ZooKeeperServerMainTest.MainThread(CLIENT_PORT, false, null);
+         main.start();
+@@ -95,7 +95,7 @@ public class JettyAdminServerTest extends ZKTestCase{
+     public void testQuorum() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(QuorumPeerTestBase.MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+ 
+         final int ADMIN_SERVER_PORT1 = PortAssignment.unique();
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/EphemeralNodeDeletionTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/EphemeralNodeDeletionTest.java
+index 9546c25..9eb0d28 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/EphemeralNodeDeletionTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/EphemeralNodeDeletionTest.java
+@@ -61,6 +61,7 @@ public class EphemeralNodeDeletionTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;127.0.0.1:"
+                     + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/FuzzySnapshotRelatedTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/FuzzySnapshotRelatedTest.java
+index 1499c8c..453d566 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/FuzzySnapshotRelatedTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/FuzzySnapshotRelatedTest.java
+@@ -75,6 +75,7 @@ public class FuzzySnapshotRelatedTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < ENSEMBLE_SERVERS; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;127.0.0.1:"
+                     + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerMainTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerMainTest.java
+index 09cb985..de35c57 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerMainTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerMainTest.java
+@@ -95,7 +95,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+     public void testQuorum() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+ 
+         String quorumCfgSection =
+@@ -163,6 +163,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+         StringBuilder sb = new StringBuilder();
+         for(int i = 0; i < SERVER_COUNT; i++) {
+                clientPorts[i] = PortAssignment.unique();
++               if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+                sb.append("server."+i+"=127.0.0.1:"+PortAssignment.unique()+":"+PortAssignment.unique()+";"+clientPorts[i]+"\n");
+         }
+         String quorumCfgSection = sb.toString();
+@@ -538,6 +539,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+         StringBuilder sb = new StringBuilder();
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             svrs.clientPorts[i] = PortAssignment.unique();
++            if(i==0) svrs.clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             sb.append("server."+i+"=127.0.0.1:"+PortAssignment.unique()+":"+PortAssignment.unique()+";"+svrs.clientPorts[i]+"\n");
+         }
+         String quorumCfgSection = sb.toString();
+@@ -631,7 +633,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+         // test the most likely situation only: server is stated as observer in
+         // servers list, but there's no "peerType=observer" token in config
+         try {
+-            final int CLIENT_PORT_QP1 = PortAssignment.unique();
++            final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             final int CLIENT_PORT_QP2 = PortAssignment.unique();
+             final int CLIENT_PORT_QP3 = PortAssignment.unique();
+ 
+@@ -708,7 +710,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+     @Test
+     public void testBadPackets() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+         int electionPort1 = PortAssignment.unique();
+         int electionPort2 = PortAssignment.unique();
+@@ -770,7 +772,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+         zlogger.addAppender(appender);
+ 
+         try {
+-            final int CLIENT_PORT_QP1 = PortAssignment.unique();
++            final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             final int CLIENT_PORT_QP2 = PortAssignment.unique();
+ 
+             String quorumCfgSection =
+@@ -852,7 +854,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+     public void testMinMaxSessionTimeOut() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+ 
+         String quorumCfgSection = "server.1=127.0.0.1:"
+@@ -895,7 +897,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+     public void testWithOnlyMinSessionTimeout() throws Exception {
+         ClientBase.setupTestEnv();
+ 
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+ 
+         String quorumCfgSection = "server.1=127.0.0.1:"
+@@ -1059,6 +1061,7 @@ public class QuorumPeerMainTest extends QuorumPeerTestBase {
+             svrs.clientPorts = new int[numServers];
+             for (int i = 0; i < numServers; i++) {
+                 svrs.clientPorts[i] = PortAssignment.unique();
++                if(i==0) svrs.clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             }
+ 
+             String quorumCfgIncomplete = getUniquePortCfgForId(1) + "\n" + getUniquePortCfgForId(2);
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerTestBase.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerTestBase.java
+index ffc00f3..4a1ca35 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerTestBase.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumPeerTestBase.java
+@@ -21,16 +21,9 @@
+  */
+ package org.apache.zookeeper.server.quorum;
+ 
+-import java.io.File;
+-import java.io.FileReader;
+-import java.io.FileWriter;
+-import java.io.FilenameFilter;
+-import java.io.IOException;
+-import java.util.HashMap;
+-import java.util.Map;
++import java.io.*;
++import java.util.*;
+ import java.util.Map.Entry;
+-import java.util.Set;
+-import java.util.Properties;
+ 
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -389,5 +382,17 @@ public class QuorumPeerTestBase extends ZKTestCase implements Watcher {
+             return confFile;
+         }
+ 
++        public static String getPortFromFile(String port) {
++            try {
++                Scanner myReader = new Scanner(new File("ctest.cfg"));
++                while (myReader.hasNextLine()) {
++                    String data = myReader.nextLine();
++                    if (data.startsWith(port)) return data.substring(port.length() + 1);
++                }
++                myReader.close();
++            } catch (FileNotFoundException e) {
++            }
++            return null;
++        }
+     }
+ }
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumSSLTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumSSLTest.java
+index e47b7ef..47f486d 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumSSLTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/QuorumSSLTest.java
+@@ -162,6 +162,7 @@ public class QuorumSSLTest extends QuorumPeerTestBase {
+         tmpDir = createTmpDir().getAbsolutePath();
+ 
+         clientPortQp1 = PortAssignment.unique();
++        clientPortQp1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         clientPortQp2 = PortAssignment.unique();
+         clientPortQp3 = PortAssignment.unique();
+ 
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/RaceConditionTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/RaceConditionTest.java
+index ea2a4d3..c427f8c 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/RaceConditionTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/RaceConditionTest.java
+@@ -111,6 +111,7 @@ public class RaceConditionTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique() + ":" + PortAssignment.unique()
+                     + ":participant;127.0.0.1:" + clientPorts[i];
+             sb.append(server + "\n");
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigBackupTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigBackupTest.java
+index 8bc04bd..fb195ff 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigBackupTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigBackupTest.java
+@@ -135,6 +135,7 @@ public class ReconfigBackupTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < NEW_SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             quorumPorts[i] = PortAssignment.unique();
+             electionPorts[i] = PortAssignment.unique();
+             servers[i] = "server." + i + "=localhost:" + quorumPorts[i]
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigDuringLeaderSyncTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigDuringLeaderSyncTest.java
+index f350abf..f7ce432 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigDuringLeaderSyncTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigDuringLeaderSyncTest.java
+@@ -76,6 +76,7 @@ public class ReconfigDuringLeaderSyncTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             serverConfig[i] = "server." + i + "=127.0.0.1:" + PortAssignment.unique() + ":" + PortAssignment.unique()
+                     + ":participant;127.0.0.1:" + clientPorts[i];
+             sb.append(serverConfig[i] + "\n");
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigLegacyTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigLegacyTest.java
+index 80a8bfe..af3769a 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigLegacyTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigLegacyTest.java
+@@ -65,6 +65,7 @@ public class ReconfigLegacyTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=localhost:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;localhost:"
+                     + clientPorts[i];
+@@ -160,6 +161,7 @@ public class ReconfigLegacyTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             quorumPorts[i] = PortAssignment.unique();
+             electionPorts[i] = PortAssignment.unique();
+ 
+@@ -256,6 +258,7 @@ public class ReconfigLegacyTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;127.0.0.1:"
+                     + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRecoveryTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRecoveryTest.java
+index 4de9b97..a55e6be 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRecoveryTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRecoveryTest.java
+@@ -56,6 +56,7 @@ public class ReconfigRecoveryTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=localhost:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;localhost:"
+                     + clientPorts[i];
+@@ -156,6 +157,7 @@ public class ReconfigRecoveryTest extends QuorumPeerTestBase {
+         String role;
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             if (i < 2) {
+                 role = "observer";
+             } else {
+@@ -255,6 +257,7 @@ public class ReconfigRecoveryTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=localhost:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;localhost:"
+                     + clientPorts[i];
+@@ -316,6 +319,7 @@ public class ReconfigRecoveryTest extends QuorumPeerTestBase {
+         ArrayList<String> allServers = new ArrayList<String>();
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=localhost:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;localhost:"
+                     + clientPorts[i];
+@@ -560,6 +564,7 @@ public class ReconfigRecoveryTest extends QuorumPeerTestBase {
+             ports[i] = new int[3];
+             for (int j = 0; j < 3; j++) {
+                 ports[i][j] = PortAssignment.unique();
++                if(i==0 && j==2) ports[i][j] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             }
+         }
+         return ports;
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRollingRestartCompatibilityTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRollingRestartCompatibilityTest.java
+index 65ec469..e8d6981 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRollingRestartCompatibilityTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/ReconfigRollingRestartCompatibilityTest.java
+@@ -59,6 +59,7 @@ public class ReconfigRollingRestartCompatibilityTest extends QuorumPeerTestBase
+         String server;
+         for (int i = 0; i < serverCount; i++) {
+             clientPorts.put(i, PortAssignment.unique());
++            if(i==0) clientPorts.put(i, Integer.parseInt(MainThread.getPortFromFile("clientPort")));
+             server = "server." + i + "=localhost:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;localhost:"
+                     + clientPorts.get(i);
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/StandaloneDisabledTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/StandaloneDisabledTest.java
+index b08bd23..b8100c7 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/StandaloneDisabledTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/StandaloneDisabledTest.java
+@@ -157,6 +157,7 @@ public class StandaloneDisabledTest extends QuorumPeerTestBase {
+ 
+         for(int i = 0; i < NUM_SERVERS; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             String server = "server." + i + "=localhost:" + PortAssignment.unique()
+                 +":"+PortAssignment.unique() + ":participant;"
+                 + "localhost:" + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/auth/QuorumAuthTestBase.java b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/auth/QuorumAuthTestBase.java
+index 8978d17..ef8474a 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/auth/QuorumAuthTestBase.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/server/quorum/auth/QuorumAuthTestBase.java
+@@ -84,6 +84,7 @@ public class QuorumAuthTestBase extends ZKTestCase {
+         StringBuilder sb = new StringBuilder();
+         for (int i = 0; i < serverCount; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             String server = String.format(
+                     "server.%d=localhost:%d:%d:participant", i,
+                     PortAssignment.unique(), PortAssignment.unique());
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/test/ClientSSLTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/test/ClientSSLTest.java
+index 1504834..e77099f 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/test/ClientSSLTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/test/ClientSSLTest.java
+@@ -82,6 +82,8 @@ public class ClientSSLTest extends QuorumPeerTestBase {
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
+             secureClientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
++            if(i==0) secureClientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("secureClientPort"));
+             String server = String.format("server.%d=localhost:%d:%d:participant;localhost:%d",
+                     i, PortAssignment.unique(), PortAssignment.unique(), clientPorts[i]);
+             sb.append(server + "\n");
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/test/NonRecoverableErrorTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/test/NonRecoverableErrorTest.java
+index 31790d2..7bd1167 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/test/NonRecoverableErrorTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/test/NonRecoverableErrorTest.java
+@@ -58,6 +58,7 @@ public class NonRecoverableErrorTest extends QuorumPeerTestBase {
+ 
+         for (int i = 0; i < SERVER_COUNT; i++) {
+             clientPorts[i] = PortAssignment.unique();
++            if(i==0) clientPorts[i] = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+             server = "server." + i + "=127.0.0.1:" + PortAssignment.unique()
+                     + ":" + PortAssignment.unique() + ":participant;127.0.0.1:"
+                     + clientPorts[i];
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/test/ObserverTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/test/ObserverTest.java
+index e9d8332..2348b73 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/test/ObserverTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/test/ObserverTest.java
+@@ -66,7 +66,7 @@ public class ObserverTest extends QuorumPeerTestBase implements Watcher{
+         final int PORT_QP_LE2 = PortAssignment.unique();
+         final int PORT_OBS_LE = PortAssignment.unique();
+ 
+-        final int CLIENT_PORT_QP1 = PortAssignment.unique();
++        final int CLIENT_PORT_QP1 = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+         final int CLIENT_PORT_QP2 = PortAssignment.unique();
+         final int CLIENT_PORT_OBS = PortAssignment.unique();
+ 
+diff --git a/zookeeper-server/src/test/java/org/apache/zookeeper/test/StandaloneTest.java b/zookeeper-server/src/test/java/org/apache/zookeeper/test/StandaloneTest.java
+index 3d57b6c..964c560 100644
+--- a/zookeeper-server/src/test/java/org/apache/zookeeper/test/StandaloneTest.java
++++ b/zookeeper-server/src/test/java/org/apache/zookeeper/test/StandaloneTest.java
+@@ -63,7 +63,7 @@ public class StandaloneTest extends QuorumPeerTestBase implements Watcher{
+     @Test
+     public void testNoDynamicConfig() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+ 
+         MainThread mt = new MainThread(
+                 MainThread.UNSET_MYID, CLIENT_PORT, "", false);
+@@ -81,7 +81,7 @@ public class StandaloneTest extends QuorumPeerTestBase implements Watcher{
+     @Test
+     public void testClientPortInDynamicFile() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+ 
+         String quorumCfgSection = "server.1=127.0.0.1:" +
+                 (PortAssignment.unique()) + ":" + (PortAssignment.unique())
+@@ -99,7 +99,7 @@ public class StandaloneTest extends QuorumPeerTestBase implements Watcher{
+     @Test
+     public void testClientPortInStaticFile() throws Exception {
+         ClientBase.setupTestEnv();
+-        final int CLIENT_PORT = PortAssignment.unique();
++        final int CLIENT_PORT = Integer.parseInt(MainThread.getPortFromFile("clientPort"));
+ 
+         String quorumCfgSection = "server.1=127.0.0.1:" +
+                 (PortAssignment.unique()) + ":" + (PortAssignment.unique())

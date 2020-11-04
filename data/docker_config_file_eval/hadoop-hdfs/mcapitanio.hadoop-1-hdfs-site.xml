@@ -1,0 +1,43 @@
+<configuration>
+
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+  	<name>dfs.namenode.name.dir</name>
+	<value>file:///hdfs/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.namenode.data.dir</name> 
+        <value>file:///hdfs/dfs/data</value>
+    </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+        <value>file:///hdfs/dfs/namesecondary</value>
+    </property>
+    <property>
+        <name>dfs.permissions.superusergroup</name>
+        <value>supergroup</value>
+    </property>
+    <property>
+        <name>dfs.permissions.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.namenode.safemode.threshold-pct</name>
+        <value>0.5</value>
+    </property>
+    <property>
+	<name>dfs.datanode.hdfs-blocks-metadata.enabled</name>
+	<value>true</value>
+    </property>
+    <property>
+        <name>dfs.client.file-block-storage-locations.timeout.millis</name>
+        <value>30000</value>
+    </property>
+</configuration>

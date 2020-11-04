@@ -1,0 +1,31 @@
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java
+index 2fe25e0..40de6b0 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java
++++ b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java
+@@ -324,8 +324,6 @@ public class TestStartup {
+     config.set(DFSConfigKeys.DFS_NAMENODE_EDITS_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "edits")).toString());
+     // same checkpoint dirs
+-    config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY,
+-        fileAsURI(new File(hdfsDir, "chkpt")).toString());
+     config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "chkpt")).toString());
+ 
+@@ -351,8 +349,6 @@ public class TestStartup {
+     config.set(DFSConfigKeys.DFS_NAMENODE_EDITS_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "edits")).toString());
+     // same checkpoint dirs
+-    config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY,
+-        fileAsURI(new File(hdfsDir, "chkpt_edits")).toString());
+     config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "chkpt")).toString());
+ 
+@@ -376,8 +372,6 @@ public class TestStartup {
+     config.set(DFSConfigKeys.DFS_NAMENODE_EDITS_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "name")).toString());
+     // same checkpoint dirs
+-    config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY,
+-        fileAsURI(new File(hdfsDir, "chkpt_edits")).toString());
+     config.set(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_DIR_KEY,
+         fileAsURI(new File(hdfsDir, "chkpt")).toString());
+ 

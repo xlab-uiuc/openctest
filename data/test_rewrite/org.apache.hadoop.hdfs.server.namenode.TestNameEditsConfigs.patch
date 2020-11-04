@@ -1,0 +1,25 @@
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameEditsConfigs.java b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameEditsConfigs.java
+index bc2c9d3..75b8e2d 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameEditsConfigs.java
++++ b/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameEditsConfigs.java
+@@ -600,9 +600,6 @@ public class TestNameEditsConfigs {
+     conf.setStrings(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_DIR_KEY, whiteSpace
+         + checkpointNameDir1.getPath() + whiteSpace, whiteSpace
+         + checkpointNameDir2.getPath() + whiteSpace);
+-    conf.setStrings(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY,
+-        whiteSpace + checkpointEditsDir1.getPath() + whiteSpace, whiteSpace
+-            + checkpointEditsDir2.getPath() + whiteSpace);
+     cluster = new MiniDFSCluster.Builder(conf).manageNameDfsDirs(false)
+         .numDataNodes(3).build();
+     try {
+@@ -613,10 +610,6 @@ public class TestNameEditsConfigs {
+           checkpointNameDir1.exists());
+       assertTrue(DFSConfigKeys.DFS_NAMENODE_NAME_DIR_KEY + " must be trimmed ",
+           checkpointNameDir2.exists());
+-      assertTrue(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY
+-          + " must be trimmed ", checkpointEditsDir1.exists());
+-      assertTrue(DFSConfigKeys.DFS_NAMENODE_CHECKPOINT_EDITS_DIR_KEY
+-          + " must be trimmed ", checkpointEditsDir2.exists());
+     } finally {
+       secondary.shutdown();
+       cluster.shutdown();
