@@ -2,7 +2,7 @@
 
 ### Description
 
-See **[Running Ctests](https://github.com/xlab-uiuc/openctest/tree/master/core#2-running-ctests)**.
+See **[Running Ctests](https://github.com/xlab-uiuc/openctest/tree/main/core#2-running-ctests)**.
 
 ### Instruction
 
@@ -39,7 +39,7 @@ ctest2	test_result	testcase_time
 ...
 ```
 
-`test_result` is `p` if ctest passed, otherwise `f`. Skipped tests should be filtered automatically during [ctest generation](https://github.com/xlab-uiuc/openctest/tree/master/core#1-generating-ctests).
+`test_result` is `p` if ctest passed, otherwise `f`. Skipped tests should be filtered automatically during [ctest generation](https://github.com/xlab-uiuc/openctest/tree/main/core#1-generating-ctests).
 
 
 ### Directory Structure

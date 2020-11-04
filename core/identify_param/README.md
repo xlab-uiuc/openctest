@@ -3,7 +3,7 @@
 
 ### Description
 
-See [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/openctest/tree/master/core#11-identifying-parameters-exercised-in-tests)
+See [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/openctest/tree/main/core#11-identifying-parameters-exercised-in-tests)
 
 
 ### Instruction

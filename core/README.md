@@ -76,11 +76,11 @@ Use **identify_param** to identify configuration parameters exercised by tests i
 3. for each configuration parameter `p`, identify tests that reset the value of `p`, and exclude `p` from these tests' exercised parameter set.
 4. generate a mapping where the keys are parameters, and values are lists of tests which exercise but not reset the parameters.
 
-Please refer to the [identify_param](https://github.com/xlab-uiuc/openctest/tree/master/core/identify_param "identify_param") folder for instructions.
+Please refer to the [identify_param](https://github.com/xlab-uiuc/openctest/tree/main/core/identify_param "identify_param") folder for instructions.
 
 #### 1.2 Generating Parameter Sets for Ctests
 
-*First*, use **generate_value** to automatically generate up to three different valid values for each parameter. The generated valid values are used to exclude tests hardcoded to specific parameter values (These tests cannot be transformed into ctests as they will fail on any other valid but different values), Please refer to the [generate_value](https://github.com/xlab-uiuc/openctest/tree/master/core/generate_value "generate_value") folder for instructions.
+*First*, use **generate_value** to automatically generate up to three different valid values for each parameter. The generated valid values are used to exclude tests hardcoded to specific parameter values (These tests cannot be transformed into ctests as they will fail on any other valid but different values), Please refer to the [generate_value](https://github.com/xlab-uiuc/openctest/tree/main/core/generate_value "generate_value") folder for instructions.
 
 *Second*, use **generate_ctest** to automatically generate ctests. It will do the following:
 
@@ -89,7 +89,7 @@ Please refer to the [identify_param](https://github.com/xlab-uiuc/openctest/tree
 3. automatically identify ctests (tests that passed on all valid values) for each parameter from the test result.
 4. output the generated "parameters -> ctests" mapping into a `json` file.
 
-Please refer to the [generate_ctest](https://github.com/xlab-uiuc/openctest/tree/master/core/generate_ctest "generate_ctest") folder for instructions.
+Please refer to the [generate_ctest](https://github.com/xlab-uiuc/openctest/tree/main/core/generate_ctest "generate_ctest") folder for instructions.
 
 ### 2. Running Ctests
 
@@ -100,4 +100,4 @@ Use **run_ctest** to run generated ctests against configuration files. It will d
  3. run selected ctests against configuration values in `D`.
  4. collect the test result for the specified configuration file.
 
-Please refer to the [run_ctest](https://github.com/xlab-uiuc/openctest/tree/master/core/run_ctest "run_ctest") folder for instructions.
+Please refer to the [run_ctest](https://github.com/xlab-uiuc/openctest/tree/main/core/run_ctest "run_ctest") folder for instructions.

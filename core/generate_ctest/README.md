@@ -2,7 +2,7 @@
 
 ### Description
 
-See **[Generating Parameter Sets for Ctests](https://github.com/xlab-uiuc/openctest/tree/master/core#12-generating-parameter-sets-for-ctests)**.
+See **[Generating Parameter Sets for Ctests](https://github.com/xlab-uiuc/openctest/tree/main/core#12-generating-parameter-sets-for-ctests)**.
 
 ### Instruction
 
@@ -41,7 +41,7 @@ parameter	test1	value2	test_result	testcase_time
 ...
 ```
 
-`test_result` is `p` if test passed, otherwise `f`. Skipped tests should be filtered automatically in the [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/openctest/tree/master/core#11-identifying-parameters-exercised-in-tests) step.
+`test_result` is `p` if test passed, otherwise `f`. Skipped tests should be filtered automatically in the [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/openctest/tree/main/core#11-identifying-parameters-exercised-in-tests) step.
 
 **Ctest mapping** is generated based on all the test result files in `test_result/<project>`. It is stored in `ctest_mapping/ctests-<project>.json` with format:
 ```

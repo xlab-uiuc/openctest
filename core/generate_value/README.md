@@ -3,7 +3,7 @@
 
 ### Introduction
 
-See [Generating Ctests - generating valid values](https://github.com/xlab-uiuc/openctest_prerelease/blob/master/core/README.md#12-generating-parameter-sets-for-ctests).
+See [Generating Ctests - generating valid values](https://github.com/xlab-uiuc/openctest/blob/main/core/README.md#12-generating-parameter-sets-for-ctests).
 
 ### Instruction
 

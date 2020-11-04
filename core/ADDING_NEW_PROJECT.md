@@ -45,7 +45,7 @@ Sometimes, the locations that need to be changed maybe in multiple `pom` files. 
 
 ### 2.1 Collect Configuration Parameters and Tests
 
-*First*, collect the name, default value (empty if no default value) and description of each configuration parameters in the project. Store the information in a `tsv` file in `default_configs`. For example: [hadoop-common-default.tsv](https://github.com/xlab-uiuc/openctest/blob/master/core/default_configs/hadoop-common-default.tsv).
+*First*, collect the name, default value (empty if no default value) and description of each configuration parameters in the project. Store the information in a `tsv` file in `default_configs`. For example: [hadoop-common-default.tsv](https://github.com/xlab-uiuc/openctest/blob/main/core/default_configs/hadoop-common-default.tsv).
  
  *Second*, collect the list of configuration parameter names and put them in `openctest/core/identify_param/results/<project>/conf_params.list`. 
 
@@ -54,7 +54,7 @@ Sometimes, the locations that need to be changed maybe in multiple `pom` files. 
 
 ### 2.2 Collect Deprecated Configuration Parameters
 
-Collect a mapping from the deprecated parameter name to the new parameter name. Store the information in a `tsv` file in `deprecated_configs`. The format should be the deprecated parameter name followed by the new parameter name. For example: [hadoop.list](https://github.com/xlab-uiuc/openctest/blob/master/core/deprecated_configs/hadoop.list "hadoop.list")
+Collect a mapping from the deprecated parameter name to the new parameter name. Store the information in a `tsv` file in `deprecated_configs`. The format should be the deprecated parameter name followed by the new parameter name. For example: [hadoop.list](https://github.com/xlab-uiuc/openctest/blob/main/core/deprecated_configs/hadoop.list "hadoop.list")
 
 
 ### 2.3 Automate Project Installation
