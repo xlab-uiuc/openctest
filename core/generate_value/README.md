@@ -37,7 +37,7 @@ coverage: 0.7444444444444445
 
 ### Result
 
-The generated value result will be in `<project>-generated-values.txt` (tab-seperated), which looks like
+The generated value result will be in `<project>-generated-values.tsv` (tab-seperated), which looks like
 
 ```
 hadoop.http.filter.initializers	SKIP	SKIP
