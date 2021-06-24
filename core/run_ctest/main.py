@@ -15,7 +15,7 @@ project = p_input["project"]
 ctest_selected_file = p_input["ctest_selected"]
 
 
-def main():
+def main(argv):
     print(">>>>[ctest_core] running project {}".format(project))
     s = time.time()
     os.makedirs(os.path.join(RUNCTEST_TR_DIR, project), exist_ok=True)
@@ -24,17 +24,27 @@ def main():
             print(">>>>[ctest_core] input conf file: {}".format(conf_file_path))
             test_input = extract_conf_diff(conf_file_path)
             test_conf_file(conf_file_path, test_input)
+    elif run_mode == "run_single_ctest":
+        for conf_file_path in sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))):
+            print(">>>>[ctest_core] input conf file: {}".format(conf_file_path))
+            test_input = extract_conf_diff(conf_file_path)
+            test_conf_file(conf_file_path, test_input, argv[1])
     else:
         sys.exit(">>>>[ctest_core] invalid run_mode")
     print(">>>>[ctest_core] total time: {} seconds".format(time.time() - s))
 
-def test_conf_file(conf_file_path, test_input):
+def test_conf_file(conf_file_path, test_input, ctestname = "notuse"):
     fbase = os.path.splitext(os.path.basename(conf_file_path))[0]
     params = test_input.keys()
-    ctest_selected = parse_ctest_file_txt(ctest_selected_file)
-    associated_test_map, associated_tests = extract_mapping(mapping, params, ctest_selected)
-    print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
-    print(">>>>[ctest_core] # ctests to run in total: {}".format(len(associated_tests)))
+    if run_mode == "run_ctest":
+        associated_test_map, associated_tests = extract_mapping(mapping, params)
+        print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
+        print(">>>>[ctest_core] # ctests to run in total: {}".format(len(associated_tests)))
+    elif run_mode == "run_single_ctest":
+        associated_test_map = dict([[i, list((ctestname, ))] for i in params if ctestname in mapping[i]])
+        associated_tests = set((ctestname, ))
+        print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
+        print(">>>>[ctest_core] # single ctest to run")
     tr_file = open(os.path.join(RUNCTEST_TR_DIR, project, TR_FILE.format(id=fbase)), "w")
     mt_file = open(os.path.join(RUNCTEST_TR_DIR, project, MT_FILE.format(id=fbase)), "w")
     if len(associated_tests) != 0:
@@ -60,4 +70,4 @@ def test_conf_file(conf_file_path, test_input):
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
