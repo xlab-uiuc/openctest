@@ -12,7 +12,6 @@ from run_test import run_test_batch
 run_mode = p_input["run_mode"]
 mapping = parse_mapping(p_input["mapping_path"])
 project = p_input["project"]
-ctest_selected_file = p_input["ctest_selected"]
 
 
 def main(argv):
