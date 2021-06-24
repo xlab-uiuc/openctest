@@ -22,4 +22,4 @@ p_input = {
 assert p_input["project"] \
     and p_input["mapping_path"] \
     and p_input["conf_file_dir"], ">>>>[ctest_core] please specify input"
-assert p_input["run_mode"] == "run_ctest", ">>>>[ctest_core] please specify run_mode"
+assert p_input["run_mode"] == "run_ctest" or "run_single_ctest", ">>>>[ctest_core] please specify run_mode"
