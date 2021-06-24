@@ -14,6 +14,7 @@ p_input = {
     "project": "hadoop-common",
     "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json",
     "conf_file_dir": "sample-hadoop-common",
+    "ctest_selected": "ctest_selected.txt",
     "display_mode": False,
     "use_surefire": True,
     "maven_args": [],
@@ -24,7 +25,7 @@ p_input = {
 ```
 "maven_args": ["-DfailIfNoTests=false"]
 ```
-
+*For "ctest_selected", please specify the ctests you want to run in the input file, if you want to run all the ctests, just remain the file empty. 
 *Second*, run `./run_ctest.sh`. Each correctly formatted configuration file in the `conf_file_dir` folder will be tested sequentially.
 
 ### Result

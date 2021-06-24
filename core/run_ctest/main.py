@@ -12,6 +12,7 @@ from run_test import run_test_batch
 run_mode = p_input["run_mode"]
 mapping = parse_mapping(p_input["mapping_path"])
 project = p_input["project"]
+ctest_selected_file = p_input["ctest_selected"]
 
 
 def main():
@@ -30,7 +31,8 @@ def main():
 def test_conf_file(conf_file_path, test_input):
     fbase = os.path.splitext(os.path.basename(conf_file_path))[0]
     params = test_input.keys()
-    associated_test_map, associated_tests = extract_mapping(mapping, params)
+    ctest_selected = parse_ctest_file_txt(ctest_selected_file)
+    associated_test_map, associated_tests = extract_mapping(mapping, params, ctest_selected)
     print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
     print(">>>>[ctest_core] # ctests to run in total: {}".format(len(associated_tests)))
     tr_file = open(os.path.join(RUNCTEST_TR_DIR, project, TR_FILE.format(id=fbase)), "w")

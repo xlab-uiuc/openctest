@@ -111,16 +111,34 @@ def parse_mapping(path):
     return json.load(open(path))
 
 
-def extract_mapping(mapping, params):
+def extract_mapping(mapping, params, ctest_selected):
     """get tests associated with a list of params from mapping"""
     data = {}
     selected_tests = []
+    test_ele = ""
     for p in params:
         if p in mapping:
             tests = mapping[p]
             print(">>>>[ctest_core] parameter {} has {} tests".format(p, len(tests)))
-            data[p] = tests
-            selected_tests = selected_tests + tests
+            if len(ctest_selected) == 0:
+                data[p] = tests
+                selected_tests = selected_tests + tests
+            else:
+                curtests = []
+                for test_ele in tests:
+                    if test_ele in ctest_selected:
+                        curtests.append(test_ele)
+                data[p] = curtests
+                selected_tests = selected_tests + curtests
         else:
             print(">>>>[ctest_core] parameter {} has 0 tests".format(p))
     return data, set(selected_tests)
+
+def parse_ctest_file_txt(file):
+    ctest_map = []
+    for line in open(file):
+        if line.startswith("#"):
+            continue
+        seg = line.strip("\n")
+        ctest_map.append(seg)
+    return ctest_map

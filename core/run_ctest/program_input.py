@@ -9,6 +9,8 @@ p_input = {
     "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json", # string
     # input directory hosting configuration files to be test, target-project-format specific
     "conf_file_dir": "sample-hadoop-common", # string
+    # single or part of the ctest that want to test, if the file is empty, it will run all the ctests automatically
+    "ctest_selected": "ctest_selected.txt",
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
