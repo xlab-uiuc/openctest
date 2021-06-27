@@ -30,10 +30,9 @@ def main():
 def test_conf_file(conf_file_path, test_input):
     fbase = os.path.splitext(os.path.basename(conf_file_path))[0]
     params = test_input.keys()
-    if run_mode == "run_ctest":
-        associated_test_map, associated_tests = extract_mapping(mapping, params)
-        print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
-        print(">>>>[ctest_core] # ctests to run in total: {}".format(len(associated_tests)))
+    associated_test_map, associated_tests = extract_mapping(mapping, params)
+    print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
+    print(">>>>[ctest_core] # ctests to run in total: {}".format(len(associated_tests)))
     tr_file = open(os.path.join(RUNCTEST_TR_DIR, project, TR_FILE.format(id=fbase)), "w")
     mt_file = open(os.path.join(RUNCTEST_TR_DIR, project, MT_FILE.format(id=fbase)), "w")
     if len(associated_tests) != 0:

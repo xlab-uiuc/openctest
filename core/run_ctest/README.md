@@ -24,9 +24,9 @@ p_input = {
 ```
 "maven_args": ["-DfailIfNoTests=false"]
 ```
+
 *If you want to run a single ctest, change the "run_mode" in program_input.py to "run_single_ctest" 
 
-*Second*, run `./run_ctest.sh` for whole ctests or run `./run_ctest.sh *ctestname*` for a single ctest. Each correctly formatted configuration file in the `conf_file_dir` folder will be tested sequentially.
 
 ### Result
 
