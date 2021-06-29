@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys, time
 
 from program_input import p_input
