@@ -1,0 +1,7 @@
+version: "3.0"
+services:
+    openctest:
+        build: ./core
+        volumes:
+            - .:/home/ctestuser/openctest
+        container_name: openctest

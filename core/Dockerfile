@@ -36,7 +36,9 @@ RUN \
   useradd -m ctestuser
 
 USER ctestuser
-RUN cd /home/ctestuser && \
-  git clone https://github.com/xlab-uiuc/openctest.git
+# RUN cd /home/ctestuser && \
+#   git clone https://github.com/xlab-uiuc/openctest.git
 
 WORKDIR /home/ctestuser
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
