@@ -8,7 +8,7 @@ def main(argv):
         if argv[1] in value:
             count += 1
             print("p", count," ", key, sep='')
-    print("Number of parameter is", count)
+    print("Number of parameter(s) is", count)
 
 if __name__ == "__main__":
     main(sys.argv)   
