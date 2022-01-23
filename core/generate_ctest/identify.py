@@ -36,7 +36,7 @@ def identify_ctest(project):
                     testinfo[param]["tests"][test] = set()
                 testinfo[param]["tests"][test].add(value)
 
-        # ctest shoud pass all good value
+        # ctest should pass all good value
         for param, info in testinfo.items():
             ctests[param] = []
             good_values = testinfo[param]["good_values"]
