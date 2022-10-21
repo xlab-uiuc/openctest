@@ -8,7 +8,7 @@ p_input = {
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-flink-core.json", # string
     # good values of params tests will be run against
-    "param_value_tsv": "flink-core.tsv", # string
+    "param_value_tsv": "flink-core-generated-values.tsv", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test

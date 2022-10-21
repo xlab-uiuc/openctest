@@ -52,6 +52,7 @@ function setup_flink() {
     [ ! -d "app/ctest-flink" ] && git clone https://github.com/jessicahuang523/flink app/ctest-flink
     cd app/ctest-flink
     git fetch && git checkout ctest-injection
+    cd flink-core
     mvn clean install -DskipTests
 }
 
