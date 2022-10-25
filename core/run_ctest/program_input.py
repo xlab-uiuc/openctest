@@ -2,12 +2,12 @@
 
 p_input = {
     # run mode
-    "run_mode": "generate_ctest", # string
+    "run_mode": "run_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs, see constant.py
     "project": "flink-core", # string
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-flink-core.json", # string
-    # good values of params tests will be run against
+    # input directory hosting configuration files to be test, target-project-format specific
     "conf_file_dir": "flink-core", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
