@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,8 +51,8 @@ public class HadoopHDFS implements CTestRunnable {
     @Override
     public void setProjectRootPath(Path rootPath) {
         this.rootPath = rootPath;
-        surefirePath = Paths.get(rootPath.toString(), "target/surefire-reports");
-        configInjectionPath = Paths.get(rootPath.toString(), "target/classes", "ctest-injected.xml");
+        surefirePath = Path.of(rootPath.toString(), "target/surefire-reports");
+        configInjectionPath = Path.of(rootPath.toString(), "target/classes", "ctest-injected.xml");
     }
 
     @Override
@@ -200,7 +199,7 @@ public class HadoopHDFS implements CTestRunnable {
         InvocationRequest request = new DefaultInvocationRequest();
 
         // set pom path
-        Path pomPath = Paths.get(rootPath.toString(), "pom.xml");
+        Path pomPath = Path.of(rootPath.toString(), "pom.xml");
         request.setPomFile(pomPath.toFile());
 
         // disable interactive mode
@@ -246,7 +245,7 @@ public class HadoopHDFS implements CTestRunnable {
 
     private Pair<Map<String, String>, Map<String, String>> getResultForClass(String className, List<String> methods) {
         String resultFileName = SUREFIRE_OUTPUT_XML.replace("@", className);
-        Path resultFilePath = Paths.get(surefirePath.toString(), resultFileName);
+        Path resultFilePath = Path.of(surefirePath.toString(), resultFileName);
         if (!resultFilePath.toFile().exists()) {
             logger.info("Cannot locate surefile report file in: {}", resultFilePath.toString());
             return null;
@@ -288,17 +287,15 @@ public class HadoopHDFS implements CTestRunnable {
                         continue;
                     }
 
-                    // populate runningTimes map
-                    successfulTest.put(methodName, executionDuration);
-
-                    // populate errors map
                     NodeList errorNodes = testcase.getElementsByTagName("error");
+                    NodeList failureNodes = testcase.getElementsByTagName("failure");
                     if (errorNodes.getLength() != 0) {
                         failedTest.put(methodName, errorNodes.item(0).getTextContent());
-                    }
-                    NodeList failureNodes = testcase.getElementsByTagName("failure");
-                    if (failureNodes.getLength() != 0) {
+                    } else if (failureNodes.getLength() != 0) {
                         failedTest.put(methodName, failureNodes.item(0).getTextContent());
+                    } else {
+                        // populate runningTimes map
+                        successfulTest.put(methodName, executionDuration);
                     }
                 }
             }
@@ -317,13 +314,12 @@ public class HadoopHDFS implements CTestRunnable {
             Map<String, String> additionalFailedTest = new HashMap<>();
             methods.forEach((test) -> {
                 if (!successfulTest.containsKey(test) && !failedTest.containsKey(test)) {
-                    additionalFailedTest.put(test, "Cannot find surefire report for this test. Please check the surefire report file for more details.");
+                    additionalFailedTest.put(test,
+                            "Cannot find surefire report for this test. Please check the surefire report file for more details.");
                 }
             });
             failedTest.putAll(additionalFailedTest);
-        } catch (ParserConfigurationException | SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 
