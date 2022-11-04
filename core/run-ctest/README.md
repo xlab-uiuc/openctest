@@ -44,7 +44,8 @@ To run the CTest, you need to pass following parameters:
 - optional
 - a list of command line arguments that you want to pass to the target project, separated by `,`
 
-Examples:
+## Command Examples
+Example with 2 Success and 1 Skip. `testCedeActive` is skipped because it is not affected by the modified configuration.
 ```
 mvn exec:java -q \
 -Dproject.name=hadoop-common \
@@ -56,6 +57,7 @@ mvn exec:java -q \
 -Dproject.args=-q
 ```
 
+Example with 1 Success and 1 Fail. `testCqlBatch_MultipleTablesAuditing` is failed because `num_tokens must be >= 1`.
 ```
 mvn exec:java -q \
 -Dproject.name=cassandra \
