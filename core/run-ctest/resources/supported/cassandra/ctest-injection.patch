@@ -56,3 +56,6 @@ index a8d4695cb0..df3b52de88 100644
      }
  
      public Config loadConfig(URL url) throws ConfigurationException
+diff --git a/test/conf/ctest-injected.yaml b/test/conf/ctest-injected.yaml
+new file mode 100644
+index 0000000000..e69de29bb2
