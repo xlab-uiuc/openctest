@@ -43,7 +43,7 @@ public class CTestMain {
         Map<String, String> successfulTest = results.getValue0();
         Map<String, String> failedTest = results.getValue1();
 
-        // print out results
+        // // print out results
         // logger.info("Result");
         // toBeTestedTest.forEach(test -> {
         //     if (successfulTest.containsKey(test)) {
