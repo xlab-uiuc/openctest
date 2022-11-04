@@ -1,1 +1,2 @@
-org.apache.hadoop.hdfs.server.namenode.TestNameNodeMXBean#testTopUsersDisabled
+org.apache.cassandra.audit.AuditLoggerTest#testCqlBatch_MultipleTablesAuditing
+org.apache.cassandra.hints.HintWriteTTLTest#hintIterator
