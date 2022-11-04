@@ -1,0 +1,42 @@
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 530e18e4b83..9aeffbe4791 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -509,6 +509,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++	<version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index 818ef37eb79..ae8632755b3 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -786,6 +786,7 @@ private void handleDeprecation() {
+     // Add default resources
+     addDefaultResource("core-default.xml");
+     addDefaultResource("core-site.xml");
++    addDefaultResource("ctest-injected.xml");
+ 
+     // print deprecation warning if hadoop-site.xml is found in classpath
+     ClassLoader cL = Thread.currentThread().getContextClassLoader();
+diff --git a/pom.xml b/pom.xml
+index f4e435c7493..f1611bfab1a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -142,6 +142,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++       <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
