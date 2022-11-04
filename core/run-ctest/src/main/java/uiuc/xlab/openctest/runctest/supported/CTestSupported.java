@@ -8,7 +8,7 @@ public class CTestSupported {
             case "hadoop-common":
                 return new HadoopCommon();
             case "hadoop-hdfs":
-                return null;
+                return new HadoopHDFS();
             case "cassandra":
                 return null;
             default:

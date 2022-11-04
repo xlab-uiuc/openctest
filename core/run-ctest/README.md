@@ -12,3 +12,14 @@ mvn exec:java -q \
 -Dproject.props=maven.antrun.skip=true,use.surefire=true \
 -Dproject.args=-q
 ```
+
+```
+mvn exec:java -q \
+-Dproject.name=hadoop-hdfs \
+-Dproject.path=app/hadoop/hadoop-hdfs-project/hadoop-hdfs \
+-Dmapping.path=resources/supported/hadoop-hdfs/param_unset_getter_map.json \
+-Dconf.file=examples/modified-config.properties \
+-Dtest.file=examples/to-be-tested-tests.txt \
+-Dproject.props=use.surefire=true \
+-Dproject.args=-q
+```

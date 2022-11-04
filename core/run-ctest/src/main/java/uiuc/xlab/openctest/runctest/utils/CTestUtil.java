@@ -9,33 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class CTestUtil {
-    // /**
-    // *
-    // * Filter out those modified configurations which don't modify the default
-    // * values.
-    // *
-    // * @return a map of updated configurations.
-    // */
-    // public static Map<String, String> filterUnchangedConfig(Map<String, String>
-    // defaultConfig,
-    // Map<String, String> modifiedConfig) {
-    // Map<String, String> updatedConfig = new HashMap<>();
-
-    // modifiedConfig.forEach((param, val) -> {
-    // if (!defaultConfig.containsKey(param)) {
-    // logger.info("modified config param {} is not in default config", param);
-    // }
-
-    // if (!defaultConfig.containsKey(param) || defaultConfig.get(param) != val) {
-    // updatedConfig.put(param, val);
-    // }
-    // });
-
-    // return updatedConfig;
-    // }
-
     /**
-     *
      * Filter out those tests that are not affected by the modified configuration
      * values.
      *
