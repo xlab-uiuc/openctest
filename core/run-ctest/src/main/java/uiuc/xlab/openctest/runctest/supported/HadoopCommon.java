@@ -317,7 +317,7 @@ public class HadoopCommon implements CTestRunnable {
             Map<String, String> additionalFailedTest = new HashMap<>();
             methods.forEach((test) -> {
                 if (!successfulTest.containsKey(test) && !failedTest.containsKey(test)) {
-                    additionalFailedTest.put(test, "Cannot find surefire report for this test.");
+                    additionalFailedTest.put(test, "Cannot find surefire report for this test. Please check the surefire report file for more details.");
                 }
             });
             failedTest.putAll(additionalFailedTest);
