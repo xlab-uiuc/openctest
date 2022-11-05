@@ -37,15 +37,15 @@ To run the CTest, you need to pass following parameters:
 - the relative path to a `.txt` file containing all tests that you want to test
 
 `project.props`
-- optional
+- generally optional, please check the `README` of specific project for required command line properties
 - a list of command line properties that you want to pass to the target project, separated by `,`
 
 `project.args`
-- optional
+- generally optional, please check the `README` of specific project for required command line arguments
 - a list of command line arguments that you want to pass to the target project, separated by `,`
 
-## Command Examples
-Example with 2 Success and 1 Skip. `testCedeActive` is skipped because it is not affected by the modified configuration.
+### Command Examples
+Example with 2 Success and 1 Skip. `testCedeActive` is skipped because it is not affected by the modified configuration
 ```
 mvn exec:java -q \
 -Dproject.name=hadoop-common \
@@ -53,11 +53,11 @@ mvn exec:java -q \
 -Dmapping.path=resources/supported/hadoop-common/param_unset_getter_map.json \
 -Dconf.pairs=hadoop.security.crypto.jce.provider=SunJCE,hadoop.security.crypto.cipher.suite=AES/CTR/NoPadding \
 -Dtest.methods=org.apache.hadoop.crypto.TestCryptoStreams#testAvailable,org.apache.hadoop.crypto.TestCryptoStreamsNormal#testSkip,org.apache.hadoop.ha.TestZKFailoverController#testCedeActive \
--Dproject.props=maven.antrun.skip=true,use.surefire=true \
+-Dproject.props=use.surefire=true \
 -Dproject.args=-q
 ```
 
-Example with 1 Success and 1 Fail. `testCqlBatch_MultipleTablesAuditing` is failed because `num_tokens must be >= 1`.
+Example with 1 Success and 1 Fail. `testCqlBatch_MultipleTablesAuditing` is failed because `num_tokens must be >= 1`
 ```
 mvn exec:java -q \
 -Dproject.name=cassandra \
