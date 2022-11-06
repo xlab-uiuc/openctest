@@ -44,7 +44,7 @@ public class Cassandra implements CTestRunnable {
     }
 
     @Override
-    public void injectConfig(Map<String, String> updatedConfig) {
+    public void injectConfig(Map<String, Object> updatedConfig) {
         // cassandra using yaml to store configuration
         try {
             // delete old ctest-injected.yaml file
@@ -52,8 +52,8 @@ public class Cassandra implements CTestRunnable {
 
             // write out
             FileWriter fw = new FileWriter(configInjectionPath.toFile());
-            for (Map.Entry<String, String> conf : updatedConfig.entrySet()) {
-                fw.write(String.format("%s: %s\n", conf.getKey(), conf.getValue()));
+            for (Map.Entry<String, Object> conf : updatedConfig.entrySet()) {
+                fw.write(String.format("%s: %s\n", conf.getKey(), conf.getValue().toString()));
             }
             fw.close();
 

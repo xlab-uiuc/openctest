@@ -3,7 +3,7 @@
 - Maven 3
 
 ## How To Set Up Target Project
-Check out instructions for specific project in [here](./resources/supported/)
+Check out setup instructions and more general information for specific project in [here](./resources/supported/)
 
 ## How To Run CTest
 To run the CTest, you need to pass following parameters:
@@ -21,12 +21,12 @@ To run the CTest, you need to pass following parameters:
 - the relative path to the `param_unset_getter_map.json`
 
 `conf.pairs`
-- if `conf.file` is not specified, this parameter must be set
+- if `conf.file` is not specified, this parameter must be set. For target projects accepting complex configurations, such as nested values, you need to use the `conf.file` parameter
 - a list of modified configuration parameter-value pairs, separated by `,`
 
 `conf.file`
 - if `conf.pairs` is not specified, this parameter must be set
-- the relative path to a `.properties` file containing modified configuration parameter-value pairs
+- the relative path to a `YAML` file containing modified configuration values
 
 `test.methods`
 - if `test.file` is not specified, this parameter must be set
@@ -34,7 +34,7 @@ To run the CTest, you need to pass following parameters:
 
 `test.file`
 - if `test.methods` is not specified, this parameter must be set
-- the relative path to a `.txt` file containing all tests that you want to test
+- the relative path to a `TXT` file containing all tests that you want to test
 
 `project.props`
 - generally optional, please check the `README` of specific project for required command line properties
@@ -63,8 +63,8 @@ mvn exec:java -q \
 -Dproject.name=cassandra \
 -Dproject.path=app/cassandra \
 -Dmapping.path=resources/supported/cassandra/param_unset_getter_map.json \
--Dconf.file=examples/modified-config.properties \
--Dtest.file=examples/to-be-tested-tests.txt \
+-Dconf.file=examples/example-config.yaml \
+-Dtest.file=examples/example-test.txt \
 -Dproject.props=use.jdk11=true
 ```
 

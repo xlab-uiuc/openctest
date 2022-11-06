@@ -56,7 +56,7 @@ public class HadoopCommon implements CTestRunnable {
     }
 
     @Override
-    public void injectConfig(Map<String, String> updatedConfig) {
+    public void injectConfig(Map<String, Object> updatedConfig) {
         // hadoop using xml to store configuration
         try {
             // delete old ctest-injected.xml file
@@ -82,7 +82,7 @@ public class HadoopCommon implements CTestRunnable {
                 name.setTextContent(param);
                 property.appendChild(name);
                 Element value = doc.createElement("value");
-                value.setTextContent(val);
+                value.setTextContent(val.toString());
                 property.appendChild(value);
                 rootElement.appendChild(property);
             });

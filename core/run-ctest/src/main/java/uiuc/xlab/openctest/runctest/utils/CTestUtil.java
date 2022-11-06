@@ -16,7 +16,7 @@ public class CTestUtil {
      * @return a set of affected tests.
      */
     public static Set<String> filterUnaffectedTest(JSONObject paramTestMapping,
-            Map<String, String> modifiedConfig, Set<String> toBeTestedTest) {
+            Map<String, Object> modifiedConfig, Set<String> toBeTestedTest) {
         Map<String, Set<String>> paramTestMap = new HashMap<>();
         modifiedConfig.keySet().forEach(param -> {
             JSONArray tests = (JSONArray) paramTestMapping.get(param);

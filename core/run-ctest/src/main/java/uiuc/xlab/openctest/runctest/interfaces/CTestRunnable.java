@@ -19,7 +19,7 @@ public interface CTestRunnable {
      *
      * @param updatedConfig a map of updated configurations given by user.
      */
-    public void injectConfig(Map<String, String> updatedConfig);
+    public void injectConfig(Map<String, Object> updatedConfig);
 
     /**
      * Run test methods.

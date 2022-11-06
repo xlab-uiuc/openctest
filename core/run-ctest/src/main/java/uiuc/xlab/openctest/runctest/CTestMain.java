@@ -19,7 +19,7 @@ public class CTestMain {
         // get objects based on command line input
         Set<String> toBeTestedTest = InputParser.getToBeTestedTest();
         JSONObject paramTestMapping = InputParser.getParamTestMappingJSON();
-        Map<String, String> modifiedConfig = InputParser.getModifiedConfig();
+        Map<String, Object> modifiedConfig = InputParser.getModifiedConfig();
         logger.info("The number of configs that are modified: {}", modifiedConfig.size());
 
         // get ctest runner and set up project path

@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
@@ -20,6 +19,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 
 import uiuc.xlab.openctest.runctest.interfaces.CTestRunnable;
 import uiuc.xlab.openctest.runctest.supported.CTestSupported;
@@ -119,7 +119,7 @@ public class InputParser {
      * @return a Map object with key is configuration parameter and value is the
      *         configuration value.
      */
-    public static Map<String, String> getModifiedConfig() {
+    public static Map<String, Object> getModifiedConfig() {
         String confPairsStr = System.getProperty("conf.pairs");
         String confFilePathStr = System.getProperty("conf.file");
         if (confPairsStr == null && confFilePathStr == null) {
@@ -132,25 +132,21 @@ public class InputParser {
         }
     }
 
-    private static Map<String, String> getConfigFromFile(String confFilePathStr) {
-        Properties prop = new Properties();
+    private static Map<String, Object> getConfigFromFile(String confFilePathStr) {
+        Yaml yaml = new Yaml();
 
         try (InputStream input = new FileInputStream(confFilePathStr)) {
-            prop.load(input);
+            Map<String, Object> obj = yaml.load(input);
+            return obj;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-        Map<String, String> modifiedConfig = new HashMap<>();
-        prop.forEach((param, val) -> {
-            modifiedConfig.put(param.toString(), val.toString());
-        });
-
-        return modifiedConfig;
+        return new HashMap<>();
     }
 
-    private static Map<String, String> getConfigFromCommandLine(String confPairsStr) {
-        Map<String, String> modifiedConfig = new HashMap<>();
+    private static Map<String, Object> getConfigFromCommandLine(String confPairsStr) {
+        Map<String, Object> modifiedConfig = new HashMap<>();
 
         for (String param : confPairsStr.split(",")) {
             String[] paramPair = param.split("=");
