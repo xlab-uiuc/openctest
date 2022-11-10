@@ -13,7 +13,7 @@ MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
     "hadoop-hdfs": CTEST_HADOOP_DIR,
     "hbase-server": CTEST_HBASE_DIR,
-    "alluxio-core": CTEST_ALLUXIO_DIR
+    "alluxio-core": CTEST_ALLUXIO_DIR,
     "hudi-common": CTEST_HUDI_DIR
 }
 
@@ -22,7 +22,7 @@ SRC_SUBDIR = {
     "hadoop-hdfs": "hadoop-hdfs-project/hadoop-hdfs",
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
-    "alluxio-core": "core"
+    "alluxio-core": "core",
     "hudi-common": "hudi-common"
 }
 
