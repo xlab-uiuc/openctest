@@ -41,7 +41,7 @@ LOCAL_CONF_PATH = {
     "hbase-server": "results/hbase-server/conf_params.txt",
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt",
-    "alluxio-core": "results/hudi-common/conf_params.txt",
+    "hudi-common": "results/hudi-common/conf_params.txt",
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
