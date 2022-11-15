@@ -1,0 +1,4 @@
+distcp.dynamic.strategy.impl	org.apache.hadoop.tools.mapred.lib.DynamicInputFormat	Implementation of dynamic input format
+distcp.static.strategy.impl	org.apache.hadoop.tools.mapred.UniformSizeInputFormat	Implementation of static input format
+mapred.reducer.new-api	true	
+mapreduce.reduce.class	org.apache.hadoop.mapreduce.Reducer	
