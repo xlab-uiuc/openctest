@@ -1,0 +1,4 @@
+distcp.dynamic.strategy.impl	SKIP	SKIP
+distcp.static.strategy.impl	SKIP	SKIP
+mapred.reducer.new-api	false	SKIP
+mapreduce.reduce.class	SKIP	SKIP
