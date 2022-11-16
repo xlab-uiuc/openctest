@@ -21,7 +21,7 @@ def inject_config(param_value_pairs):
             for p, v in param_value_pairs.items():
                 file.write(p + "=" + v + "\n")
             file.close()
-    elif project in [HCOMMON, HDFS, HBASE]:
+    elif project in [HCOMMON, HDFS, HBASE, HDISTCP]:
         conf = ET.Element("configuration")
         for p, v in param_value_pairs.items():
             prop = ET.SubElement(conf, "property")
