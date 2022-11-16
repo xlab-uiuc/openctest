@@ -1,4 +1,3 @@
-		
 dfs.federation.router.default.nameserviceId		Nameservice identifier of the default subcluster to monitor.
 dfs.federation.router.default.nameservice.enable	true	The default subcluster is enabled to read and write files.
 dfs.federation.router.rpc.enable	true	If true, the RPC service to handle client requests in the router is enabled.
