@@ -22,6 +22,7 @@ CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
     HDFS: CTEST_HADOOP_DIR,
+    HDFSRBF: CTEST_HADOOP_DIR,
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
@@ -48,6 +49,7 @@ SUREFIRE_OUTTXT = "{}-output.txt" #testclass
 SUREFIRE_DIR = {
     HCOMMON: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HCOMMON], SUREFIRE_SUBDIR)],
     HDFS: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HDFS], SUREFIRE_SUBDIR)],
+    HDFSRBF: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HDFSRBF], SUREFIRE_SUBDIR)],
     HBASE: [os.path.join(CTEST_HBASE_DIR, MODULE_SUBDIR[HBASE], SUREFIRE_SUBDIR)],
     ZOOKEEPER: [os.path.join(CTEST_ZK_DIR, MODULE_SUBDIR[ZOOKEEPER], SUREFIRE_SUBDIR)],
     ALLUXIO: [
@@ -89,6 +91,9 @@ INJECTION_PATH = {
     HDFS: [
         os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/core-ctest.xml"),
         os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/hdfs-ctest.xml")
+    ],
+    HDFSRBF: [
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/core-ctest.xml")
     ],
     HBASE: [
         os.path.join(CTEST_HBASE_DIR, "hbase-server/target/classes/core-ctest.xml"),
