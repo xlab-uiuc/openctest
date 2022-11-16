@@ -9,6 +9,7 @@ RUN_CTEST_DIR = os.path.join(CUR_DIR, "run_ctest")
 
 HCOMMON = "hadoop-common"
 HDFS = "hadoop-hdfs"
+HDFSRBF = "hadoop-hdfs-rbf"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
@@ -31,6 +32,7 @@ PROJECT_DIR = {
 MODULE_SUBDIR = {
     HCOMMON: "hadoop-common-project/hadoop-common",
     HDFS: "hadoop-hdfs-project/hadoop-hdfs",
+    HDFSRBF: "hadoop-hdfs-project/hadoop-hdfs-rbf",
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
@@ -72,6 +74,7 @@ DEPRECATE_CONF_FILE = {
 DEFAULT_CONF_FILE = {
     HCOMMON: os.path.join(DEFAULT_CONF_DIR, HCOMMON + "-default.tsv"),
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
+    HDFSRBF: os.path.join(DEFAULT_CONF_DIR, HDFSRBF + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
