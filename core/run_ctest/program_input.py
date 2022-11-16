@@ -2,13 +2,13 @@
 
 p_input = {
     # run mode
-    "run_mode": "run_ctest", # string
+    "run_mode": "generate_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs
-    "project": "hadoop-common", # string
+    "project": "hadoop-hdfs-rbf", # string
     # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json", # string
+    "mapping_path": "../../data/ctest_mapping/opensource-hadoop-hdfs-rbf.json", # string
     # input directory hosting configuration files to be test, target-project-format specific
-    "conf_file_dir": "sample-hadoop-common", # string
+    "conf_file_dir": "hadoop-hdfs-rbf", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
