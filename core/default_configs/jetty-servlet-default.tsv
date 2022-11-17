@@ -1,0 +1,23 @@
+FORCE_WRAPPER		
+acceptRanges	true	If true, range requests and responses are supported.
+cacheControl	max-age=3600,public	If set, all static content will have this value set as the cache-control header.
+dirAllowed	true	If true, directory listings are returned if no welcome file is found. Else 403 Forbidden.
+dispatchPath		
+encodingHeaderCacheSize	0	Max entries in a cache of ACCEPT-ENCODING headers.
+etags	false	If True, weak etags will be generated and handled.
+gzip	true	If set to true, then static content will be served as gzip content encoded if a matching resource is found ending with ".gz"
+maxCacheSize	256000000	The maximum total size of the cache or 0 for no cache.
+maxCachedFileSize	200000000	The maximum size of a file to cache
+maxCachedFiles	2048	maxCachedFiles
+nonContextServlets		
+otherGzipFileExtensions		
+pathInfoOnly	false	If true, only the path info will be applied to the resourceBase
+precompressed		
+redirectWelcome	false	If true, welcome files are redirected rather than forwarded to.
+relativeResourceBase		Set with a pathname relative to the base of the servlet context root. Useful for only serving static content out of only specific subdirectories.
+resourceBase		Set to replace the context resource base
+resourceCache	resourceCache	If set, this is a context attribute name, which the servlet will use to look for a shared ResourceCache instance.
+restrictToLocalhost		
+stylesheet		Set with the location of an optional stylesheet that will be used to decorate the directory listing html.
+useFileMappedBuffer	true	If set to true, it will use mapped file buffers to serve static content when using an NIO connector. Setting this value to false means that a direct buffer will be used instead of a mapped file buffer. This file sets the value to true.
+welcomeServlets	false	If true, attempt to dispatch to welcome files that are servlets, but only after no matching static resources could be found. If false, then a welcome file must exist on disk. If "exact", then exact servlet matches are supported without an existing file. Default is true. This must be false if you want directory listings, but have index.jsp in your welcome file list.
