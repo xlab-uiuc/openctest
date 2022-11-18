@@ -1,0 +1,60 @@
+cool.leading	" Leading space"	Default String
+cool.trailing	"Trailing space"	Default String
+cool.both	" Both leading and trailing space"	Default String
+space.leading	"   \r\n"	Default String
+space.trailing	"\t"	Default String
+space.both	"  \r   \t  \n"	Default String
+mixed.leading	"   Leading space\r\n"	Default String
+mixed.trailing 	"Trailing space\t"  	Default String
+mixed.both  	"  Both leading and trailing space\r   \t  \n"  	Default String
+empty.line  	""  	Default String
+cool.end	mock:result	Default endpoint
+cool.result	result	Default result
+cool.result.xx	result	parameterized propertySuffix
+cool.end.xx	mock:result	parameterized propertySuffix
+cool.concat	mock:{{cool.result}}	parameterized propertySuffix
+cool.concat.escaped	mock:\\{{cool.result\\}}{"query":{"match_all":{}\\}}	parameterized propertySuffix
+cool.start	direct:cool	parameterized propertySuffix
+cool.showid	true	parameterized propertySuffix
+cool.name	Camel	parameterized propertySuffix
+cool.other.name	Cheese	parameterized propertySuffix
+cool.a	{{cool.b}}	circular reference test
+cool.b	{{cool.c}}	circular reference test
+cool.c	{{cool.a}}	circular reference test
+cool.mock	mock	circular reference test
+myCoolCharset	iso-8859-1	circular reference test
+slipDelimiter	##	circular reference test
+myQueueSize	10	circular reference test
+myDelayPattern	3:10;5:30;10:50;20:100	circular reference test
+stop	true	circular reference test
+onlytwo	2	circular reference test
+integration.ftpEnabled	true	circular reference test
+cheese.end	mock:cheese	No description
+cheese.quote	Camel rocks	No description
+cheese.type	Gouda	No description
+cheese.server	http://mycoolserver	No description
+bean.foo	foo	No description
+elephant	Hello Thai Elephant จ	No description
+sslContextParameters.protocol	TLS	No description
+keyManagersParameters.algorithm	SunX509	No description
+trustManagersParameters.algorithm	PKIX	No description
+sslContextParameters.provider	SunJSSE	No description
+sslContextParameters.sessionTimeout	2	No description
+keyStoreParameters.provider	SUN	No description
+trustManagersParameters.provider	SunJSSE	No description
+keyStoreParamerers.password	changeit	No description
+keyManagersParameters.keyPassword	changeit	No description
+keyStoreParameters.resource	org/apache/camel/support/jsse/localhost.p12	No description
+cipherSuite.0	TLS_AES_256_GCM_SHA384	No description
+filterParameters.exclude	exclude	No description
+secureSocketProtocol.0	TLSv1.3	No description
+secureRandomParameters.algorithm	SHA1PRNG	No description
+sslContextServerParameters.clientAuthentication	REQUIRE	No description
+keyStoreParameters.type	pkcs12	No description
+filterParameters.include	include	No description
+keyManagersParameters.provider	SunJSSE	No description
+secureRandomParameters.provider	SUN	No description
+autoStartupProp	true	No description
+noAutoStartupProp	false	No description
+maxKeep	1	Hardcoded In OptionalPropertyPlaceholderTest.java
+queue	foo	No description

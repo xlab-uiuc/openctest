@@ -1,0 +1,962 @@
+{
+  "SedaInOutWithErrorTest#testInOutWithError": [
+    "empty.line",
+    "cool.both",
+    "mixed.both",
+    "cool.leading",
+    "space.both",
+    "mixed.trailing",
+    "cool.trailing",
+    "space.leading",
+    "mixed.leading",
+    "space.trailing",
+    "myCoolCharset",
+    "myDelayPattern",
+    "integration.ftpEnabled"
+  ],
+  "TimerRepeatCountTest#testRepeatCount": [
+    "bean.foo",
+    "elephant",
+    "cool.concat.escaped",
+    "bean.unknown",
+    "cool.start",
+    "cool.name",
+    "bean.bar",
+    "cool.showid",
+    "cool.concat",
+    "cool.end",
+    "myCoolCharset",
+    "cool.result",
+    "cool.other.name"
+  ],
+  "ProxyReturnFutureTest#testFutureEchoCallTwoTimes": [
+    "bar",
+    "foo"
+  ],
+  "BeanParameterBestTypeMatchIssueTest#testNoParam": [
+    "bar"
+  ],
+  "OptionalPropertyPlaceholderTest#testPathOptionalNotPresent": [
+    "unknown"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyStringReturnString": [
+    "foo"
+  ],
+  "OptionalPropertiesDslTest#testPlaceholderDslTest": [
+    "stop"
+  ],
+  "PropertiesComponentEscapedTest#testEscaped": [
+    "cool.concat.escaped",
+    "cool.other.name"
+  ],
+  "OptionalPropertyPlaceholderEipTest#testQueryOptionalNotPresent": [
+    "myDelim"
+  ],
+  "PropertiesComponentEndpointTest#testPropertiesComponentEndpoint": [
+    "cool.result"
+  ],
+  "PropertiesComponentNestedFalseTest#testNestedFalse": [
+    "cool.other.name",
+    "cool.concat"
+  ],
+  "SedaNoConsumerTest#testFailIfNoConsuemerAndMultipleConsumerSetting": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "SSLContextParametersTest#testPropertyPlaceholders": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "PropertiesComponentEncodingTest#testPropertiesComponent": [
+    "elephant"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyStringReturnDocument": [
+    "foo"
+  ],
+  "OnCompletionTest#testSynchronizeComplete": [
+    "noAutoStartupProp",
+    "autoStartupProp"
+  ],
+  "FromEndpointTest#testReceivedMessageHasFromEndpointSet": [
+    "bar"
+  ],
+  "BeanParameterBestTypeMatchIssueTest#test2ParamClassB": [
+    "bar"
+  ],
+  "RecipientListParallelWithAggregationStrategyThrowingExceptionTest#testAggregationTimeExceptionWithParallelProcessing": [
+    "cool.name"
+  ],
+  "PropertiesComponentEIPChoiceConvertBodyToTest#testNullBody": [
+    "myCoolCharset"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixedTwo": [
+    "whereTo",
+    "maxKeep"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryOptionalNotPresent": [
+    "maxKeep"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyDocumentReturnDocument": [
+    "foo"
+  ],
+  "SSLContextParametersTest#testCipherSuitesFilter": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "TransactedPropertyPlaceholderIssueTest#testPropertyPlaceholder": [
+    "cool.name"
+  ],
+  "SSLContextParametersTest#testSecureSocketProtocol": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "SedaQueueFactoryTest#testArrayBlockingQueueFactory": [
+    "cool.end"
+  ],
+  "OptionalPropertyPlaceholderBeanTest#testQueryOptionalPresent": [
+    "cool.name"
+  ],
+  "BeanProxyNoBindingTest#testProxyBuilderVoidAsInOut": [
+    "foo"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyCallAnotherBeanWithNoArgs": [
+    "foo"
+  ],
+  "SSLContextParametersTest#testDefaultSecureSocketProtocol": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectOther": [
+    "bar",
+    "foo"
+  ],
+  "PropertiesComponentInterceptSendToEndpointTest#testInterceptSendToEndpoint": [
+    "cool.end"
+  ],
+  "BeanTest#testDoubleColon": [
+    "cool.name"
+  ],
+  "OnCompletionTest#testSynchronizeFailure": [
+    "noAutoStartupProp",
+    "autoStartupProp"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyFailure": [
+    "foo"
+  ],
+  "OptionalPropertyPlaceholderEipTest#testQueryOptionalPresent": [
+    "myDelim"
+  ],
+  "BeanTest#testNoMethod": [
+    "cool.name"
+  ],
+  "ClassComponentWithPropertiesSetFromEndpointTest#testClassComponent": [
+    "bar"
+  ],
+  "InterceptSendToEndpointTest#testInterceptEndpointOnce": [
+    "cool.end"
+  ],
+  "OptionalPropertyPlaceholderBeanTest#testQueryOptionalNotPresent": [
+    "unknown"
+  ],
+  "TimerReferenceConfigurationTest#testReferenceConfiguration": [
+    "cool.concat.escaped",
+    "cool.start",
+    "cool.concat",
+    "slipDelimiter",
+    "myCoolCharset",
+    "cool.end",
+    "cool.result",
+    "greeting"
+  ],
+  "SedaNoConsumerTest#testFailIfNoConsumersWithValidConsumer": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupNameAndType": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "RouteAutoStartupTest#testRouteAutoStartedUsingProperties": [
+    "autoStartupProp"
+  ],
+  "PropertiesComponentConcatenatePropertiesTest#testWithoutConcatPropertiesComponentDefault": [
+    "property.complete"
+  ],
+  "FilterParametersTest#testPropertyPlaceholders": [
+    "filterParameters.exclude",
+    "filterParameters.include"
+  ],
+  "TimerReferenceConfigurationTest#testValueConfiguration": [
+    "cool.concat.escaped",
+    "cool.start",
+    "cool.concat",
+    "slipDelimiter",
+    "myCoolCharset",
+    "cool.end",
+    "cool.result",
+    "greeting"
+  ],
+  "PropertiesRouteIdTest#testPropertiesRouteId": [
+    "cool.name",
+    "cool.other.name"
+  ],
+  "PropertiesComponentNestedTest#testNested": [
+    "cool.result",
+    "cool.other.name",
+    "cool.concat"
+  ],
+  "AdviceWithReplaceFromTest#testReplaceFromInvalidUri": [
+    "filterParameters.exclude",
+    "filterParameters.include",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "secureRandomParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "sslContextServerParameters.clientAuthentication",
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "cheese.type",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "trustManagersParameters.provider",
+    "cipherSuite.0",
+    "sslContextParameters.protocol",
+    "keyManagersParameters.provider",
+    "queue",
+    "keyStoreParamerers.password",
+    "secureRandomParameters.provider",
+    "sslContextParameters.sessionTimeout"
+  ],
+  "BeanTest#testPredicates": [
+    "unknown"
+  ],
+  "OptionalPropertyPlaceholderBeanTest#testQueryOptionalNotPresentDefaultValue": [
+    "unknown"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyDocumentReturnString": [
+    "foo"
+  ],
+  "AdviceWithReplaceFromTest#testReplaceFromUri": [
+    "filterParameters.exclude",
+    "filterParameters.include",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "secureRandomParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "sslContextServerParameters.clientAuthentication",
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "cheese.type",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "trustManagersParameters.provider",
+    "cipherSuite.0",
+    "sslContextParameters.protocol",
+    "keyManagersParameters.provider",
+    "queue",
+    "keyStoreParamerers.password",
+    "secureRandomParameters.provider",
+    "sslContextParameters.sessionTimeout"
+  ],
+  "SedaNoConsumerTest#testFailIfNoConsumer": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "SedaQueueFactoryTest#testDefaultBlockingQueueFactory": [
+    "cool.end"
+  ],
+  "ExceptionTest#testExceptionWithoutHandler": [
+    "cool.name"
+  ],
+  "BeanTest#testNoMethodBeanLookup": [
+    "unknown"
+  ],
+  "TrustManagersParametersTest#testPropertyPlaceholders": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "trustManagersParameters.provider"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixed": [
+    "unknown",
+    "maxKeep"
+  ],
+  "XPathFunctionsTest#testChoiceWithHeaderAndPropertiesSelectCamel": [
+    "bar",
+    "foo"
+  ],
+  "SSLContextParametersTest#testServerParametersClientAuthentication": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectOther": [
+    "bar",
+    "foo"
+  ],
+  "PropertiesComponentNegateTest#testNegate": [
+    "integration.ftpEnabled"
+  ],
+  "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues": [
+    "empty.line",
+    "cool.both",
+    "mixed.both",
+    "cool.leading",
+    "mixed.trailing",
+    "cool.trailing",
+    "space.leading",
+    "mixed.leading",
+    "space.trailing",
+    "space.both"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryOptionalPresent": [
+    "maxKeep"
+  ],
+  "OptionalPropertyPlaceholderTest#testPathOptionalPresent": [
+    "whereTo"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyVoidAsInOut": [
+    "foo"
+  ],
+  "KeyStoreParametersTest#testPropertyPlaceholders": [
+    "keyStoreParamerers.password",
+    "keyStoreParameters.type",
+    "keyStoreParameters.provider",
+    "keyStoreParameters.resource"
+  ],
+  "BeanTest#testBeanTypeAndMethodExpression": [
+    "unknown"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyFailureNotXMLBody": [
+    "foo"
+  ],
+  "PropertiesComponentLookupListenerTest#testListener": [
+    "greeting",
+    "cool.end"
+  ],
+  "KeyManagersParametersTest#testPropertyPlaceholders": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider"
+  ],
+  "TrustManagersParametersTest#testInvalidExplicitAlgorithm": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "trustManagersParameters.provider"
+  ],
+  "PropertiesComponentRegistryTest#testPropertiesComponentRegistryPlain": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "DefaultMethodCalledFromSimpleExpressionTest#testDefaultMethodFromSimpleExpression": [
+    "foo"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalPresent": [
+    "whereTo",
+    "maxKeep"
+  ],
+  "PropertiesComponentAdviceWithInterceptSendToEndpointTest#testAdviceWithInterceptSendToEndpoint": [
+    "cool.mock",
+    "cool.end"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyFailureInvalidReturnType": [
+    "foo"
+  ],
+  "OptionalPropertiesDslInvalidSyntaxTest#testPlaceholderDslKeyNotFoundTest": [
+    "xxx"
+  ],
+  "RouteAutoStartupTest#testRouteNotAutoStartedUsingProperties": [
+    "noAutoStartupProp"
+  ],
+  "RouteIdTest#testRouteId": [
+    "cool.name",
+    "cool.other.name"
+  ],
+  "AdviceWithReplaceFromTest#testReplaceFromEndpoint": [
+    "filterParameters.exclude",
+    "filterParameters.include",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "secureRandomParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "sslContextServerParameters.clientAuthentication",
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "cheese.type",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "trustManagersParameters.provider",
+    "cipherSuite.0",
+    "sslContextParameters.protocol",
+    "keyManagersParameters.provider",
+    "queue",
+    "keyStoreParamerers.password",
+    "secureRandomParameters.provider",
+    "sslContextParameters.sessionTimeout"
+  ],
+  "PropertiesComponentEndpointTest#testPropertiesComponentEndpoints": [
+    "cool.result",
+    "cool.showid",
+    "cool.start"
+  ],
+  "PropertiesComponentSetHeaderSimpleTest#testPropertiesAndSimple": [
+    "cheese.server"
+  ],
+  "DumpModelAsXmlPlaceholdersTest#testDumpModelAsXml": [
+    "cheese.type"
+  ],
+  "KeyManagersParametersTest#testAliasedKeyManager": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider"
+  ],
+  "XPathFunctionsONielProblemTest#testChoiceWithHeaderAndPropertiesSelectCamel": [
+    "bar",
+    "foo"
+  ],
+  "FileBeanParameterBindingTest#testFileToBean": [
+    "bar"
+  ],
+  "SimpleTest#testTrimSimpleExpressions": [
+    "cheese.server"
+  ],
+  "SimpleTest#testNestedTypeFunction": [
+    "cheese.server"
+  ],
+  "BeanParameterBestTypeMatchIssueTest#test2ParamBoolBody": [
+    "bar"
+  ],
+  "SimpleTest#testDateNow": [
+    "cheese.server"
+  ],
+  "TrustManagersParametersTest#testCreateTrustManagers": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "trustManagersParameters.provider"
+  ],
+  "SimpleTest#testOnglOnHeadersWithBracket": [
+    "cheese.server"
+  ],
+  "SedaNoConsumerTest#testFailIfNoConsumesrAfterConsumersLeave": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "SimpleTest#testBodyExpressionUsingAlternativeStartToken": [
+    "cheese.server"
+  ],
+  "ExceptionTest#testLongRouteWithHandler": [
+    "cool.name"
+  ],
+  "SimpleTest#testOGNLHeaderMapWithDot": [
+    "cheese.server"
+  ],
+  "ExceptionTest#testExceptionWithHandler": [
+    "cool.name"
+  ],
+  "SSLContextParametersTest#testSessionTimeout": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "SecureRandomParametersTest#testPropertyPlaceholders": [
+    "secureRandomParameters.provider",
+    "secureRandomParameters.algorithm"
+  ],
+  "SimpleTest#testPropertiesExist": [
+    "cheese.server"
+  ],
+  "ProxyReturnFutureTest#testFutureEcho": [
+    "bar",
+    "foo"
+  ],
+  "SimpleTest#testOGNLPropertyLinesList": [
+    "cheese.server"
+  ],
+  "SSLContextParametersTest#testClientParameters": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey": [
+    "bar",
+    "foo"
+  ],
+  "SimpleTest#testOGNLMandatoryBodyAsExpression": [
+    "cheese.server"
+  ],
+  "BeanTest#testBeanInstanceAndMethodExpression": [
+    "unknown"
+  ],
+  "BeanTest#testBeanTypeExpression": [
+    "unknown"
+  ],
+  "BeanThrowAssertionErrorTest#testAssertionProcessor": [
+    "foo"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyVoidReturnType": [
+    "foo"
+  ],
+  "RouteIdTest#testRouteIdFailed": [
+    "cool.name",
+    "cool.other.name"
+  ],
+  "SimpleTest#testExceptionStacktrace": [
+    "cheese.server"
+  ],
+  "SimpleTest#testBodyOGNLNullSafeToAvoidNPEShorthand": [
+    "cheese.server"
+  ],
+  "SimpleTest#testExceptionClassSimpleName": [
+    "cheese.server"
+  ],
+  "SimpleTest#testHeadersWithBracket": [
+    "cheese.server"
+  ],
+  "InterceptFromPropertyPlaceholderTest#testInterceptFrom": [
+    "queue"
+  ],
+  "SimpleTest#testSlashBeforeHeader": [
+    "cheese.server"
+  ],
+  "SimpleTest#testBodyOGNLOrderListOutOfBoundsWithNullSafeShorthand": [
+    "cheese.server"
+  ],
+  "BeanProxyNoBindingTest#testProxyBuilderProxyCallAnotherBean": [
+    "foo"
+  ],
+  "SimpleTest#testFunctionEnds": [
+    "cheese.server"
+  ],
+  "SimpleTest#testBodyOGNLAsMapWithDot": [
+    "cheese.server"
+  ],
+  "SedaRemoveRouteThenAddAgainTest#testRemoveRouteAndThenAddAgain": [
+    "cool.start",
+    "cool.name",
+    "cheese.server",
+    "first",
+    "second",
+    "cool.end",
+    "myDelayPattern",
+    "cool.other.name"
+  ],
+  "SimpleTest#testTypeConstant": [
+    "cheese.server"
+  ],
+  "SecureRandomParametersTest#testExplicitInvalidAlgorithm": [
+    "secureRandomParameters.provider",
+    "secureRandomParameters.algorithm"
+  ],
+  "SimpleTest#testExchangeOgnlExpression": [
+    "cheese.server"
+  ],
+  "SimpleTest#testBodyOGNLOrderListShorthand": [
+    "cheese.server"
+  ],
+  "SedaQueueFactoryTest#testArrayBlockingQueueFactoryAndSize": [
+    "cool.end"
+  ],
+  "SSLContextParametersTest#testServerParameters": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "ComponentResolvePropertyPlaceholdersTest#testPropertiesComponentEndpoint": [
+    "cool.result",
+    "myQueueSize"
+  ],
+  "SimpleTest#testLanguagesInContext": [
+    "cheese.server"
+  ],
+  "SimpleTest#testRefExpression": [
+    "cheese.server"
+  ],
+  "SimpleTest#testHeaderOgnlOnStringWithOgnlParams": [
+    "cheese.server"
+  ],
+  "PropertiesComponentInterceptFromTest#testPropertiesComponentInterceptFrom": [
+    "cool.start"
+  ],
+  "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey": [
+    "bar",
+    "foo"
+  ],
+  "SimpleTest#testByteArrayLength": [
+    "cheese.server"
+  ],
+  "BeanTest#testSimpleExpressions": [
+    "unknown"
+  ],
+  "PropertiesComponentInitialPropertiesTest#testPropertiesComponentEndpoint": [
+    "first",
+    "second",
+    "cool.end"
+  ],
+  "SimpleTest#testDateAndTimeExpressions": [
+    "cheese.server"
+  ],
+  "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupName": [
+    "bean.bar",
+    "bean.unknown",
+    "bean.foo"
+  ],
+  "SimpleTest#testOGNLCallReplace": [
+    "cheese.server"
+  ],
+  "KeyStoreParametersTest#testExplicitInvalidProvider": [
+    "keyStoreParamerers.password",
+    "keyStoreParameters.type",
+    "keyStoreParameters.provider",
+    "keyStoreParameters.resource"
+  ],
+  "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalNotPresent": [
+    "unknown",
+    "maxKeep"
+  ],
+  "SimpleTest#testInvalidComplexExpression": [
+    "cheese.server"
+  ],
+  "PropertiesComponentEIPRoutingSlipTest#testRoutingSlip": [
+    "slipDelimiter"
+  ],
+  "SimpleTest#testTypeConstantInnerClass": [
+    "cheese.server"
+  ],
+  "BeanThrowAssertionErrorTest#testAssertion": [
+    "foo"
+  ],
+  "BeanPerformanceTest#testBeanPerformance": [
+    "bar"
+  ],
+  "SimpleTest#testSimpleSystemEnvironmentExpressionsIfLowercase": [
+    "cheese.server"
+  ],
+  "SimpleTest#testOGNLHeaderLinesList": [
+    "cheese.server"
+  ],
+  "RouteAutoStartupTest#testRouteAutoStartedUsingBoolean": [
+    "noAutoStartupProp"
+  ],
+  "ExceptionTest#testExceptionWithLongHandler": [
+    "cool.name"
+  ],
+  "SimpleTest#testOnglOnExchangePropertiesWithBracket": [
+    "cheese.server"
+  ],
+  "PropertiesComponentEIPChoiceSimpleTest#testChoice": [
+    "cool.name"
+  ],
+  "BeanParameterBestTypeMatchIssueTest#test1Param": [
+    "bar"
+  ],
+  "SimpleTest#testCollateEven": [
+    "cool.name"
+  ],
+  "SimpleTest#testOGNLHeaderList": [
+    "cool.name"
+  ],
+  "SSLContextParametersTest#testSecureSocketProtocols": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "SimpleTest#testOGNLPropertyMapIllegalSyntax": [
+    "cool.name"
+  ],
+  "SimpleTest#testEmptyExpression": [
+    "cool.name"
+  ],
+  "SimpleTest#testBodyOGNLList": [
+    "cool.name"
+  ],
+  "RoutingSlipTest#testBodyExpression": [
+    "slipDelimiter"
+  ],
+  "KeyStoreParametersTest#testIncorrectResource": [
+    "keyStoreParamerers.password",
+    "keyStoreParameters.type",
+    "keyStoreParameters.provider",
+    "keyStoreParameters.resource"
+  ],
+  "PropertiesRouteFromTest#testPropertiesRouteFrom": [
+    "cool.start",
+    "cool.end"
+  ],
+  "SSLContextParametersTest#testProvider": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "RoutingSlipTest#testUpdatingOfRoutingSlipHeaderSet": [
+    "slipDelimiter"
+  ],
+  "BeanParameterBestTypeMatchIssueTest#test2ParamString": [
+    "bar"
+  ],
+  "SimpleTest#testResultType": [
+    "cool.name"
+  ],
+  "SimpleTest#testSimpleCamelId": [
+    "cool.name"
+  ],
+  "SimpleTest#testOGNLExchangePropertyMap": [
+    "cool.name"
+  ],
+  "SimpleTest#testListRemoveByInstance": [
+    "cool.name"
+  ],
+  "BeanProxyNoBindingTest#testProxyBuilderProxyCallAnotherBeanWithNoArgs": [
+    "foo"
+  ],
+  "SimpleTest#testOGNLHeaderMap": [
+    "cool.name"
+  ],
+  "SSLContextParametersTest#testFilter": [
+    "sslContextParameters.provider",
+    "keyStoreParameters.type",
+    "secureSocketProtocol.0",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "cipherSuite.0",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "keyManagersParameters.algorithm",
+    "keyManagersParameters.keyPassword",
+    "keyManagersParameters.provider",
+    "trustManagersParameters.provider",
+    "sslContextParameters.protocol",
+    "sslContextParameters.sessionTimeout",
+    "sslContextServerParameters.clientAuthentication"
+  ],
+  "SimpleTest#testIntArrayLength": [
+    "cool.name"
+  ],
+  "PropertiesComponentEIPChoiceConvertBodyToTest#testConvertToBytesCharset": [
+    "myCoolCharset"
+  ],
+  "TrustManagersParametersTest#testCustomTrustManager": [
+    "keyStoreParameters.type",
+    "keyStoreParameters.resource",
+    "keyStoreParamerers.password",
+    "keyStoreParameters.provider",
+    "trustManagersParameters.algorithm",
+    "trustManagersParameters.provider"
+  ],
+  "RouteAutoStartupTest#testRouteAutoStartedUsingString": [
+    "noAutoStartupProp"
+  ],
+  "PropertiesComponentOnExceptionDelayPatternTest#testDelayPattern": [
+    "myDelayPattern"
+  ],
+  "SimpleTest#testBodyOGNLSimpleOperatorShorthand": [
+    "cool.name"
+  ],
+  "SecureRandomParametersTest#testExplicitInvalidProvider": [
+    "secureRandomParameters.provider",
+    "secureRandomParameters.algorithm"
+  ],
+  "FilterParametersTest#testGetIncludePatterns": [
+    "filterParameters.exclude",
+    "filterParameters.include"
+  ],
+  "SimpleTest#testDateExpressions": [
+    "cool.name"
+  ],
+  "SimpleTest#testSimpleSystemPropertyExpressions": [
+    "cool.name"
+  ],
+  "InterceptSendToEndpointTest#testInterceptEndpointStop": [
+    "cool.end"
+  ],
+  "SimpleTest#testBodyOGNLOrderList": [
+    "cool.name"
+  ],
+  "KeyStoreParametersTest#testValidParameters": [
+    "keyStoreParamerers.password",
+    "keyStoreParameters.type",
+    "keyStoreParameters.provider",
+    "keyStoreParameters.resource"
+  ],
+  "SimpleTest#testBodyOgnlReplace": [
+    "cool.name"
+  ],
+  "SimpleTest#testBodyOGNLAsMap": [
+    "cool.name"
+  ],
+  "PropertiesComponentEIPConvertBodyToTest#testConvertToBytesCharset": [
+    "myCoolCharset"
+  ],
+  "SimpleTest#testHeaderAs": [
+    "cool.name"
+  ],
+  "SimpleTest#testDateWithConverterExpressions": [
+    "cool.name"
+  ],
+  "SimpleTest#testSimpleFileDir": [
+    "cool.name"
+  ],
+  "BeanProxyNoBindingTest#testBeanProxyCallAnotherBean": [
+    "foo"
+  ],
+  "InterceptSendToEndpointTest#testInterceptEndpointDirectly": [
+    "cool.end"
+  ],
+  "SimpleTest#testSimpleExpressionOrPredicate": [
+    "cool.name"
+  ],
+  "SimpleTest#testBodyOGNLSimpleShorthand": [
+    "cool.name"
+  ],
+  "SimpleTest#testOGNLBodyEmptyList": [
+    "cool.name"
+  ]
+}
