@@ -21,6 +21,13 @@ def inject_config(param_value_pairs):
             for p, v in param_value_pairs.items():
                 file.write(p + "=" + v + "\n")
             file.close()
+    elif project in [HUDI]:
+         for inject_path in INJECTION_PATH[project]:
+             print(">>>>[ctest_core] injecting into file: {}".format(inject_path))
+             file = open(inject_path, "w")
+             for p, v in param_value_pairs.items():
+                 file.write(p + ": " + v + "\n")
+             file.close()
     elif project in [HCOMMON, HDFS, HBASE]:
         conf = ET.Element("configuration")
         for p, v in param_value_pairs.items():
@@ -41,7 +48,7 @@ def inject_config(param_value_pairs):
 
 def clean_conf_file(project):
     print(">>>> cleaning injected configuration from file")
-    if project in [ZOOKEEPER, ALLUXIO]:
+    if project in [ZOOKEEPER, ALLUXIO, HUDI]:
         for inject_path in INJECTION_PATH[project]:
             file = open(inject_path, "w")
             file.write("\n")
