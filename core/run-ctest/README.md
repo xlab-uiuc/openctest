@@ -1,16 +1,25 @@
+# Running CTest
+Using this module to run generated ctests against configuration files of supported projects.
+
+It will do the following:
+- extract configuration diff `D` of the specified configuration file.
+- select the mapped ctests for configuration parameters in `D`.
+- run selected ctests against configuration values in `D`.
+- collect the test result for the specified configuration file.
+
 ## Prerequisite
 - Java 11
 - Maven 3
 
 ## How To Set Up Target Project
-Check out setup instructions and more general information for specific project in [here](./resources/supported/)
+Check out setup instructions and more general information for specific project in [here](./resources/supported/README.md)
 
 ## How To Run CTest
 To run the CTest, you need to pass following parameters:
 
 `project.name`
 - required
-- the name of the target project, check out [here](./resources/supported/)
+- the name of the target project, check out [here](./resources/supported/README.md)
 
 `project.path`
 - required
