@@ -72,7 +72,7 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and camel." ;;
         esac
     fi
 }
