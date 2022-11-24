@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_camel() {
+    [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
+    cd app/ctest-camel
+    git fetch && git checkout ctest-injection
+    mvn clean install -DskipTests
+}
+
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
