@@ -8,7 +8,7 @@ CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
-CTEST_CASSANDRA_DIR = os.path.join(APP_DIR, "cassandra")
+CTEST_CASSANDRA_DIR = os.path.join(APP_DIR, "ctest-cassandra")
 
 HCOMMON = "hadoop-common"
 HDFS = "hadoop-hdfs"
