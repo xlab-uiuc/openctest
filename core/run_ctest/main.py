@@ -4,9 +4,7 @@ import os, sys, time, glob
 sys.path.append("..")
 
 from program_input import p_input
-from ctest_const import *
 from parse_input import *
-from inject import inject_config
 from run_test import run_test_batch
 
 run_mode = p_input["run_mode"]

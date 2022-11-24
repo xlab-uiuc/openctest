@@ -4,7 +4,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 from run_test_utils import *
 from program_input import p_input
@@ -13,13 +13,18 @@ project = p_input["project"]
 
 def parse_surefire(clsname, expected_methods):
     """method expected to show up in surefire"""
+    tests = list(expected_methods)
+    test_name = tests[0]
     expected_methods = set(expected_methods)
     times = {}
     errors = {}
     try:
         fpath = None
         for surefire_path in SUREFIRE_DIR[project]:
-            xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
+            if project == 'cassandra':
+                xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname + '-' + test_name))
+            else:
+                xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
             if os.path.exists(xml_path):
                 print(">>>>[ctest_core] surefire report path: " + xml_path)
                 fpath = open(xml_path)
