@@ -105,7 +105,7 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     HUDI: [
-        os.path.join(CTEST_HUDI_DIR, "hudi-common/core-ctest.yaml")
+        os.path.join(CTEST_HUDI_DIR, "hudi-common/src/main/resources/hudi-ctest.conf")
     ],
 }
 
