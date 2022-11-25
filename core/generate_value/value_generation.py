@@ -25,6 +25,9 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "camel-core":
+        assert len(params) == 60
+        return 60
     else:
         assert len(params) == 90
         return 90
@@ -105,6 +108,8 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "camel-core":
+        assert len(params) == 60
     else:
         assert len(params) >= 90
     for param in params:
