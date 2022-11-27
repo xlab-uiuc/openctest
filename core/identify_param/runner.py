@@ -140,7 +140,11 @@ class Runner:
         elif "BUILD FAILURE" in log_content:
             return False
         else:
-            assert False, "wrong log content"
+            if self.module == "kafka-core":
+                # Gradle doesn't print "BUILD FAILURE" for failed tests
+                return False
+            else:
+                assert False, "wrong log content"
 
     def persist_list(self, method_list, file_name):
         json_file = open("results/%s/logs/%s.json" % (self.module, file_name), "w")
@@ -172,11 +176,13 @@ class Runner:
             start_time_for_this_method = time.time()
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
-            elif self.module != "kafka-core":
+                print("mvn surefire:test -Dtest=" + method)
+            elif self.module == "kafka-core":
                 cmd = ["./gradlew", "-Prerun-tests", "core:test", "--tests", method, "-i"]
+                print("Gradle test " + method)
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
+                print ("mvn surefire:test -Dtest="+method)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 
@@ -195,7 +201,7 @@ class Runner:
                 self.failure_list.append(method)
                 continue
 
-            if self.module != "kafka-core":
+            if self.module == "kafka-core":
                 # Skip all the surefire path because kafka is a gradle project
                 self.parse(open(out_dir + method + "-log.txt", "r").readlines(), method)
             else:

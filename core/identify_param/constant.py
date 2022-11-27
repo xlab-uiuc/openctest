@@ -7,7 +7,7 @@ CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
-CTEST_KAFKA_DIR = os.path.join(APP_DIR, "kafka")
+CTEST_KAFKA_DIR = os.path.join(APP_DIR, "ctest-kafka")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
