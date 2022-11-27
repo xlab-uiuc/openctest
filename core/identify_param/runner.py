@@ -138,14 +138,10 @@ class Runner:
     def test_pass_or_not(self, log_content):
         if "BUILD SUCCESS" in log_content:
             return True
-        elif "BUILD FAILURE" in log_content:
+        elif "BUILD FAILURE" in log_content or "BUILD FAILED" in log_content:
             return False
         else:
-            if self.module == "kafka-core":
-                # Gradle doesn't print "BUILD FAILURE" for failed tests
-                return False
-            else:
-                assert False, "wrong log content"
+            assert False, "wrong log content"
 
     def persist_list(self, method_list, file_name):
         json_file = open("results/%s/logs/%s.json" % (self.module, file_name), "w")
