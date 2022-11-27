@@ -175,7 +175,7 @@ class Runner:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
                 print("mvn surefire:test -Dtest=" + method)
             elif self.module == "kafka-core":
-                cmd = ["./gradlew", "-Prerun-tests", "core:test", "--tests", method, "-i"]
+                cmd = ["./gradlew", "-Prerun-tests", "core:test", "--tests", method]
                 print("Gradle test " + method)
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method]
