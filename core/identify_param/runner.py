@@ -79,8 +79,9 @@ class Runner:
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
         if self.module == "kafka-core":
-            if "kafka.server.KafkaConfig" in trace:
-                return True
+            if "kafka.server.KafkaConfig" in trace or "kafka.log.LogConfig" in trace:
+                if "Test" not in trace:
+                    return True
         return False
 
     def setInTest(self, stacktrace):
