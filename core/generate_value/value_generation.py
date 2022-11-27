@@ -25,6 +25,9 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "kafka-core":
+        assert len(params) == 313
+        return 313
     else:
         assert len(params) == 90
         return 90
@@ -105,6 +108,8 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "kafka-core":
+        assert len(params) == 313
     else:
         assert len(params) >= 90
     for param in params:
