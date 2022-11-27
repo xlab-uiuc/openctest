@@ -71,7 +71,7 @@ function main() {
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
             kafka) setup_kafka ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and kafka." ;;
         esac
     fi
 }
