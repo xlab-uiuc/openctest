@@ -20,13 +20,17 @@ class Collector:
         self.param_setter_map = {}
         self.param_unset_getter_map = {}
         self.params = utils.get_default_params_from_file(self.module)
+        if module in ["spark-core"]:
+            self.indent = " param: "
+        else:
+            self.indent = " "
         print("total number of configuration parameters: " + str(len(self.params)))
 
     def parse_getter_record_file(self):
         for line in open(self.getter_record_file).readlines():
             line = line.strip("\n")
-            class_pound_method = line.split(" ")[0]
-            param = line.split(" ")[1]
+            class_pound_method = line.split(self.indent)[0]
+            param = line.split(self.indent)[1]
             assert param in self.params, "wrong parameter"
 
             if param not in self.param_getter_map.keys():
@@ -36,8 +40,8 @@ class Collector:
     def parse_setter_record_file(self):
         for line in open(self.setter_record_file).readlines():
             line = line.strip("\n")
-            class_pound_method = line.split(" ")[0]
-            param = line.split(" ")[1]
+            class_pound_method = line.split(self.indent)[0]
+            param = line.split(self.indent)[1]
             assert param in self.params, "wrong parameter"
 
             if param not in self.param_setter_map.keys():
