@@ -54,7 +54,7 @@ def run_test_seperate(param, value, associated_tests):
         if is_gradle:
             clsname, testname = test.split(".")
             tr.ran_tests_and_time.add(test + "\t" + str(time.time() - single_test_start_time))
-            if "PASSED" not in str(stdout):
+            if "BUILD SUCCESSFUL" not in print_output:
                 tr.failed_tests.add(test)
         else:
             clsname, testname = test.split("#")
