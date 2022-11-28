@@ -26,6 +26,7 @@ def run_test_seperate(param, value, associated_tests):
     print(">>>>[ctest_core] chdir to {}".format(testing_dir))
     start_time = time.time()
     for test in associated_tests:
+        single_test_start_time = time.time()
         cmd = run_test_utils.maven_cmd(test)
         if display_mode:
             os.system(" ".join(cmd))
@@ -52,6 +53,7 @@ def run_test_seperate(param, value, associated_tests):
         print(print_output)
         if is_gradle:
             clsname, testname = test.split(".")
+            tr.ran_tests_and_time.add(test + "\t" + str(time.time() - single_test_start_time))
             if "PASSED" not in str(stdout):
                 tr.failed_tests.add(test)
         else:
