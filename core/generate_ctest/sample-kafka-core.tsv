@@ -1,2 +1,0 @@
-zookeeper.session.timeout.ms	9000	36000
-zookeeper.max.in.flight.requests	1	20
