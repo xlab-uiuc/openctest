@@ -14,6 +14,7 @@ import run_test_utils
 display_mode = p_input["display_mode"]
 project = p_input["project"]
 cmd_timeout = p_input["cmd_timeout"]
+is_gradle = p_input["is_gradle"]
 testing_dir = os.path.join(PROJECT_DIR[project], MODULE_SUBDIR[project])
 
 
@@ -49,12 +50,17 @@ def run_test_seperate(param, value, associated_tests):
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
         print(print_output)
-        clsname, testname = test.split("#")
-        times, errors = parse_surefire(clsname, [testname])
-        if testname in times:
-            tr.ran_tests_and_time.add(test + "\t" + times[testname])
-            if testname in errors:
+        if is_gradle:
+            clsname, testname = test.split(".")
+            if "PASSED" not in str(stdout):
                 tr.failed_tests.add(test)
+        else:
+            clsname, testname = test.split("#")
+            times, errors = parse_surefire(clsname, [testname])
+            if testname in times:
+                tr.ran_tests_and_time.add(test + "\t" + times[testname])
+                if testname in errors:
+                    tr.failed_tests.add(test)
     duration = time.time() - start_time
     os.chdir(CUR_DIR)
     print(">>>>[ctest_core] chdir to {}".format(CUR_DIR))
