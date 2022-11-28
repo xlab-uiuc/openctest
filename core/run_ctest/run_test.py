@@ -17,7 +17,7 @@ project = p_input["project"]
 cmd_timeout = p_input["cmd_timeout"]
 testing_dir = os.path.join(PROJECT_DIR[project], MODULE_SUBDIR[project])
 
-
+# TODO: Need to rewrite this because gradle doesn't support run in batches
 def run_test_batch(param_values, associated_test_map):
     print(">>>>[ctest_core] start running ctests for {} parameters".format(len(associated_test_map)))
     param_test_group = run_test_utils.split_tests(associated_test_map)

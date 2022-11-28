@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <property>
-    <name>controlled.shutdown.enable</name>
-    <value>false</value>
+    <name>metrics.sample.window.ms</name>
+    <value>15000</value>
   </property>
 </configuration>
