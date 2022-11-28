@@ -37,7 +37,7 @@ MODULE_SUBDIR = {
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
-    KAFKA: "core",
+    KAFKA: "",  # Although we are testing the core module, the commands need to be run under the root.
 }
 
 
