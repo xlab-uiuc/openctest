@@ -11,6 +11,7 @@ from inject import inject_config, clean_conf_file
 from parse_output import parse_surefire
 import run_test_utils
 
+is_gradle = p_input["is_gradle"]
 display_mode = p_input["display_mode"]
 project = p_input["project"]
 cmd_timeout = p_input["cmd_timeout"]
@@ -26,11 +27,15 @@ def run_test_batch(param_values, associated_test_map):
     start_time = time.time()
     tr = run_test_utils.TestResult(ran_tests_and_time=set(), failed_tests=set())
     for index, group in enumerate(param_test_group):
+        single_test_start_time = time.time()
         # # do injection for different test group and chdir for testing everytime
         tested_params, tests = group
         inject_config({p: param_values[p] for p in tested_params})
         print(">>>>[ctest_core] running group {} where {} params shares {} ctests".format(index, len(tested_params), len(tests)))
-        test_str = run_test_utils.join_test_string(tests)
+        if is_gradle:
+            test_str = tests
+        else:
+            test_str = run_test_utils.join_test_string(tests)
         os.chdir(testing_dir)
         print(">>>>[ctest_core] chdir to {}".format(testing_dir))
 
@@ -62,12 +67,18 @@ def run_test_batch(param_values, associated_test_map):
         print(print_output)
         test_by_cls = run_test_utils.group_test_by_cls(tests)
         for clsname, methods in test_by_cls.items():
-            times, errors = parse_surefire(clsname, methods)
-            for m in methods:
-                if m in times:
-                    tr.ran_tests_and_time.add(clsname + "#" + m + "\t" + times[m])
-                    if m in errors:
+            if is_gradle:
+                for m in methods:
+                    tr.ran_tests_and_time.add(clsname + "#" + m + "\t" + str(time.time() - single_test_start_time))
+                    if "PASSED" not in str(stdout):
                         tr.failed_tests.add(clsname + "#" + m)
+            else:
+                times, errors = parse_surefire(clsname, methods)
+                for m in methods:
+                    if m in times:
+                        tr.ran_tests_and_time.add(clsname + "#" + m + "\t" + times[m])
+                        if m in errors:
+                            tr.failed_tests.add(clsname + "#" + m)
     duration = time.time() - start_time
     os.chdir(RUN_CTEST_DIR)
     print(">>>>[ctest_core] chdir to {}".format(RUN_CTEST_DIR))
