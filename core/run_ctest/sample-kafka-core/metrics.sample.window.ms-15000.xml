@@ -5,4 +5,8 @@
     <name>metrics.sample.window.ms</name>
     <value>15000</value>
   </property>
+  <property>
+    <name>controller.socket.timeout.ms</name>
+    <value>60000</value>
+  </property>
 </configuration>
