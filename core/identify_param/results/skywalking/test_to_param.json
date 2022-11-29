@@ -1,0 +1,286 @@
+{
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadConfig": {
+      "storage": {
+        "mysql": {
+          "metadataQueryMaxSize": "5000",
+          "properties": {
+            "jdbcUrl": "jdbc:mysql://localhost:3306/swtest?rewriteBatchedStatements"
+          }
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadStringTypeConfig": {
+      "receiver-zipkin": {
+        "default": {
+          "restHost": "0.0.0.0"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadIntegerTypeConfig": {
+      "receiver-zipkin": {
+        "default": {
+          "restPort": "9411"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadBooleanTypeConfig": {
+      "core": {
+        "default": {
+          "enableDataKeeperExecutor": "true"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadSpecialStringTypeConfig": {
+      "storage": {
+        "mysql": {
+          "properties": {
+            "dataSource.password": "!AI!3B"
+          }
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.library.module.ApplicationConfigurationTest#testBuildConfig": {
+      "MO-1": {
+        "MO-1-P1": {
+          "prop2": "value2-prop",
+          "p1": "value1",
+          "p2": "value2"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated": {
+      "configuration": {
+        "apollo": {
+          "apolloCluster": "default",
+          "apolloMeta": "http://localhost:49158",
+          "apolloEnv": "DEV",
+          "appId": "SampleApp",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group": {
+      "configuration": {
+        "apollo": {
+          "apolloCluster": "default",
+          "apolloMeta": "http://localhost:49161",
+          "apolloEnv": "DEV",
+          "appId": "SampleApp",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated": {
+      "configuration": {
+        "consul": {
+          "hostAndPorts": "localhost:49164",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated4Group": {
+      "configuration": {
+        "consul": {
+          "hostAndPorts": "localhost:49170",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated": {
+      "configuration": {
+        "etcd": {
+          "endpoints": "http://127.0.0.1:49176",
+          "namespace": "/skywalking/",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated4Group": {
+      "configuration": {
+        "etcd": {
+          "endpoints": "http://127.0.0.1:49179",
+          "namespace": "/skywalking/",
+          "period": "1"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated": {
+      "configuration": {
+        "zookeeper": {
+          "namespace": "/default",
+          "hostPort": "localhost:49184",
+          "period": "1",
+          "baseSleepTimeMs": "1000",
+          "maxRetries": "3"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig": {
+      "configuration": {
+        "zookeeper": {
+          "namespace": "/default",
+          "hostPort": "localhost:49189",
+          "period": "1",
+          "baseSleepTimeMs": "1000",
+          "maxRetries": "3"
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify": {
+      "default": {
+        "duration": "-1",
+        "rate": "10000"
+      },
+      "services": [
+        {
+          "duration": "30000",
+          "rate": "2000",
+          "name": "name2"
+        },
+        {
+          "duration": "20000",
+          "rate": "1000",
+          "name": "name1"
+        }
+      ]
+    },
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated": {
+      "configuration": {
+        "nacos": {
+          "secretKey": "",
+          "port": "49191",
+          "namespace": "",
+          "username": "nacos",
+          "period": "1",
+          "serverAddr": "localhost",
+          "group": "skywalking",
+          "password": "nacos",
+          "accessKey": ""
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup": {
+      "configuration": {
+        "nacos": {
+          "secretKey": "",
+          "port": "49193",
+          "namespace": "",
+          "username": "nacos",
+          "period": "1",
+          "serverAddr": "localhost",
+          "group": "skywalking",
+          "password": "nacos",
+          "accessKey": ""
+        }
+      }
+    },
+    "org.apache.skywalking.oap.server.configuration.nacos.NacosConfigWatcherRegisterTest#shouldReadConfigs": {}
+  }
