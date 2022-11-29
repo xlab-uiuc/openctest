@@ -1,8 +1,7 @@
 import os
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
-APP_DIR = os.path.join(CUR_DIR, "app")
-RUN_CTEST_DIR = CUR_DIR
+APP_DIR = os.path.realpath(os.path.join(CUR_DIR, "..", "app"))
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")

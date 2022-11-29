@@ -48,6 +48,13 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_cassandra() {
+    [ ! -d "app/ctest-cassandra" ] && git clone https://github.com/CornDavid5/cassandra.git app/ctest-cassandra
+    cd app/ctest-cassandra
+    git fetch && git checkout ctest-injection
+    CASSANDRA_USE_JDK11=true ant
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +71,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            cassandra) setup_cassandra ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, or cassandra." ;;
         esac
     fi
 }
