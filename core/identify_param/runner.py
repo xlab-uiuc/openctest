@@ -140,6 +140,22 @@ class Runner:
         json_file = open("results/%s/logs/%s.json" % (self.module, file_name), "w")
         json.dump(method_list, json_file)
         json_file.close()
+    
+    def write_report(self, src_file, dst_file, method):
+        f_src = open(src_file, "r")
+        f_dst = open(dst_file, "w")
+        lines = f_src.readlines()
+        writed = False
+        test_start = False
+        method_name = method.split(" @ ")[1]
+        for line in lines:
+            if "- " + method_name in line:
+                test_start = True
+                print("- " + method_name)
+            if test_start and ("[CTEST][GET-PARAM]" in line or "[CTEST][SET-PARAM]" in line):
+                f_dst.write(line)
+                writed = True
+        return writed
 
     def run_individual_testmethod(self):
         all_test_methods = json.load(open("%s" % (self.run_list)))
