@@ -1,0 +1,60 @@
+ShenyuConfig.Scheduler.enable   false
+ShenyuConfig.Scheduler.type "fixed"
+ShenyuConfig.Scheduler.threads  Math.max((Runtime.getRuntime().availableProcessors() << 1) + 1, 16)
+ShenyuConfig.ExtPlugin.path 
+ShenyuConfig.ExtPlugin.enabled  false
+ShenyuConfig.ExtPlugin.threads  1
+ShenyuConfig.ExtPlugin.scheduleTime 300
+ShenyuConfig.ExtPlugin.scheduleDelay    30
+ShenyuConfig.MatchCache.enabled false
+ShenyuConfig.MatchCache.maxFreeMemory   256
+ShenyuConfig.ExcludePath.enabled    false
+ShenyuConfig.ExcludePath.paths  
+ShenyuConfig.FallbackPath.enabled   false
+ShenyuConfig.FallbackPath.paths 
+ShenyuConfig.Health.enabled false
+ShenyuConfig.Health.paths   
+ShenyuConfig.FileConfig.enabled false
+ShenyuConfig.FileConfig.maxSize 10
+ShenyuConfig.UpstreamCheck.SwitchConfig.local true
+ShenyuConfig.UpstreamCheck.enabled  false
+ShenyuConfig.UpstreamCheck.timeout  3000
+ShenyuConfig.UpstreamCheck.healthyThreshold 1
+ShenyuConfig.UpstreamCheck.unhealthyThreshold   1
+ShenyuConfig.UpstreamCheck.interval 5000
+ShenyuConfig.UpstreamCheck.printEnabled false
+ShenyuConfig.UpstreamCheck.printInterval    60000
+ShenyuConfig.CrossFilterConfig.DEFAULT_ALLOWED_HEADERS  new HashSet<String>() {{add("x-requested-with");add("authorization");add("Content-Type");add("Authorization");add("credential");add("X-XSRF-TOKEN");add("token");add("username");add("client");}};
+ShenyuConfig.CrossFilterConfig.enabled  false
+ShenyuConfig.CrossFilterConfig.allowedHeaders   
+ShenyuConfig.CrossFilterConfig.allowedMethods   "*"
+ShenyuConfig.CrossFilterConfig.allowedOrigin    
+ShenyuConfig.CrossFilterConfig.allowedAnyOrigin fales
+ShenyuConfig.CrossFilterConfig.maxAge   "18000"
+ShenyuConfig.CrossFilterConfig.allowCredentials false
+ShenyuConfig.AllowedOriginConfig.spacer "."
+ShenyuConfig.AllowedOriginConfig.domain 
+ShenyuConfig.AllowedOriginConfig.prefixes   
+ShenyuConfig.AllowedOriginConfig.origins
+ShenyuConfig.AllowedOriginConfig.originRegex
+ShenyuConfig.InstanceConfig.enabled false
+ShenyuConfig.InstanceConfig.registerType
+ShenyuConfig.InstanceConfig.serverLists
+ShenyuConfig.InstanceConfig.props
+ShenyuConfig.RibbonConfig.serverListRefreshInterval 10000
+ShenyuConfig.Local.enabled  false
+ShenyuConfig.Local.sha512Key
+ShenyuConfig.WebsocketConfig.maxFramePayloadSize    10
+ShenyuConfig.SharedPool.enable  false
+ShenyuConfig.SharedPool.prefix  "shenyu-shared"
+ShenyuConfig.SharedPool.corePoolSize    200
+ShenyuConfig.SharedPool.maximumPoolSize Integer.MAX_VALUE
+ShenyuConfig.SharedPool.keepAliveTime   60000L
+ShenyuConfig.SharedPool.maxWorkQueueMemory  MemoryLimitCalculator.defaultLimit()
+ShenyuConfig.SharedPool.maxFreeMemory
+ShenyuConfig.MetricsConfig.enabled  false
+ShenyuConfig.MetricsConfig.name
+ShenyuConfig.MetricsConfig.host
+ShenyuConfig.MetricsConfig.port
+ShenyuConfig.MetricsConfig.jmxConfig
+ShenyuConfig.MetricsConfig.props
