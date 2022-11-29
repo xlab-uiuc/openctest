@@ -25,7 +25,7 @@ def run_test_seperate(param, value, associated_tests):
     print(">>>>[ctest_core] chdir to {}".format(testing_dir))
     start_time = time.time()
     for test in associated_tests:
-        cmd = run_test_utils.maven_cmd(test)
+        cmd = run_test_utils.maven_cmd(test, project=project)
         if display_mode:
             os.system(" ".join(cmd))
             continue
