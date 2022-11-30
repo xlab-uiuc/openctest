@@ -12,11 +12,13 @@ HDFS = "hadoop-hdfs"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
+KCOMMON = "kylin-common"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
+CTEST_KYLIN_DIR = os.path.join(APP_DIR, "ctest-kylin")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -24,6 +26,7 @@ PROJECT_DIR = {
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
+    KCOMMON: CTEST_KYLIN_DIR,
 }
 
 
@@ -34,6 +37,7 @@ MODULE_SUBDIR = {
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
+    KCOMMON: "core-common",
 }
 
 
@@ -58,6 +62,8 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
+    KCOMMON: [os.path.join(CTEST_KYLIN_DIR, MODULE_SUBDIR[KCOMMON], SUREFIRE_SUBDIR)],
+
 }
 
 # default or deprecate conf path
@@ -74,7 +80,8 @@ DEFAULT_CONF_FILE = {
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
-    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    KCOMMON: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
 }
 
 
@@ -96,6 +103,9 @@ INJECTION_PATH = {
     ],
     ALLUXIO: [
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
+    ],
+    KCOMMON: [
+        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
     ]
 }
 
