@@ -41,7 +41,7 @@ def inject_config(param_value_pairs):
 
 def clean_conf_file(project):
     print(">>>> cleaning injected configuration from file")
-    if project in [ZOOKEEPER, ALLUXIO]:
+    if project in [ZOOKEEPER, ALLUXIO, SYCOMMON]:
         for inject_path in INJECTION_PATH[project]:
             file = open(inject_path, "w")
             file.write("\n")
