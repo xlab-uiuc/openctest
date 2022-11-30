@@ -54,6 +54,7 @@ function setup_kylin(){
   git fetch && git checkout debug
   mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
