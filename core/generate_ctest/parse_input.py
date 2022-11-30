@@ -13,7 +13,7 @@ project = p_input["project"]
 def parse_value_file(path):
     """return param: [(value type, value)]"""
     data = {}
-    samples = [x.strip("\n").split("\t") for x in open(path)]
+    samples = [x.strip("\n").split(" ") for x in open(path)]
     for row in samples:
         parameter = row[0]
         values = [x for x in row[1:] if x != SKIP_VAL]

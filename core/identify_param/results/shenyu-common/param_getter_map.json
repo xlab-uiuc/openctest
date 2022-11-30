@@ -1,0 +1,201 @@
+{
+  "metrics": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.jmxconfig": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.props": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.host": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.name": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "MetricsConfig.port": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testMetricsConfig"
+  ],
+  "instance": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testInstanceConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig"
+  ],
+  "InstanceConfig.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testInstanceConfig"
+  ],
+  "InstanceConfig.props": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testInstanceConfig"
+  ],
+  "InstanceConfig.registertype": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testInstanceConfig"
+  ],
+  "InstanceConfig.serverlists": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testInstanceConfig"
+  ],
+  "local": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testRibbonConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testLocal"
+  ],
+  "Local.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testRibbonConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testLocal"
+  ],
+  "Local.sha512key": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testRibbonConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testLocal"
+  ],
+  "fallback": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFallbackPath"
+  ],
+  "FallbackPath.paths": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFallbackPath"
+  ],
+  "FallbackPath.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFallbackPath"
+  ],
+  "extplugin": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig"
+  ],
+  "ExtPlugin.path": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin"
+  ],
+  "ExtPlugin.threads": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin"
+  ],
+  "ExtPlugin.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin"
+  ],
+  "ExtPlugin.scheduledelay": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin"
+  ],
+  "ExtPlugin.scheduletime": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin"
+  ],
+  "cross": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "switchconfig": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSwitchConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig"
+  ],
+  "exclude": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExcludePath"
+  ],
+  "file": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFileConfig"
+  ],
+  "ribbon": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig"
+  ],
+  "scheduler": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testScheduler"
+  ],
+  "sharedpool": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "websocket": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testWebsocketConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig"
+  ],
+  "upstreamcheck": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testShenyuConfig",
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "WebsocketConfig.maxframepayloadsize": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testWebsocketConfig"
+  ],
+  "CrossFilterConfig.allowedexpose": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "CrossFilterConfig.allowedheaders": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "CrossFilterConfig.allowedorigin": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "CrossFilterConfig.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "CrossFilterConfig.maxage": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "CrossFilterConfig.allowedmethods": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testCrossFilterConfig"
+  ],
+  "Scheduler.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testScheduler"
+  ],
+  "Scheduler.threads": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testScheduler"
+  ],
+  "Scheduler.type": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testScheduler"
+  ],
+  "ExcludePath.paths": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExcludePath"
+  ],
+  "ExcludePath.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testExcludePath"
+  ],
+  "FileConfig.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFileConfig"
+  ],
+  "FileConfig.maxsize": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testFileConfig"
+  ],
+  "UpstreamCheck.enabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.healthythreshold": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.timeout": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.interval": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.unhealthythreshold": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.printinterval": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "UpstreamCheck.printenabled": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testUpstreamCheck"
+  ],
+  "SharedPool.corepoolsize": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SharedPool.enable": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SharedPool.maximumpoolsize": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SharedPool.prefix": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SharedPool.keepalivetime": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SharedPool.maxworkqueuememory": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSharedPool"
+  ],
+  "SwitchConfig.local": [
+    "org.apache.shenyu.common.config.ShenyuConfigTest#testSwitchConfig"
+  ]
+}

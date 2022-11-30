@@ -110,13 +110,14 @@ class Runner:
                 line = line[line.find("[CTEST][SET-PARAM]"):]
                 assert line.startswith("[CTEST][SET-PARAM] "), "wrong line: " + line
                 assert line.split(" ")[0] == "[CTEST][SET-PARAM]"
-                assert line.count(" ") == 2, "more than one whitespace in " + line
+                print(line)
+                # assert line.count(" ") == 2, "more than one whitespace in " + line
                 param_name = line.split(" ")[1]
                 if param_name in self.params:
-                    if self.aggressive or self.setInTest(line.split(" ")[2]):
-                        is_setter = True
-                        self.setter_record.write(method + " " + param_name + "\n")
-                        self.setter_record.flush()
+                    # if self.aggressive or self.setInTest(line.split(" ")[2]):
+                    is_setter = True
+                    self.setter_record.write(method + " " + param_name + "\n")
+                    self.setter_record.flush()
 
         if is_getter or is_setter:
             if is_getter:

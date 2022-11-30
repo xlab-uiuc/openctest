@@ -1,0 +1,6 @@
+org.apache.hadoop.metrics2.sink.ganglia.TestGangliaSink#testShouldCreateDatagramSocketByDefault 3.8268542289733887
+org.apache.hadoop.metrics2.sink.ganglia.TestGangliaSink#testShouldCreateMulticastSocket 2.899005889892578
+org.apache.hadoop.metrics2.sink.ganglia.TestGangliaSink#testShouldSetMulticastSocketTtl 2.769548177719116
+org.apache.hadoop.metrics2.sink.ganglia.TestGangliaSink#testShouldCreateDatagramSocketIfMulticastIsDisabled 2.8451437950134277
+org.apache.hadoop.fs.TestTrash#testCheckpointInterval 2.9802215099334717
+org.apache.hadoop.fs.TestTrash#testTrash 2.788606882095337
