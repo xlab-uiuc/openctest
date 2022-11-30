@@ -20,6 +20,7 @@ def parse_surefire(clsname, expected_methods):
         fpath = None
         for surefire_path in SUREFIRE_DIR[project]:
             xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
+            print("Sure file path is " + xml_path)
             if os.path.exists(xml_path):
                 print(">>>>[ctest_core] surefire report path: " + xml_path)
                 fpath = open(xml_path)

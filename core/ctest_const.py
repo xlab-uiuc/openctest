@@ -103,6 +103,8 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     SYCOMMON: [
+        # /home/kejiawu2/project/openctest/core/app/ctest-shenyu/shenyu-common/src/main/java/org/apache/shenyu/common/config/InjectionValuePair.txt
+        # /home/kejiawu2/project/openctest/core/app/ctest-shenyu/shenyu-common/src/main/java/org/apache/shenyu/common/config/InjectionValuePair.txt
         os.path.join(CTEST_SYCOMMON_DIR, "shenyu-common/src/main/java/org/apache/shenyu/common/config/InjectionValuePair.txt")
     ],
 }
