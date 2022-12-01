@@ -1,3 +1,0 @@
-ExtPlugin.scheduletime	org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin	10	p	0.023
-ExtPlugin.scheduletime	org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin	-10	p	0.031
-ExtPlugin.scheduletime	org.apache.shenyu.common.config.ShenyuConfigTest#testExtPlugin	300	p	0.015
