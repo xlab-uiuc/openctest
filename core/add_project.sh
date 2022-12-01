@@ -52,6 +52,7 @@ function setup_kylin(){
   [ ! -d "app/ctest-kylin" ] && git clone https://github.com/ConstaT99/kylin.git app/ctest-kylin
   cd app/ctest-kylin
   git fetch && git checkout debug
+  cd core-common
   mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
@@ -72,7 +73,7 @@ function main() {
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
             kylin) setup_kylin ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, and kylin." ;;
         esac
     fi
 }
