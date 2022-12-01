@@ -47,6 +47,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+# function setup_netty-udt() {
+#     [ ! -d "app/ctest-alluxio" ] && git clone https://github.com/xlab-uiuc/alluxio.git app/ctest-alluxio
+#     cd app/ctest-alluxio
+#     git fetch && git checkout ctest-logging
+#     cd core
+#     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
+# }
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1

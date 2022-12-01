@@ -1,0 +1,11 @@
+[
+"io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
+"io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+"io.netty.test.udt.nio.NioUdtByteAcceptorChannelTest#metadata",
+"io.netty.test.udt.nio.NioUdtMessageAcceptorChannelTest#metadata",
+"io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+"io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
+"io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#basicEcho",
+"io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
+"io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata"
+]
