@@ -1,4 +1,4 @@
-Scheduler.enable true SKIP
+Scheduler.enabled true SKIP
 Scheduler.type SKIP SKIP
 ExtPlugin.enabled true SKIP
 ExtPlugin.threads 0 2

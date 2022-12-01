@@ -79,7 +79,8 @@ DEFAULT_CONF_FILE = {
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
-    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    SYCOMMON: os.path.join(DEFAULT_CONF_DIR, SYCOMMON + "-default.tsv")
 }
 
 
