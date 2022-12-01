@@ -1,4 +1,3 @@
-ExtPlugin.scheduletime 10 -10 null
 Scheduler.enable	true	SKIP
 Scheduler.type	SKIP	SKIP
 ExtPlugin.enabled	true	SKIP

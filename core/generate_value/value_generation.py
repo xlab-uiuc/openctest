@@ -19,12 +19,16 @@ class Param:
 def read_tsv(module):
     params.clear()
     tsv_file = open("../default_configs/" + module + "-default.tsv")
-    read_tsv = csv.reader(tsv_file, delimiter="\t")
+    read_tsv = csv.reader(tsv_file, delimiter=" ")
     for row in read_tsv:
+        print(row)
         params.append(Param(row[0], row[1], row[2]))
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "shenyu-common":
+        assert len(params) == 38
+        return 38
     else:
         assert len(params) == 90
         return 90
@@ -105,6 +109,8 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "shenyu-common":
+        assert len(params) == 38
     else:
         assert len(params) >= 90
     for param in params:

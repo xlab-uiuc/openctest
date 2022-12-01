@@ -1,5 +1,7 @@
 Scheduler.enable false .
 Scheduler.type fixed .
+Scheduler.threads  .
+ExtPlugin.path  .
 ExtPlugin.enabled false .
 ExtPlugin.threads 1 .
 ExtPlugin.scheduleTime 300 .
@@ -7,8 +9,11 @@ ExtPlugin.scheduleDelay 30 .
 MatchCache.enabled false .
 MatchCache.maxFreeMemory 256 .
 ExcludePath.enabled false .
+ExcludePath.paths .
 FallbackPath.enabled false .
+FallbackPath.paths .
 Health.enabled false .
+Health.paths .
 FileConfig.enabled false .
 FileConfig.maxSize 10 .
 UpstreamCheck.SwitchConfig.local true .
@@ -20,14 +25,24 @@ UpstreamCheck.interval 5000 .
 UpstreamCheck.printEnabled false .
 UpstreamCheck.printInterval 60000 .
 CrossFilterConfig.enabled false .
+CrossFilterConfig.allowedHeaders .
 CrossFilterConfig.allowedMethods * .
+CrossFilterConfig.allowedOrigin .
 CrossFilterConfig.allowedAnyOrigin fales .
 CrossFilterConfig.maxAge 18000 .
 CrossFilterConfig.allowCredentials false .
 CrossFilterConfig.AllowedOriginConfig.spacer . .
+CrossFilterConfig.AllowedOriginConfig.domain .
+CrossFilterConfig.AllowedOriginConfig.prefixes .
+CrossFilterConfig.AllowedOriginConfig.origins .
+CrossFilterConfig.AllowedOriginConfig.originRegex .
 InstanceConfig.enabled false .
+InstanceConfig.registerType .
+InstanceConfig.serverLists .
+InstanceConfig.props .
 RibbonConfig.serverListRefreshInterval 10000 .
 Local.enabled false .
+Local.sha512Key .
 WebsocketConfig.maxFramePayloadSize 10 .
 SharedPool.enable false .
 SharedPool.prefix shenyu-shared .
@@ -35,4 +50,10 @@ SharedPool.corePoolSize 200 .
 SharedPool.maximumPoolSize Integer.MAX_VALUE .
 SharedPool.keepAliveTime 60000L .
 SharedPool.maxWorkQueueMemory MemoryLimitCalculator.defaultLimit() .
+SharedPool.maxFreeMemory .
 MetricsConfig.enabled false .
+MetricsConfig.name .
+MetricsConfig.host .
+MetricsConfig.port .
+MetricsConfig.jmxConfig .
+MetricsConfig.props .
