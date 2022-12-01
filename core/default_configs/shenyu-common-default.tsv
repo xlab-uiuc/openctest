@@ -1,4 +1,4 @@
-Scheduler.enable false .
+Scheduler.enabled false .
 Scheduler.type fixed .
 ExtPlugin.enabled false .
 ExtPlugin.threads 1 .

@@ -114,7 +114,7 @@ def print_params(module):
     else:
         assert len(params) >= 90
     for param in params:
-        f.write(param.name + "\t")
+        f.write(param.name + " ")
         tmp_cnt = 0
         if len(param.gvalues) == 0:
             if DEBUG:
@@ -123,7 +123,7 @@ def print_params(module):
                 print(param.dvalue)
                 print(param.description)
                 print("----------------------")
-            f.write("SKIP\tSKIP\n")
+            f.write("SKIP SKIP\n")
             unhandled.append(param)
         else:
             pcnt += 1
@@ -131,9 +131,9 @@ def print_params(module):
             tmp_cnt += len(param.gvalues)
             assert len(param.gvalues) <= 2
             if len(param.gvalues) == 1:
-                f.write(str(param.gvalues[0]) + "\tSKIP\n")
+                f.write(str(param.gvalues[0]) + " SKIP\n")
             elif len(param.gvalues) == 2:
-                f.write(str(param.gvalues[0]) + "\t" + str(param.gvalues[1]) + "\n")
+                f.write(str(param.gvalues[0]) + " " + str(param.gvalues[1]) + "\n")
             else:
                 assert False
             assert tmp_cnt <= 3
