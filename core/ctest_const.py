@@ -105,7 +105,8 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     KCOMMON: [
-        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
     ]
 }
 
