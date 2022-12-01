@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_spark() {
+    [ ! -d "app/ctest-spark" ] && git clone https://github.com/ZHLOLin/spark.git app/ctest-spark
+    cd app/ctest-spark
+    git fetch
+    cd core
+    mvn clean install -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
