@@ -156,15 +156,12 @@ transaction.state.log.num.partitions
 transaction.state.log.segment.bytes
 transaction.abort.timed.out.transaction.cleanup.interval.ms
 transaction.remove.expired.transaction.cleanup.interval.ms
-producer.id.expiration.ms
-producer.id.expiration.check.interval.ms
 max.incremental.fetch.session.cache.slots
 fetch.max.bytes
 metrics.num.samples
 metrics.sample.window.ms
 metric.reporters
 metrics.recording.level
-auto.include.jmx.reporter
 kafka.metrics.reporters
 kafka.metrics.polling.interval.secs
 quota.window.num
