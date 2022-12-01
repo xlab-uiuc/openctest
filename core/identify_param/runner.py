@@ -42,7 +42,7 @@ class Runner:
     def traceInTestCode(self, trace):
         if "Test" in trace:
             return True
-        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server":
+        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server" or self.module == "hadoop-yarn-common":
             if "MiniDFSCluster" in trace:
                 return True
             if "MiniZKFCCluster" in trace:
@@ -65,7 +65,7 @@ class Runner:
             return True
         if "sun.reflect" in trace:
             return True
-        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server":
+        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server" or self.module == "hadoop-yarn-common":
             if "org.apache.hadoop.conf" in trace and "Test" not in trace:
                 return True
             if "org.mockito" in trace:
