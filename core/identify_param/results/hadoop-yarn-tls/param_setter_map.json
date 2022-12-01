@@ -1,0 +1,132 @@
+{
+  "yarn.timeline-service.enabled": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithInvalidTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithNonexistentTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "yarn.timeline-service.version": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithInvalidTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithNonexistentTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "yarn.timeline-service.writer.class": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestTimelineCollectorManager#testTimelineCollectorManagerWithFileSystemWriter",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestTimelineCollectorManager#testTimelineCollectorManagerWithNonexistentTimelineWriter",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestTimelineCollectorManager#testTimelineCollectorManagerWithInvalidTimelineWriter",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "yarn.timeline-service.app-collector.linger-period.ms": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "hadoop.http.filter.initializers": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "bind.address": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "delegation-token.token-kind": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "type": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "cookie.path": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "simple.anonymous.allowed": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode",
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication"
+  ],
+  "yarn.timeline-service.writer.async.queue.capacity": [
+    "org.apache.hadoop.yarn.server.timelineservice.collector.TestTimelineCollector#testAsyncEntityDiscard"
+  ],
+  "yarn.timeline-service.reader.webapp.address": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithInvalidTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithNonexistentTimelineReader"
+  ],
+  "yarn.timeline-service.reader.class": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithInvalidTimelineReader",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithNonexistentTimelineReader"
+  ],
+  "yarn.acl.enable": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderWebServicesBasicAcl#testTimelineReaderManagerAclsWhenEnabled",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderWebServicesBasicAcl#testTimelineReaderManagerAclsWhenDisabled"
+  ],
+  "yarn.admin.acl": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderWebServicesBasicAcl#testTimelineReaderManagerAclsWhenEnabled",
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderWebServicesBasicAcl#testTimelineReaderManagerAclsWhenDisabled"
+  ],
+  "yarn.webapp.filter-entity-list-by-user": [
+    "org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderWebServicesBasicAcl#testTimelineReaderManagerAclsWhenEnabled"
+  ],
+  "yarn.timeline-service.fs-writer.root-dir": [
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntityAllFields",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineWriterImpl#testWriteEntityToFile",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntityCustomFields",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineWriterImpl#testWriteMultipleEntities",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntitiesByRelations",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineWriterImpl#testWriteEntitiesWithEmptyFlowName",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntityDefaultView",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetAllEntities",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntitiesByTimeWindows",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntitiesWithLimit",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testAppFlowMappingCsv",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetEntityByClusterAndApp",
+    "org.apache.hadoop.yarn.server.timelineservice.storage.TestFileSystemTimelineReaderImpl#testGetFilteredEntities"
+  ]
+}

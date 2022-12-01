@@ -1,0 +1,2 @@
+>>>>[ctest_core] missing test for hadoop-yarn-tls	yarn.resourcemanager.cluster-id	default
+>>>>[ctest_core] missing test for hadoop-yarn-tls	yarn.resourcemanager.cluster-id	test

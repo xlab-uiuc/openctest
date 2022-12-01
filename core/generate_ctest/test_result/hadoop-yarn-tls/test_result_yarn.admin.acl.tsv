@@ -1,0 +1,2 @@
+yarn.admin.acl	org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer	*	p	1.455
+yarn.admin.acl	org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer		p	1.42

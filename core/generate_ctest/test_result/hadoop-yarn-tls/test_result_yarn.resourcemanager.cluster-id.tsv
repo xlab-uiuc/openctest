@@ -1,0 +1,8 @@
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication	default	p	3.232
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication	default	p	1.96
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode	default	p	4.164
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer	default	p	1.937
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode	test	p	4.297
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication	test	p	2.982
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer	test	p	1.971
+yarn.resourcemanager.cluster-id	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication	test	p	2.008
