@@ -13,6 +13,17 @@ function setup_hadoop() {
     mvn package -DskipTests
 }
 
+function setup_hadoop_yarn_tls() {
+    [ ! -d "app/ctest-hadoop" ] && git clone git@github.com:KobeNorris/hadoop.git app/ctest-hadoop
+    cd app/ctest-hadoop
+    git fetch && git checkout ctest
+    home_dir=$PWD
+    cd $home_dir/hadoop-common-project/hadoop-common
+    mvn clean install -DskipTests
+    cd $home_dir/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice
+    mvn package -DskipTests
+}
+
 function setup_hbase() {
     old_dir=$PWD
     [ ! -d "app/ctest-hadoop" ] && git clone https://github.com/xlab-uiuc/hadoop.git app/ctest-hadoop
@@ -64,7 +75,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            hadoop-yarn-tls) setup_hadoop_yarn_tls ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and hadoop-yarn-tls." ;;
         esac
     fi
 }
