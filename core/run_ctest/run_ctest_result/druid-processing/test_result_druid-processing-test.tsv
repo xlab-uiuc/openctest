@@ -1,0 +1,6 @@
+org.apache.druid.segment.virtual.DummyStringVirtualColumnTest#testTopNWithMixedSegments	p	1.12
+org.apache.druid.query.topn.TopNQueryQueryToolChestTest#testMinTopNThreshold	f	1.709
+org.apache.druid.segment.virtual.DummyStringVirtualColumnTest#testTopNWithInMemorySegments	p	0.048
+org.apache.druid.query.topn.TopNQueryQueryToolChestTest#testResultArraySignature	p	0.357
+org.apache.druid.segment.virtual.DummyStringVirtualColumnTest#testTopNWithMMappedSegments	p	0.041
+org.apache.druid.query.topn.TopNQueryQueryToolChestTest#testResultsAsArrays	p	0.007

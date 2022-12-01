@@ -1,0 +1,3 @@
+druid.query.topN.minTopNThreshold	1500	1000
+druid.query.groupBy.maxOnDiskStorage	100	1
+druid.zk.service.sessionTimeoutMs	15000	60000

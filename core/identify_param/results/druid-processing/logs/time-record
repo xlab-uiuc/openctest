@@ -1,0 +1,5 @@
+org.apache.druid.query.DruidProcessingConfigTest#testDefaultsMultiProcessor 29.18963384628296
+org.apache.druid.StupidPoolPoisonedTest#testStupidPoolPoisoned 28.399712085723877
+org.apache.druid.annotations.SubclassesMustOverrideEqualsAndHashCodeTest#testEqualsAndHashCode 28.886303901672363
+org.apache.druid.frame.processor.FrameRowTooLargeExceptionTest#test_getMaxFrameSize 27.332228422164917
+org.apache.druid.frame.processor.BlockingQueueOutputChannelFactoryTest#test_openChannel 28.209120273590088

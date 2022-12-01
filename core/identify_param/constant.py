@@ -40,7 +40,7 @@ LOCAL_CONF_PATH = {
     "hadoop-hdfs": "results/hadoop-hdfs/conf_params.txt",
     "hbase-server": "results/hbase-server/conf_params.txt",
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
-    "alluxio-core": "results/alluxio-core/conf_params.txt"
+    "alluxio-core": "results/alluxio-core/conf_params.txt",
     "druid-processing": "results/druid-processing/conf_params.txt"
 }
 
