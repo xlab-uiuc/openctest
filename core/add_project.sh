@@ -52,7 +52,7 @@ function setup_shenyu_common() {
     # /home/kejiawu2/project/openctest/core/identify_param/app/ctest-shenyu/shenyu/shenyu-common/
     [ ! -d "app/ctest-shenyu" ] && git clone https://github.com/KobeNorris/shenyu.git app/ctest-shenyu
     cd app/ctest-shenyu
-    git fetch && git checkout ctest-logging
+    git fetch && git checkout ctest
     home_dir=$PWD
     cd $home_dir/shenyu-common/
     mvn package -DskipTests
