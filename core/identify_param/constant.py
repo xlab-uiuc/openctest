@@ -11,6 +11,7 @@ CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
     "hadoop-hdfs": CTEST_HADOOP_DIR,
+    "hadoop-yarn-tls": CTEST_HADOOP_DIR,
     "hbase-server": CTEST_HBASE_DIR,
     "alluxio-core": CTEST_ALLUXIO_DIR
 }
@@ -18,6 +19,7 @@ MODULE_PATH = {
 SRC_SUBDIR = {
     "hadoop-common": "hadoop-common-project/hadoop-common",
     "hadoop-hdfs": "hadoop-hdfs-project/hadoop-hdfs",
+    "hadoop-yarn-tls": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice",
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core"
@@ -26,6 +28,7 @@ SRC_SUBDIR = {
 MVN_TEST_PATH = {
     "hadoop-common": os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-common"]),
     "hadoop-hdfs": os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-hdfs"]),
+    "hadoop-yarn-tls": os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-yarn-tls"]),
     "hbase-server": os.path.join(CTEST_HBASE_DIR, SRC_SUBDIR["hbase-server"]),
     "zookeeper-server": os.path.join(CTEST_ZOOKEEPER_DIR, SRC_SUBDIR["zookeeper-server"]),
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
@@ -34,6 +37,7 @@ MVN_TEST_PATH = {
 LOCAL_CONF_PATH = {
     "hadoop-common": "results/hadoop-common/conf_params.txt",
     "hadoop-hdfs": "results/hadoop-hdfs/conf_params.txt",
+    "hadoop-yarn-tls": "results/hadoop-yarn-tls/conf_params.txt",
     "hbase-server": "results/hbase-server/conf_params.txt",
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt"
@@ -47,6 +51,9 @@ CTEST_SUREFIRE_PATH = {
     ],
     "hadoop-hdfs": [
         os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-hdfs"], SUREFIRE_SUBDIR)
+    ],
+    "hadoop-yarn-tls": [
+        os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-yarn-tls"], SUREFIRE_SUBDIR)
     ],
     "hbase-server": [
         os.path.join(CTEST_HBASE_DIR, "hbase-server", SUREFIRE_SUBDIR)
@@ -74,6 +81,9 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "hadoop-hdfs": [
         os.path.join("surefire-reports/hdfs/hadoop-hdfs", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "hadoop-yarn-tls": [
+        os.path.join("surefire-reports/yarn/hadoop-yarn-tls", LOCAL_SUREFIRE_SUFFIX)
     ],
     "hbase-server": [
         os.path.join("surefire-reports/hbase/hbase-server", LOCAL_SUREFIRE_SUFFIX)
