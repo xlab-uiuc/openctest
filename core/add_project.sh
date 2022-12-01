@@ -49,7 +49,7 @@ function setup_alluxio() {
 }
 
 function setup_kafka() {
-    [ ! -d "app/ctest-kafka" ] && git clone https://github.com/wykkevin/kafka.git app/ctest-kafka
+    [ ! -d "app/ctest-kafka" ] && git clone https://github.com/wykkevin2/kafka.git app/ctest-kafka
     cd app/ctest-kafka
     git fetch && git checkout ctest-injection
 }
