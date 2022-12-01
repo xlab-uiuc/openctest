@@ -47,13 +47,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
-# function setup_netty-udt() {
-#     [ ! -d "app/ctest-alluxio" ] && git clone https://github.com/xlab-uiuc/alluxio.git app/ctest-alluxio
-#     cd app/ctest-alluxio
-#     git fetch && git checkout ctest-logging
-#     cd core
-#     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
-# }
+function setup_netty_udt() {
+    [ ! -d "app/ctest-netty-udt" ] && git clone https://github.com/HongxuMeng/netty.git app/ctest-netty-udt
+    cd app/ctest-netty-udt
+    # git fetch && git checkout ctest-logging
+    home_dir=$PWD
+    cd $home_dir/transport-udt
+    mvn clean install -DskipTests
+}
 
 function usage() {
     echo "Usage: add_project.sh <main project>"
@@ -71,6 +72,7 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
+            netty-transport-udt) setup_netty_udt ;;
             *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
         esac
     fi

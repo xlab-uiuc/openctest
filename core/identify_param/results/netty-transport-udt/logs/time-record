@@ -1,0 +1,9 @@
+io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata 4.784574508666992
+io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho 11.024826049804688
+io.netty.test.udt.nio.NioUdtByteAcceptorChannelTest#metadata 4.760425806045532
+io.netty.test.udt.nio.NioUdtMessageAcceptorChannelTest#metadata 4.8928282260894775
+io.netty.test.udt.nio.NioUdtProviderTest#provideFactory 4.906282186508179
+io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata 4.604898929595947
+io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#basicEcho 4.814375877380371
+io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata 4.739169120788574
+io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata 4.702159643173218

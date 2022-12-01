@@ -214,7 +214,7 @@ if __name__ == "__main__":
     s = time.time()
     usage = "usage: python3 runner.py project [options]"
     parser = OptionParser(usage=usage)
-    parser.add_option("-a", action="store_true", dest="aggressive", default=False,
+    parser.add_option("-a", action="store_true", dest="aggressive", default=True,
                   help="Be aggressive when looking for setters and ignore stacktrace.")
     (options, args) = parser.parse_args()
     module = args[0]
