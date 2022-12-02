@@ -47,6 +47,13 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_redisson() {
+    [ ! -d "app/ctest-redissonredisson" ] && git clone https://github.com/kfadillah/redisson.git app/ctest-redisson
+    cd app/ctest-redisson
+    git fetch && git checkout ctest-logging
+    mvn clean install -pl redisson -am -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -63,7 +70,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            redisson) setup_redisson ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, redisson and alluxio." ;;
         esac
     fi
 }
