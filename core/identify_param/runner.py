@@ -166,11 +166,14 @@ class Runner:
             method_out = open(out_dir + method + "-log.txt", "w+")
             method_report_path = report_dir + method + "-report.txt"
             start_time_for_this_method = time.time()
+  
             if self.module == "alluxio-core":
-                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+                cmd = ["mvn", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-common":
+                cmd = ["mvn", "-pl", "core-common", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             else:
-                cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
+                cmd = ["mvn", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            print ("mvn test -Dtest="+method)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 

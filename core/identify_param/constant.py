@@ -23,7 +23,7 @@ SRC_SUBDIR = {
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
-    "kylin-common": "core-common",
+    "kylin-common": "",
 }
 
 MVN_TEST_PATH = {

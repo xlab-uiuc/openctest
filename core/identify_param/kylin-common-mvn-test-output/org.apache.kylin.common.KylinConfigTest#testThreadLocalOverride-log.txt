@@ -71,21 +71,26 @@ SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4
 SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
-2022-12-02 00:31:25,205 INFO  [main] common.KylinConfig:189 : Destroy KylinConfig
-2022-12-02 00:31:25,373 INFO  [main] common.KylinConfig:118 : Loading kylin-defaults.properties from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-common/target/classes/kylin-defaults.properties
-2022-12-02 00:31:25,378 WARN  [main] common.KylinConfig:136 : [CTEST][LOAD-PARAM] Loading ctest.properties from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-common/target/classes/ctest.properties
-2022-12-02 00:31:25,389 INFO  [main] common.KylinConfig:370 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-02 00:31:25,405 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url 
-2022-12-02 00:31:25,554 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url.identifier : kylin_metadata
-2022-12-02 00:31:25,557 WARN  [main] common.KylinConfigBase:128 : KYLIN_HOME was not set
-2022-12-02 00:31:25,557 INFO  [main] common.KylinConfig:370 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-02 00:31:25,557 INFO  [main] common.KylinConfig:171 : Initialized a new KylinConfig from getInstanceFromEnv : 1681434622
-2022-12-02 00:31:25,557 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url : ../examples/test_metadata/
-2022-12-02 00:31:25,557 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.env.hdfs-working-dir : file:///tmp/kylin
-2022-12-02 00:31:25,559 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with 1234 : 1234
-2022-12-02 00:31:25,559 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] 1234 1234
-2022-12-02 00:31:25,631 INFO  [main] common.KylinConfig:189 : Destroy KylinConfig
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.819 s - in org.apache.kylin.common.KylinConfigTest
+2022-12-02 00:32:26,030 INFO  [main] common.KylinConfig:189 : Destroy KylinConfig
+2022-12-02 00:32:26,205 INFO  [main] common.KylinConfig:118 : Loading kylin-defaults.properties from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-common/target/classes/kylin-defaults.properties
+2022-12-02 00:32:26,214 WARN  [main] common.KylinConfig:136 : [CTEST][LOAD-PARAM] Loading ctest.properties from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-common/target/classes/ctest.properties
+2022-12-02 00:32:26,231 INFO  [main] common.KylinConfig:370 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-02 00:32:26,248 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url 
+2022-12-02 00:32:26,462 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url.identifier : kylin_metadata
+2022-12-02 00:32:26,465 WARN  [main] common.KylinConfigBase:128 : KYLIN_HOME was not set
+2022-12-02 00:32:26,466 INFO  [main] common.KylinConfig:370 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-02 00:32:26,466 INFO  [main] common.KylinConfig:171 : Initialized a new KylinConfig from getInstanceFromEnv : 1681434622
+2022-12-02 00:32:26,466 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url : ../examples/test_metadata/
+2022-12-02 00:32:26,466 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.env.hdfs-working-dir : file:///tmp/kylin
+2022-12-02 00:32:26,467 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url : meta1
+2022-12-02 00:32:26,467 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url meta1
+2022-12-02 00:32:26,491 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url kylin_metadata@hbase
+2022-12-02 00:32:26,491 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url.identifier : kylin_metadata
+2022-12-02 00:32:26,492 WARN  [main] common.KylinConfigBase:293 : [CTEST][SET-PARAM]: Kylin Config was updated with kylin.metadata.url : meta2
+2022-12-02 00:32:26,495 WARN  [main] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url meta2
+2022-12-02 00:32:26,500 WARN  [Thread-2] common.KylinConfigBase:195 : [CTEST][GET-PARAM] kylin.metadata.url meta1
+2022-12-02 00:32:26,658 INFO  [main] common.KylinConfig:189 : Destroy KylinConfig
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.208 s - in org.apache.kylin.common.KylinConfigTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -97,6 +102,6 @@ SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  12.380 s
-[INFO] Finished at: 2022-12-01T18:31:26-06:00
+[INFO] Total time:  14.460 s
+[INFO] Finished at: 2022-12-01T18:32:27-06:00
 [INFO] ------------------------------------------------------------------------
