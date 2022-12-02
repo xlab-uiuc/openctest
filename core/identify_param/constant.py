@@ -71,7 +71,7 @@ CTEST_SUREFIRE_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/server/master", SUREFIRE_SUBDIR)
     ],
     "kylin-common":  [
-        os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-common"], SUREFIRE_SUBDIR)
+        os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
     ],
 }
 
