@@ -52,7 +52,7 @@ function setup_spark() {
     [ ! -d "app/ctest-spark" ] && git clone https://github.com/ZHLOLin/spark.git app/ctest-spark
     cd app/ctest-spark
     git fetch && git checkout ctest_enable_intercepting
-    mvn clean install -DskipTests
+    mvn clean install -pl core -am -DskipTests
 }
 
 function usage() {
