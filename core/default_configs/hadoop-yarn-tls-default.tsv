@@ -3,7 +3,7 @@ fs.defaultFS	file:///	Optional: If you don't want to use CosN as the default fil
 hadoop.http.staticuser.user	dr.who	The user name to filter as, on static web filters while rendering content. An example use is the HDFS web UI (user to be used for browsing files).
 hadoop.security.authentication	simple	Put site-specific property overrides in this file.
 hadoop.security.auth_to_local	DEFAULT	Maps kerberos principals to local user names
-hadoop.security.auth_to_local.mechanism	hadoop	The mechanism by which auth_to_local rules are evaluated. If set to 'hadoop' it will not allow resulting local user names to have either '@' or '/'. If set to 'MIT' it will follow MIT evaluation rules and the restrictions of 'hadoop' do not apply.
+hadoop.security.auth_to_local.mechanism	MIT	The mechanism by which auth_to_local rules are evaluated. If set to 'hadoop' it will not allow resulting local user names to have either '@' or '/'. If set to 'MIT' it will follow MIT evaluation rules and the restrictions of 'hadoop' do not apply.
 hadoop.user.group.static.mapping.overrides	dr.who=;	Static mapping of user to groups. This will override the groups if available in the system for the specified user. In other words, groups look-up will not happen for these users, instead groups mapped in this configuration will be used. Mapping should be in this format. user1=group1,group2;user2=;user3=group2; Default, "dr.who=;" will consider "dr.who" as user without groups.
 yarn.timeline-service.collector.bind-port-ranges		
 yarn.timeline-service.fs-writer.root-dir		

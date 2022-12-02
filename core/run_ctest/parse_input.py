@@ -107,6 +107,7 @@ def extract_conf_diff(path):
 
 def extract_conf_diff_from_pair(param_value_dict):
     default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project]) 
+    print(DEFAULT_CONF_FILE[project])
     conf_diff = {}
     for param, value in param_value_dict.items():
         if param not in default_conf_map:
