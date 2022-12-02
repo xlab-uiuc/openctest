@@ -1,4 +1,0 @@
-yarn.http.policy HTTP_ONLY HTTPS_ONLY
-yarn.resourcemanager.cluster-id default test
-yarn.admin.acl * 
-fs.defaultFS file:///

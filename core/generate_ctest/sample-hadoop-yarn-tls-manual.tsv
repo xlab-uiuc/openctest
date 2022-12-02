@@ -1,0 +1,14 @@
+yarn.ipc.record.factory.class	SKIP	SKIP
+hadoop.security.authentication	simple	SKIP
+hadoop.security.auth_to_local	DEFAULT	RULE:[2:$1@$0](JobTracker@.*FOO.COM)s/@.*//DEFAULT
+hadoop.security.auth_to_local.mechanism	hadoop	mit
+hadoop.user.group.static.mapping.overrides	dr.who=;	user1=group1,group2;user2=;user3=group2
+yarn.timeline-service.fs-writer.root-dir	SKIP	SKIP
+fs.defaultFS	file:///	cosn://	viewfs:///
+yarn.timeline-service.collector.bind-port-ranges	SKIP	SKIP
+0.0.0.0	SKIP	SKIP
+yarn.http.policy	HTTP	HTTPS
+hadoop.http.staticuser.user	dr.who	SKIP
+yarn.resourcemanager.cluster-id	yarn-cluster	cluster1
+yarn.admin.acl	*	SKIP
+yarn.timeline-service.read.allowed.users	SKIP	SKIP

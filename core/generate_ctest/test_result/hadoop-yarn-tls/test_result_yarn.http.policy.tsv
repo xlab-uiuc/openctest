@@ -1,9 +1,0 @@
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testStartStopServer	HTTP_ONLY	p	1.418
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplicationNonAMContainer	HTTP_ONLY	p	1.967
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveAppWhenSecondAttemptAMCotainerIsLaunchedSameNode	HTTP_ONLY	p	4.319
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testAddApplication	HTTP_ONLY	p	2.061
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testLaunch	HTTP_ONLY	p	1.93
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplication	HTTP_ONLY	p	3.631
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithInvalidTimelineReader	HTTP_ONLY	p	0.661
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.reader.TestTimelineReaderServer#testTimelineReaderServerWithNonexistentTimelineReader	HTTP_ONLY	p	0.601
-yarn.http.policy	org.apache.hadoop.yarn.server.timelineservice.collector.TestPerNodeTimelineCollectorsAuxService#testRemoveApplicationNonAMContainer	HTTP_ONLY	p	1.989
