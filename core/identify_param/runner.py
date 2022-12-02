@@ -110,7 +110,6 @@ class Runner:
                 line = line[line.find("[CTEST][SET-PARAM]"):]
                 assert line.startswith("[CTEST][SET-PARAM] "), "wrong line: " + line
                 assert line.split(" ")[0] == "[CTEST][SET-PARAM]"
-                print(line)
                 # assert line.count(" ") == 2, "more than one whitespace in " + line
                 param_name = line.split(" ")[1]
                 if param_name in self.params:

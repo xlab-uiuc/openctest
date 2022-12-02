@@ -19,7 +19,7 @@ class Param:
 def read_tsv(module):
     params.clear()
     tsv_file = open("../default_configs/" + module + "-default.tsv")
-    read_tsv = csv.reader(tsv_file, delimiter=" ")
+    read_tsv = csv.reader(tsv_file, delimiter="\t")
     for row in read_tsv:
         print(row)
         params.append(Param(row[0], row[1], row[2]))
@@ -114,7 +114,7 @@ def print_params(module):
     else:
         assert len(params) >= 90
     for param in params:
-        f.write(param.name + " ")
+        f.write(param.name + "\t")
         tmp_cnt = 0
         if len(param.gvalues) == 0:
             if DEBUG:
@@ -133,7 +133,7 @@ def print_params(module):
             if len(param.gvalues) == 1:
                 f.write(str(param.gvalues[0]) + " SKIP\n")
             elif len(param.gvalues) == 2:
-                f.write(str(param.gvalues[0]) + " " + str(param.gvalues[1]) + "\n")
+                f.write(str(param.gvalues[0]) + "\t" + str(param.gvalues[1]) + "\n")
             else:
                 assert False
             assert tmp_cnt <= 3
