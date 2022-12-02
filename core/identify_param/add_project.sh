@@ -1,4 +1,16 @@
 #!/bin/bash
+function setup_netty() {
+    [ ! -d "app/ctest-netty" ] && git clone https://github.com/HongxuMeng/netty.git app/ctest-netty
+    cd app/ctest-netty
+    git fetch && git checkout ctest-logging
+}
+
+function setup_netty_transport() {
+    setup_netty
+    home_dir=$PWD
+    cd $home_dir/transport
+    mvn clean package -DskipTests
+}
 
 function setup_hadoop() {
     [ ! -d "app/ctest-hadoop" ] && git clone https://github.com/xlab-uiuc/hadoop.git app/ctest-hadoop
@@ -63,7 +75,9 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            netty) setup_netty ;;
+            netty_transport) setup_netty_transport ;;
+            *) echo "Unexpected project: $project - only support netty, hadoop, hbase, zookeeper and alluxio." ;;
         esac
     fi
 }
