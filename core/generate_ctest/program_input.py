@@ -8,7 +8,7 @@ p_input = {
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-kafka-core.json", # string
     # good values of params tests will be run against
-    "param_value_tsv": "sample-kafka-core.tsv", # string
+    "param_value_tsv": "kafka-core-30.tsv", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # Add a new boolean to handle gradle projects. If this is true, it will ignore the mvn related fields.
