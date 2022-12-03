@@ -1,14 +1,16 @@
-0.0.0.0	SKIP	SKIP
-fs.defaultFS	SKIP	SKIP
-hadoop.http.staticuser.user	xdsuper	samsuper
-hadoop.security.authentication	SKIP	SKIP
-hadoop.security.auth_to_local	SKIP	SKIP
-hadoop.security.auth_to_local.mechanism	SKIP	SKIP
-hadoop.user.group.static.mapping.overrides	SKIP	SKIP
+hadoop.security.authentication	simple	kerberos
+hadoop.security.auth_to_local	DEFAULT	SKIP
+hadoop.security.auth_to_local.mechanism	hadoop	mit
+hadoop.user.group.static.mapping.overrides	dr.who=;	user1=group1,group2;user2=;user3=group2
+yarn.timeline-service.fs-writer.root-dir	*	.
+fs.defaultFS	file:///	SKIP
 yarn.timeline-service.collector.bind-port-ranges	SKIP	SKIP
-yarn.timeline-service.fs-writer.root-dir	SKIP	SKIP
+0.0.0.0	SKIP	SKIP
+yarn.http.policy	HTTP	HTTPS_ONLY
+hadoop.http.staticuser.user	dr.who	xdsuper
+yarn.resourcemanager.cluster-id	yarn-cluster	cluster1
+yarn.admin.acl	*	ACL	YARN
 yarn.timeline-service.read.allowed.users	xdsuper	samsuper
-yarn.resourcemanager.cluster-id	SKIP	SKIP
 yarn.ipc.client.factory.class	SKIP	SKIP
 yarn.ipc.server.factory.class	SKIP	SKIP
 yarn.ipc.record.factory.class	SKIP	SKIP
@@ -24,12 +26,10 @@ yarn.am.liveness-monitor.expiry-interval-ms	300000	1200000
 yarn.resourcemanager.principal	SKIP	SKIP
 yarn.resourcemanager.scheduler.address	127.0.0.1	SKIP
 yarn.resourcemanager.scheduler.client.thread-count	25	100
-yarn.http.policy	HTTP	HTTPS_ONLY
 yarn.resourcemanager.webapp.address	127.0.0.1	SKIP
 yarn.resourcemanager.webapp.https.address	127.0.0.1	SKIP
 yarn.resourcemanager.resource-tracker.address	127.0.0.1	SKIP
 yarn.acl.enable	true	SKIP
-yarn.admin.acl	ACL	YARN
 yarn.resourcemanager.admin.address	127.0.0.1	SKIP
 yarn.resourcemanager.admin.client.thread-count	0	2
 yarn.resourcemanager.connect.max-wait.ms	450000	1800000
@@ -73,7 +73,6 @@ yarn.resourcemanager.ha.enabled	true	SKIP
 yarn.resourcemanager.ha.automatic-failover.enabled	false	SKIP
 yarn.resourcemanager.ha.automatic-failover.embedded	false	SKIP
 yarn.resourcemanager.ha.automatic-failover.zk-base-path	/valid/file1	/valid/file2
-yarn.resourcemanager.cluster-id	SKIP	SKIP
 yarn.resourcemanager.ha.rm-ids	SKIP	SKIP
 yarn.resourcemanager.ha.id	SKIP	SKIP
 yarn.client.failover-proxy-provider	SKIP	SKIP
