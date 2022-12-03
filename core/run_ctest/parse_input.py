@@ -92,10 +92,7 @@ def parse_conf_file_properties(path):
 
 def extract_conf_diff(path):
     """get the config diff"""
-    if project == 'redisson':
-        default_conf_map = []
-    else:
-        default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project])
+    default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project])
     new_conf_map = parse_conf_file(path)
     print(">>>>[ctest_core] default conf file: {}".format(DEFAULT_CONF_FILE[project]))
     print(">>>>[ctest_core] new input conf file: {} (param, value) pairs".format(len(new_conf_map.keys())))
@@ -109,10 +106,7 @@ def extract_conf_diff(path):
     return conf_diff
 
 def extract_conf_diff_from_pair(param_value_dict):
-    if project == 'redisson':
-        default_conf_map = []
-    else:
-        default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project]) 
+    default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project]) 
     conf_diff = {}
     for param, value in param_value_dict.items():
         if param not in default_conf_map:

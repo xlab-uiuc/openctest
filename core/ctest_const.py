@@ -80,6 +80,7 @@ DEFAULT_CONF_FILE = {
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    REDISSON: os.path.join(DEFAULT_CONF_DIR, REDISSON + "-default.tsv"),
 }
 
 # injecting config file location
