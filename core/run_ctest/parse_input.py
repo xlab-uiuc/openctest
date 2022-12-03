@@ -29,7 +29,7 @@ def load_deprecate_config_map():
 
 def load_default_conf(path):
     """load default config, should be in /openctest/default_configs/"""
-    data = [x.strip("\n").split(" ") for x in open(path)]
+    data = [x.strip("\n").split("\t") for x in open(path)]
     conf_map = {}
     for row in data:
         param, value = row[:2]
