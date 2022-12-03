@@ -1,0 +1,175 @@
+diff --git a/checkstyle/import-control.xml b/checkstyle/import-control.xml
+index 45dc28d9e3..e5faa8b42f 100644
+--- a/checkstyle/import-control.xml
++++ b/checkstyle/import-control.xml
+@@ -68,6 +68,9 @@
+       <allow pkg="org.apache.kafka.common.config" />
+       <!-- for testing -->
+       <allow pkg="org.apache.kafka.common.metrics" />
++      <allow pkg="org.w3c.dom" />
++      <allow pkg="org.xml.sax" />
++      <allow pkg="javax.xml.parsers" />
+     </subpackage>
+ 
+     <!-- Third-party compression libraries should only be references from this package -->
+diff --git a/clients/src/main/java/org/apache/kafka/common/config/AbstractConfig.java b/clients/src/main/java/org/apache/kafka/common/config/AbstractConfig.java
+index e3fda4d9f5..ec0deae539 100644
+--- a/clients/src/main/java/org/apache/kafka/common/config/AbstractConfig.java
++++ b/clients/src/main/java/org/apache/kafka/common/config/AbstractConfig.java
+@@ -23,7 +23,17 @@ import org.apache.kafka.common.utils.Utils;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.apache.kafka.common.config.provider.ConfigProvider;
+-
++import org.w3c.dom.Document;
++import org.w3c.dom.Element;
++import org.w3c.dom.Node;
++import org.w3c.dom.NodeList;
++import org.xml.sax.SAXException;
++
++import javax.xml.parsers.DocumentBuilder;
++import javax.xml.parsers.DocumentBuilderFactory;
++import javax.xml.parsers.ParserConfigurationException;
++import java.io.IOException;
++import java.io.InputStream;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.HashMap;
+@@ -115,6 +125,41 @@ public class AbstractConfig {
+         for (Map.Entry<String, Object> update : configUpdates.entrySet()) {
+             this.values.put(update.getKey(), update.getValue());
+         }
++
++        // Insert ctest configs
++        try {
++            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
++            DocumentBuilder db = dbf.newDocumentBuilder();
++            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("ctest.xml");
++            if (inputStream != null && inputStream.read() >= 0) {
++                Document doc = db.parse(getClass().getClassLoader().getResourceAsStream("ctest.xml"));
++                doc.getDocumentElement().normalize();
++                NodeList nodeList = doc.getElementsByTagName("property");
++
++                Map<String, Object> ctestConfigMap = new HashMap<>();
++                List<String> changedConfigNames = new ArrayList<>();
++                for (int i = 0; i < nodeList.getLength(); i++) {
++                    Node node = nodeList.item(i);
++                    if (node.getNodeType() == Node.ELEMENT_NODE) {
++                        Element element = (Element) node;
++                        String name = element.getElementsByTagName("name").item(0).getTextContent();
++                        Object value = element.getElementsByTagName("value").item(0).getTextContent();
++                        ctestConfigMap.put(name, value);
++                        changedConfigNames.add(name);
++                    }
++                }
++                ctestConfigMap = (Map<String, Object>) resolveConfigVariables(configProviderProps, ctestConfigMap);
++                ctestConfigMap = definition.parseWithoutErrorChecking(ctestConfigMap);
++                for (Map.Entry<String, Object> ctestConfig : ctestConfigMap.entrySet()) {
++                    if (changedConfigNames.contains(ctestConfig.getKey())) {
++                        this.values.put(ctestConfig.getKey(), ctestConfig.getValue());
++                    }
++                }
++            }
++        } catch (ParserConfigurationException | IOException | SAXException e) {
++            throw new RuntimeException(e);
++        }
++
+         definition.parse(this.values);
+         this.definition = definition;
+         if (doLog)
+@@ -308,12 +353,12 @@ public class AbstractConfig {
+                 String keyWithNoPrefix = entry.getKey().substring(prefix.length());
+                 ConfigDef.ConfigKey configKey = definition.configKeys().get(keyWithNoPrefix);
+                 if (configKey != null)
+-                    result.put(keyWithNoPrefix, definition.parseValue(configKey, entry.getValue(), true));
++                    result.put(keyWithNoPrefix, definition.parseValue(configKey, entry.getValue(), true, false));
+                 else {
+                     String keyWithNoSecondaryPrefix = keyWithNoPrefix.substring(keyWithNoPrefix.indexOf('.') + 1);
+                     configKey = definition.configKeys().get(keyWithNoSecondaryPrefix);
+                     if (configKey != null)
+-                        result.put(keyWithNoPrefix, definition.parseValue(configKey, entry.getValue(), true));
++                        result.put(keyWithNoPrefix, definition.parseValue(configKey, entry.getValue(), true, false));
+                 }
+             }
+         }
+@@ -338,7 +383,7 @@ public class AbstractConfig {
+             for (Map.Entry<String, ?> entry : withPrefix.entrySet()) {
+                 ConfigDef.ConfigKey configKey = definition.configKeys().get(entry.getKey());
+                 if (configKey != null)
+-                    result.put(entry.getKey(), definition.parseValue(configKey, entry.getValue(), true));
++                    result.put(entry.getKey(), definition.parseValue(configKey, entry.getValue(), true, false));
+             }
+ 
+             return result;
+diff --git a/clients/src/main/java/org/apache/kafka/common/config/ConfigDef.java b/clients/src/main/java/org/apache/kafka/common/config/ConfigDef.java
+index 1dfbebbe20..04e60745e7 100644
+--- a/clients/src/main/java/org/apache/kafka/common/config/ConfigDef.java
++++ b/clients/src/main/java/org/apache/kafka/common/config/ConfigDef.java
+@@ -480,16 +480,30 @@ public class ConfigDef {
+         // parse all known keys
+         Map<String, Object> values = new HashMap<>();
+         for (ConfigKey key : configKeys.values())
+-            values.put(key.name, parseValue(key, props.get(key.name), props.containsKey(key.name)));
++            values.put(key.name, parseValue(key, props.get(key.name), props.containsKey(key.name), false));
+         return values;
+     }
+ 
+-    Object parseValue(ConfigKey key, Object value, boolean isSet) {
++    public Map<String, Object> parseWithoutErrorChecking(Map<?, ?> props) {
++        // Check all configurations are defined
++        List<String> undefinedConfigKeys = undefinedDependentConfigs();
++        if (!undefinedConfigKeys.isEmpty()) {
++            String joined = Utils.join(undefinedConfigKeys, ",");
++            throw new ConfigException("Some configurations in are referred in the dependents, but not defined: " + joined);
++        }
++        // parse all known keys
++        Map<String, Object> values = new HashMap<>();
++        for (ConfigKey key : configKeys.values())
++            values.put(key.name, parseValue(key, props.get(key.name), props.containsKey(key.name), true));
++        return values;
++    }
++
++    Object parseValue(ConfigKey key, Object value, boolean isSet, boolean shouldIgnoreErrors) {
+         Object parsedValue;
+         if (isSet) {
+             parsedValue = parseType(key.name, value, key.type);
+         // props map doesn't contain setting, the key is required because no default value specified - its an error
+-        } else if (NO_DEFAULT_VALUE.equals(key.defaultValue)) {
++        } else if (NO_DEFAULT_VALUE.equals(key.defaultValue) && !shouldIgnoreErrors) {
+             throw new ConfigException("Missing required configuration \"" + key.name + "\" which has no default value.");
+         } else {
+             // otherwise assign setting its default value
+diff --git a/clients/src/main/resources/ctest.xml b/clients/src/main/resources/ctest.xml
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/core/src/test/resources/log4j.properties b/core/src/test/resources/log4j.properties
+index f7fb7364a3..bd6f5fd637 100644
+--- a/core/src/test/resources/log4j.properties
++++ b/core/src/test/resources/log4j.properties
+@@ -12,15 +12,21 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+-log4j.rootLogger=OFF, stdout
++log4j.rootLogger=INFO, console
+ 
+ log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+ log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+ log4j.appender.stdout.layout.ConversionPattern=[%d] %p %m (%c:%L)%n
+ 
+-log4j.logger.kafka=WARN
+-log4j.logger.org.apache.kafka=WARN
++log4j.appender.console=org.apache.log4j.ConsoleAppender
++log4j.appender.console.layout=org.apache.log4j.PatternLayout
++log4j.appender.console.Threshold=DEBUG
++log4j.appender.console.Target=System.out
++log4j.appender.file=org.apache.log4j.RollingFileAppender
++
++log4j.logger.kafka=INFO
++log4j.logger.org.apache.kafka=INFO
+ 
+ 
+ # zkclient can be verbose, during debugging it is common to adjust it separately
+-log4j.logger.org.apache.zookeeper=WARN
++log4j.logger.org.apache.zookeeper=INFO
+\ No newline at end of file
