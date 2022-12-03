@@ -1,45 +1,253 @@
-From e1180af655719d73fac940343be13a6b38dce3e6 Mon Sep 17 00:00:00 2001
+From 604116cd1a775c7ab49d6b2684541f9df40a94e2 Mon Sep 17 00:00:00 2001
 From: KobeNorris <kobenorriswu@gmail.com>
-Date: Thu, 1 Dec 2022 17:56:08 -0600
-Subject: [PATCH] feat: Update yarn config to support injection
+Date: Thu, 1 Dec 2022 17:47:02 -0600
+Subject: [PATCH 1/2] Update Pom files
 
 ---
- .../org/apache/hadoop/yarn/conf/YarnConfiguration.java | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hadoop-common-project/hadoop-common/pom.xml               | 1 +
+ .../hadoop-yarn-server-timelineservice/pom.xml            | 8 ++++++++
+ pom.xml                                                   | 7 +++++++
+ 3 files changed, 16 insertions(+)
 
-diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
-index c1bb6aa68d2..db0bc731fd6 100644
---- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
-+++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
-@@ -41,6 +41,8 @@
- import org.apache.hadoop.util.BasicDiskValidator;
- import org.apache.hadoop.util.StringUtils;
- import org.apache.hadoop.yarn.api.ApplicationConstants;
-+import org.slf4j.Logger;
-+import org.slf4j.LoggerFactory;
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 530e18e4b83..9fc70dbeccc 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -509,6 +509,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml
+index 1aca83c617b..bf017a1711f 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml
+@@ -146,6 +146,14 @@
  
- @Public
- @Evolving
-@@ -99,11 +101,19 @@
-   @Deprecated
-   public static final int APPLICATION_MAX_TAG_LENGTH = 100;
+   <build>
+     <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
++        <configuration>
++          <reportFormat>plain</reportFormat>
++        </configuration>
++      </plugin>
+       <plugin>
+         <artifactId>maven-jar-plugin</artifactId>
+         <executions>
+diff --git a/pom.xml b/pom.xml
+index f4e435c7493..f1611bfab1a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -142,6 +142,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++       <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+-- 
+2.25.1
+
+
+From 766a2c9b2e2d29133afc507bb9560e18815ce431 Mon Sep 17 00:00:00 2001
+From: KobeNorris <kobenorriswu@gmail.com>
+Date: Thu, 1 Dec 2022 17:51:47 -0600
+Subject: [PATCH 2/2] feat: Instrumentalize config file
+
+---
+ .../org/apache/hadoop/conf/Configuration.java | 71 ++++++++++++++++---
+ 1 file changed, 61 insertions(+), 10 deletions(-)
+
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index 818ef37eb79..5cc2421d118 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -786,6 +786,7 @@ private void handleDeprecation() {
+     // Add default resources
+     addDefaultResource("core-default.xml");
+     addDefaultResource("core-site.xml");
++    // addDefaultResource("core-ctest.xml");
  
-+  private static final Logger LOG =
-+      LoggerFactory.getLogger(YarnConfiguration.class);
-+
-   static {
-+    LOG.warn("2nd addDefaultResource start Loading");
-     addDeprecatedKeys();
-     Configuration.addDefaultResource(YARN_DEFAULT_CONFIGURATION_FILE);
-     Configuration.addDefaultResource(YARN_SITE_CONFIGURATION_FILE);
-     Configuration.addDefaultResource(RESOURCE_TYPES_CONFIGURATION_FILE);
-+    Configuration.addDefaultResource("core-ctest.xml");
-+    LOG.warn("2nd addDefaultResource complete Loading");
-+    Configuration conf = new Configuration();
-+    LOG.warn("hadoop.security.groups.negative-cache.secs = " + conf.get("hadoop.security.groups.negative-cache.secs"));
+     // print deprecation warning if hadoop-site.xml is found in classpath
+     ClassLoader cL = Thread.currentThread().getContextClassLoader();
+@@ -800,6 +801,7 @@ private void handleDeprecation() {
+           "respectively");
+       addDefaultResource("hadoop-site.xml");
+     }
++    // LOG.warn("1 Loaded");
    }
  
-   private static void addDeprecatedKeys() {
+   private Properties properties;
+@@ -1224,6 +1226,21 @@ String getProperty(String key) {
+     }
+   }
+ 
++  /**
++   * Get the appliance stack trace information of the current thread
++   * 
++   * @return the appliance stack trace information of the current thread.
++   */
++  private String getStackTrace() {
++    // String stacktrace = " ";
++    // for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++    //   // stacktrace = stacktrace.concat(element.getClassName() + "\t");
++    //   stacktrace = stacktrace.concat(element.getClassName() + '#' + element.getMethodName() + ' ');
++    // }
++    // return stacktrace;
++    return "";
++  }
++
+   /**
+    * Get the value of the <code>name</code> property, <code>null</code> if
+    * no such property exists. If the key is deprecated, it returns the value of
+@@ -1240,11 +1257,15 @@ String getProperty(String key) {
+    *         or null if no such property exists.
+    */
+   public String get(String name) {
++    String ctestParam = name; // CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; // CTEST
+       result = substituteVars(getProps().getProperty(n));
+     }
++    // LOG.warn("[CTEST][GET-PARAM] " + ctestParam + getStackTrace()); //CTEST
++    LOG.warn("[CTEST][GET-PARAM-KEY-VALUE] " + ctestParam + ":" + result); //CTEST
+     return result;
+   }
+ 
+@@ -1332,11 +1353,14 @@ public String getTrimmed(String name, String defaultValue) {
+    *         its replacing property and null if no such property exists.
+    */
+   public String getRaw(String name) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = getProps().getProperty(n);
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam + getStackTrace()); //CTEST
+     return result;
+   }
+ 
+@@ -1383,6 +1407,20 @@ public String getRaw(String name) {
+   public void set(String name, String value) {
+     set(name, value, null);
+   }
++
++  /** 
++   * Set the <code>value</code> of the <code>name</code> property. If 
++   * <code>name</code> is deprecated or there is a deprecated name associated to it,
++   * it sets the value to both names. Name will be trimmed before put into
++   * configuration.
++   * 
++   * @param name property name.
++   * @param value property value.
++   * @param value property source.
++   */
++  public void set(String name, String value, String source) {
++    set(name, value, source, true);
++  }
+   
+   /** 
+    * Set the <code>value</code> of the <code>name</code> property. If 
+@@ -1393,10 +1431,12 @@ public void set(String name, String value) {
+    * @param name property name.
+    * @param value property value.
+    * @param source the place that this configuration value came from 
++   * @param log_enabled whether logging is enabled
+    * (For debugging).
+    * @throws IllegalArgumentException when the value or name is null.
+    */
+-  public void set(String name, String value, String source) {
++  // public void set(String name, String value, String source) {
++  public void set(String name, String value, String source, boolean log_enabled) {
+     Preconditions.checkArgument(
+         name != null,
+         "Property name must not be null");
+@@ -1408,6 +1448,8 @@ public void set(String name, String value, String source) {
+     if (deprecations.getDeprecatedKeyMap().isEmpty()) {
+       getProps();
+     }
++    // if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + name); //CTEST
++    if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + name + getStackTrace()); //CTEST
+     getOverlay().setProperty(name, value);
+     getProps().setProperty(name, value);
+     String newSource = (source == null ? "programmatically" : source);
+@@ -1416,11 +1458,13 @@ public void set(String name, String value, String source) {
+       putIntoUpdatingResource(name, new String[] {newSource});
+       String[] altNames = getAlternativeNames(name);
+       if(altNames != null) {
+-        for(String n: altNames) {
+-          if(!n.equals(name)) {
+-            getOverlay().setProperty(n, value);
+-            getProps().setProperty(n, value);
+-            putIntoUpdatingResource(n, new String[] {newSource});
++        for(String paramName: altNames) {
++          if(!paramName.equals(name)) {
++            // if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + paramName); //CTEST
++            if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + paramName + getStackTrace()); //CTEST
++            getOverlay().setProperty(paramName, value);
++            getProps().setProperty(paramName, value);
++            putIntoUpdatingResource(paramName, new String[] {newSource});
+           }
+         }
+       }
+@@ -1428,10 +1472,12 @@ public void set(String name, String value, String source) {
+     else {
+       String[] names = handleDeprecation(deprecationContext.get(), name);
+       String altSource = "because " + name + " is deprecated";
+-      for(String n : names) {
+-        getOverlay().setProperty(n, value);
+-        getProps().setProperty(n, value);
+-        putIntoUpdatingResource(n, new String[] {altSource});
++      for(String paramName : names) {
++        // if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + paramName); //CTEST
++        if(log_enabled) LOG.warn("[CTEST][SET-PARAM] " + paramName + getStackTrace()); //CTEST
++        getOverlay().setProperty(paramName, value);
++        getProps().setProperty(paramName, value);
++        putIntoUpdatingResource(paramName, new String[] {altSource});
+       }
+     }
+   }
+@@ -1501,11 +1547,15 @@ private synchronized Properties getOverlay() {
+    *         doesn't exist.                    
+    */
+   public String get(String name, String defaultValue) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = substituteVars(getProps().getProperty(n, defaultValue));
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam + getStackTrace()); //CTEST
++    // System.out.print("CTEST --------------------------- " + ctestParam);
+     return result;
+   }
+ 
+@@ -3034,6 +3084,7 @@ private void loadResources(Properties properties,
+     if(loadDefaults && fullReload) {
+       for (String resource : defaultResources) {
+         loadResource(properties, new Resource(resource, false), quiet);
++        LOG.warn("Current dir:" + System.getProperty("user.dir"));
+       }
+     }
+     
 -- 
 2.25.1
 
