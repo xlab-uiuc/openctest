@@ -59,5 +59,5 @@ def run_test_seperate(param, value, associated_tests):
     os.chdir(CUR_DIR)
     print(">>>>[ctest_core] chdir to {}".format(CUR_DIR))
     print(">>>>[ctest_core] python-timed for running config pair: {}".format(duration))
-    # clean_conf_file(project)
+    clean_conf_file(project)
     return tr

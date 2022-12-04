@@ -39,7 +39,7 @@ def load_default_conf(path):
 
 def parse_conf_file(path):
     """parse config file"""
-    if project in [HCOMMON, HDFS, HBASE]:
+    if project in [HCOMMON, HDFS, HBASE, HDFSRBF]:
         return parse_conf_file_xml(path)
     else:
         # parsing for alluxio and zookeeper conf file format
