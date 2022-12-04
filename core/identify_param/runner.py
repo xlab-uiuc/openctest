@@ -58,6 +58,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.ConfigurationRule" in trace:
                 return True
+        if self.module == "netty-transport-udt":
+            if "io.netty.channel.DefaultChannelConfig" in trace:
+                return True
         return False
 
     def skipTrace(self, trace):
@@ -214,7 +217,7 @@ if __name__ == "__main__":
     s = time.time()
     usage = "usage: python3 runner.py project [options]"
     parser = OptionParser(usage=usage)
-    parser.add_option("-a", action="store_true", dest="aggressive", default=True,
+    parser.add_option("-a", action="store_true", dest="aggressive", default=False,
                   help="Be aggressive when looking for setters and ignore stacktrace.")
     (options, args) = parser.parse_args()
     module = args[0]

@@ -1,59 +1,59 @@
 {
   "reuseAddress": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "sendBufferSize": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "soLinger": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "protocolReceiveBufferSize": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "protocolSendBufferSize": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "systemReceiveBufferSize": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "systemSendBufferSize": [
-    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtProviderTest#provideFactory",
+    "io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata",
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata",
-    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"
+    "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho",
+    "io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata",
+    "io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata"
   ],
   "connectTimeoutMillis": [
     "io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho"

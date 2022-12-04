@@ -50,10 +50,10 @@ function setup_alluxio() {
 function setup_netty_udt() {
     [ ! -d "app/ctest-netty-udt" ] && git clone https://github.com/HongxuMeng/netty.git app/ctest-netty-udt
     cd app/ctest-netty-udt
-    # git fetch && git checkout ctest-logging
+    git fetch && git checkout ctest-logging
     home_dir=$PWD
     cd $home_dir/transport-udt
-    mvn clean install -DskipTests
+    mvn clean package -DskipTests
 }
 
 function usage() {
