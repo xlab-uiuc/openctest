@@ -46,7 +46,7 @@ def clean_conf_file(project):
             file = open(inject_path, "w")
             file.write("\n")
             file.close()
-    elif project in [HCOMMON, HDFS, HBASE]:
+    elif project in [HCOMMON, HDFS, HBASE, HYARNCOMMON]:
         conf = ET.Element("configuration")
         for inject_path in INJECTION_PATH[project]:
             file = open(inject_path, "wb")

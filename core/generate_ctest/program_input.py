@@ -8,7 +8,7 @@ p_input = {
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-hadoop-yarn-common.json", # string
     # good values of params tests will be run against
-    "param_value_tsv": "../default_configs/hadoop-yarn-common-values.tsv", # string
+    "param_value_tsv": "hadoop-yarn-common.tsv", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test

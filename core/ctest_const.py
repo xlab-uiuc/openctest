@@ -12,9 +12,9 @@ HDFS = "hadoop-hdfs"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
-HYARNCOMMON = "hadoop-yarn"
+HYARNCOMMON = "hadoop-yarn-common"
 
-CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
+CTEST_HADOOP_DIR = os.path.join(APP_DIR, "../../../hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
