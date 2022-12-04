@@ -1,0 +1,8 @@
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	1	p	0.213
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	1	p	0.288
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	1	p	0.201
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	1	p	0.179
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	20	p	0.159
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	20	p	0.327
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	20	p	0.19
+dfs.federation.router.federation.rename.bandwidth	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	20	p	0.184

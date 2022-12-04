@@ -1,0 +1,4 @@
+dfs.federation.router.monitor.namenode.nameservice.resolution-enabled	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	true	p	0.223
+dfs.federation.router.monitor.namenode.nameservice.resolution-enabled	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	true	p	0.272
+dfs.federation.router.monitor.namenode.nameservice.resolution-enabled	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	true	p	0.2
+dfs.federation.router.monitor.namenode.nameservice.resolution-enabled	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	true	p	0.264

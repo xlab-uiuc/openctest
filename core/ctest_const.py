@@ -14,7 +14,8 @@ HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 
-CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
+CTEST_HADOOP_DIR = os.path.join(APP_DIR, "../../../hadoop")
+# CTEST_HADOOP_DIR = os.path.join("../../", "hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
@@ -93,7 +94,8 @@ INJECTION_PATH = {
         os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/hdfs-ctest.xml")
     ],
     HDFSRBF: [
-        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/core-ctest.xml")
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/core-ctest.xml"),
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/hdfs-rbf-ctest.xml")
     ],
     HBASE: [
         os.path.join(CTEST_HBASE_DIR, "hbase-server/target/classes/core-ctest.xml"),
