@@ -27,7 +27,7 @@ def read_tsv(module):
         return 32
     elif module == "netty-transport":
         assert len(params) == 13
-        return 32
+        return 13
     else:
         assert len(params) == 90
         return 90
