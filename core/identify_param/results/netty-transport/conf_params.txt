@@ -1,0 +1,13 @@
+connectTimeoutMillis
+maxMessagesPerRead
+maxMessagesPerWrite
+writeSpinCount
+allocator
+recvByteBufAllocator
+autoRead
+autoClose
+writeBufferHighWaterMark
+writeBufferLowWaterMark
+writeBufferWaterMark
+messageSizeEstimator
+pinEventExecutorPerGroup
