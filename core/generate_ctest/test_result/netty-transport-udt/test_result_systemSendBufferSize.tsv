@@ -1,0 +1,12 @@
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	524288	p	0.19
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	524288	p	0.199
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	524288	p	6.485
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	524288	p	0.186
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	524288	p	0.202
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	524288	p	0.244
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	2097152	p	0.18
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	2097152	p	0.148
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	2097152	p	0.218
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	2097152	p	6.364
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	2097152	p	0.172
+systemSendBufferSize	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	2097152	p	0.166

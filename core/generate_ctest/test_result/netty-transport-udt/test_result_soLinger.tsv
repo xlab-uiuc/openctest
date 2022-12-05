@@ -1,0 +1,12 @@
+soLinger	io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	1	p	0.196
+soLinger	io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	1	p	0.213
+soLinger	io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	1	p	0.179
+soLinger	io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	1	p	0.276
+soLinger	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	1	p	0.194
+soLinger	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	1	p	6.423
+soLinger	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	-1	p	0.186
+soLinger	io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	-1	p	0.17
+soLinger	io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	-1	p	0.186
+soLinger	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	-1	p	6.373
+soLinger	io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	-1	p	0.284
+soLinger	io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	-1	p	0.197
