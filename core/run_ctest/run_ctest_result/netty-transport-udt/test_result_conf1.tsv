@@ -1,0 +1,6 @@
+io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	p	0.004
+io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	p	0.227
+io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	p	0.193
+io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	p	0.16
+io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	p	0.186
+io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	p	6.395
