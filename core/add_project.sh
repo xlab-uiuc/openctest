@@ -49,9 +49,9 @@ function setup_alluxio() {
 }
 
 function setup_kylin(){
-  [ ! -d "app/ctest-kylin" ] && git clone https://github.com/ConstaT99/kylin.git app/ctest-kylin
+  [ ! -d "app/ctest-kylin" ] && git clone https://github.com/rtao6/kylin.git app/ctest-kylin
   cd app/ctest-kylin
-  git fetch && git checkout injection
+  git fetch && git checkout ctest-injection
   mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
