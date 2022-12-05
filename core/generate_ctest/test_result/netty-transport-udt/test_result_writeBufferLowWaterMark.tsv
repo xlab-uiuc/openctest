@@ -1,2 +1,0 @@
-writeBufferLowWaterMark	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	16384	p	6.396
-writeBufferLowWaterMark	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	65536	p	6.378

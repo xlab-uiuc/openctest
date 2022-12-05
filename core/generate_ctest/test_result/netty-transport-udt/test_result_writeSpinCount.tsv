@@ -1,2 +1,0 @@
-writeSpinCount	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	8	p	6.393
-writeSpinCount	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	32	p	6.384

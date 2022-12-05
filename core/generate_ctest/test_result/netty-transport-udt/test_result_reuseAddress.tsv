@@ -1,6 +1,0 @@
-reuseAddress	io.netty.test.udt.nio.NioUdtMessageConnectorChannelTest#metadata	false	p	0.17
-reuseAddress	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#metadata	false	p	6.373
-reuseAddress	io.netty.test.udt.nio.NioUdtMessageRendezvousChannelTest#metadata	false	p	0.186
-reuseAddress	io.netty.test.udt.nio.NioUdtByteRendezvousChannelTest#basicEcho	false	p	6.373
-reuseAddress	io.netty.test.udt.nio.NioUdtProviderTest#provideFactory	false	p	0.284
-reuseAddress	io.netty.test.udt.nio.NioUdtByteConnectorChannelTest#metadata	false	p	0.197

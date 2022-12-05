@@ -1,2 +1,0 @@
->>>>[ctest_core] missing test for netty-transport-udt	sendBufferSize	65536
->>>>[ctest_core] missing test for netty-transport-udt	sendBufferSize	262144
