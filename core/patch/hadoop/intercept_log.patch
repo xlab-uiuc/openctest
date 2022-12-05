@@ -1,0 +1,219 @@
+From e31cc93f9a323196ed7ca5dc353cbfac1f8f3264 Mon Sep 17 00:00:00 2001
+From: yuanfei2 <yuanfei2@fa22-cs527-051.cs.illinois.edu>
+Date: Mon, 5 Dec 2022 13:47:18 -0600
+Subject: [PATCH] ctest
+
+---
+ hadoop-common-project/hadoop-common/pom.xml   |  1 +
+ .../org/apache/hadoop/conf/Configuration.java | 36 ++++++++++++++++++-
+ .../hadoop/yarn/conf/YarnConfiguration.java   |  3 ++
+ hadoop-yarn-project/hadoop-yarn/pom.xml       | 16 +++++++++
+ pom.xml                                       |  7 ++++
+ 5 files changed, 62 insertions(+), 1 deletion(-)
+
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 4391995d209..645b836526b 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -550,6 +550,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index ab7ff0bd40c..f398ffeec1f 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -787,6 +787,7 @@ private void handleDeprecation() {
+     // Add default resources
+     addDefaultResource("core-default.xml");
+     addDefaultResource("core-site.xml");
++    addDefaultResource("core-ctest.xml");
+ 
+     // print deprecation warning if hadoop-site.xml is found in classpath
+     ClassLoader cL = Thread.currentThread().getContextClassLoader();
+@@ -1243,6 +1244,14 @@ String getProperty(String key) {
+     }
+   }
+ 
++  private String getStackTrace() {
++    String stacktrace = " ";
++    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++      stacktrace = stacktrace.concat(element.getClassName() + "\t");
++    }
++    return stacktrace;
++  }
++
+   /**
+    * Get the value of the <code>name</code> property, <code>null</code> if
+    * no such property exists. If the key is deprecated, it returns the value of
+@@ -1259,11 +1268,14 @@ String getProperty(String key) {
+    *         or null if no such property exists.
+    */
+   public String get(String name) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = substituteVars(getProps().getProperty(n));
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+@@ -1351,11 +1363,14 @@ public String getTrimmed(String name, String defaultValue) {
+    *         its replacing property and null if no such property exists.
+    */
+   public String getRaw(String name) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = getProps().getProperty(n);
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+@@ -1402,6 +1417,10 @@ public String getRaw(String name) {
+   public void set(String name, String value) {
+     set(name, value, null);
+   }
++
++  public void set(String name, String value, String source) {
++    set(name, value, source, true);
++  }
+   
+   /** 
+    * Set the <code>value</code> of the <code>name</code> property. If 
+@@ -1415,7 +1434,7 @@ public void set(String name, String value) {
+    * (For debugging).
+    * @throws IllegalArgumentException when the value or name is null.
+    */
+-  public void set(String name, String value, String source) {
++  public void set(String name, String value, String source, boolean log_enabled) {
+     Preconditions.checkArgument(
+         name != null,
+         "Property name must not be null");
+@@ -1427,6 +1446,10 @@ public void set(String name, String value, String source) {
+     if (deprecations.getDeprecatedKeyMap().isEmpty()) {
+       getProps();
+     }
++    if(log_enabled) {
++      String msg = "[CTEST][SET-PARAM] " + name + getStackTrace();
++      LOG.warn(msg); //CTEST
++    }
+     getOverlay().setProperty(name, value);
+     getProps().setProperty(name, value);
+     String newSource = (source == null ? "programmatically" : source);
+@@ -1437,6 +1460,10 @@ public void set(String name, String value, String source) {
+       if(altNames != null) {
+         for(String n: altNames) {
+           if(!n.equals(name)) {
++            if(log_enabled) {
++              String msg = "[CTEST][SET-PARAM] " + n + getStackTrace();
++              LOG.warn(msg); //CTEST
++            }
+             getOverlay().setProperty(n, value);
+             getProps().setProperty(n, value);
+             putIntoUpdatingResource(n, new String[] {newSource});
+@@ -1448,6 +1475,10 @@ public void set(String name, String value, String source) {
+       String[] names = handleDeprecation(deprecationContext.get(), name);
+       String altSource = "because " + name + " is deprecated";
+       for(String n : names) {
++        if(log_enabled) {
++          String msg = "[CTEST][SET-PARAM] " + n + getStackTrace();
++          LOG.warn(msg); //CTEST
++        }
+         getOverlay().setProperty(n, value);
+         getProps().setProperty(n, value);
+         putIntoUpdatingResource(n, new String[] {altSource});
+@@ -1520,11 +1551,14 @@ private synchronized Properties getOverlay() {
+    *         doesn't exist.                    
+    */
+   public String get(String name, String defaultValue) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = substituteVars(getProps().getProperty(n, defaultValue));
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
+index 25513fec90c..f01a9eb0a31 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
+@@ -63,6 +63,8 @@
+   private static final String YARN_DEFAULT_CONFIGURATION_FILE =
+       "yarn-default.xml";
+ 
++  private static final String YARN_CTEST_CONFIGURATION_FILE = "yarn-common-ctest.xml";
++
+   @Private
+   public static final String CORE_SITE_CONFIGURATION_FILE = "core-site.xml";
+ 
+@@ -100,6 +102,7 @@
+     Configuration.addDefaultResource(YARN_DEFAULT_CONFIGURATION_FILE);
+     Configuration.addDefaultResource(YARN_SITE_CONFIGURATION_FILE);
+     Configuration.addDefaultResource(RESOURCE_TYPES_CONFIGURATION_FILE);
++    Configuration.addDefaultResource(YARN_CTEST_CONFIGURATION_FILE);
+   }
+ 
+   private static void addDeprecatedKeys() {
+diff --git a/hadoop-yarn-project/hadoop-yarn/pom.xml b/hadoop-yarn-project/hadoop-yarn/pom.xml
+index e97e3560855..22c97417e19 100644
+--- a/hadoop-yarn-project/hadoop-yarn/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/pom.xml
+@@ -39,6 +39,22 @@
+ 
+   <build>
+     <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
++        <configuration>
++          <systemPropertyVariables>
++            <runningWithNative>${runningWithNative}</runningWithNative>
++          </systemPropertyVariables>
++          <properties>
++            <property>
++              <name>listener</name>
++              <value>org.apache.hadoop.test.TimedOutTestsListener</value>
++            </property>
++          </properties>
++        </configuration>
++      </plugin>
+        <plugin>
+         <groupId>com.github.spotbugs</groupId>
+         <artifactId>spotbugs-maven-plugin</artifactId>
+diff --git a/pom.xml b/pom.xml
+index fca42f71630..61c34179d44 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -144,6 +144,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++        <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+-- 
+2.25.1
+
