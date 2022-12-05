@@ -20,7 +20,6 @@ def main():
     os.makedirs(os.path.join(RUNCTEST_TR_DIR, project), exist_ok=True)
     if run_mode == "run_ctest":
         for conf_file_path in sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))):
-            print
             print(">>>>[ctest_core] input conf file: {}".format(conf_file_path))
             test_input = extract_conf_diff(conf_file_path)
             test_conf_file(conf_file_path, test_input)
