@@ -42,7 +42,7 @@ MODULE_SUBDIR = {
 
 
 # surefire report
-SUREFIRE_SUBDIR = "target/surefire-reports/"
+SUREFIRE_SUBDIR = "../target/surefire-reports/"
 SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
 SUREFIRE_TXT = "{}.txt" # testclass
 SUREFIRE_OUTTXT = "{}-output.txt" #testclass 
