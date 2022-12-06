@@ -81,7 +81,7 @@ DEFAULT_CONF_FILE = {
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
-    KCOMMON: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    KCOMMON: os.path.join(DEFAULT_CONF_DIR, KCOMMON + "-default.tsv")
 }
 
 
@@ -105,8 +105,8 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     KCOMMON: [
-        # os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
-        os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
+        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
     ]
 }
 
