@@ -1,26 +1,27 @@
-From 604116cd1a775c7ab49d6b2684541f9df40a94e2 Mon Sep 17 00:00:00 2001
+From 19517a2b1cabbbc500793d50aaeb132847110a90 Mon Sep 17 00:00:00 2001
 From: KobeNorris <kobenorriswu@gmail.com>
-Date: Thu, 1 Dec 2022 17:47:02 -0600
-Subject: [PATCH 1/2] Update Pom files
+Date: Mon, 5 Dec 2022 19:47:44 -0600
+Subject: [PATCH 1/2] feat: Update pom files
 
 ---
  hadoop-common-project/hadoop-common/pom.xml               | 1 +
  .../hadoop-yarn-server-timelineservice/pom.xml            | 8 ++++++++
+ hadoop-yarn-project/hadoop-yarn/pom.xml                   | 1 +
  pom.xml                                                   | 7 +++++++
- 3 files changed, 16 insertions(+)
+ 4 files changed, 17 insertions(+)
 
 diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
-index 530e18e4b83..9fc70dbeccc 100644
+index 530e18e4b83..984eceb74ff 100644
 --- a/hadoop-common-project/hadoop-common/pom.xml
 +++ b/hadoop-common-project/hadoop-common/pom.xml
-@@ -509,6 +509,7 @@
-       <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-surefire-plugin</artifactId>
-+        <version>3.0.0-M4</version>
-         <configuration>
-           <systemPropertyVariables>
-             <runningWithNative>${runningWithNative}</runningWithNative>
+@@ -911,6 +911,7 @@
+           <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-surefire-plugin</artifactId>
++            <version>3.0.0-M4</version>
+             <configuration>
+               <forkCount>${testsThreadCount}</forkCount>
+               <reuseForks>false</reuseForks>
 diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml
 index 1aca83c617b..bf017a1711f 100644
 --- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice/pom.xml
@@ -40,6 +41,18 @@ index 1aca83c617b..bf017a1711f 100644
        <plugin>
          <artifactId>maven-jar-plugin</artifactId>
          <executions>
+diff --git a/hadoop-yarn-project/hadoop-yarn/pom.xml b/hadoop-yarn-project/hadoop-yarn/pom.xml
+index ddc4e875279..b7c85a1dad8 100644
+--- a/hadoop-yarn-project/hadoop-yarn/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/pom.xml
+@@ -62,6 +62,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <properties>
+             <property>
 diff --git a/pom.xml b/pom.xml
 index f4e435c7493..f1611bfab1a 100644
 --- a/pom.xml
@@ -62,10 +75,10 @@ index f4e435c7493..f1611bfab1a 100644
 2.25.1
 
 
-From 766a2c9b2e2d29133afc507bb9560e18815ce431 Mon Sep 17 00:00:00 2001
+From 1982ee85c338a1f4b3dd4c01aa0618155142dcdd Mon Sep 17 00:00:00 2001
 From: KobeNorris <kobenorriswu@gmail.com>
-Date: Thu, 1 Dec 2022 17:51:47 -0600
-Subject: [PATCH 2/2] feat: Instrumentalize config file
+Date: Mon, 5 Dec 2022 20:12:27 -0600
+Subject: [PATCH 2/2] feat: Instrumentalize Configuration file
 
 ---
  .../org/apache/hadoop/conf/Configuration.java | 71 ++++++++++++++++---
