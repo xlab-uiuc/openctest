@@ -26,8 +26,8 @@ def read_tsv(module):
         assert len(params) == 32
         return 32
     if module == "hive_common":
-        assert len(params) == 1324
-        return 1324
+        assert len(params) == 1326
+        return 1326
     else:
         assert len(params) == 90
         return 90
