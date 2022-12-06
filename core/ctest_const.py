@@ -40,7 +40,7 @@ MODULE_SUBDIR = {
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
     KCOMMON: "core-common",
-    KTOOL: "tool",
+    KTOOL: "",
 }
 
 
@@ -85,7 +85,7 @@ DEFAULT_CONF_FILE = {
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
     KCOMMON: os.path.join(DEFAULT_CONF_DIR, KCOMMON + "-default.tsv"),
-    KCOMMON: os.path.join(DEFAULT_CONF_DIR, KTOOL + "-default.tsv")
+    KTOOL: os.path.join(DEFAULT_CONF_DIR, KTOOL + "-default.tsv")
 }
 
 
@@ -113,8 +113,8 @@ INJECTION_PATH = {
         # os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
     ],
     KTOOL: [
-        # os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
-        os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
+        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
     ]
 }
 
