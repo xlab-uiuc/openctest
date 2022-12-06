@@ -11,6 +11,8 @@ PERMISSIONCODES = ["rwx------", "rwxrwx---"]
 ZKPORTADDRS = ["0.0.0.0:3000", "0.0.0.0:3001"]
 ZKLIMIT = ["1", "10"]
 ZKSIZE = ["1", "10"]
+RATIO = ["0.1", "0.9"]
+ENV = ["Dev", "QA", "Prod"]
 
 key_phrases_plural = [
     "values are:",

@@ -30,6 +30,8 @@ GROUP = "GROUP"
 NAMESERVICES = "NAMESERVICES"
 INTERFACE = "INTERFACE"
 POTENTIALFLOAT = "POTENTIALFLOAT"
+RATIO = "RATIO"
+ENV = "ENV"
 
 timeunits = ["ms", "millisecond", "s", "sec", "second", "m", "min", "minute", "h", "hr", "hour", "d", "day"]
 datasize = ["MB"]
@@ -164,6 +166,12 @@ def isInterface(name):
 def isPotentialFloat(name):
     return name.endswith("limit") or name.endswith("size")
 
+def isRatio(name):
+    return name[-(len("ratio") + 1):] == "ratio" or name[-(len("coefficient") + 1):] == "coefficient"
+
+def isEnv(name):
+    return name == 'Dev' or name == 'QA' or name == 'Prod'
+
 # guess from semantics
 def isFilePath4(semantics):
     return "relative path" in semantics or "directory" in semantics or "folder" in semantics
@@ -295,6 +303,12 @@ def genAlgorithm(param):
 
 def genPotentialFloat(param):
     return [0.1, 0.5]
+
+def genRatio(param):
+    return [0.1, 0.9]
+
+def genEnv(param):
+    return ["Dev", "QA", "Prod"]
 
 def semanticExtractionClassName(param):
     # strategies
