@@ -35,6 +35,7 @@ def identify_ctest(project):
                 if test not in testinfo[param]["tests"]:
                     testinfo[param]["tests"][test] = set()
                 testinfo[param]["tests"][test].add(value)
+
         # ctest should pass all good value
         for param, info in testinfo.items():
             ctests[param] = []
