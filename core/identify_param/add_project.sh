@@ -47,6 +47,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_hive(){
+    [ ! -d "app/ctest-hive" ] && git clone https://github.com/lilacyl/hive.git app/ctest-hive
+    cd app/ctest-hive
+    git fetch && git checkout ctest
+    cd common
+    mvn clean install -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1

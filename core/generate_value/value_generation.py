@@ -25,6 +25,9 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    if module == "hive_common":
+        assert len(params) == 1324
+        return 1324
     else:
         assert len(params) == 90
         return 90
