@@ -16,7 +16,7 @@ function setup_hadoop() {
 function setup_hadoop_yarn_tls() {
     [ ! -d "app/ctest-hadoop" ] && git clone git@github.com:KobeNorris/hadoop.git app/ctest-hadoop
     cd app/ctest-hadoop
-    git fetch && git checkout ctest
+    git fetch && git checkout ctest-interception
     home_dir=$PWD
     cd $home_dir/hadoop-common-project/hadoop-common
     mvn clean install -DskipTests
