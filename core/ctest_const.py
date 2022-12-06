@@ -104,7 +104,7 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     HIVE: [
-        os.path.join(CTEST_HIVE_DIR, "common/target/hive-ctest.properties")
+        os.path.join(CTEST_HIVE_DIR, "conf/hive-ctest.xml")
     ]
 }
 
