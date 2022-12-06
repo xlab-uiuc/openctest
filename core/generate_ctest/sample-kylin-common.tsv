@@ -16,7 +16,7 @@ kylin.web.cross-domain-enabled	FALSE	SKIP
 kylin.web.export-allow-admin	FALSE	SKIP
 kylin.web.export-allow-other	FALSE	SKIP
 kylin.web.dashboard-enabled	TRUE	SKIP
-kylin.metadata.url	SKIP	SKIP
+kylin.metadata.url	1	2
 kylin.metadata.dimension-encoding-max-length	128	512
 kylin.metadata.sync-retries	1	6
 kylin.metadata.sync-error-handler	SKIP	SKIP
