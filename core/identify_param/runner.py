@@ -78,9 +78,11 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
-        # if self.module == "kylin-common":
-        #     if "alluxio.conf" in trace and "Test" not in trace:
-        #         return True
+        if self.module == "kylin-common":
+            if "testThreadLocalOverride" in trace and "Test" not in trace:
+                return True
+            if "testSetKylinConfigInEnvIfMissingTakingEmptyProperties" in trace and "Test" not in trace:
+                return True
         return False
 
     def setInTest(self, stacktrace):
