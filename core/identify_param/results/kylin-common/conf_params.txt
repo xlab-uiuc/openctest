@@ -280,3 +280,9 @@ kylin.query.lazy-query-enabled
 kylin.query.cache-signature-enabled
 kylin.query.segment-cache-enabled
 kylin.cache.memcached.hosts
+kylin.resourcestore.reconnect-base-ms
+kylin.env.zookeeper-base-sleep-time
+kylin.env.zookeeper-is-local
+kylin.job.remote-cli-port
+kylin.restclient.connection.default-max-per-route
+kylin.job.use-remote-cli

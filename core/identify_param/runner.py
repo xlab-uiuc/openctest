@@ -194,7 +194,7 @@ class Runner:
                 continue
 
             class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name + ".txt"
+            suffix_filename_to_check = class_name + "-output" + ".txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
             if full_path == "none":
                 print("no report for " + method)
