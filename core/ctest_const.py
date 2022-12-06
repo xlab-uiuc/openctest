@@ -113,8 +113,8 @@ INJECTION_PATH = {
         # os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
     ],
     KTOOL: [
-        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
-        # os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest2.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
     ]
 }
 
