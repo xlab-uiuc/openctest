@@ -1,0 +1,4 @@
+org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test	p	2.324
+org.apache.kylin.common.restclient.RestClientTest#basicTests	p	0.332
+org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties	p	0.442
+org.apache.kylin.common.KylinConfigTest#testCreateInstanceFromUriThrowsRuntimeException	p	0.783

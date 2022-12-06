@@ -98,7 +98,7 @@ def infer_category(param, module):
         if isZKSize(name):
             return ZKSIZE
     
-    if module == "kylin-common":
+    if module == "kylin":
         if isZKDirPath(name):
             return ZKDIR
         if isZKPort(name):
@@ -113,6 +113,8 @@ def infer_category(param, module):
             return RATIO
         if isEnv(name):
             return ENV
+        if isMetadataUrl(name):
+            return MURL
 
     if isPotentialFloat(name):
         return POTENTIALFLOAT
@@ -191,7 +193,7 @@ def generate(module):
         generators[ZKSIZE] = genZKSize
         generators[ZKPORT] = genZKPort
         generators[ZKPORTADDRESS] = genZKPortAddress
-    if module == "kylin-common":
+    if module == "kylin":
         generators[ZKDIR] = genZKDir
         generators[ZKLIMIT] = genZKLimit
         generators[ZKSIZE] = genZKSize
@@ -199,6 +201,7 @@ def generate(module):
         generators[ZKPORTADDRESS] = genZKPortAddress
         generators[RATIO] = genRatio
         generators[ENV] = genEnv
+        generators[MURL] = genMetadataUrl
 
     for param in params:
         param.gvalues = generators[param.cate](param)

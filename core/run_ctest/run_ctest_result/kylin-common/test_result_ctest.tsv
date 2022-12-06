@@ -1,0 +1,3 @@
+org.apache.kylin.common.persistence.ResourceToolTest#testCopy	f	0.3
+org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testFileStore	f	0.641
+org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testRollback	f	0.224
