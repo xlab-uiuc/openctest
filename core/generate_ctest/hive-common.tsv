@@ -1,0 +1,2 @@
+hive.server2.max.start.attempts	 30L
+hive.server2.support.dynamic.service.discovery	 false
