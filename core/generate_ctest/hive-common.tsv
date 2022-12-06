@@ -1,2 +1,1094 @@
-hive.server2.max.start.attempts	 30L
-hive.server2.support.dynamic.service.discovery	 false
+hive.metastore.client.cache.v2.enabled	SKIP	SKIP
+hive.metastore.client.cache.v2.maxSize	SKIP	SKIP
+hive.metastore.client.cache.v2.recordStats	SKIP	SKIP
+hive.exec.script.wrapper	SKIP	SKIP
+hive.exec.plan	SKIP	SKIP
+hive.exec.stagingdir	SKIP	SKIP
+hive.exec.scratchdir	SKIP	SKIP
+hive.repl.rootdir	/valid/file1	/valid/file2
+hive.repl.cm.enabled	SKIP	SKIP
+hive.repl.cmrootdir	/valid/file1	/valid/file2
+hive.repl.cm.retain	1d	20d
+hive.repl.cm.encryptionzone.rootdir	SKIP	SKIP
+hive.repl.cm.nonencryptionzone.rootdir	SKIP	SKIP
+hive.repl.cm.interval	1s	7200s
+hive.repl.ha.datapath.replace.remote.nameservice	SKIP	SKIP
+hive.repl.ha.datapath.replace.remote.nameservice.name	SKIP	SKIP
+hive.repl.replica.functions.root.dir	/valid/file1	/valid/file2
+hive.repl.approx.max.load.tasks	5000	20000
+hive.repl.partitions.dump.parallelism	50	200
+hive.repl.table.dump.parallelism	7	30
+hive.repl.run.data.copy.tasks.on.target	SKIP	SKIP
+hive.repl.dump.metadata.only	SKIP	SKIP
+hive.repl.retain.prev.dump.dir	/valid/dir1	/valid/dir2
+hive.repl.retain.prev.dump.dir.count	1	6
+hive.repl.retain.custom.db.locations.on.target	SKIP	SKIP
+hive.repl.include.materialized.views	SKIP	SKIP
+hive.repl.dump.skip.immutable.data.copy	SKIP	SKIP
+hive.repl.dump.metadata.only.for.external.table	FALSE	SKIP
+hive.repl.bootstrap.acid.tables	SKIP	SKIP
+hive.repl.bootstrap.dump.open.txn.timeout	10h	2h
+hive.repl.bootstrap.dump.abort.write.txn.after.timeout	FALSE	SKIP
+hive.repl.add.raw.reserved.namespace	SKIP	SKIP
+hive.repl.include.external.tables	SKIP	SKIP
+hive.repl.bootstrap.external.tables	SKIP	SKIP
+hive.repl.replica.external.table.base.dir	/valid/dir1	/valid/dir2
+hive.repl.external.warehouse.single.copy.task	TRUE	SKIP
+hive.repl.external.warehouse.single.copy.task.paths	SKIP	SKIP
+hive.repl.include.authorization.metadata	SKIP	SKIP
+hive.repl.authorization.provider.service	SKIP	SKIP
+hive.repl.handle.ranger.deny.policy	TRUE	SKIP
+hive.repl.failover.start	TRUE	SKIP
+hive.repl.ranger.target.deny.policy	FALSE	SKIP
+hive.repl.ranger.client.read.timeout	1s	600s
+hive.repl.include.atlas.metadata	SKIP	SKIP
+hive.repl.atlas.endpoint	SKIP	SKIP
+hive.repl.atlas.replicatedto	SKIP	SKIP
+hive.repl.atlas.client.read.timeout	1s	14400s
+hive.repl.external.client.connect.timeout	1s	20s
+hive.repl.source.cluster.name	SKIP	SKIP
+hive.repl.target.cluster.name	SKIP	SKIP
+hive.repl.retry.initial.delay	1s	120s
+hive.repl.retry.backoff.coefficient	0.6	2.4
+hive.repl.retry.jitter	1s	60s
+hive.repl.retry.max.delay.between.retries	1m	120m
+hive.repl.retry.total.duration	1h	48h
+hive.repl.copy.file.list.iterator.retry	SKIP	SKIP
+hive.repl.load.partitions.batch.size	5000	20000
+hive.repl.load.partitions.with.data.copy.batch.size	500	2000
+hive.repl.parallel.copy.tasks	50	200
+hive.repl.externaltable.snapshotdiff.copy	TRUE	SKIP
+hive.repl.externaltable.snapshot.overwrite.target	FALSE	SKIP
+hive.repl.stats.events.count	1	10
+hive.exec.local.scratchdir	SKIP	SKIP
+hive.downloaded.resources.dir	/valid/dir1	/valid/dir2
+hive.scratch.dir.permission	350	1400
+hive.exec.submitviachild	SKIP	SKIP
+hive.exec.submit.local.task.via.child	SKIP	SKIP
+hive.exec.script.maxerrsize	50000	200000
+hive.exec.script.allow.partial.consumption	SKIP	SKIP
+stream.stderr.reporter.prefix	SKIP	SKIP
+stream.stderr.reporter.enabled	SKIP	SKIP
+hive.exec.compress.output	SKIP	SKIP
+hive.exec.compress.intermediate	SKIP	SKIP
+hive.intermediate.compression.codec	SKIP	SKIP
+hive.intermediate.compression.type	SKIP	SKIP
+hive.exec.reducers.bytes.per.reducer	SKIP	SKIP
+hive.exec.reducers.max	504	2018
+hive.exec.pre.hooks	SKIP	SKIP
+hive.exec.post.hooks	SKIP	SKIP
+hive.exec.failure.hooks	SKIP	SKIP
+hive.exec.query.redactor.hooks	SKIP	SKIP
+hive.client.stats.publishers	SKIP	SKIP
+hive.basic.stats.max.threads.factor	1	4
+hive.exec.parallel	SKIP	SKIP
+hive.exec.parallel.thread.number	1	16
+hive.mapred.reduce.tasks.speculative.execution	SKIP	SKIP
+hive.exec.counters.pull.interval	SKIP	SKIP
+hive.exec.dynamic.partition	SKIP	SKIP
+hive.exec.dynamic.partition.mode	SKIP	SKIP
+hive.exec.max.dynamic.partitions	500	2000
+hive.exec.max.dynamic.partitions.pernode	50	200
+hive.exec.dynamic.partition.type.conversion	SKIP	SKIP
+hive.exec.max.created.files	SKIP	SKIP
+hive.exec.default.partition.name	SKIP	SKIP
+hive.lockmgr.zookeeper.default.partition.name	SKIP	SKIP
+hive.exec.show.job.failure.debug.info	SKIP	SKIP
+hive.exec.job.debug.capture.stacktraces	SKIP	SKIP
+hive.exec.job.debug.timeout	15000	60000
+hive.exec.tasklog.debug.timeout	10000	40000
+hive.output.file.extension	SKIP	SKIP
+hive.in.test	SKIP	SKIP
+hive.in.iceberg.test	SKIP	SKIP
+hive.in.ssl.test	SKIP	SKIP
+hive.in.repl.test	SKIP	SKIP
+hive.in.ide.test	SKIP	SKIP
+hive.testing.short.logs	SKIP	SKIP
+hive.testing.remove.logs	SKIP	SKIP
+hive.test.load.hostnames	SKIP	SKIP
+hive.test.load.interval	1ms	20ms
+hive.test.load.utilization	0.1	0.4
+hive.in.tez.test	SKIP	SKIP
+hive.mapjoin.testing.no.hash.table.load	SKIP	SKIP
+hive.qtest.additional.partial.mask.pattern	SKIP	SKIP
+hive.qtest.additional.partial.mask.replacement.text	SKIP	SKIP
+hive.in.repl.test.files.sorted	SKIP	SKIP
+hive.exec.mode.local.auto	SKIP	SKIP
+hive.exec.mode.local.auto.inputbytes.max	SKIP	SKIP
+hive.exec.mode.local.auto.input.files.max	1	8
+hive.exec.drop.ignorenonexistent	SKIP	SKIP
+hive.ignore.mapjoin.hint	SKIP	SKIP
+hive.file.max.footer	50	200
+hive.resultset.use.unique.column.names	SKIP	SKIP
+hive.hook.proto.queue.capacity	32	128
+hive.hook.proto.base-directory	SKIP	SKIP
+hive.hook.proto.rollover-interval	1s	1200s
+hive.hook.proto.events.clean.freq	10d	2d
+hive.hook.proto.events.ttl	1d	14d
+hive.hook.proto.file.per.event	SKIP	SKIP
+hadoop.bin.path	/valid/file1	/valid/file2
+yarn.bin.path	/valid/file1	/valid/file2
+mapred.bin.path	/valid/file1	/valid/file2
+fs.har.impl	SKIP	SKIP
+ileInputFormat.SPLIT_MAXSIZ	SKIP	SKIP
+ileInputFormat.SPLIT_MINSIZ	SKIP	SKIP
+ombineFileInputFormat.SPLIT_MINSIZE_PERNOD	SKIP	SKIP
+ombineFileInputFormat.SPLIT_MINSIZE_PERRAC	SKIP	SKIP
+mapreduce.job.reduces	0	-2
+hive.metastore.db.type	SKIP	SKIP
+hive.metastore.warehouse.dir	/valid/dir1	/valid/dir2
+hive.metastore.warehouse.external.dir	/valid/dir1	/valid/dir2
+hive.metastore.uris	SKIP	SKIP
+hive.metastore.uri.selection	SKIP	SKIP
+hive.metastore.client.capability.check	SKIP	SKIP
+hive.metastore.client.capabilities	SKIP	SKIP
+hive.metastore.client.cache.enabled	SKIP	SKIP
+hive.metastore.client.cache.expiry.time	1s	240s
+hive.metastore.client.cache.initial.capacity	25	100
+hive.metastore.client.cache.max.capacity	25	100
+hive.metastore.client.cache.stats.enabled	SKIP	SKIP
+hive.metastore.fastpath	SKIP	SKIP
+hive.metastore.fshandler.threads	7	30
+hive.metastore.hbase.file.metadata.threads	0	2
+hive.metastore.uri.resolver	SKIP	SKIP
+hive.metastore.connect.retries	1	6
+hive.metastore.failure.retries	0	2
+hive.metastore.port	3000	3001
+hive.metastore.client.connect.retry.delay	10s	2s
+hive.metastore.client.socket.timeout	1s	1200s
+hive.metastore.client.socket.lifetime	1s	2s
+javax.jdo.option.ConnectionPassword	SKIP	SKIP
+hive.metastore.ds.connection.url.hook	SKIP	SKIP
+javax.jdo.option.Multithreaded	SKIP	SKIP
+javax.jdo.option.ConnectionURL	SKIP	SKIP
+hive.metastore.dbaccess.ssl.properties	SKIP	SKIP
+hive.hmshandler.retry.attempts	1	20
+hive.hmshandler.retry.interval	1ms	4000ms
+hive.hmshandler.force.reload.conf	/valid/file1	/valid/file2
+hive.metastore.server.max.message.size	0.1	0.5
+hive.metastore.server.min.threads	100	400
+hive.metastore.server.max.threads	500	2000
+hive.metastore.server.tcp.keepalive	SKIP	SKIP
+hive.metastore.wm.default.pool.size	1	8
+hive.metastore.archive.intermediate.original	SKIP	SKIP
+hive.metastore.archive.intermediate.archived	SKIP	SKIP
+hive.metastore.archive.intermediate.extracted	SKIP	SKIP
+hive.metastore.kerberos.keytab.file	/valid/file1	/valid/file2
+hive.metastore.kerberos.principal	SKIP	SKIP
+hive.metastore.client.kerberos.principal	SKIP	SKIP
+hive.metastore.sasl.enabled	SKIP	SKIP
+hive.metastore.thrift.framed.transport.enabled	SKIP	SKIP
+hive.metastore.thrift.compact.protocol.enabled	SKIP	SKIP
+hive.metastore.token.signature	SKIP	SKIP
+hive.cluster.delegation.token.store.class	SKIP	SKIP
+hive.cluster.delegation.token.store.zookeeper.connectString	SKIP	SKIP
+hive.cluster.delegation.token.store.zookeeper.znode	SKIP	SKIP
+hive.cluster.delegation.token.store.zookeeper.acl	SKIP	SKIP
+hive.metastore.cache.pinobjtypes	SKIP	SKIP
+datanucleus.connectionPoolingType	SKIP	SKIP
+datanucleus.connectionPool.maxPoolSize	1	20
+datanucleus.rdbms.initializeColumnInfo	SKIP	SKIP
+datanucleus.schema.validateTables	SKIP	SKIP
+datanucleus.schema.validateColumns	SKIP	SKIP
+datanucleus.schema.validateConstraints	SKIP	SKIP
+datanucleus.storeManagerType	SKIP	SKIP
+datanucleus.schema.autoCreateAll	SKIP	SKIP
+hive.metastore.schema.verification	SKIP	SKIP
+hive.metastore.schema.verification.record.version	SKIP	SKIP
+hive.metastore.schema.info.class	SKIP	SKIP
+datanucleus.transactionIsolation	SKIP	SKIP
+datanucleus.cache.level2	SKIP	SKIP
+datanucleus.cache.level2.type	SKIP	SKIP
+datanucleus.identifierFactory	SKIP	SKIP
+datanucleus.rdbms.useLegacyNativeValueStrategy	SKIP	SKIP
+datanucleus.plugin.pluginRegistryBundleCheck	SKIP	SKIP
+hive.metastore.batch.retrieve.max	150	600
+hive.metastore.batch.retrieve.table.partition.max	500	2000
+hive.metastore.init.hooks	SKIP	SKIP
+hive.metastore.pre.event.listeners	SKIP	SKIP
+hive.metastore.event.listeners	SKIP	SKIP
+hive.write.notification.max.batch.size	500	2000
+hive.metastore.transactional.event.listeners	SKIP	SKIP
+hive.notification.sequence.lock.max.retries	1	20
+hive.notification.sequence.lock.retry.sleep.interval	SKIP	SKIP
+hive.metastore.event.db.listener.timetolive	1s	172800s
+hive.metastore.event.db.notification.api.auth	SKIP	SKIP
+hive.metastore.authorization.storage.checks	SKIP	SKIP
+hive.metastore.authorization.storage.check.externaltable.drop	SKIP	SKIP
+hive.metastore.event.clean.freq	1s	2s
+hive.metastore.event.expiry.duration	1s	2s
+hive.metastore.event.message.factory	SKIP	SKIP
+hive.metastore.execute.setugi	SKIP	SKIP
+hive.metastore.partition.name.whitelist.pattern	SKIP	SKIP
+hive.metastore.integral.jdo.pushdown	SKIP	SKIP
+hive.metastore.try.direct.sql	SKIP	SKIP
+hive.metastore.direct.sql.batch.size	1	-1
+hive.metastore.try.direct.sql.ddl	SKIP	SKIP
+hive.direct.sql.max.query.length	50	200
+hive.direct.sql.max.elements.in.clause	500	2000
+hive.direct.sql.max.elements.values.clause	500	2000
+hive.metastore.orm.retrieveMapNullsAsEmptyStrings	TRUE	SKIP
+hive.metastore.disallow.incompatible.col.type.changes	SKIP	SKIP
+hive.metastore.limit.partition.request	0	-2
+hive.table.parameters.default	SKIP	SKIP
+hive.ddl.createtablelike.properties.whitelist	SKIP	SKIP
+hive.metastore.rawstore.impl	SKIP	SKIP
+hive.metastore.txn.store.impl	SKIP	SKIP
+javax.jdo.option.ConnectionDriverName	SKIP	SKIP
+javax.jdo.PersistenceManagerFactoryClass	SKIP	SKIP
+hive.metastore.expression.proxy	SKIP	SKIP
+javax.jdo.option.DetachAllOnCommit	SKIP	SKIP
+javax.jdo.option.NonTransactionalRead	SKIP	SKIP
+javax.jdo.option.ConnectionUserName	SKIP	SKIP
+hive.metastore.end.function.listeners	SKIP	SKIP
+hive.metastore.partition.inherit.table.properties	SKIP	SKIP
+hive.metastore.filter.hook	SKIP	SKIP
+hive.metastore.dml.events	SKIP	SKIP
+hive.metastore.client.drop.partitions.using.expressions	SKIP	SKIP
+hive.metastore.aggregate.stats.cache.enabled	SKIP	SKIP
+hive.metastore.aggregate.stats.cache.size	5000	20000
+hive.metastore.aggregate.stats.cache.max.partitions	5000	20000
+hive.metastore.aggregate.stats.cache.fpp	SKIP	SKIP
+hive.metastore.aggregate.stats.cache.max.variance	SKIP	SKIP
+hive.metastore.aggregate.stats.cache.ttl	1s	1200s
+hive.metastore.aggregate.stats.cache.max.writer.wait	1ms	10000ms
+hive.metastore.aggregate.stats.cache.max.reader.wait	1ms	2000ms
+hive.metastore.aggregate.stats.cache.max.full	SKIP	SKIP
+hive.metastore.aggregate.stats.cache.clean.until	SKIP	SKIP
+hive.metastore.metrics.enabled	SKIP	SKIP
+hive.metastore.use.SSL	SKIP	SKIP
+hive.metastore.keystore.path	/valid/file1	/valid/file2
+hive.metastore.keystore.password	SKIP	SKIP
+hive.metastore.truststore.path	/valid/file1	/valid/file2
+hive.metastore.truststore.password	SKIP	SKIP
+hive.metadata.export.location	SKIP	SKIP
+hive.metadata.move.exported.metadata.to.trash	SKIP	SKIP
+hive.cli.errors.ignore	SKIP	SKIP
+hive.cli.print.current.db	SKIP	SKIP
+hive.cli.prompt	SKIP	SKIP
+hive.metastore.fs.handler.class	SKIP	SKIP
+hive.session.id	SKIP	SKIP
+hive.session.silent	SKIP	SKIP
+hive.local.time.zone	SKIP	SKIP
+hive.session.history.enabled	SKIP	SKIP
+hive.query.string	SKIP	SKIP
+hive.query.id	SKIP	SKIP
+hive.query.tag	SKIP	SKIP
+hive.jobname.length	25	100
+hive.jar.path	/valid/file1	/valid/file2
+hive.aux.jars.path	/valid/file1	/valid/file2
+hive.reloadable.aux.jars.path	/valid/file1	/valid/file2
+hive.added.files.path	/valid/file1	/valid/file2
+hive.added.jars.path	/valid/file1	/valid/file2
+hive.added.archives.path	/valid/file1	/valid/file2
+hive.resource.use.hdfs.location	SKIP	SKIP
+hive.current.database	SKIP	SKIP
+hive.auto.progress.timeout	1s	2s
+hive.script.auto.progress	SKIP	SKIP
+hive.script.operator.id.env.var	SKIP	SKIP
+hive.script.operator.truncate.env	SKIP	SKIP
+hive.script.operator.env.blacklist	SKIP	SKIP
+hive.legacy.schema.for.all.serdes	TRUE	SKIP
+hive.querylog.location	SKIP	SKIP
+hive.querylog.enable.plan.progress	SKIP	SKIP
+hive.querylog.plan.progress.interval	1ms	120000ms
+hive.script.serde	SKIP	SKIP
+hive.script.recordreader	SKIP	SKIP
+hive.script.recordwriter	SKIP	SKIP
+hive.transform.escape.input	SKIP	SKIP
+hive.binary.record.max.length	500	2000
+hive.mapred.local.mem	1	-1
+hive.mapjoin.smalltable.filesize	0.1	0.5
+hive.exec.schema.evolution	SKIP	SKIP
+orc.force.positional.evolution	SKIP	SKIP
+hive.transactional.table.scan	SKIP	SKIP
+hive.transactional.events.mem	5000000	20000000
+hive.txn.filter.delete.events	SKIP	SKIP
+hive.sample.seednumber	1	-1
+hive.test.mode	SKIP	SKIP
+hive.exim.test.mode	SKIP	SKIP
+hive.test.mode.prefix	SKIP	SKIP
+hive.test.mode.samplefreq	16	64
+hive.test.mode.nosamplelist	SKIP	SKIP
+hive.test.dummystats.aggregator	SKIP	SKIP
+hive.test.dummystats.publisher	SKIP	SKIP
+hive.test.currenttimestamp	SKIP	SKIP
+hive.test.rollbacktxn	SKIP	SKIP
+hive.test.fail.compaction	SKIP	SKIP
+hive.test.fail.load.dynamic.partition	SKIP	SKIP
+hive.test.fail.heartbeater	SKIP	SKIP
+hive.test.bucketcodec.version	0	2
+hive.extend.bucketid.range	SKIP	SKIP
+hive.test.acid.key.index.skip	SKIP	SKIP
+hive.merge.mapfiles	SKIP	SKIP
+hive.merge.mapredfiles	SKIP	SKIP
+hive.merge.tezfiles	SKIP	SKIP
+hive.merge.size.per.task	SKIP	SKIP
+hive.merge.smallfiles.avgsize	0.1	0.5
+hive.merge.rcfile.block.level	SKIP	SKIP
+hive.merge.orcfile.stripe.level	SKIP	SKIP
+hive.use.orc.codec.pool	SKIP	SKIP
+hive.exec.rcfile.use.explicit.header	SKIP	SKIP
+hive.exec.rcfile.use.sync.cache	SKIP	SKIP
+hive.io.rcfile.record.interval	SKIP	SKIP
+hive.io.rcfile.column.number.conf	1	-1
+hive.io.rcfile.tolerate.corruptions	SKIP	SKIP
+hive.io.rcfile.record.buffer.size	2097152	8388608
+parquet.memory.pool.ratio	0.25	1.0
+hive.parquet.timestamp.skip.conversion	SKIP	SKIP
+hive.parquet.date.proleptic.gregorian	SKIP	SKIP
+hive.parquet.date.proleptic.gregorian.default	SKIP	SKIP
+hive.parquet.timestamp.legacy.conversion.enabled	SKIP	SKIP
+hive.parquet.timestamp.write.legacy.conversion.enabled	SKIP	SKIP
+hive.parquet.infer.binary.as	SKIP	SKIP
+hive.avro.timestamp.skip.conversion	SKIP	SKIP
+hive.avro.proleptic.gregorian	SKIP	SKIP
+hive.avro.proleptic.gregorian.default	SKIP	SKIP
+hive.avro.timestamp.legacy.conversion.enabled	SKIP	SKIP
+hive.avro.timestamp.write.legacy.conversion.enabled	SKIP	SKIP
+hive.int.timestamp.conversion.in.seconds	SKIP	SKIP
+hive.parquet.write.int64.timestamp	SKIP	SKIP
+hive.parquet.timestamp.time.unit	SKIP	SKIP
+hive.exec.orc.base.delta.ratio	1	16
+hive.exec.orc.delta.streaming.optimizations.enabled	SKIP	SKIP
+hive.exec.orc.split.strategy	SKIP	SKIP
+hive.exec.orc.blob.storage.split.size	0.1	0.5
+hive.exec.orc.writer.llap.memory.manager.enabled	SKIP	SKIP
+hive.streaming.auto.flush.enabled	SKIP	SKIP
+hive.heap.memory.monitor.usage.threshold	0.35	1.4
+hive.streaming.auto.flush.check.interval.size	0.1	0.5
+hive.classloader.shade.prefix	SKIP	SKIP
+hive.orc.splits.ms.footer.cache.enabled	SKIP	SKIP
+hive.orc.splits.ms.footer.cache.ppd.enabled	SKIP	SKIP
+hive.orc.splits.include.file.footer	SKIP	SKIP
+hive.orc.splits.directory.batch.ms	1	-1
+hive.orc.splits.include.fileid	SKIP	SKIP
+hive.orc.splits.allow.synthetic.fileid	SKIP	SKIP
+hive.orc.cache.stripe.details.mem.size	0.1	0.5
+hive.orc.compute.splits.num.threads	1	20
+hive.orc.cache.use.soft.references	SKIP	SKIP
+hive.io.sarg.cache.max.weight.mb	1	20
+hive.lazysimple.extended_boolean_literal	SKIP	SKIP
+hive.optimize.skewjoin	SKIP	SKIP
+hive.optimize.dynamic.partition.hashjoin	SKIP	SKIP
+hive.auto.convert.join	SKIP	SKIP
+hive.auto.convert.join.noconditionaltask	SKIP	SKIP
+hive.auto.convert.anti.join	SKIP	SKIP
+hive.auto.convert.join.noconditionaltask.size	0.1	0.5
+hive.auto.convert.join.use.nonstaged	SKIP	SKIP
+hive.skewjoin.key	50000	200000
+hive.skewjoin.mapjoin.map.tasks	5000	20000
+hive.skewjoin.mapjoin.min.split	SKIP	SKIP
+hive.heartbeat.interval	500	2000
+hive.limit.row.max.size	0.1	0.5
+hive.limit.optimize.limit.file	1	20
+hive.limit.optimize.enable	SKIP	SKIP
+hive.limit.optimize.fetch.max	25000	100000
+hive.limit.pushdown.memory.usage	0.05	0.2
+hive.auto.convert.join.hashtable.max.entries	SKIP	SKIP
+hive.xprod.mapjoin.small.table.rows	0	2
+hive.auto.convert.join.shuffle.max.size	0.1	0.5
+hive.hashtable.key.count.adjustment	0.495	1.98
+hive.hashtable.initialCapacity	50000	200000
+hive.hashtable.loadfactor	SKIP	SKIP
+hive.mapjoin.followby.gby.localtask.max.memory.usage	SKIP	SKIP
+hive.mapjoin.localtask.max.memory.usage	SKIP	SKIP
+hive.mapjoin.check.memory.rows	SKIP	SKIP
+hive.input.format	SKIP	SKIP
+hive.tez.input.format	SKIP	SKIP
+hive.tez.container.size	0	-2
+hive.tez.cpu.vcores	0	-2
+hive.tez.java.opts	SKIP	SKIP
+hive.tez.log.level	SKIP	SKIP
+hive.tez.hs2.user.access	SKIP	SKIP
+hive.query.name	SKIP	SKIP
+tez.job.name	SKIP	SKIP
+hive.syslog.input.format.file.pruning	SKIP	SKIP
+hive.syslog.input.format.file.time.slice	1s	600s
+hive.optimize.bucketingsorting	SKIP	SKIP
+hive.mapred.partitioner	SKIP	SKIP
+hive.enforce.sortmergebucketmapjoin	SKIP	SKIP
+hive.enforce.bucketmapjoin	SKIP	SKIP
+hive.optimize.clustered.sort	SKIP	SKIP
+hive.constraint.notnull.enforce	SKIP	SKIP
+hive.auto.convert.sortmerge.join	SKIP	SKIP
+hive.auto.convert.sortmerge.join.reduce.side	SKIP	SKIP
+hive.auto.convert.sortmerge.join.bigtable.selection.policy	SKIP	SKIP
+hive.auto.convert.sortmerge.join.to.mapjoin	SKIP	SKIP
+hive.exec.script.trust	SKIP	SKIP
+hive.exec.rowoffset	SKIP	SKIP
+hive.optimize.index.filter	SKIP	SKIP
+hive.optimize.ppd	SKIP	SKIP
+hive.optimize.ppd.windowing	SKIP	SKIP
+hive.ppd.recognizetransivity	SKIP	SKIP
+hive.ppd.recognize.column.equalities	SKIP	SKIP
+hive.ppd.remove.duplicatefilters	SKIP	SKIP
+hive.optimize.join.disjunctive.transitive.predicates.pushdown	FALSE	SKIP
+hive.optimize.point.lookup	SKIP	SKIP
+hive.optimize.point.lookup.min	1	4
+hive.optimize.transform.in.maxnodes	8	32
+hive.optimize.countdistinct	SKIP	SKIP
+hive.optimize.partition.columns.separate	SKIP	SKIP
+hive.optimize.constant.propagation	SKIP	SKIP
+hive.optimize.remove.identity.project	SKIP	SKIP
+hive.optimize.metadataonly	SKIP	SKIP
+hive.optimize.null.scan	SKIP	SKIP
+hive.optimize.ppd.storage	SKIP	SKIP
+hive.optimize.groupby	SKIP	SKIP
+hive.optimize.bucketmapjoin	SKIP	SKIP
+hive.optimize.bucketmapjoin.sortedmerge	SKIP	SKIP
+hive.optimize.reducededuplication	SKIP	SKIP
+hive.optimize.reducededuplication.min.reducer	1	8
+hive.optimize.joinreducededuplication	SKIP	SKIP
+hive.optimize.sort.dynamic.partition.threshold	1	-1
+hive.optimize.sampling.orderby	SKIP	SKIP
+hive.optimize.sampling.orderby.number	500	2000
+hive.optimize.sampling.orderby.percent	0.05	0.2
+hive.remove.orderby.in.subquery	SKIP	SKIP
+hive.optimize.distinct.rewrite	SKIP	SKIP
+hive.optimize.union.remove	SKIP	SKIP
+hive.optimize.correlation	SKIP	SKIP
+hive.optimize.limittranspose	SKIP	SKIP
+hive.optimize.limittranspose.reductionpercentage	0.5	2.0
+hive.optimize.limittranspose.reductiontuples	SKIP	SKIP
+hive.optimize.constraints.join	SKIP	SKIP
+hive.optimize.filter.preds.sort	SKIP	SKIP
+hive.optimize.filter.stats.reduction	SKIP	SKIP
+hive.optimize.skewjoin.compiletime	SKIP	SKIP
+hive.optimize.limit	0.1	0.5
+hive.optimize.topnkey	SKIP	SKIP
+hive.optimize.topnkey.max	64	256
+hive.optimize.topnkey.efficiency.threshold	0.4	1.6
+hive.optimize.topnkey.efficiency.check.nbatches	5000	20000
+hive.optimize.topnkey.partitions.max	32	128
+hive.optimize.shared.work	SKIP	SKIP
+hive.optimize.shared.work.extended	SKIP	SKIP
+hive.optimize.shared.work.semijoin	SKIP	SKIP
+hive.optimize.shared.work.merge.ts.schema	SKIP	SKIP
+hive.optimize.shared.work.mapjoin.cache.reuse	SKIP	SKIP
+hive.optimize.shared.work.dppunion	SKIP	SKIP
+hive.optimize.shared.work.dppunion.merge.eventops	SKIP	SKIP
+hive.optimize.shared.work.downstream.merge	SKIP	SKIP
+hive.optimize.shared.work.parallel.edge.support	SKIP	SKIP
+hive.optimize.remove.sq_count_check	SKIP	SKIP
+hive.optimize.update.table.properties.from.serde	SKIP	SKIP
+hive.optimize.update.table.properties.from.serde.list	SKIP	SKIP
+hive.optimize.scan.probedecode	SKIP	SKIP
+hive.optimize.metadata.query.cache.enabled	SKIP	SKIP
+hive.optimize.view.tables.cache.enabled	SKIP	SKIP
+hive.optimize.cte.materialize.threshold	1	6
+hive.optimize.cte.materialize.full.aggregate.only	SKIP	SKIP
+hive.optimize.bi.enabled	SKIP	SKIP
+hive.optimize.bi.rewrite.countdistinct.enabled	FALSE	SKIP
+hive.optimize.bi.rewrite.countdistinct.sketch	SKIP	SKIP
+hive.optimize.bi.rewrite.percentile_disc.enabled	FALSE	SKIP
+hive.optimize.bi.rewrite.percentile_disc.sketch	SKIP	SKIP
+hive.optimize.bi.rewrite.cume_dist.enabled	FALSE	SKIP
+hive.optimize.bi.rewrite.cume_dist.sketch	SKIP	SKIP
+hive.optimize.bi.rewrite.ntile.enabled	FALSE	SKIP
+hive.optimize.bi.rewrite.ntile.sketch	SKIP	SKIP
+hive.optimize.bi.rewrite.rank.enabled	FALSE	SKIP
+hive.optimize.bi.rewrite.rank.sketch	SKIP	SKIP
+hive.stats.estimate	SKIP	SKIP
+hive.stats.ndv.estimate.percent	SKIP	SKIP
+hive.stats.join.ndv.readjustment	SKIP	SKIP
+hive.stats.num.nulls.estimate.percent	SKIP	SKIP
+hive.stats.autogather	SKIP	SKIP
+hive.stats.column.autogather	SKIP	SKIP
+hive.stats.dbclass	SKIP	SKIP
+hive.stats.default.publisher	SKIP	SKIP
+hive.stats.default.aggregator	SKIP	SKIP
+hive.client.stats.counters	SKIP	SKIP
+hive.stats.reliable	SKIP	SKIP
+hive.analyze.stmt.collect.partlevel.stats	SKIP	SKIP
+hive.stats.gather.num.threads	1	20
+hive.stats.collect.tablekeys	SKIP	SKIP
+hive.stats.collect.scancols	SKIP	SKIP
+hive.stats.ndv.algo	SKIP	SKIP
+hive.stats.fetch.bitvector	SKIP	SKIP
+hive.stats.ndv.error	SKIP	SKIP
+hive.stats.estimators.enable	SKIP	SKIP
+hive.metastore.stats.ndv.tuner	SKIP	SKIP
+hive.metastore.stats.ndv.densityfunction	SKIP	SKIP
+hive.stats.key.prefix	SKIP	SKIP
+hive.stats.max.variable.length	50	200
+hive.stats.list.num.entries	1	20
+hive.stats.map.num.entries	1	20
+hive.stats.fetch.column.stats	SKIP	SKIP
+hive.stats.join.factor	SKIP	SKIP
+hive.stats.correlated.multi.key.joins	SKIP	SKIP
+hive.stats.filter.range.uniform	SKIP	SKIP
+hive.stats.deserialization.factor	SKIP	SKIP
+hive.stats.filter.in.factor	SKIP	SKIP
+hive.stats.filter.in.min.ratio	1.0	-1.0
+hive.stats.udtf.factor	SKIP	SKIP
+hive.stats.use.bitvectors	SKIP	SKIP
+hive.stats.max.num.stats	SKIP	SKIP
+hive.thrift.client.max.message.size	0.1	0.5
+hive.support.concurrency	SKIP	SKIP
+hive.lock.manager	SKIP	SKIP
+hive.lock.numretries	50	200
+hive.unlock.numretries	1	20
+hive.lock.sleep.between.retries	1s	120s
+hive.lock.mapred.only.operation	SKIP	SKIP
+hive.lock.query.string.max.length	500000	2000000
+hive.mm.allow.originals	SKIP	SKIP
+hive.lock.file.move.protect	SKIP	SKIP
+hive.zookeeper.kerberos.enabled	SKIP	SKIP
+hive.zookeeper.quorum	SKIP	SKIP
+hive.zookeeper.client.port	3000	3001
+hive.zookeeper.session.timeout	1ms	240000ms
+hive.zookeeper.connection.timeout	1s	30s
+hive.zookeeper.namespace	SKIP	SKIP
+hive.zookeeper.clean.extra.nodes	SKIP	SKIP
+hive.zookeeper.connection.max.retries	1	6
+hive.zookeeper.connection.basesleeptime	1ms	2000ms
+hive.zookeeper.ssl.client.enable	SKIP	SKIP
+hive.zookeeper.ssl.keystore.location	SKIP	SKIP
+hive.zookeeper.ssl.keystore.password	SKIP	SKIP
+hive.zookeeper.ssl.truststore.location	SKIP	SKIP
+hive.zookeeper.ssl.truststore.password	SKIP	SKIP
+hive.zookeeper.killquery.enable	SKIP	SKIP
+hive.zookeeper.killquery.namespace	SKIP	SKIP
+hive.txn.manager	SKIP	SKIP
+hive.txn.ext.locking.enabled	SKIP	SKIP
+hive.txn.strict.locking.mode	SKIP	SKIP
+hive.txn.nonacid.read.locks	SKIP	SKIP
+hive.txn.read.locks	SKIP	SKIP
+hive.locks.max.partitions	0	-2
+hive.txn.xlock.iow	SKIP	SKIP
+hive.txn.xlock.mergeinsert	SKIP	SKIP
+hive.txn.xlock.write	SKIP	SKIP
+hive.txn.stats.enabled	SKIP	SKIP
+hive.txn.acid.dir.cache.duration	60	240
+hive.txn.write.acid.version.file	/valid/file1	/valid/file2
+hive.txn.readonly.enabled	SKIP	SKIP
+hive.acid.lockless.reads.enabled	SKIP	SKIP
+hive.acid.createtable.softdelete	SKIP	SKIP
+hive.acid.truncate.usebase	SKIP	SKIP
+hive.acid.droppartition.usebase	SKIP	SKIP
+hive.acid.renamepartition.makecopy	SKIP	SKIP
+hive.txn.acid.metrics.max.cache.size	50	200
+hive.txn.acid.metrics.reporting.interval	1s	60s
+hive.txn.acid.metrics.delta.num.threshold	50	200
+hive.txn.acid.metrics.obsolete.delta.num.threshold	50	200
+hive.txn.acid.metrics.delta.pct.threshold	0.005	0.02
+hive.txn.timeout	1s	600s
+hive.txn.heartbeat.threadpool.size	1	10
+hive.txn.manager.dump.lock.state.on.acquire.timeout	SKIP	SKIP
+hive.txn.operational.properties	0	2
+hive.max.open.txns	50000	200000
+hive.count.open.txns.interval	10s	2s
+hive.txn.max.open.batch	500	2000
+hive.txn.retryable.sqlex.regex	SKIP	SKIP
+hive.compactor.initiator.on	SKIP	SKIP
+hive.compactor.worker.threads	1	-1
+hive.compactor.worker.timeout	1s	172800s
+hive.compactor.check.interval	1s	600s
+hive.compactor.initiator.duration.update.interval	1s	120s
+hive.compactor.cleaner.duration.update.interval	1s	120s
+hive.compactor.request.queue	0	2
+hive.compactor.delta.num.threshold	1	20
+hive.compactor.delta.pct.threshold	0.05	0.2
+hive.compactor.max.num.delta	250	1000
+hive.compactor.abortedtxn.threshold	500	2000
+hive.compactor.aborted.txn.time.threshold	1h	24h
+hive.compactor.active.delta.dir.threshold	100	400
+hive.compactor.obsolete.delta.dir.threshold	100	400
+hive.compactor.small.delta.dir.threshold	100	400
+hive.compactor.acid.metrics.logger.frequency	1m	720m
+hive.compactor.wait.timeout	SKIP	SKIP
+hive.mr.compactor.gather.stats	SKIP	SKIP
+hive.compactor.gather.stats	SKIP	SKIP
+hive.compactor.initiator.failed.compacts.threshold	1	4
+hive.compactor.cleaner.run.interval	1ms	10000ms
+hive.compactor.delayed.cleanup.enabled	SKIP	SKIP
+hive.compactor.cleaner.retention.time.seconds	1s	600s
+hive.compactor.cleaner.threads.num	0	2
+hive.compactor.job.queue	SKIP	SKIP
+hive.transactional.concatenate.noblock	SKIP	SKIP
+hive.concatenate.external.table	SKIP	SKIP
+hive.compactor.compact.insert.only	SKIP	SKIP
+hive.compactor.crud.query.based	SKIP	SKIP
+hive.split.grouping.mode	SKIP	SKIP
+hive.compactor.history.retention.succeeded	1	6
+hive.compactor.history.retention.failed	1	6
+hive.compactor.history.retention.attempted	1	4
+hive.compactor.history.reaper.interval	1m	4m
+hive.timedout.txn.reaper.interval	1s	360s
+hive.writeset.reaper.interval	1s	120s
+hive.merge.cardinality.check	SKIP	SKIP
+hive.split.update	SKIP	SKIP
+hive.merge.split.update	SKIP	SKIP
+hive.optimize.acid.meta.columns	SKIP	SKIP
+hive.arrow.root.allocator.limit	0.1	0.5
+hive.arrow.batch.allocator.limit	0.1	0.5
+hive.arrow.batch.size	500	2000
+hive.druid.indexer.segments.granularity	SKIP	SKIP
+hive.druid.indexer.partition.size.max	2500000	10000000
+hive.druid.indexer.memory.rownum.max	37500	150000
+hive.druid.broker.address.default	SKIP	SKIP
+hive.druid.coordinator.address.default	SKIP	SKIP
+hive.druid.overlord.address.default	SKIP	SKIP
+hive.druid.select.threshold	5000	20000
+hive.druid.http.numConnection	10	40
+hive.druid.http.read.timeout	SKIP	SKIP
+hive.druid.sleep.time	SKIP	SKIP
+hive.druid.basePersistDirectory	SKIP	SKIP
+hive.druid.rollup	SKIP	SKIP
+hive.druid.storage.storageDirectory	SKIP	SKIP
+hive.druid.metadata.base	SKIP	SKIP
+hive.druid.metadata.db.type	SKIP	SKIP
+hive.druid.metadata.username	SKIP	SKIP
+hive.druid.metadata.password	SKIP	SKIP
+hive.druid.metadata.uri	SKIP	SKIP
+hive.druid.working.directory	SKIP	SKIP
+hive.druid.maxTries	1	10
+hive.druid.passiveWaitTimeMs	SKIP	SKIP
+hive.druid.bitmap.type	SKIP	SKIP
+hive.druid.kerberos.enable	SKIP	SKIP
+hive.hbase.wal.enabled	SKIP	SKIP
+hive.hbase.generatehfiles	SKIP	SKIP
+hive.hbase.snapshot.name	SKIP	SKIP
+hive.hbase.snapshot.restoredir	SKIP	SKIP
+hive.security.hbase.urlencode.authorization.uri	SKIP	SKIP
+hive.kudu.master.addresses.default	SKIP	SKIP
+hive.archive.enabled	SKIP	SKIP
+hive.fetch.task.conversion	SKIP	SKIP
+hive.fetch.task.caching	SKIP	SKIP
+hive.fetch.task.conversion.threshold	SKIP	SKIP
+hive.fetch.task.aggr	SKIP	SKIP
+hive.compute.query.using.stats	SKIP	SKIP
+hive.fetch.output.serde	SKIP	SKIP
+hive.cache.expr.evaluation	SKIP	SKIP
+hive.variable.substitute	SKIP	SKIP
+hive.variable.substitute.depth	20	80
+hive.conf.validation	SKIP	SKIP
+hive.semantic.analyzer.hook	SKIP	SKIP
+hive.test.authz.sstd.hs2.mode	SKIP	SKIP
+hive.security.authorization.enabled	SKIP	SKIP
+hive.security.authorization.kerberos.use.shortname	SKIP	SKIP
+hive.security.authorization.manager	SKIP	SKIP
+hive.security.authenticator.manager	SKIP	SKIP
+hive.security.metastore.authorization.manager	SKIP	SKIP
+hive.security.metastore.authorization.auth.reads	SKIP	SKIP
+hive.security.metastore.authenticator.manager	SKIP	SKIP
+hive.security.authorization.createtable.user.grants	SKIP	SKIP
+hive.security.authorization.createtable.group.grants	SKIP	SKIP
+hive.security.authorization.createtable.role.grants	SKIP	SKIP
+hive.security.authorization.createtable.owner.grants	SKIP	SKIP
+hive.security.authorization.task.factory	SKIP	SKIP
+hive.security.authorization.tables.on.storagehandlers	SKIP	SKIP
+hive.security.authorization.sqlstd.confwhitelist	SKIP	SKIP
+hive.security.authorization.sqlstd.confwhitelist.append	SKIP	SKIP
+hive.cli.print.header	SKIP	SKIP
+hive.cli.print.escape.crlf	SKIP	SKIP
+hive.cli.tez.session.async	SKIP	SKIP
+hive.disable.unsafe.external.table.operations	SKIP	SKIP
+hive.strict.managed.tables	SKIP	SKIP
+hive.external.table.purge.default	SKIP	SKIP
+hive.error.on.empty.partition	SKIP	SKIP
+hive.exim.uri.scheme.whitelist	SKIP	SKIP
+hive.exim.strict.repl.tables	FALSE	SKIP
+hive.repl.task.factory	SKIP	SKIP
+hive.repl.filter.transactions	SKIP	SKIP
+hive.mapper.cannot.span.multiple.partitions	SKIP	SKIP
+hive.rework.mapredwork	SKIP	SKIP
+hive.io.exception.handlers	SKIP	SKIP
+hive.log4j.file	/valid/file1	/valid/file2
+hive.exec.log4j.file	/valid/file1	/valid/file2
+hive.async.log.enabled	SKIP	SKIP
+hive.log.explain.output	SKIP	SKIP
+hive.log.explain.output.to.console	SKIP	SKIP
+hive.log.explain.output.include.extended	SKIP	SKIP
+hive.explain.user	xdsuper	samsuper
+hive.autogen.columnalias.prefix.label	SKIP	SKIP
+hive.autogen.columnalias.prefix.includefuncname	SKIP	SKIP
+hive.service.metrics.class	SKIP	SKIP
+hive.service.metrics.codahale.reporter.classes	SKIP	SKIP
+hive.privilege.synchronizer	SKIP	SKIP
+hive.privilege.synchronizer.interval	1s	3600s
+hive.server2.clear.dangling.scratchdir	SKIP	SKIP
+hive.server2.clear.dangling.scratchdir.interval	1s	3600s
+hive.server2.sleep.interval.between.start.attempts	1s	120s
+hive.server2.max.start.attempts	SKIP	SKIP
+hive.server2.support.dynamic.service.discovery	SKIP	SKIP
+hive.server2.zookeeper.namespace	SKIP	SKIP
+hive.server2.zookeeper.publish.configs	SKIP	SKIP
+hive.server2.proxy.trustheader	SKIP	SKIP
+hive.server2.global.init.file.location	SKIP	SKIP
+hive.server2.transport.mode	SKIP	SKIP
+	SKIP	SKIP
+	SKIP	SKIP
+hive.server2.thrift.bind.host	SKIP	SKIP
+hive.driver.parallel.compilation	SKIP	SKIP
+hive.driver.parallel.compilation.global.limit	0	-2
+hive.server2.compile.lock.timeout	1s	2s
+hive.server2.parallel.ops.in.session	SKIP	SKIP
+hive.server2.materializedviews.registry.impl	SKIP	SKIP
+hive.server2.materializedviews.registry.refresh.period	1s	3000s
+hive.server2.webui.host	127.0.0.1	SKIP
+hive.server2.webui.port	3000	3001
+hive.server2.webui.max.threads	25	100
+hive.server2.webui.use.ssl	SKIP	SKIP
+hive.server2.webui.keystore.path	/valid/file1	/valid/file2
+hive.server2.webui.keystore.password	SKIP	SKIP
+hive.server2.webui.keystore.type	SKIP	SKIP
+hive.server2.webui.exclude.ciphersuites	SKIP	SKIP
+hive.server2.webui.keymanagerfactory.algorithm	SKIP	SKIP
+hive.server2.webui.use.spnego	SKIP	SKIP
+hive.server2.webui.spnego.keytab	/valid/file1	/valid/file2
+hive.server2.webui.spnego.principal	SKIP	SKIP
+hive.server2.webui.max.historic.queries	12	50
+hive.server2.webui.use.pam	SKIP	SKIP
+hive.server2.webui.explain.output	SKIP	SKIP
+hive.server2.webui.show.graph	SKIP	SKIP
+hive.server2.webui.max.graph.size	12	50
+hive.server2.webui.show.stats	SKIP	SKIP
+hive.server2.webui.enable.cors	SKIP	SKIP
+hive.server2.webui.cors.allowed.origins	SKIP	SKIP
+hive.server2.webui.cors.allowed.methods	SKIP	SKIP
+hive.server2.webui.cors.allowed.headers	SKIP	SKIP
+hive.server2.job.credential.provider.path	/valid/file1	/valid/file2
+hive.server2.graceful.stop.timeout	1s	3600s
+hive.mv.files.thread	7	30
+hive.load.dynamic.partitions.thread	7	30
+hive.load.dynamic.partitions.scan.specific.partitions	SKIP	SKIP
+hive.multi.insert.move.tasks.share.dependencies	SKIP	SKIP
+hive.hdfs.encryption.shim.cache.on	SKIP	SKIP
+hive.exec.infer.bucket.sort	SKIP	SKIP
+hive.exec.infer.bucket.sort.num.buckets.power.two	SKIP	SKIP
+hive.optimize.listbucketing	SKIP	SKIP
+hive.server.read.socket.timeout	1s	20s
+hive.server.tcp.keepalive	SKIP	SKIP
+hive.decode.partition.name	SKIP	SKIP
+hive.execution.engine	SKIP	SKIP
+hive.execution.mode	SKIP	SKIP
+hive.jar.directory	SKIP	SKIP
+hive.user.install.directory	SKIP	SKIP
+hive.masking.algo	SKIP	SKIP
+hive.vectorized.execution.enabled	SKIP	SKIP
+hive.vectorized.execution.reduce.enabled	SKIP	SKIP
+hive.vectorized.execution.reduce.groupby.enabled	SKIP	SKIP
+hive.vectorized.execution.mapjoin.native.enabled	SKIP	SKIP
+hive.vectorized.execution.mapjoin.native.multikey.only.enabled	SKIP	SKIP
+hive.vectorized.execution.mapjoin.minmax.enabled	SKIP	SKIP
+hive.vectorized.execution.mapjoin.overflow.repeated.threshold	0	-2
+hive.vectorized.execution.mapjoin.native.fast.hashtable.enabled	SKIP	SKIP
+hive.vectorized.groupby.checkinterval	50000	200000
+hive.vectorized.groupby.maxentries	500000	2000000
+hive.vectorized.groupby.flush.percent	SKIP	SKIP
+hive.vectorized.execution.reducesink.new.enabled	SKIP	SKIP
+hive.vectorized.use.vectorized.input.format	SKIP	SKIP
+hive.vectorized.input.format.excludes	SKIP	SKIP
+hive.vectorized.use.vector.serde.deserialize	SKIP	SKIP
+hive.vectorized.use.row.serde.deserialize	SKIP	SKIP
+hive.vectorized.row.serde.inputformat.excludes	org.apache.parquet.hadoop.ParquetInputFormat
+hive.vectorized.adaptor.usage.mode	 all
+hive.test.vectorized.adaptor.override	 false
+hive.vectorized.execution.ptf.enabled	 true
+hive.vectorized.ptf.max.memory.buffering.batch.count	 25
+hive.vectorized.testing.reducer.batch.size	 -1
+hive.vectorized.reuse.scratch.columns	 true
+hive.vectorized.complex.types.enabled	 true
+hive.vectorized.groupby.complex.types.enabled	 true
+hive.vectorized.row.identifier.enabled	 true
+hive.vectorized.use.checked.expressions	 false
+hive.vectorized.adaptor.suppress.evaluate.exceptions	 false
+hive.vectorized.input.format.supports.enabled	decimal_64
+hive.vectorized.if.expr.mode	 better
+hive.test.vectorized.execution.enabled.override	none
+hive.test.vectorization.suppress.explain.execution.mode	 false
+hive.test.vectorizer.suppress.fatal.exceptions	 true
+hive.vectorized.execution.filesink.arrow.native.enabled	 false
+hive.typecheck.on.insert	 true
+hive.hadoop.classpath	 null
+hive.rpc.query.plan	 false
+hive.plan.mapwork.serialization.skip.properties	 
+hive.compute.splits.in.am	 true
+hive.splits.available.slots.calculator.class.name	org.apache.hadoop.hive.ql.exec.tez.TezAvailableSlotsCalculator
+hive.tez.input.generate.consistent.splits	 true
+hive.prewarm.enabled	 false
+hive.prewarm.numcontainers	 10
+hive.stageid.rearrange	 none
+hive.explain.dependency.append.tasktype	 false
+hive.use.googleregex.engine	false
+hive.counters.group.name	 HIVE
+hive.support.quoted.identifiers	 column
+hive.support.special.characters.tablename	 true
+hive.create.as.external.legacy	 false
+hive.create.as.acid	 false
+hive.create.as.insert.only	 false
+hive.acid.direct.insert.enabled	 true
+hive.txn.xlock.ctas	 true
+hive.users.in.admin.role	 
+hive.compat	 HiveCompat.DEFAULT_COMPAT_LEVEL
+hive.convert.join.bucket.mapjoin.tez	 true
+hive.tez.bmj.use.subcache	 true
+hive.exec.check.crossproducts	 true
+hive.localize.resource.wait.interval	 5000ms
+hive.localize.resource.num.wait.attempts	 5
+hive.tez.auto.reducer.parallelism	 false
+hive.tez.llap.min.reducer.per.executor	 0.33f
+hive.tez.mapreduce.output.committer.class	org.apache.tez.mapreduce.committer.MROutputCommitter
+hive.tez.max.partition.factor	 2f
+hive.tez.min.partition.factor	 0.25f
+hive.tez.bucket.pruning	 true
+hive.tez.bucket.pruning.compat	 true
+hive.tez.dynamic.partition.pruning	 true
+hive.tez.dynamic.partition.pruning.extended	 true
+hive.tez.dynamic.partition.pruning.max.event.size	 1*1024*1024L
+hive.tez.dynamic.partition.pruning.max.data.size	 100*1024*1024L
+hive.tez.dynamic.semijoin.reduction	 true
+hive.tez.min.bloom.filter.entries	 1000000L
+hive.tez.max.bloom.filter.entries	 100000000L
+hive.tez.bloom.filter.factor	 (float) 1.0
+hive.tez.bloom.filter.merge.threads	 1
+hive.tez.bigtable.minsize.semijoin.reduction	 100000000L
+hive.tez.dynamic.semijoin.reduction.threshold	 (float) 0.50
+hive.tez.dynamic.semijoin.reduction.multicolumn	true
+hive.tez.dynamic.semijoin.reduction.for.mapjoin	 false
+hive.tez.dynamic.semijoin.reduction.for.dpp.factor	(float) 1.0
+hive.tez.smb.number.waves	(float) 0.5
+hive.tez.exec.print.summary	false
+hive.tez.session.events.print.summary	none
+hive.tez.exec.inplace.progress	true
+hive.server2.in.place.progress	true
+hive.tez.dag.status.check.interval	 500ms
+hive.tez.container.max.java.heap.fraction	 0.8f
+hive.tez.task.scale.memory.reserve-fraction.min	0.3f
+hive.tez.task.scale.memory.reserve.fraction.max	0.5f
+hive.tez.task.scale.memory.reserve.fraction	-1f
+hive.tez.cartesian-product.enabled	false
+hive.tez.unordered.output.buffer.size.mb	 -1
+hive.llap.io.enabled	 null
+hive.llap.io.cache.only	 false
+hive.llap.io.row.wrapper.enabled	 true
+hive.llap.io.acid	 true
+hive.llap.io.trace.size	 2Mb
+hive.llap.io.trace.always.dump	 false
+hive.llap.io.nonvector.wrapper.enabled	 true
+hive.llap.io.memory.mode	 cache
+hive.llap.io.allocator.alloc.min	 4Kb
+hive.llap.io.allocator.alloc.max	 16Mb
+hive.llap.io.allocator.arena.count	 8
+hive.llap.io.memory.size	 1Gb
+hive.llap.io.allocator.direct	 true
+hive.llap.io.allocator.preallocate	 true
+hive.llap.io.allocator.mmap	 false
+hive.llap.io.allocator.mmap.path	 /tmp
+hive.llap.io.allocator.discard.method	 both
+hive.llap.io.allocator.defrag.headroom	 1Mb
+hive.llap.io.allocator.max.force.eviction	 16Mb
+hive.llap.io.track.cache.usage	 true
+hive.llap.io.use.lrfu	 true
+hive.llap.io.lrfu.lambda	 0.1f
+hive.llap.io.lrfu.hotbuffers.percentage	 0.10f
+hive.llap.io.lrfu.bp.wrapper.size	 64
+hive.llap.cache.allow.synthetic.fileid	 true
+hive.llap.cache.defaultfs.only.native.fileid	 true
+hive.llap.orc.gap.cache	 true
+hive.llap.cache.hydration.strategy.class	 
+hive.llap.cache.hydration.save.dir	 /tmp/hive
+hive.llap.io.use.fileid.path	 true
+hive.llap.io.encode.enabled	 true
+hive.llap.io.encode.formats	org.apache.hadoop.mapred.TextInputFormat	
+hive.llap.io.encode.alloc.size	 256Kb
+hive.llap.io.encode.vector.serde.enabled	 true
+hive.llap.io.encode.vector.serde.async.enabled	true
+hive.llap.io.encode.slice.row.count	 100000
+hive.llap.io.encode.slice.lrr	 true
+hive.llap.io.orc.time.counters	 true
+hive.llap.io.vrb.queue.limit.max	 50000
+hive.llap.io.vrb.queue.limit.min	 1
+hive.llap.io.cvb.memory.consumption.	 1L << 30
+hive.llap.io.proactive.eviction.enabled	 true
+hive.llap.io.proactive.eviction.sweep.interval	 5s
+hive.llap.io.proactive.eviction.instant.dealloc	 false
+hive.llap.io.cache.deletedeltas	 all
+hive.llap.io.path.cache.size	 10Mb
+hive.llap.io.share.object.pools	 false
+hive.llap.auto.allow.uber	 false
+hive.llap.auto.enforce.tree	 true
+hive.llap.auto.enforce.vectorized	 true
+hive.llap.auto.enforce.stats	 true
+hive.llap.auto.max.input.size	 10*1024*1024*1024L
+hive.llap.auto.max.output.size	 1*1024*1024*1024L
+hive.llap.skip.compile.udf.check	 false
+hive.llap.allow.permanent.fns	 true
+hive.llap.execution.mode	 none
+hive.llap.io.etl.skip.format	 encode
+hive.llap.object.cache.enabled	 true
+hive.llap.io.decoding.metrics.percentiles.intervals	 30
+hive.llap.io.threadpool.size	 10
+hive.llap.io.encode.threadpool.multiplier	 2
+hive.llap.kerberos.enabled	 true
+IVE_LLAP_DAEMON_SERVICE_PRINCIPAL_NAM	 
+hive.llap.daemon.keytab.file	 
+hive.llap.webui.spnego.keytab	 
+hive.llap.webui.spnego.principal	 
+hive.llap.task.principal	 
+hive.llap.task.keytab.file	 
+hive.llap.zk.sm.connectionString	 
+hive.llap.zk.sm.session.timeout	 40s
+hive.llap.zk.registry.user	 
+hive.llap.zk.registry.namespace	 null
+hive.llap.daemon.acl	 *
+hive.llap.daemon.acl.blocked	 
+hive.llap.management.acl	 *
+hive.llap.management.acl.blocked	 
+hive.llap.plugin.acl	 *
+hive.llap.plugin.acl.blocked	 
+hive.llap.remote.token.requires.signing	 true
+hive.llap.daemon.delegation.token.lifetime	 14d
+hive.llap.management.rpc.port	 15004
+hive.llap.auto.auth	 false
+hive.llap.daemon.rpc.num.handlers	 5
+hive.llap.plugin.rpc.port	 0
+hive.llap.plugin.rpc.num.handlers	 1
+hive.llap.hdfs.package.dir	 .yarn
+hive.llap.daemon.work.dirs	 
+hive.llap.daemon.yarn.shuffle.port	 15551
+hive.llap.daemon.yarn.container.mb	 -1
+hive.llap.daemon.queue.name	 null
+hive.llap.daemon.container.id	 null
+hive.llap.daemon.nm.address	 null
+hive.llap.daemon.shuffle.dir.watcher.enabled	 false
+hive.llap.daemon.am.liveness.heartbeat.interval.ms	 10000ms
+hive.llap.am.liveness.connection.timeout.ms	 10000ms
+hive.llap.am.use.fqdn	 true
+hive.llap.exec.use.fqdn	 true
+hive.llap.am.liveness.connection.sleep.between.retries.ms	 2000ms
+hive.llap.task.scheduler.timeout.seconds	 60s
+hive.llap.daemon.num.executors	 4
+hive.llap.mapjoin.memory.oversubscribe.factor	 0.2f
+hive.llap.memory.oversubscription.max.executors.per.query	-1
+hive.llap.mapjoin.memory.monitor.check.interval	 100000L
+hive.llap.daemon.am-reporter.max.threads	 4
+hive.llap.daemon.rpc.port	 0
+hive.llap.daemon.memory.per.instance.mb	 4096
+hive.llap.daemon.xmx.headroom	 5%
+hive.llap.daemon.vcpus.per.instance	 4
+hive.llap.daemon.num.file.cleaner.threads	 1
+hive.llap.file.cleanup.delay.seconds	 0s
+hive.llap.daemon.service.hosts	 null
+hive.llap.daemon.service.refresh.interval.sec	 60s
+hive.llap.daemon.communicator.num.threads	 10
+hive.llap.plugin.client.num.threads	 10
+hive.llap.daemon.download.permanent.fns	 false
+hive.llap.task.scheduler.am.collect.daemon.metrics.ms	 0ms
+hive.llap.task.scheduler.am.collect.daemon.metrics.listener	 
+hive.llap.nodehealthchecks.mintasks	 2000
+hive.llap.nodehealthchecks.minintervalduration	 300s
+hive.llap.nodehealthchecks.tasktimeratio	 1.5f
+hive.llap.nodehealthchecks.executorratio	 2.0f
+hive.llap.nodehealthchecks.maxnodes	 1
+hive.llap.task.scheduler.am.registry	 llap
+hive.llap.task.scheduler.am.registry.principal	 
+hive.llap.task.scheduler.am.registry.keytab.file	 
+hive.llap.task.scheduler.node.reenable.min.timeout.ms	 200ms
+hive.llap.task.scheduler.node.reenable.max.timeout.ms	 10000ms
+hive.llap.task.scheduler.node.disable.backoff.factor	 1.5f
+hive.llap.task.scheduler.preempt.independent	 false
+hive.llap.task.scheduler.num.schedulable.tasks.per.node	 0
+hive.llap.task.scheduler.locality.delay	 0ms
+hive.llap.daemon.task.preemption.metrics.intervals	 30
+hive.llap.daemon.task.scheduler.wait.queue.size	1	20
+hive.llap.daemon.wait.queue.comparator.class.name	SKIP	SKIP
+hive.llap.daemon.task.scheduler.enable.preemption	SKIP	SKIP
+hive.llap.daemon.metrics.timed.window.average.data.points	1	-1
+hive.llap.daemon.metrics.timed.window.average.window.length	10m	2m
+hive.llap.daemon.metrics.simple.average.data.points	1	-1
+hive.llap.task.communicator.connection.timeout.ms	1ms	32000ms
+hive.llap.task.communicator.listener.thread-count	15	60
+hive.llap.max.concurrent.requests.per.daemon	6	24
+hive.llap.task.communicator.connection.sleep.between.retries.ms	1ms	4000ms
+hive.llap.daemon.umbilical.port	3000	3001
+hive.llap.daemon.web.port	3000	3001
+hive.llap.daemon.web.ssl	SKIP	SKIP
+hive.llap.daemon.web.xframe.enabled	SKIP	SKIP
+hive.llap.daemon.web.xframe.value	SKIP	SKIP
+hive.llap.client.consistent.splits	SKIP	SKIP
+hive.llap.split.location.provider.class	SKIP	SKIP
+hive.llap.validate.acls	SKIP	SKIP
+hive.llap.daemon.output.service.port	3000	3001
+hive.llap.daemon.output.stream.timeout	1s	240s
+hive.llap.daemon.output.service.send.buffer.size	0.1	0.5
+hive.llap.daemon.output.service.max.pending.writes	1	16
+hive.llap.external.splits.temp.table.storage.format	SKIP	SKIP
+hive.llap.external.client.use.hybrid.calendar	TRUE	SKIP
+hive.llap.external.client.cloud.deployment.setup.enabled	SKIP	SKIP
+hive.llap.external.client.cloud.rpc.port	3000	3001
+hive.llap.external.client.cloud.output.service.port	3000	3001
+hive.llap.external.client.cloud.jwt.shared.secret.provider	SKIP	SKIP
+hive.llap.external.client.cloud.jwt.shared.secret	SKIP	SKIP
+hive.llap.enable.grace.join.in.llap	SKIP	SKIP
+hive.llap.hs2.coordinator.enabled	SKIP	SKIP
+hive.llap.daemon.logger	SKIP	SKIP
+hive.llap.output.format.arrow	SKIP	SKIP
+hive.llap.lockmetrics.collect	SKIP	SKIP
+hive.llap.task.time.print.summary	SKIP	SKIP
+hive.trigger.validation.interval	1ms	1000ms
+hive.reorder.nway.joins	SKIP	SKIP
+hive.merge.nway.joins	SKIP	SKIP
+hive.log.every.n.records	SKIP	SKIP
+hive.msck.path.validation	SKIP	SKIP
+hive.msck.repair.batch.size	1500	6000
+hive.msck.repair.batch.max.retries	1	8
+hive.server2.llap.concurrent.queries	0	-2
+hive.tez.enable.memory.manager	SKIP	SKIP
+hive.hash.table.inflation.factor	SKIP	SKIP
+hive.log.trace.id	SKIP	SKIP
+hive.mm.avoid.s3.globstatus	SKIP	SKIP
+hive.conf.restricted.list	hive.security.authenticator.manager
+hive.conf.hidden.list	METASTOREPWD.varname + 	" + HIVE_SERVER2_SSL_KEYSTORE_PASSWORD.varname
++ "," + HIVE_SERVER2_WEBUI_SSL_KEYSTORE_PASSWORD.varname	SKIP	SKIP
+        + "," + DRUID_METADATA_DB_PASSWORD.varname	SKIP	SKIP
+// Adding the S3 credentials from Hadoop config to be hidden	SKIP	SKIP
++ ",fs.s3.awsAccessKeyId"	SKIP	SKIP
++ ",fs.s3.awsSecretAccessKey"	SKIP	SKIP
++ ",fs.s3n.awsAccessKeyId"	SKIP	SKIP
++ ",fs.s3n.awsSecretAccessKey"	SKIP	SKIP
++ ",fs.s3a.access.key"	SKIP	SKIP
++ ",fs.s3a.secret.key"	SKIP	SKIP
++ ",fs.s3a.proxy.password"	SKIP	SKIP
++ ",dfs.adls.oauth2.credential"	SKIP	SKIP
++ ",fs.adl.oauth2.credential"	SKIP	SKIP
++ ",fs.azure.account.oauth2.client.secret"	SKIP	SKIP
+        + ",hive.zookeeper.ssl.keystore.location"	SKIP	SKIP
+        + ",hive.zookeeper.ssl.keystore.password"	SKIP	SKIP
+        + ",hive.zookeeper.ssl.truststore.location"	SKIP	SKIP
+        + ",hive.zookeeper.ssl.truststore.password"	SKIP	SKIP
+hive.conf.internal.variable.list	SKIP	SKIP
+hive.query.reexecution.stats.persist.scope	SKIP	SKIP
+hive.txn.retrysnapshot.max.count	1	10
+hive.query.reexecution.max.count	0	2
+hive.query.reexecution.always.collect.operator.stats	SKIP	SKIP
+hive.query.reexecution.stats.cache.batch.size	0	-2
+hive.query.reexecution.stats.cache.size	50000	200000
+hive.query.planmapper.link.relnodes	SKIP	SKIP
+hive.query.recompilation.max.count	0	2
+hive.scheduled.queries.executor.enabled	SKIP	SKIP
+hive.scheduled.queries.namespace	SKIP	SKIP
+hive.scheduled.queries.executor.idle.sleep.time	1s	120s
+hive.scheduled.queries.executor.progress.report.interval	1s	120s
+hive.scheduled.queries.create.as.enabled	SKIP	SKIP
+hive.security.authorization.scheduled.queries.supported	TRUE	SKIP
+hive.scheduled.queries.max.executors	1	8
+hive.async.cleanup.service.thread.count	1	20
+hive.async.cleanup.service.queue.size	5000	20000
+hive.query.results.cache.enabled	SKIP	SKIP
+hive.query.results.cache.nontransactional.tables.enabled	SKIP	SKIP
+hive.query.results.cache.wait.for.pending.results	SKIP	SKIP
+hive.query.results.cache.directory	/valid/file1	/valid/file2
+hive.query.results.cache.max.entry.lifetime	1s	7200s
+hive.query.results.cache.max.size	0.1	0.5
+hive.query.results.cache.max.entry.size	0.1	0.5
+hive.notification.event.poll.interval	1s	120s
+hive.notification.event.consumers	SKIP	SKIP
+hive.describe.partitionedtable.ignore.stats	SKIP	SKIP
+hive.server2.iceberg.metadata.generator.threads	1	20
+hive.blobstore.supported.schemes	s3	s3a
+hive.blobstore.use.blobstore.as.scratchdir	SKIP	SKIP
+hive.blobstore.optimizations.enabled	SKIP	SKIP
+hive.additional.config.files	SKIP	SKIP
