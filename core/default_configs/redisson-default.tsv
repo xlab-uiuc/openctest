@@ -1,0 +1,11 @@
+nettythreads	16	32
+referenceEnabled	true	false
+lockWatchdogTimeout	30000	35000
+checkLockSyncedSlaves	true	false
+reliableTopicWatchdogTimeout	0.05	1.0
+keepPubSubOrder	true	false
+useScriptCache	true	false
+minCleanUpDelay	5	10
+maxCleanUpDelay	1800	1000
+cleanUpKeysAmount	100	50
+useThreadClassLoader	true	false

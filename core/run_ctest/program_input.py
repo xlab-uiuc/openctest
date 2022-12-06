@@ -10,9 +10,9 @@ p_input = {
     # input directory hosting configuration files to be test, target-project-format specific
     "conf_file_dir": "../default_configs/redisson-default.tsv", # string
     # display the terminal output live, without saving any results
-    "display_mode": True, # bool
+    "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
-    "use_surefire": True, # bool
+    "use_surefire": False, # bool
     # additional maven options to pass to `mvn surefire:test -Dtest=...`
     "maven_args": ["-DredisBinary=/usr/bin/redis-server"], # list of strings, each element is an option
     # timeout on the mvn test command
