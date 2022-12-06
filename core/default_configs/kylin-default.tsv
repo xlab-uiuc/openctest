@@ -268,8 +268,8 @@ kylin.security.ldap.user-group-search-base		specifies the scope of the user grou
 kylin.security.ldap.user-group-search-filter		specifies the type of user synced to Kylin
 kylin.security.ldap.service-search-base		need to be specifies when a service account is required to access Kylin
 kylin.security.ldap.service-search-pattern		need to be specifies when a service account is required to access Kylin
-kylin.security.ldap.service-group-search-base		need to be specifies when a service account is required to access Kylin
-kylin.security.acl.admin-role		map an LDAP group to an admin role (group name case sensitive)
+kylin.restclient.connection.default-max-per-route	20	max connection per route of Kylin
+kylin.env.zookeeper-is-local	false	if zookeeper is local
 kylin.server.auth-user-cache.expire-seconds		specifies LDAP user information cache time, default is 300(s)
 kylin.server.auth-user-cache.max-entries		specifies maximum number of LDAP users, default is 100
 kylin.server.external-acl-provider	org.apache.ranger.authorization.kylin.authorizer.RangerKylinAuthorizer	
@@ -279,4 +279,5 @@ kylin.env.zookeeper.zk-acl	world:anyone:rwcda	Use a single ID as the ACL identif
 kylin.query.lazy-query-enabled	false	whether to lazily answer the queries that be sent repeatedly in a short time (hold it until the previous query be returned, and then reuse the result); The default value is false.
 kylin.query.cache-signature-enabled	false	whether to use the signature of a query to determine the cache’s validity. The signature is calculated by the cube/hybrid list of the project, their last build time and other information (at the moment when cache is persisted); It’s default value is false, highly recommend to set it to true.
 kylin.query.segment-cache-enabled	false	whether to cache the segment level returned data (from HBase storage) into Memcached. This feature is mainly for the cube that built very frequently (e.g, streaming cube, whose last build time always changed a couple minutes, the whole SQL statement level cache is very likely be cleaned; in this case, the by-segment cache can reduce the I/O). This only works when Memcached configured, the default value is false.
-kylin.cache.memcached.hosts		a list of memcached node and port, connected with comma.
+kylin.resourcestore.reconnect-base-ms	100	Reconnect second
+kylin.job.remote-cli-port	22	client port

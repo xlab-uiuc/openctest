@@ -26,8 +26,8 @@ def read_tsv(module):
         assert len(params) == 32
         return 32
     elif module == "kylin":
-        assert len(params) == 282
-        return 282
+        assert len(params) == 283
+        return 283
     else:
         assert len(params) == 90
         return 90

@@ -268,8 +268,8 @@ kylin.security.ldap.user-group-search-base	SKIP	SKIP
 kylin.security.ldap.user-group-search-filter	SKIP	SKIP
 kylin.security.ldap.service-search-base	SKIP	SKIP
 kylin.security.ldap.service-search-pattern	SKIP	SKIP
-kylin.security.ldap.service-group-search-base	SKIP	SKIP
-kylin.security.acl.admin-role	SKIP	SKIP
+kylin.restclient.connection.default-max-per-route	10	40
+kylin.env.zookeeper-is-local	true	SKIP
 kylin.server.auth-user-cache.expire-seconds	SKIP	SKIP
 kylin.server.auth-user-cache.max-entries	SKIP	SKIP
 kylin.server.external-acl-provider	SKIP	SKIP
@@ -279,4 +279,5 @@ kylin.env.zookeeper.zk-acl	SKIP	SKIP
 kylin.query.lazy-query-enabled	true	SKIP
 kylin.query.cache-signature-enabled	true	SKIP
 kylin.query.segment-cache-enabled	true	SKIP
-kylin.cache.memcached.hosts	SKIP	SKIP
+kylin.resourcestore.reconnect-base-ms	50	200
+kylin.job.remote-cli-port	11	44

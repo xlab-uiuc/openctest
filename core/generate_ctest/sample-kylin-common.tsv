@@ -1,1 +1,8 @@
+kylin.env.zookeeper-is-local	true	SKIP
+kylin.resourcestore.reconnect-base-ms	50	200
+kylin.job.remote-cli-port	11	44
 kylin.metadata.url	kylin_metadata@job	kylin_metadata@url
+kylin.restclient.connection.default-max-per-route	10	40
+kylin.env.zookeeper-base-path	/valid/file1	/valid/file2
+kylin.env.hdfs-working-dir	/valid/file1	/valid/file2
+kylin.restclient.connection.default-max-per-route	10	40
