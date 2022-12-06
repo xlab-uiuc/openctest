@@ -15,6 +15,7 @@ MODULE_PATH = {
     "hbase-server": CTEST_HBASE_DIR,
     "alluxio-core": CTEST_ALLUXIO_DIR,
     "kylin-common": CTEST_KYLIN_DIR,
+    "kylin-tool": CTEST_KYLIN_DIR,
 }
 
 SRC_SUBDIR = {
@@ -24,6 +25,7 @@ SRC_SUBDIR = {
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
     "kylin-common": "",
+    "kylin-tool": "",
 }
 
 MVN_TEST_PATH = {
@@ -33,6 +35,7 @@ MVN_TEST_PATH = {
     "zookeeper-server": os.path.join(CTEST_ZOOKEEPER_DIR, SRC_SUBDIR["zookeeper-server"]),
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
     "kylin-common":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-common"]),
+    "kylin-tool":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-tool"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -42,9 +45,9 @@ LOCAL_CONF_PATH = {
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "kylin-common": "results/kylin-common/conf_params.txt",
+    "kylin-tool": "results/kylin-tool/conf_params.txt",
 }
 
-# TODO: Not specified for kylin yet
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
 
 CTEST_SUREFIRE_PATH = {
@@ -73,6 +76,9 @@ CTEST_SUREFIRE_PATH = {
     "kylin-common":  [
         os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
     ],
+    "kylin-tool":  [
+        os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
+    ],
 }
 
 LOCAL_SUREFIRE_SUFFIX = "surefire-reports/*"
@@ -95,5 +101,8 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "kylin-common": [
         os.path.join("surefire-reports/kylin-common", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "kylin-tool": [
+        os.path.join("surefire-reports/kylin-tool", LOCAL_SUREFIRE_SUFFIX)
     ]
 }

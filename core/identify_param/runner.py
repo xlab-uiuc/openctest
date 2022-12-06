@@ -168,11 +168,13 @@ class Runner:
             start_time_for_this_method = time.time()
 
             if self.module == "alluxio-core":
-                cmd = ["mvn", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             elif self.module == "kylin-common":
                 cmd = ["mvn", "-pl", "core-common", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-tool":
+                cmd = ["mvn", "-pl", "tool", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             else:
-                cmd = ["mvn", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             command = " ".join(cmd)
             print(command)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
@@ -194,8 +196,11 @@ class Runner:
                 continue
 
             class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name + "-output" + ".txt"
+            suffix_filename_to_check = class_name  + ".txt"
+            if self.module == "kylin-common" or "kylin-tool":
+                suffix_filename_to_check = class_name + "-output" + ".txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
+            print(full_path)
             if full_path == "none":
                 print("no report for " + method)
                 self.no_report_list.append(method)

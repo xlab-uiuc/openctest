@@ -4,11 +4,11 @@ p_input = {
     # run mode
     "run_mode": "generate_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs, see constant.py
-    "project": "kylin-common", # string
+    "project": "kylin-tool", # string
     # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-kylin-common.json", # string
+    "mapping_path": "../../data/ctest_mapping/opensource-kylin-tool.json", # string
     # good values of params tests will be run against
-    "param_value_tsv": "sample-kylin-common.tsv", # string
+    "param_value_tsv": "sample-kylin-tool.tsv", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
