@@ -137,4 +137,5 @@ core/identify_param/kylin-common-mvn-test-reports
 core/identify_param/results/kylin-common
 core/generate_ctest/test_result
 core/run_ctest/sample-kylin-common
+core/identify_param/results/kylin-common/logs
 
