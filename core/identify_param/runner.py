@@ -61,7 +61,7 @@ class Runner:
         return False
 
     def skipTrace(self, trace):
-        if trace == "java.lang.Thread":
+        if "java.lang.Thread" in trace:
             return True
         if "sun.reflect" in trace:
             return True
