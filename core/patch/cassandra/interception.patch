@@ -1,0 +1,489 @@
+diff --git a/src/java/org/apache/cassandra/config/YamlConfigurationLoader.java b/src/java/org/apache/cassandra/config/YamlConfigurationLoader.java
+index a8d4695cb0..54720cec46 100644
+--- a/src/java/org/apache/cassandra/config/YamlConfigurationLoader.java
++++ b/src/java/org/apache/cassandra/config/YamlConfigurationLoader.java
+@@ -56,41 +56,40 @@ import org.yaml.snakeyaml.introspector.Property;
+ import org.yaml.snakeyaml.introspector.PropertyUtils;
+ import org.yaml.snakeyaml.nodes.Node;
+ 
+-public class YamlConfigurationLoader implements ConfigurationLoader
+-{
++public class YamlConfigurationLoader implements ConfigurationLoader {
+     private static final Logger logger = LoggerFactory.getLogger(YamlConfigurationLoader.class);
+ 
+     private final static String DEFAULT_CONFIGURATION = "cassandra.yaml";
++    private final static String CTEST_CONFIGURATION = "ctest-injection.yaml";
+ 
+     /**
+      * Inspect the classpath to find storage configuration file
+      */
+-    private static URL getStorageConfigURL() throws ConfigurationException
+-    {
++    private static URL getStorageConfigURL() throws ConfigurationException {
+         String configUrl = System.getProperty("cassandra.config");
+         if (configUrl == null)
+             configUrl = DEFAULT_CONFIGURATION;
+ 
+         URL url;
+-        try
+-        {
++        try {
+             url = new URL(configUrl);
+             url.openStream().close(); // catches well-formed but bogus URLs
+-        }
+-        catch (Exception e)
+-        {
++        } catch (Exception e) {
+             ClassLoader loader = DatabaseDescriptor.class.getClassLoader();
+             url = loader.getResource(configUrl);
+-            if (url == null)
+-            {
++            if (url == null) {
+                 String required = "file:" + File.separator + File.separator;
+                 if (!configUrl.startsWith(required))
+                     throw new ConfigurationException(String.format(
+-                        "Expecting URI in variable: [cassandra.config]. Found[%s]. Please prefix the file with [%s%s] for local " +
+-                        "files and [%s<server>%s] for remote files. If you are executing this from an external tool, it needs " +
+-                        "to set Config.setClientMode(true) to avoid loading configuration.",
+-                        configUrl, required, File.separator, required, File.separator));
+-                throw new ConfigurationException("Cannot locate " + configUrl + ".  If this is a local file, please confirm you've provided " + required + File.separator + " as a URI prefix.");
++                            "Expecting URI in variable: [cassandra.config]. Found[%s]. Please prefix the file with [%s%s] for local "
++                                    +
++                                    "files and [%s<server>%s] for remote files. If you are executing this from an external tool, it needs "
++                                    +
++                                    "to set Config.setClientMode(true) to avoid loading configuration.",
++                            configUrl, required, File.separator, required, File.separator));
++                throw new ConfigurationException(
++                        "Cannot locate " + configUrl + ".  If this is a local file, please confirm you've provided "
++                                + required + File.separator + " as a URI prefix.");
+             }
+         }
+ 
+@@ -102,30 +101,60 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+     private static URL storageConfigURL;
+ 
+     @Override
+-    public Config loadConfig() throws ConfigurationException
+-    {
++    public Config loadConfig() throws ConfigurationException {
+         if (storageConfigURL == null)
+             storageConfigURL = getStorageConfigURL();
+-        return loadConfig(storageConfigURL);
++
++        logger.debug("Loading settings from {}", storageConfigURL);
++        byte[] configBytes;
++        Map<String, Object> confMap = new HashMap<>();
++        URL url;
++        Yaml yaml = new Yaml();
++        try (InputStream is = storageConfigURL.openStream()) {
++            configBytes = ByteStreams.toByteArray(is);
++            Map<String, Object> obj = yaml.load(new ByteArrayInputStream(configBytes));
++            confMap.putAll(obj);
++        } catch (IOException e) {
++            // getStorageConfigURL should have ruled this out
++            throw new AssertionError(e);
++        }
++
++        try {
++            url = new URL(CTEST_CONFIGURATION);
++            url.openStream().close(); // catches well-formed but bogus URLs
++        } catch (Exception e) {
++            ClassLoader loader = DatabaseDescriptor.class.getClassLoader();
++            url = loader.getResource(CTEST_CONFIGURATION);
++            if (url == null) {
++                throw new ConfigurationException("fail to load Ctest config");
++            }
++        }
++        logger.debug("Loading settings from {}", url);
++        try (InputStream is = url.openStream()) {
++            configBytes = ByteStreams.toByteArray(is);
++            Map<String, Object> obj = yaml.load(new ByteArrayInputStream(configBytes));
++            if (obj != null) {
++                confMap.putAll(obj);
++            }
++        } catch (IOException e) {
++            // getStorageConfigURL should have ruled this out
++            throw new AssertionError(e);
++        }
++
++        return fromMap(confMap, Config.class);
+     }
+ 
+-    public Config loadConfig(URL url) throws ConfigurationException
+-    {
+-        try
+-        {
++    public Config loadConfig(URL url) throws ConfigurationException {
++        try {
+             logger.debug("Loading settings from {}", url);
+             byte[] configBytes;
+-            try (InputStream is = url.openStream())
+-            {
++            try (InputStream is = url.openStream()) {
+                 configBytes = ByteStreams.toByteArray(is);
+-            }
+-            catch (IOException e)
+-            {
++            } catch (IOException e) {
+                 // getStorageConfigURL should have ruled this out
+                 throw new AssertionError(e);
+             }
+ 
+-
+             Constructor constructor = new CustomConstructor(Config.class, Yaml.class.getClassLoader());
+             Map<Class<?>, Map<String, Replacement>> replacements = getNameReplacements(Config.class);
+             PropertiesChecker propertiesChecker = new PropertiesChecker(replacements);
+@@ -134,34 +163,29 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+             Config result = loadConfig(yaml, configBytes);
+             propertiesChecker.check();
+             return result;
+-        }
+-        catch (YAMLException e)
+-        {
++        } catch (YAMLException e) {
+             throw new ConfigurationException("Invalid yaml: " + url + SystemUtils.LINE_SEPARATOR
+-                                             +  " Error: " + e.getMessage(), false);
++                    + " Error: " + e.getMessage(), false);
+         }
+     }
+ 
+     @VisibleForTesting
+-    public static <T> T fromMap(Map<String,Object> map, Class<T> klass)
+-    {
++    public static <T> T fromMap(Map<String, Object> map, Class<T> klass) {
+         return fromMap(map, true, klass);
+     }
+ 
+-    @SuppressWarnings("unchecked") //getSingleData returns Object, not T
+-    public static <T> T fromMap(Map<String,Object> map, boolean shouldCheck, Class<T> klass)
+-    {
++    @SuppressWarnings("unchecked") // getSingleData returns Object, not T
++    public static <T> T fromMap(Map<String, Object> map, boolean shouldCheck, Class<T> klass) {
+         Constructor constructor = new YamlConfigurationLoader.CustomConstructor(klass, klass.getClassLoader());
+         Map<Class<?>, Map<String, Replacement>> replacements = getNameReplacements(Config.class);
+-        YamlConfigurationLoader.PropertiesChecker propertiesChecker = new YamlConfigurationLoader.PropertiesChecker(replacements);
++        YamlConfigurationLoader.PropertiesChecker propertiesChecker = new YamlConfigurationLoader.PropertiesChecker(
++                replacements);
+         constructor.setPropertyUtils(propertiesChecker);
+         Yaml yaml = new Yaml(constructor);
+         Node node = yaml.represent(map);
+-        constructor.setComposer(new Composer(null, null)
+-        {
++        constructor.setComposer(new Composer(null, null) {
+             @Override
+-            public Node getSingleNode()
+-            {
++            public Node getSingleNode() {
+                 return node;
+             }
+         });
+@@ -171,10 +195,8 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+         return value;
+     }
+ 
+-    static class CustomConstructor extends CustomClassLoaderConstructor
+-    {
+-        CustomConstructor(Class<?> theRoot, ClassLoader classLoader)
+-        {
++    static class CustomConstructor extends CustomClassLoaderConstructor {
++        CustomConstructor(Class<?> theRoot, ClassLoader classLoader) {
+             super(theRoot, classLoader);
+ 
+             TypeDescription seedDesc = new TypeDescription(ParameterizedClass.class);
+@@ -183,38 +205,35 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+         }
+ 
+         @Override
+-        protected List<Object> createDefaultList(int initSize)
+-        {
++        protected List<Object> createDefaultList(int initSize) {
+             return Lists.newCopyOnWriteArrayList();
+         }
+ 
+         @Override
+-        protected Map<Object, Object> createDefaultMap(int initSize)
+-        {
++        protected Map<Object, Object> createDefaultMap(int initSize) {
+             return Maps.newConcurrentMap();
+         }
+ 
+         @Override
+-        protected Set<Object> createDefaultSet(int initSize)
+-        {
++        protected Set<Object> createDefaultSet(int initSize) {
+             return Sets.newConcurrentHashSet();
+         }
+     }
+ 
+-    private static Config loadConfig(Yaml yaml, byte[] configBytes)
+-    {
++    private static Config loadConfig(Yaml yaml, byte[] configBytes) {
+         Config config = yaml.loadAs(new ByteArrayInputStream(configBytes), Config.class);
+-        // If the configuration file is empty yaml will return null. In this case we should use the default
++        // If the configuration file is empty yaml will return null. In this case we
++        // should use the default
+         // configuration to avoid hitting a NPE at a later stage.
+         return config == null ? new Config() : config;
+     }
+ 
+     /**
+-     * Utility class to check that there are no extra properties and that properties that are not null by default
++     * Utility class to check that there are no extra properties and that properties
++     * that are not null by default
+      * are not set to null.
+      */
+-    private static class PropertiesChecker extends PropertyUtils
+-    {
++    private static class PropertiesChecker extends PropertyUtils {
+         private final Set<String> missingProperties = new HashSet<>();
+ 
+         private final Set<String> nullProperties = new HashSet<>();
+@@ -223,115 +242,100 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+ 
+         private final Map<Class<?>, Map<String, Replacement>> replacements;
+ 
+-        public PropertiesChecker(Map<Class<?>, Map<String, Replacement>> replacements)
+-        {
++        public PropertiesChecker(Map<Class<?>, Map<String, Replacement>> replacements) {
+             this.replacements = Objects.requireNonNull(replacements, "Replacements should not be null");
+             setSkipMissingProperties(true);
+         }
+ 
+         @Override
+-        public Property getProperty(Class<? extends Object> type, String name)
+-        {
++        public Property getProperty(Class<? extends Object> type, String name) {
+             final Property result;
+             Map<String, Replacement> typeReplacements = replacements.getOrDefault(type, Collections.emptyMap());
+-            if (typeReplacements.containsKey(name))
+-            {
++            if (typeReplacements.containsKey(name)) {
+                 Replacement replacement = typeReplacements.get(name);
+                 final Property newProperty = super.getProperty(type, replacement.newName);
+-                result = new Property(replacement.oldName, newProperty.getType())
+-                {
++                result = new Property(replacement.oldName, newProperty.getType()) {
+                     @Override
+-                    public Class<?>[] getActualTypeArguments()
+-                    {
++                    public Class<?>[] getActualTypeArguments() {
+                         return newProperty.getActualTypeArguments();
+                     }
+ 
+                     @Override
+-                    public void set(Object o, Object o1) throws Exception
+-                    {
++                    public void set(Object o, Object o1) throws Exception {
+                         newProperty.set(o, o1);
+                     }
+ 
+                     @Override
+-                    public Object get(Object o)
+-                    {
++                    public Object get(Object o) {
+                         return newProperty.get(o);
+                     }
+ 
+                     @Override
+-                    public List<Annotation> getAnnotations()
+-                    {
++                    public List<Annotation> getAnnotations() {
+                         return null;
+                     }
+ 
+                     @Override
+-                    public <A extends Annotation> A getAnnotation(Class<A> aClass)
+-                    {
++                    public <A extends Annotation> A getAnnotation(Class<A> aClass) {
+                         return null;
+                     }
+                 };
+ 
+                 if (replacement.deprecated)
+                     deprecationWarnings.add(replacement.oldName);
+-            }
+-            else
+-            {
++            } else {
+                 result = super.getProperty(type, name);
+             }
+ 
+-            if (result instanceof MissingProperty)
+-            {
++            if (result instanceof MissingProperty) {
+                 missingProperties.add(result.getName());
+             }
+ 
+-            return new Property(result.getName(), result.getType())
+-            {
++            return new Property(result.getName(), result.getType()) {
+                 @Override
+-                public void set(Object object, Object value) throws Exception
+-                {
+-                    if (value == null && get(object) != null)
+-                    {
++                public void set(Object object, Object value) throws Exception {
++                    if (value == null && get(object) != null) {
+                         nullProperties.add(getName());
+                     }
+                     result.set(object, value);
+                 }
+ 
+                 @Override
+-                public Class<?>[] getActualTypeArguments()
+-                {
++                public Class<?>[] getActualTypeArguments() {
+                     return result.getActualTypeArguments();
+                 }
+ 
+                 @Override
+-                public Object get(Object object)
+-                {
++                public Object get(Object object) {
+                     return result.get(object);
+                 }
+ 
+                 @Override
+-                public List<Annotation> getAnnotations()
+-                {
++                public List<Annotation> getAnnotations() {
+                     return Collections.EMPTY_LIST;
+                 }
+ 
+                 @Override
+-                public <A extends Annotation> A getAnnotation(Class<A> aClass)
+-                {
++                public <A extends Annotation> A getAnnotation(Class<A> aClass) {
+                     return null;
+                 }
+             };
+         }
+ 
+-        public void check() throws ConfigurationException
+-        {
++        public void check() throws ConfigurationException {
+             if (!nullProperties.isEmpty())
+-                throw new ConfigurationException("Invalid yaml. Those properties " + nullProperties + " are not valid", false);
++                throw new ConfigurationException("Invalid yaml. Those properties " + nullProperties + " are not valid",
++                        false);
+ 
+             if (!missingProperties.isEmpty())
+-                throw new ConfigurationException("Invalid yaml. Please remove properties " + missingProperties + " from your cassandra.yaml", false);
++                throw new ConfigurationException(
++                        "Invalid yaml. Please remove properties " + missingProperties + " from your cassandra.yaml",
++                        false);
+ 
+             if (!deprecationWarnings.isEmpty())
+-                logger.warn("{} parameters have been deprecated. They have new names; For more information, please refer to NEWS.txt", deprecationWarnings);
++                logger.warn(
++                        "{} parameters have been deprecated. They have new names; For more information, please refer to NEWS.txt",
++                        deprecationWarnings);
+         }
+     }
+ 
+@@ -339,39 +343,32 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+      * @param klass to get replacements for
+      * @return map of old names and replacements needed.
+      */
+-    private static Map<Class<?>, Map<String, Replacement>> getNameReplacements(Class<?> klass)
+-    {
++    private static Map<Class<?>, Map<String, Replacement>> getNameReplacements(Class<?> klass) {
+         List<Replacement> replacements = getReplacements(klass);
+         Map<Class<?>, Map<String, Replacement>> objectOldNames = new HashMap<>();
+-        for (Replacement r : replacements)
+-        {
++        for (Replacement r : replacements) {
+             Map<String, Replacement> oldNames = objectOldNames.computeIfAbsent(r.parent, ignore -> new HashMap<>());
+             if (!oldNames.containsKey(r.oldName))
+                 oldNames.put(r.oldName, r);
+-            else
+-            {
+-                throw new ConfigurationException("Invalid annotations, you have more than one @Replaces annotation in " +
+-                                                 "Config class with same old name(" + r.oldName + ") defined.");
++            else {
++                throw new ConfigurationException(
++                        "Invalid annotations, you have more than one @Replaces annotation in " +
++                                "Config class with same old name(" + r.oldName + ") defined.");
+             }
+         }
+         return objectOldNames;
+     }
+ 
+-    private static List<Replacement> getReplacements(Class<?> klass)
+-    {
++    private static List<Replacement> getReplacements(Class<?> klass) {
+         List<Replacement> replacements = new ArrayList<>();
+-        for (Field field : klass.getDeclaredFields())
+-        {
++        for (Field field : klass.getDeclaredFields()) {
+             String newName = field.getName();
+             final ReplacesList[] byType = field.getAnnotationsByType(ReplacesList.class);
+-            if (byType == null || byType.length == 0)
+-            {
++            if (byType == null || byType.length == 0) {
+                 Replaces r = field.getAnnotation(Replaces.class);
+                 if (r != null)
+                     addReplacement(klass, replacements, newName, r);
+-            }
+-            else
+-            {
++            } else {
+                 for (ReplacesList replacesList : byType)
+                     for (Replaces r : replacesList.value())
+                         addReplacement(klass, replacements, newName, r);
+@@ -381,10 +378,9 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+     }
+ 
+     private static void addReplacement(Class<?> klass,
+-                                       List<Replacement> replacements,
+-                                       String newName,
+-                                       Replaces r)
+-    {
++            List<Replacement> replacements,
++            String newName,
++            Replaces r) {
+         String oldName = r.oldName();
+         boolean deprecated = r.deprecated();
+ 
+@@ -392,12 +388,13 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+     }
+ 
+     /**
+-     * Holder for replacements to support backward compatibility between old and new names for configuration parameters
+-     * backported partially from trunk(CASSANDRA-15234) to support a bug fix/improvement in Cassadra 4.0
++     * Holder for replacements to support backward compatibility between old and new
++     * names for configuration parameters
++     * backported partially from trunk(CASSANDRA-15234) to support a bug
++     * fix/improvement in Cassadra 4.0
+      * (CASSANDRA-17141)
+      */
+-    static final class Replacement
+-    {
++    static final class Replacement {
+         /**
+          * Currently we use for Config class
+          */
+@@ -411,15 +408,15 @@ public class YamlConfigurationLoader implements ConfigurationLoader
+          */
+         final String newName;
+         /**
+-         * A flag to mark whether the old name is deprecated and fire a warning to the user. By default we set it to false.
++         * A flag to mark whether the old name is deprecated and fire a warning to the
++         * user. By default we set it to false.
+          */
+         final boolean deprecated;
+ 
+         Replacement(Class<?> parent,
+-                    String oldName,
+-                    String newName,
+-                    boolean deprecated)
+-        {
++                String oldName,
++                String newName,
++                boolean deprecated) {
+             this.parent = Objects.requireNonNull(parent);
+             this.oldName = Objects.requireNonNull(oldName);
+             this.newName = Objects.requireNonNull(newName);
+diff --git a/test/conf/ctest-injection.yaml b/test/conf/ctest-injection.yaml
+new file mode 100644
+index 0000000000..e69de29bb2
