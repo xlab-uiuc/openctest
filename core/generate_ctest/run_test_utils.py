@@ -2,7 +2,7 @@ import re, sys
 from program_input import p_input
 
 sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 maven_args = p_input["maven_args"]
 use_surefire = p_input["use_surefire"]
@@ -21,6 +21,13 @@ def maven_cmd(test, add_time=False):
     cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
     if add_time:
         cmd = ["time"] + cmd
+    print(">>>>[ctest_core] command: " + " ".join(cmd))
+    return cmd
+
+def ant_cmd(test):
+    # affected_tests example: {'org.apache.cassandra.hints.HintsCatalogTest#deleteHintsTest'}
+    test_name, test_method = test.split('#')
+    cmd = ['ant', 'testsome', "-Dtest.name={}".format(test_name), "-Dtest.methods={}".format(test_method), "-Duse.jdk11=true"]
     print(">>>>[ctest_core] command: " + " ".join(cmd))
     return cmd
 

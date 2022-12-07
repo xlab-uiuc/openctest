@@ -6,7 +6,7 @@
 See [Generating Ctests - generating valid values](https://github.com/xlab-uiuc/openctest/blob/main/core/README.md#12-generating-parameter-sets-for-ctests).
 
 ### Instruction
-
+For `Hadoop`:
 
 *First*, prepare a `tsv` file containing the name, default value and description of each configuration parameter in the target project in `../default_configs/<project>-default.tsv`. The format is
 
@@ -35,6 +35,11 @@ total params: 90
 coverage: 0.7444444444444445
 ```
 
+For `Cassandra`:
+
+Because `Cassandra` uses a lot of specific string values, such as `org.apache.cassandra.dht.ByteOrderedPartitioner` or `build/test/cassandra/hints`, and numeric values, such as `8080` for port or `2` for num_tokens. Using scripts to generate values is not that helpful. Therefore, you need to manually create the following file.
+- cassandra-generated-values.tsv
+
 ### Result
 
 The generated value result will be in `<project>-generated-values.tsv` (tab-seperated), which looks like
@@ -47,12 +52,12 @@ hadoop.security.groups.cache.secs	150	600
 hadoop.security.groups.cache.warn.after.ms	2500	10000
 hadoop.security.groups.cache.background.reload.threads	1	6
 ```
-Note that `SKIP` is a placeholder where we cannot generate a valid value. 
+Note that `SKIP` is a placeholder where we cannot generate a valid value.
 
 
 ### [Optional] Configure the script
 
-For some parameter types, users can change the candidate values for different parameter types by editing `config.py`. 
+For some parameter types, users can change the candidate values for different parameter types by editing `config.py`.
 
 For example, to change the candidate values for `port` type parameters, users can modify
 ```
