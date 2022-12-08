@@ -27,7 +27,7 @@ To run the CTest, you need to pass following parameters:
 
 `mapping.path`
 - required
-- the relative path to the `param_unset_getter_map.json`
+- the relative path to the `param_unset_getter_map.json` or `ctests-<project>.json`
 
 `conf.pairs`
 - if `conf.file` is not specified, this parameter must be set. For target projects accepting complex configurations, such as nested values, you need to use the `conf.file` parameter
@@ -43,7 +43,7 @@ To run the CTest, you need to pass following parameters:
 
 `test.file`
 - if `test.methods` is not specified, this parameter must be set
-- the relative path to a `TXT` file containing all tests that you want to test
+- the relative path to a `TXT` file containing all tests that you want to test, separated by new line
 
 `project.props`
 - generally optional, please check the `README` of specific project for required command line properties
