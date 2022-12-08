@@ -5,7 +5,7 @@ Prerequisites:
 
 Steps:
 1. clone cassandra, `git clone https://github.com/apache/cassandra.git ../../../app/cassandra && cd ../../../app/cassandra`
-2. checkout commit, `git checkout 4e1d31e`
+2. checkout commit, `git checkout 277fa4f`
 3. apply injection patch, `git apply ../../resources/supported/cassandra/ctest-injection.patch`
 4. build the project, `ant -Duse.jdk11=true`
 5. verify setup, `ant testsome -Dtest.name=org.apache.cassandra.hints.HintsCatalogTest -Dtest.methods=deleteHintsTest -Duse.jdk11=true`
