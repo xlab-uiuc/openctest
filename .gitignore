@@ -139,6 +139,7 @@ core/run_ctest/sample-kylin-common
 core/run_ctest/sample-kylin-tool
 core/generate_value/kylin-common-generated-values.tsv
 core/generate_value/kylin-tool-generated-values.tsv
-
+core/generate_ctest/sample-kylin-common.tsv
+core/generate_ctest/sample-kylin-tool.tsv
 core/identify_param/results/kylin-common/logs
 core/identify_param/results/kylin-tool/logs
