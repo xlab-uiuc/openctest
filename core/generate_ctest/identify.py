@@ -43,6 +43,8 @@ def identify_ctest(project):
             for test, pass_good_values in testinfo[param]["tests"].items():
                 if len(good_values) == len(pass_good_values):
                     ctests[param].append(test)
+                else:
+                    print(param, good_values, pass_good_values)
             print(">>>>[ctest_core] param {} has {} ctests".format(
                 param, len(ctests[param])))
 
