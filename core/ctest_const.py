@@ -14,6 +14,8 @@ ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 KCOMMON = "kylin-common"
 KTOOL = "kylin-tool"
+KSTORAGE = "kylin-storage"
+KCUBE = "kylin-cube"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
@@ -29,6 +31,8 @@ PROJECT_DIR = {
     ALLUXIO: CTEST_ALLUXIO_DIR,
     KCOMMON: CTEST_KYLIN_DIR,
     KTOOL: CTEST_KYLIN_DIR,
+    KSTORAGE: CTEST_KYLIN_DIR,
+    KCUBE: CTEST_KYLIN_DIR,
 }
 
 
@@ -41,6 +45,8 @@ MODULE_SUBDIR = {
     ALLUXIO: "core",
     KCOMMON: "core-common",
     KTOOL: "tool",
+    KSTORAGE: "core-storage",
+    KCUBE: "core-cube",
 }
 
 
@@ -67,6 +73,8 @@ SUREFIRE_DIR = {
     ],
     KCOMMON: [os.path.join(CTEST_KYLIN_DIR, MODULE_SUBDIR[KCOMMON], SUREFIRE_SUBDIR)],
     KTOOL: [os.path.join(CTEST_KYLIN_DIR, MODULE_SUBDIR[KTOOL], SUREFIRE_SUBDIR)],
+    KSTORAGE: [os.path.join(CTEST_KYLIN_DIR, MODULE_SUBDIR[KSTORAGE], SUREFIRE_SUBDIR)],
+    KCUBE: [os.path.join(CTEST_KYLIN_DIR, MODULE_SUBDIR[KCUBE], SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
@@ -85,7 +93,9 @@ DEFAULT_CONF_FILE = {
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
     KCOMMON: os.path.join(DEFAULT_CONF_DIR, KCOMMON + "-default.tsv"),
-    KTOOL: os.path.join(DEFAULT_CONF_DIR, KTOOL + "-default.tsv")
+    KTOOL: os.path.join(DEFAULT_CONF_DIR, KTOOL + "-default.tsv"),
+    KSTORAGE: os.path.join(DEFAULT_CONF_DIR, KCOMMON + "-default.tsv"), # Same as KCOMMON
+    KCUBE: os.path.join(DEFAULT_CONF_DIR, KCOMMON + "-default.tsv"),  # Same as KCOMMON
 }
 
 
@@ -113,6 +123,14 @@ INJECTION_PATH = {
         # os.path.join(CTEST_KYLIN_DIR, "core-common/target/ctest.properties")
     ],
     KTOOL: [
+        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
+    ],
+    KSTORAGE: [
+        os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
+        # os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
+    ],
+    KCUBE: [
         os.path.join(CTEST_KYLIN_DIR, "core-common/src/main/resources/ctest.properties")
         # os.path.join(CTEST_KYLIN_DIR, "core-common/target/classes/ctest.properties")
     ]
