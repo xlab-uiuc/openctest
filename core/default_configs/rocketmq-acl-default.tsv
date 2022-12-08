@@ -1,0 +1,9 @@
+admin	true
+accessKey	RocketMQ
+secretKey	12345678
+whiteRemoteAddress	192.168.0.*
+defaultTopicPerm	DENY
+defaultGroupPerm	SUB
+topicPerms	topicA=DENY
+groupPerms	groupA=DENY
+globalWhiteAddrs	10.10.103.*

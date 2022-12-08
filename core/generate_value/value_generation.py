@@ -25,6 +25,9 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "rocketmq-acl":
+        assert len(params) == 9
+        return 9
     else:
         assert len(params) == 90
         return 90

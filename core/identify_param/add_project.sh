@@ -47,6 +47,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_rocketmq() {
+    [ ! -d "app/ctest-rocketmq" ] && git clone https://github.com/Stranger3333/rocketmq.git app/ctest-rocketmq
+    cd app/ctest-rocketmq
+    git fetch && git checkout ctest-intercept
+    cd acl
+    mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
