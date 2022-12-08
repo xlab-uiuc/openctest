@@ -9,8 +9,6 @@ public class CTestSupported {
                 return new HadoopCommon();
             case "hadoop-hdfs":
                 return new HadoopHDFS();
-            case "cassandra":
-                return new Cassandra();
             default:
                 return null; // TODO: raise exception
         }
