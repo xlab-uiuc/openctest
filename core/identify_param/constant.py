@@ -3,7 +3,8 @@ import os
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 APP_DIR = os.path.join(CUR_DIR, "app")
 
-CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
+# CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
+CTEST_HADOOP_DIR = os.path.join(CUR_DIR, "../../../hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")

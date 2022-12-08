@@ -1,0 +1,12 @@
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.dn-report.cache-expire	1s
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRenewLeaseForReplicaFile
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSetBalancerBandwidth
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirsWithCallerContext
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirWithDisableNameService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetCachedDatanodeReport
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.dn-report.cache-expire	20s
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRenewLeaseForReplicaFile
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSetBalancerBandwidth
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirsWithCallerContext
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirWithDisableNameService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetCachedDatanodeReport

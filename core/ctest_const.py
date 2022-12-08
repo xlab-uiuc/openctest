@@ -14,8 +14,8 @@ HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 
-CTEST_HADOOP_DIR = os.path.join(APP_DIR, "../../../hadoop")
-# CTEST_HADOOP_DIR = os.path.join("../../", "hadoop")
+# CTEST_HADOOP_DIR = os.path.join(APP_DIR, "../../../hadoop")
+CTEST_HADOOP_DIR = os.path.join(CUR_DIR, "../../hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")

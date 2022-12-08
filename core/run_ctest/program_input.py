@@ -2,7 +2,7 @@
 
 p_input = {
     # run mode
-    "run_mode": "generate_ctest", # string
+    "run_mode": "run_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs
     "project": "hadoop-hdfs-rbf", # string
     # path to param -> tests json mapping

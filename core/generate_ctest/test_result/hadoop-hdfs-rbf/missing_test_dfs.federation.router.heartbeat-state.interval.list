@@ -1,0 +1,2 @@
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.heartbeat-state.interval	1s
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.heartbeat-state.interval	10s
