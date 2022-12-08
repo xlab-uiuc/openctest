@@ -134,8 +134,11 @@ app/
 core/run_ctest/run_ctest_result
 core/identify_param/kylin-common-mvn-test-output
 core/identify_param/kylin-common-mvn-test-reports
-core/identify_param/results/kylin-common
 core/generate_ctest/test_result
 core/run_ctest/sample-kylin-common
-core/identify_param/results/kylin-common/logs
+core/run_ctest/sample-kylin-tool
+core/generate_value/kylin-common-generated-values.tsv
+core/generate_value/kylin-tool-generated-values.tsv
 
+core/identify_param/results/kylin-common/logs
+core/identify_param/results/kylin-tool/logs
