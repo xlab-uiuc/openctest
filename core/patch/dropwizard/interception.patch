@@ -1,0 +1,574 @@
+From 4ad1116dd2e4553979c774268fa29be7ad07ba4f Mon Sep 17 00:00:00 2001
+From: Yang Jiang <jyang96069@gmail.com>
+Date: Thu, 8 Dec 2022 11:18:09 -0600
+Subject: [PATCH] allow configuration injection
+
+---
+ dropwizard-health/pom.xml                     |  16 +++
+ .../health/DefaultHealthFactory.java          |  26 +++++
+ .../health/HealthCheckConfiguration.java      |  30 ++++++
+ .../HealthCheckConfiguration.java.default     | 100 ++++++++++++++++++
+ .../java/io/dropwizard/health/Schedule.java   |  35 ++++++
+ .../ServletHealthResponderFactory.java        |  23 ++++
+ .../health/DefaultHealthFactoryTest.java      |  15 ++-
+ .../health/HealthCheckConfigurationTest.java  |   3 +-
+ .../io/dropwizard/health/ScheduleTest.java    |   3 +-
+ .../src/test/resources/yml/health-ctest.yml   |  13 +++
+ .../test/resources/yml/healthCheck-ctest.yml  |   2 +
+ .../src/test/resources/yml/schedule-ctest.yml |   4 +
+ 12 files changed, 266 insertions(+), 4 deletions(-)
+ create mode 100644 dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java.default
+ create mode 100644 dropwizard-health/src/test/resources/yml/health-ctest.yml
+ create mode 100644 dropwizard-health/src/test/resources/yml/healthCheck-ctest.yml
+ create mode 100644 dropwizard-health/src/test/resources/yml/schedule-ctest.yml
+
+diff --git a/dropwizard-health/pom.xml b/dropwizard-health/pom.xml
+index 0c6014427..903475f3f 100644
+--- a/dropwizard-health/pom.xml
++++ b/dropwizard-health/pom.xml
+@@ -162,4 +162,20 @@
+             <scope>test</scope>
+         </dependency>
+     </dependencies>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-surefire-plugin</artifactId>
++                <version>3.0.0-M4</version>
++                <configuration>
++                    <parallel>classes</parallel>
++                    <threadCount>2</threadCount>
++                    <perCoreThreadCount>true</perCoreThreadCount>
++                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
++                    <reportFormat>plain</reportFormat>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
+ </project>
+diff --git a/dropwizard-health/src/main/java/io/dropwizard/health/DefaultHealthFactory.java b/dropwizard-health/src/main/java/io/dropwizard/health/DefaultHealthFactory.java
+index 2f69ee58b..3d3b99dd2 100644
+--- a/dropwizard-health/src/main/java/io/dropwizard/health/DefaultHealthFactory.java
++++ b/dropwizard-health/src/main/java/io/dropwizard/health/DefaultHealthFactory.java
+@@ -36,6 +36,8 @@ public class DefaultHealthFactory implements HealthFactory {
+ 
+     private static final String DEFAULT_BASE_NAME = "health-check";
+     private static final String DEFAULT_PATH = "/health-check";
++    private static final String CTEST_GET_PARAM_FORMAT = "[CTEST][GET-PARAM] health.{}";
++    private static final String CTEST_SET_PARAM_FORMAT = "[CTEST][SET-PARAM] health.{}";
+ 
+     @JsonProperty
+     private boolean enabled = true;
+@@ -69,11 +71,23 @@ public class DefaultHealthFactory implements HealthFactory {
+     @JsonProperty("responder")
+     private HealthResponderFactory healthResponderFactory = new ServletHealthResponderFactory();
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     public boolean isEnabled() {
++        String ctestParam = "enabled";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return enabled;
+     }
+ 
+     public void setEnabled(boolean enabled) {
++        String ctestParam = "enabled";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.enabled = enabled;
+     }
+ 
+@@ -88,26 +102,38 @@ public class DefaultHealthFactory implements HealthFactory {
+     }
+ 
+     public boolean isInitialOverallState() {
++        String ctestParam = "initialOverallState";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return initialOverallState;
+     }
+ 
+     public void setInitialOverallState(boolean initialOverallState) {
++        String ctestParam = "initialOverallState";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.initialOverallState = initialOverallState;
+     }
+ 
+     public boolean isDelayedShutdownHandlerEnabled() {
++        String ctestParam = "delayedShutdownHandlerEnabled";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return delayedShutdownHandlerEnabled;
+     }
+ 
+     public void setDelayedShutdownHandlerEnabled(final boolean delayedShutdownHandlerEnabled) {
++        String ctestParam = "delayedShutdownHandlerEnabled";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.delayedShutdownHandlerEnabled = delayedShutdownHandlerEnabled;
+     }
+ 
+     public Duration getShutdownWaitPeriod() {
++        String ctestParam = "shutdownWaitPeriod";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return shutdownWaitPeriod;
+     }
+ 
+     public void setShutdownWaitPeriod(final Duration shutdownWaitPeriod) {
++        String ctestParam = "shutdownWaitPeriod";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.shutdownWaitPeriod = shutdownWaitPeriod;
+     }
+ 
+diff --git a/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java b/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java
+index 24b686e53..a8cf12076 100644
+--- a/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java
++++ b/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java
+@@ -5,8 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
+ import javax.validation.Valid;
+ import javax.validation.constraints.NotNull;
+ import javax.validation.constraints.Size;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ public class HealthCheckConfiguration {
++    private static final Logger LOGGER = LoggerFactory.getLogger(HealthCheckConfiguration.class);
++
++    private static final String CTEST_GET_PARAM_FORMAT = "[CTEST][GET-PARAM] health.healthChecks.{}";
++    private static final String CTEST_SET_PARAM_FORMAT = "[CTEST][SET-PARAM] health.healthChecks.{}";
+ 
+     @NotNull
+     @Size(min = 1)
+@@ -28,35 +34,59 @@ public class HealthCheckConfiguration {
+     @JsonProperty
+     private Schedule schedule = new Schedule();
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     public String getName() {
++        String ctestParam = "name";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return name;
+     }
+ 
+     public void setName(final String name) {
++        String ctestParam = "name";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.name = name;
+     }
+ 
+     public HealthCheckType getType() {
++        String ctestParam = "type";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return type;
+     }
+ 
+     public void setType(HealthCheckType type) {
++        String ctestParam = "type";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.type = type;
+     }
+ 
+     public boolean isCritical() {
++        String ctestParam = "critical";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return critical;
+     }
+ 
+     public void setCritical(final boolean critical) {
++        String ctestParam = "critical";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.critical = critical;
+     }
+ 
+     public boolean isInitialState() {
++        String ctestParam = "initialState";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return initialState;
+     }
+ 
+     public void setInitialState(boolean initialState) {
++        String ctestParam = "initialState";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.initialState = initialState;
+     }
+ 
+diff --git a/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java.default b/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java.default
+new file mode 100644
+index 000000000..a8cf12076
+--- /dev/null
++++ b/dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java.default
+@@ -0,0 +1,100 @@
++package io.dropwizard.health;
++
++import com.fasterxml.jackson.annotation.JsonProperty;
++
++import javax.validation.Valid;
++import javax.validation.constraints.NotNull;
++import javax.validation.constraints.Size;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++public class HealthCheckConfiguration {
++    private static final Logger LOGGER = LoggerFactory.getLogger(HealthCheckConfiguration.class);
++
++    private static final String CTEST_GET_PARAM_FORMAT = "[CTEST][GET-PARAM] health.healthChecks.{}";
++    private static final String CTEST_SET_PARAM_FORMAT = "[CTEST][SET-PARAM] health.healthChecks.{}";
++
++    @NotNull
++    @Size(min = 1)
++    @JsonProperty
++    private String name = "";
++
++    @NotNull
++    @JsonProperty
++    private HealthCheckType type = HealthCheckType.READY;
++
++    @JsonProperty
++    private boolean critical = false;
++
++    @JsonProperty
++    private boolean initialState = true;
++
++    @Valid
++    @NotNull
++    @JsonProperty
++    private Schedule schedule = new Schedule();
++
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
++    public String getName() {
++        String ctestParam = "name";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
++        return name;
++    }
++
++    public void setName(final String name) {
++        String ctestParam = "name";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
++        this.name = name;
++    }
++
++    public HealthCheckType getType() {
++        String ctestParam = "type";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
++        return type;
++    }
++
++    public void setType(HealthCheckType type) {
++        String ctestParam = "type";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
++        this.type = type;
++    }
++
++    public boolean isCritical() {
++        String ctestParam = "critical";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
++        return critical;
++    }
++
++    public void setCritical(final boolean critical) {
++        String ctestParam = "critical";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
++        this.critical = critical;
++    }
++
++    public boolean isInitialState() {
++        String ctestParam = "initialState";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
++        return initialState;
++    }
++
++    public void setInitialState(boolean initialState) {
++        String ctestParam = "initialState";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
++        this.initialState = initialState;
++    }
++
++    public Schedule getSchedule() {
++        return schedule;
++    }
++
++    public void setSchedule(final Schedule schedule) {
++        this.schedule = schedule;
++    }
++}
+diff --git a/dropwizard-health/src/main/java/io/dropwizard/health/Schedule.java b/dropwizard-health/src/main/java/io/dropwizard/health/Schedule.java
+index cbbc0ccf7..9e76baed7 100644
+--- a/dropwizard-health/src/main/java/io/dropwizard/health/Schedule.java
++++ b/dropwizard-health/src/main/java/io/dropwizard/health/Schedule.java
+@@ -7,8 +7,14 @@ import javax.annotation.Nullable;
+ import javax.validation.constraints.Min;
+ import javax.validation.constraints.NotNull;
+ import java.util.Objects;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ public class Schedule {
++    private static final Logger LOGGER = LoggerFactory.getLogger(Schedule.class);
++
++    private static final String CTEST_GET_PARAM_FORMAT = "[CTEST][GET-PARAM] health.healthChecks.schedule.{}";
++    private static final String CTEST_SET_PARAM_FORMAT = "[CTEST][SET-PARAM] health.healthChecks.schedule.{}";
+ 
+     @Nullable
+     @JsonProperty
+@@ -30,44 +36,73 @@ public class Schedule {
+     @JsonProperty
+     private int successAttempts = 2;
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     public Duration getInitialDelay() {
++        String ctestParam = "initialDelay";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
++
+         // default to checkInterval value
+         return initialDelay == null ? getCheckInterval() : initialDelay;
+     }
+ 
+     public void setInitialDelay(Duration initialDelay) {
++        String ctestParam = "initialDelay";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.initialDelay = initialDelay;
+     }
+ 
+     public Duration getCheckInterval() {
++        String ctestParam = "checkInterval";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return checkInterval;
+     }
+ 
+     public void setCheckInterval(final Duration checkInterval) {
++        String ctestParam = "checkInterval";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.checkInterval = checkInterval;
+     }
+ 
+     public Duration getDowntimeInterval() {
++        String ctestParam = "downtimeInterval";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return downtimeInterval;
+     }
+ 
+     public void setDowntimeInterval(final Duration downtimeInterval) {
++        String ctestParam = "downtimeInterval";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.downtimeInterval = downtimeInterval;
+     }
+ 
+     public int getFailureAttempts() {
++        String ctestParam = "failureAttempts";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return failureAttempts;
+     }
+ 
+     public void setFailureAttempts(final int failureAttempts) {
++        String ctestParam = "failureAttempts";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.failureAttempts = failureAttempts;
+     }
+ 
+     public int getSuccessAttempts() {
++        String ctestParam = "successAttempts";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return successAttempts;
+     }
+ 
+     public void setSuccessAttempts(final int successAttempts) {
++        String ctestParam = "successAttempts";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.successAttempts = successAttempts;
+     }
+ 
+diff --git a/dropwizard-health/src/main/java/io/dropwizard/health/response/ServletHealthResponderFactory.java b/dropwizard-health/src/main/java/io/dropwizard/health/response/ServletHealthResponderFactory.java
+index d5fc51429..7fa850113 100644
+--- a/dropwizard-health/src/main/java/io/dropwizard/health/response/ServletHealthResponderFactory.java
++++ b/dropwizard-health/src/main/java/io/dropwizard/health/response/ServletHealthResponderFactory.java
+@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
+ import io.dropwizard.health.HealthEnvironment;
+ import io.dropwizard.jersey.setup.JerseyEnvironment;
+ import io.dropwizard.jetty.setup.ServletEnvironment;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ import java.util.Collection;
+ 
+@@ -14,6 +16,11 @@ import java.util.Collection;
+  */
+ @JsonTypeName("servlet")
+ public class ServletHealthResponderFactory implements HealthResponderFactory {
++    private static final Logger LOGGER = LoggerFactory.getLogger(ServletHealthResponderFactory.class);
++
++    private static final String CTEST_GET_PARAM_FORMAT = "[CTEST][GET-PARAM] health.responder.{}";
++    private static final String CTEST_SET_PARAM_FORMAT = "[CTEST][SET-PARAM] health.responder.{}";
++
+     static final String SERVLET_SUFFIX = "-servlet";
+ 
+     @JsonProperty
+@@ -22,19 +29,35 @@ public class ServletHealthResponderFactory implements HealthResponderFactory {
+     @JsonProperty
+     private String cacheControlValue = "no-store";
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     public boolean isCacheControlEnabled() {
++        String ctestParam = "cacheControlEnabled";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return cacheControlEnabled;
+     }
+ 
+     public void setCacheControlEnabled(boolean cacheControlEnabled) {
++        String ctestParam = "cacheControlEnabled";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.cacheControlEnabled = cacheControlEnabled;
+     }
+ 
+     public String getCacheControlValue() {
++        String ctestParam = "cacheControlValue";
++        LOGGER.warn(CTEST_GET_PARAM_FORMAT, ctestParam);
+         return cacheControlValue;
+     }
+ 
+     public void setCacheControlValue(String cacheControlValue) {
++        String ctestParam = "cacheControlValue";
++        LOGGER.warn(CTEST_SET_PARAM_FORMAT, ctestParam + getStackTrace());
+         this.cacheControlValue = cacheControlValue;
+     }
+ 
+diff --git a/dropwizard-health/src/test/java/io/dropwizard/health/DefaultHealthFactoryTest.java b/dropwizard-health/src/test/java/io/dropwizard/health/DefaultHealthFactoryTest.java
+index 1360fba62..845c478dd 100644
+--- a/dropwizard-health/src/test/java/io/dropwizard/health/DefaultHealthFactoryTest.java
++++ b/dropwizard-health/src/test/java/io/dropwizard/health/DefaultHealthFactoryTest.java
+@@ -29,8 +29,13 @@ import static org.mockito.ArgumentMatchers.eq;
+ import static org.mockito.Mockito.mock;
+ import static org.mockito.Mockito.verify;
+ import static org.mockito.Mockito.when;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ class DefaultHealthFactoryTest {
++    private boolean DEBUG_INJECTION = true;
++    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultHealthFactoryTest.class);
++
+     private final ObjectMapper objectMapper = Jackson.newObjectMapper();
+     private final Validator validator = Validators.newValidator();
+     private final YamlConfigurationFactory<DefaultHealthFactory> configFactory =
+@@ -38,7 +43,12 @@ class DefaultHealthFactoryTest {
+ 
+     @Test
+     void shouldBuildHealthFactoryFromYaml() throws Exception {
+-        final DefaultHealthFactory healthFactory = configFactory.build(new ResourceConfigurationSourceProvider(), "/yml/health.yml");
++        final DefaultHealthFactory healthFactory = configFactory.build(new ResourceConfigurationSourceProvider(),
++                "/yml/health-ctest.yml");
++
++        if (DEBUG_INJECTION) {
++            LOGGER.info("[CTEST][DEBUG INJECTION] Value for isEnabled is {}", healthFactory.isEnabled());
++        }
+ 
+         assertThat(healthFactory.isDelayedShutdownHandlerEnabled()).isTrue();
+         assertThat(healthFactory.isEnabled()).isTrue();
+@@ -68,7 +78,8 @@ class DefaultHealthFactoryTest {
+ 
+     @Test
+     void configure() throws Exception {
+-        final DefaultHealthFactory healthFactory = configFactory.build(new ResourceConfigurationSourceProvider(), "/yml/health.yml");
++        final DefaultHealthFactory healthFactory = configFactory.build(new ResourceConfigurationSourceProvider(),
++                "/yml/health-ctest.yml");
+ 
+         LifecycleEnvironment lifecycleEnvironment = new LifecycleEnvironment(new MetricRegistry());
+ 
+diff --git a/dropwizard-health/src/test/java/io/dropwizard/health/HealthCheckConfigurationTest.java b/dropwizard-health/src/test/java/io/dropwizard/health/HealthCheckConfigurationTest.java
+index 7254e0b13..cd190ff70 100644
+--- a/dropwizard-health/src/test/java/io/dropwizard/health/HealthCheckConfigurationTest.java
++++ b/dropwizard-health/src/test/java/io/dropwizard/health/HealthCheckConfigurationTest.java
+@@ -19,7 +19,8 @@ class HealthCheckConfigurationTest {
+ 
+     @Test
+     void shouldBuildHealthCheckConfigurationFromYaml() throws Exception {
+-        final HealthCheckConfiguration healthCheckConfig = configFactory.build(new ResourceConfigurationSourceProvider(), "/yml/healthCheck.yml");
++        final HealthCheckConfiguration healthCheckConfig = configFactory
++                .build(new ResourceConfigurationSourceProvider(), "/yml/healthCheck-ctest.yml");
+ 
+         assertThat(healthCheckConfig.getName()).isEqualTo("cassandra");
+         assertThat(healthCheckConfig.isCritical()).isTrue();
+diff --git a/dropwizard-health/src/test/java/io/dropwizard/health/ScheduleTest.java b/dropwizard-health/src/test/java/io/dropwizard/health/ScheduleTest.java
+index bab1b2f40..cb1031e5f 100644
+--- a/dropwizard-health/src/test/java/io/dropwizard/health/ScheduleTest.java
++++ b/dropwizard-health/src/test/java/io/dropwizard/health/ScheduleTest.java
+@@ -19,7 +19,8 @@ class ScheduleTest {
+ 
+     @Test
+     void shouldBuildAScheduleFromYaml() throws Exception {
+-        final Schedule schedule = configFactory.build(new ResourceConfigurationSourceProvider(), "/yml/schedule.yml");
++        final Schedule schedule = configFactory.build(new ResourceConfigurationSourceProvider(),
++                "/yml/schedule-ctest.yml");
+ 
+         assertThat(schedule.getCheckInterval().toMilliseconds()).isEqualTo(2500L);
+         assertThat(schedule.getDowntimeInterval().toSeconds()).isEqualTo(25L);
+diff --git a/dropwizard-health/src/test/resources/yml/health-ctest.yml b/dropwizard-health/src/test/resources/yml/health-ctest.yml
+new file mode 100644
+index 000000000..f0131bdc7
+--- /dev/null
++++ b/dropwizard-health/src/test/resources/yml/health-ctest.yml
+@@ -0,0 +1,13 @@
++enabled: true
++initialOverallState: true
++healthChecks:
++- name: foundationdb
++  critical: true
++- name: kafka
++  critical: false
++- name: redis
++  critical: false
++delayedShutdownHandlerEnabled: true
++shutdownWaitPeriod: 1ms
++servletFactory:
++  type: default
+diff --git a/dropwizard-health/src/test/resources/yml/healthCheck-ctest.yml b/dropwizard-health/src/test/resources/yml/healthCheck-ctest.yml
+new file mode 100644
+index 000000000..edd4b4b4b
+--- /dev/null
++++ b/dropwizard-health/src/test/resources/yml/healthCheck-ctest.yml
+@@ -0,0 +1,2 @@
++name: cassandra
++critical: true
+diff --git a/dropwizard-health/src/test/resources/yml/schedule-ctest.yml b/dropwizard-health/src/test/resources/yml/schedule-ctest.yml
+new file mode 100644
+index 000000000..bddf2361c
+--- /dev/null
++++ b/dropwizard-health/src/test/resources/yml/schedule-ctest.yml
+@@ -0,0 +1,4 @@
++checkInterval: 2500ms
++downtimeInterval: 25s
++failureAttempts: 2
++successAttempts: 1
+-- 
+2.37.1 (Apple Git-137.1)
+

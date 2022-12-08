@@ -1,0 +1,17 @@
+health.enabled	true	Flag indicating whether to enable health functionality or not.
+health.delayedShutdownHandlerEnabled	false	Flag indicating whether to delay shutdown to allow already processing requests to complete.
+health.shutdownWaitPeriod	15s	Amount of time to delay shutdown by to allow already processing requests to complete. Only applicable if delayedShutdownHandlerEnabled is true.
+health.healthCheckUrlPaths	["/health-check"]	URLs to expose the app's health check on.
+health.initialOverallState	true	Flag indicating whether the overall health state of the application should start as healthy or unhealthy. A value of true indicates an initial state of healthy while a value of false indicates an initial state of unhealthy.
+health.healthChecks.name	(none)	The name of this health check. This must be unique, and match the name of the check registered in code. (On the application’s HealthCheckRegistry)
+health.healthChecks.type	ready	The type of this health check. This is either alive or ready. See the application status section for more details.
+health.healthChecks.critical	false	Flag indicating whether this dependency is critical to determine the health of the application. If true and this dependency is unhealthy, the application will also be marked as unhealthy.
+health.healthChecks.initialState	true	Flag indicating the initial state to use for this health check. A value of true indicates an initial state of healthy while a value of false indicates an initial state of unhealthy.
+health.healthChecks.schedule.checkInterval	5s	The interval on which to perform a health check for this dependency while the dependency is in a healthy state.
+health.healthChecks.schedule.downtimeInterval	30s	The interval on which to perform a health check for this dependency while the dependency is in an unhealthy state.
+health.healthChecks.schedule.initialDelay	5s	The initial delay to use when first scheduling the health check.
+health.healthChecks.schedule.failureAttempts	3	The threshold of consecutive failed attempts needed to mark a dependency as unhealthy (from a healthy state).
+health.healthChecks.schedule.successAttempts	2	The threshold of consecutive successful attempts needed to mark a dependency as healthy (from an unhealthy state).
+health.responder.type	servlet	
+health.responder.cacheControlEnabled	true	Flag controlling whether a Cache-Control header will be included in the health check response or not. Set header value using cacheControlValue.
+health.responder.cacheControlValue	"no-store"	The value to be set in the Cache-Control header in the health check response. Only used if cacheControlEnabled is set to true.

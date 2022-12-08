@@ -1,0 +1,100 @@
+{
+    "health.shutdownWaitPeriod": [
+        "io.dropwizard.health.DefaultHealthFactoryTest#configure"
+    ],
+    "health.delayedShutdownHandlerEnabled": [
+        "io.dropwizard.health.DefaultHealthFactoryTest#configure"
+    ],
+    "health.healthChecks.name": [
+        "io.dropwizard.health.DefaultHealthFactoryTest#configure",
+        "io.dropwizard.health.HealthCheckConfigValidatorTest#startValidationsShouldFailIfAHealthCheckConfiguredButNotRegistered",
+        "io.dropwizard.health.HealthCheckConfigValidatorTest#startValidationsShouldSucceedForConfiguredAndRegisteredHealthCheck",
+        "io.dropwizard.health.HealthCheckConfigValidatorTest#startValidationsShouldSucceedButLogWhenNotAllHealthChecksAreConfigured",
+        "io.dropwizard.health.HealthCheckConfigValidatorTest#startValidationsShouldSucceedWhenNoHealthChecksConfigured",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerNotAliveAndUnhealthyWhenCriticalAliveCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldRecordNumberOfHealthyAndUnhealthyHealthChecks",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.schedule.checkInterval": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown",
+        "io.dropwizard.health.HealthCheckSchedulerTest#unscheduleShouldDoNothingIfNoCheckScheduled",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldUnscheduleExistingCheck",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldRescheduleCheckForHealthyDependency",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldRescheduleCheckForUnhealthyDependency",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldScheduleCheckForNotAlreadyScheduledHealthyDependency"
+    ],
+    "health.healthChecks.schedule.successAttempts": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerNotAliveAndUnhealthyWhenCriticalAliveCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldRecordNumberOfHealthyAndUnhealthyHealthChecks",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.critical": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldRecordNumberOfHealthyAndUnhealthyHealthChecks",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.schedule.downtimeInterval": [
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldUnscheduleExistingCheck",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldRescheduleCheckForHealthyDependency",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldRescheduleCheckForUnhealthyDependency",
+        "io.dropwizard.health.HealthCheckSchedulerTest#shouldScheduleCheckForNotAlreadyScheduledUnhealthyDependency"
+    ],
+    "health.healthChecks.schedule.failureAttempts": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerNotAliveAndUnhealthyWhenCriticalAliveCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldRecordNumberOfHealthyAndUnhealthyHealthChecks",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.type": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerNotAliveAndUnhealthyWhenCriticalAliveCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.initialState": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerUnhealthyWhenCriticalHealthCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerHealthyWhenCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldReportUnhealthyWhenInitialOverallStateIsFalse",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldNotChangeServerStateWhenNonCriticalHealthCheckRecovers",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldMarkServerNotAliveAndUnhealthyWhenCriticalAliveCheckFails",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldRecordNumberOfHealthyAndUnhealthyHealthChecks",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldScheduleHealthCheckWhenConfiguredHealthCheckAdded",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldUnscheduleTaskWhenHealthCheckRemoved",
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ],
+    "health.healthChecks.schedule.initialDelay": [
+        "io.dropwizard.health.HealthCheckManagerTest#shouldContinueScheduledCheckingWhileDelayingShutdown"
+    ]
+}

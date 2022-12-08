@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_dropwizard() {
+    [ ! -d "app/ctest-dropwizard" ] && git clone https://github.com/yang170/dropwizard.git app/ctest-dropwizard
+    cd app/ctest-dropwizard
+    git fetch && git checkout ctest-injection
+    cd dropwizard-health
+    mvn clean package -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +72,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            dropwizard) setup_dropwizard ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and dropwizard." ;;
         esac
     fi
 }

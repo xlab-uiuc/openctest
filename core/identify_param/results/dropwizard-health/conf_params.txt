@@ -1,0 +1,17 @@
+health.enabled
+health.delayedShutdownHandlerEnabled
+health.shutdownWaitPeriod
+health.healthCheckUrlPaths
+health.initialOverallState
+health.healthChecks.name
+health.healthChecks.type
+health.healthChecks.critical
+health.healthChecks.initialState
+health.healthChecks.schedule.checkInterval
+health.healthChecks.schedule.downtimeInterval
+health.healthChecks.schedule.initialDelay
+health.healthChecks.schedule.failureAttempts
+health.healthChecks.schedule.successAttempts
+health.responder.type
+health.responder.cacheControlEnabled
+health.responder.cacheControlValue

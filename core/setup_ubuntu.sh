@@ -18,4 +18,7 @@ make
 make install
 protoc --version
 
+# install pyyaml
+pip install pyyaml
+
 cd $curdir
