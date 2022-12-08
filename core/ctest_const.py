@@ -40,7 +40,7 @@ MODULE_SUBDIR = {
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
     KCOMMON: "core-common",
-    KTOOL: "",
+    KTOOL: "tool",
 }
 
 

@@ -1,0 +1,29 @@
+diff --git a/core/run_ctest/program_input.py b/core/run_ctest/program_input.py
+index 84d05d4..8bb9cf7 100644
+--- a/core/run_ctest/program_input.py
++++ b/core/run_ctest/program_input.py
+@@ -4,9 +4,9 @@ p_input = {
+     # run mode
+     "run_mode": "run_ctest", # string
+     # name of the project, i.e. hadoop-common, hadoop-hdfs
+-    "project": "kylin-common", # string
++    "project": "kylin-tool", # string
+     # path to param -> tests json mapping
+-    "mapping_path": "../../data/ctest_mapping/opensource-kylin-common.json", # string
++    "mapping_path": "../../data/ctest_mapping/opensource-kylin-tool.json", # string
+     # input directory hosting configuration files to be test, target-project-format specific
+     "conf_file_dir": "sample-kylin-common", # string
+     # display the terminal output live, without saving any results
+diff --git a/core/run_ctest/run_test_utils.py b/core/run_ctest/run_test_utils.py
+index 12dfa13..a0d1a94 100644
+--- a/core/run_ctest/run_test_utils.py
++++ b/core/run_ctest/run_test_utils.py
+@@ -19,7 +19,7 @@ def maven_cmd(test, add_time=False):
+     # surefire:test reuses test build from last compilation
+     # if you modified the test and want to rerun it, you must use `mvn test`
+     test_mode = "surefire:test" if use_surefire else "test"
+-    cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
++    cmd = ["mvn","-pl","core-common,tool", test_mode, "-Dtest={}".format(test)] + maven_args
+     if add_time:
+         cmd = ["time"] + cmd
+     print(">>>>[ctest_core] command: " + " ".join(cmd))
