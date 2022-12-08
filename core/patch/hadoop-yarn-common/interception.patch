@@ -1,0 +1,144 @@
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 530e18e4b83..9fc70dbeccc 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -509,6 +509,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index 818ef37eb79..5103d3522cf 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -786,6 +786,7 @@ private void handleDeprecation() {
+     // Add default resources
+     addDefaultResource("core-default.xml");
+     addDefaultResource("core-site.xml");
++    addDefaultResource("core-ctest.xml");
+ 
+     // print deprecation warning if hadoop-site.xml is found in classpath
+     ClassLoader cL = Thread.currentThread().getContextClassLoader();
+@@ -1383,7 +1384,7 @@ public String getRaw(String name) {
+   public void set(String name, String value) {
+     set(name, value, null);
+   }
+-  
++
+   /** 
+    * Set the <code>value</code> of the <code>name</code> property. If 
+    * <code>name</code> is deprecated, it also sets the <code>value</code> to
+diff --git a/hadoop-common-project/hadoop-common/src/test/resources/core-ctest.xml b/hadoop-common-project/hadoop-common/src/test/resources/core-ctest.xml
+new file mode 100644
+index 00000000000..db723656af7
+--- /dev/null
++++ b/hadoop-common-project/hadoop-common/src/test/resources/core-ctest.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
++
++<configuration>
++
++</configuration>
+\ No newline at end of file
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
+index c1bb6aa68d2..e3431584a32 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java
+@@ -65,6 +65,8 @@
+   @Private
+   public static final String CORE_SITE_CONFIGURATION_FILE = "core-site.xml";
+ 
++  public static final String CTEST_CONFIGURATION_FILE = "ctest-yarn-common.xml";
++
+   @Private
+   public static final String RESOURCE_TYPES_CONFIGURATION_FILE =
+       "resource-types.xml";
+@@ -104,6 +106,7 @@
+     Configuration.addDefaultResource(YARN_DEFAULT_CONFIGURATION_FILE);
+     Configuration.addDefaultResource(YARN_SITE_CONFIGURATION_FILE);
+     Configuration.addDefaultResource(RESOURCE_TYPES_CONFIGURATION_FILE);
++    Configuration.addDefaultResource(CTEST_CONFIGURATION_FILE);
+   }
+ 
+   private static void addDeprecatedKeys() {
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
+index d97197bc042..92521010100 100644
+--- a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/pom.xml
+@@ -254,6 +254,13 @@
+           </excludes>
+         </configuration>
+       </plugin>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-surefire-plugin</artifactId>
++        <configuration>
++          <reportFormat>plain</reportFormat>
++        </configuration>
++      </plugin>
+       <plugin>
+         <groupId>org.xolstice.maven.plugins</groupId>
+         <artifactId>protobuf-maven-plugin</artifactId>
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/core-ctest.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/core-ctest.xml
+new file mode 100644
+index 00000000000..db723656af7
+--- /dev/null
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/core-ctest.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
++
++<configuration>
++
++</configuration>
+\ No newline at end of file
+diff --git a/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/ctest-yarn-common.xml b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/ctest-yarn-common.xml
+new file mode 100644
+index 00000000000..db723656af7
+--- /dev/null
++++ b/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/ctest-yarn-common.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
++
++<configuration>
++
++</configuration>
+\ No newline at end of file
+diff --git a/hadoop-yarn-project/hadoop-yarn/pom.xml b/hadoop-yarn-project/hadoop-yarn/pom.xml
+index ddc4e875279..b7c85a1dad8 100644
+--- a/hadoop-yarn-project/hadoop-yarn/pom.xml
++++ b/hadoop-yarn-project/hadoop-yarn/pom.xml
+@@ -62,6 +62,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <properties>
+             <property>
+diff --git a/pom.xml b/pom.xml
+index f4e435c7493..e47571761ae 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -142,6 +142,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++        <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+-- 
+2.25.1
+
