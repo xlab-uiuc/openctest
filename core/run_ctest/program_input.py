@@ -4,9 +4,9 @@ p_input = {
     # run mode
     "run_mode": "run_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs
-    "project": "kylin-tool", # string
+    "project": "kylin-common", # string
     # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-kylin-tool.json", # string
+    "mapping_path": "../../data/ctest_mapping/opensource-kylin-common.json", # string
     # input directory hosting configuration files to be test, target-project-format specific
     "conf_file_dir": "sample-kylin-common", # string
     # display the terminal output live, without saving any results

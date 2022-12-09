@@ -134,31 +134,22 @@ dmypy.json
 app/
 core/run_ctest/run_ctest_result
 
-core/identify_param/kylin-common-mvn-test-output
-core/identify_param/kylin-common-mvn-test-reports
 core/identify_param/results/kylin-common/logs
 core/identify_param/results/kylin-common/param_getter_map.json
 core/identify_param/results/kylin-common/param_setter_map.json
 core/identify_param/results/kylin-common/param_unset_getter_map.json
 
 
-core/identify_param/kylin-tool-mvn-test-output
-core/identify_param/kylin-tool-mvn-test-reports
 core/identify_param/results/kylin-tool/logs
 core/identify_param/results/kylin-tool/param_getter_map.json
 core/identify_param/results/kylin-tool/param_setter_map.json
 core/identify_param/results/kylin-tool/param_unset_getter_map.json
 
-core/identify_param/kylin-cube-mvn-test-output
-core/identify_param/kylin-cube-mvn-test-reports
 core/identify_param/results/kylin-cube/logs
 core/identify_param/results/kylin-cube/param_getter_map.json
 core/identify_param/results/kylin-cube/param_setter_map.json
 core/identify_param/results/kylin-cube/param_unset_getter_map.json
 
-
-core/identify_param/kylin-storage-mvn-test-output
-core/identify_param/kylin-storage-mvn-test-reports
 core/identify_param/results/kylin-storage/logs
 core/identify_param/results/kylin-storage/param_getter_map.json
 core/identify_param/results/kylin-storage/param_setter_map.json
