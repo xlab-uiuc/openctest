@@ -1,0 +1,23 @@
+2022-12-06 17:19:45,197 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-06 17:19:45,294 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-06 17:19:45,298 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:45,299 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:45,299 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-06 17:19:45,299 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:45,299 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:45,299 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 892335322
+2022-12-06 17:19:45,299 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-06 17:19:45,299 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-06 17:19:45,355 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-06 17:19:45,357 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-06 17:19:45,464 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-06 17:19:45,471 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:45,472 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:45,473 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-06 17:19:45,473 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:45,473 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:45,473 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 288379405
+2022-12-06 17:19:45,473 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-06 17:19:45,473 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-06 17:19:45,476 WARN  [main] common.BackwardCompatibilityConfig:103 : Config 'kylin.cube.engine.' is deprecated, use 'kylin.engine.provider.' instead
+2022-12-06 17:19:45,503 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig

@@ -1,0 +1,1075 @@
+2022-12-06 17:19:40,705 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-06 17:19:40,845 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-06 17:19:40,850 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:40,851 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:40,852 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-06 17:19:40,852 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,852 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-06 17:19:40,852 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 1485089044
+2022-12-06 17:19:40,852 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-06 17:19:40,852 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-06 17:19:40,859 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.job.use-remote-cli
+Running org.apache.kylin.tool.extractor.CubeMetaExtractor -destDir /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758 -project default -compress false -packagetype cubemeta
+2022-12-06 17:19:40,865 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,865 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,866 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,866 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,866 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-06 17:19:40,867 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:40,867 INFO  [main] persistence.ResourceStore:90 : Using metadata url ../examples/test_metadata/ for resource store
+2022-12-06 17:19:40,869 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:40,870 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:40,870 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:40,886 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.model.DataModelManager
+2022-12-06 17:19:40,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-manager-impl
+2022-12-06 17:19:40,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-impl
+2022-12-06 17:19:40,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:40,887 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.TableMetadataManager
+2022-12-06 17:19:40,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:40,888 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:40,888 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:40,910 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-precision
+2022-12-06 17:19:40,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-scale
+2022-12-06 17:19:40,914 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.cachesync.Broadcaster
+2022-12-06 17:19:40,915 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.sync-error-handler
+2022-12-06 17:19:40,916 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.server.cluster-servers
+2022-12-06 17:19:40,916 WARN  [main] cachesync.Broadcaster:100 : There is no available rest server; check the 'kylin.server.cluster-servers' config
+2022-12-06 17:19:40,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:40,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:40,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:40,975 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:40,976 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:40,976 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:40,987 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:40,987 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,008 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.project.ProjectManager
+2022-12-06 17:19:41,008 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,008 INFO  [main] project.ProjectManager:81 : Initializing ProjectManager with metadata url ../examples/test_metadata/
+2022-12-06 17:19:41,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,021 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-06 17:19:41,039 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-06 17:19:41,043 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.storage.hybrid.HybridManager
+2022-12-06 17:19:41,043 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,044 INFO  [main] hybrid.HybridManager:71 : Initializing HybridManager with config ../examples/test_metadata/
+2022-12-06 17:19:41,045 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,046 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,047 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,059 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.cube.CubeManager
+2022-12-06 17:19:41,061 WARN  [main] common.KylinConfigBase:122 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,061 INFO  [main] cube.CubeManager:122 : Initializing CubeManager with config ../examples/test_metadata/
+2022-12-06 17:19:41,061 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,062 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,062 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,076 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.cube.CubeDescManager
+2022-12-06 17:19:41,077 WARN  [main] common.KylinConfigBase:91 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,077 INFO  [main] cube.CubeDescManager:91 : Initializing CubeDescManager with config ../examples/test_metadata/
+2022-12-06 17:19:41,077 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,077 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,078 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,111 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,117 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,117 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,117 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,117 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,118 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,118 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,118 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,119 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,119 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,119 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,119 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,120 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,121 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,121 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,122 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,124 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,125 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,126 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,127 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-06 17:19:41,130 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,646 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,664 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,691 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,691 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,700 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,707 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,709 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,709 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,709 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,709 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,710 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,712 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,712 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,712 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,713 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,714 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,714 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,714 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,715 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,716 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,717 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,717 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,717 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,718 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,718 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,718 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,719 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,720 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,720 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,721 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,722 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,724 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,724 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,724 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,724 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,725 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,725 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,725 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,725 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,727 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,727 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,728 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,729 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,729 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,729 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,729 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,729 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,730 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,736 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,736 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,736 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,737 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,737 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,737 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,737 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,738 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,739 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,740 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,740 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,741 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-06 17:19:41,743 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,751 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,752 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,755 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,755 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,756 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,756 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,756 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,757 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,757 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,757 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,757 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,757 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,758 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,758 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,758 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,758 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,758 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,760 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,761 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,762 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,763 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,763 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,764 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,766 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,766 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,766 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,766 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,766 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,767 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,767 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,767 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,768 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,768 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,768 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,768 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,769 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,770 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,770 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,770 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,770 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,771 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,772 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,772 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,772 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,773 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,775 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-06 17:19:41,775 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,779 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,780 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-06 17:19:41,783 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,783 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,783 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,783 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,784 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,784 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,784 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,784 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,784 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-06 17:19:41,785 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,786 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,787 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,787 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,787 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-06 17:19:41,787 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-06 17:19:41,787 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-06 17:19:41,792 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.job.dao.ExecutableDao
+2022-12-06 17:19:41,793 WARN  [main] common.KylinConfigBase:83 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,793 INFO  [main] dao.ExecutableDao:83 : Using metadata url: ../examples/test_metadata/
+2022-12-06 17:19:41,793 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,793 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,793 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,796 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-06 17:19:41,796 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,797 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,798 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.realization.RealizationRegistry
+2022-12-06 17:19:41,798 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,798 INFO  [main] realization.RealizationRegistry:54 : Initializing RealizationRegistry with metadata url ../examples/test_metadata/
+2022-12-06 17:19:41,798 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.realization-providers
+2022-12-06 17:19:41,798 INFO  [main] realization.RealizationRegistry:81 : RealizationRegistry is {CUBE=org.apache.kylin.cube.CubeManager@4470fbd6, HYBRID=org.apache.kylin.storage.hybrid.HybridManager@15d49048}
+2022-12-06 17:19:41,799 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.badquery.BadQueryHistoryManager
+2022-12-06 17:19:41,799 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,799 INFO  [main] badquery.BadQueryHistoryManager:51 : Initializing BadQueryHistoryManager with config ../examples/test_metadata/
+2022-12-06 17:19:41,799 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /UUID
+2022-12-06 17:19:41,812 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,812 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization ci_left_join_cube of type CUBE
+2022-12-06 17:19:41,812 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_KYLIN_FACT.json
+2022-12-06 17:19:41,812 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_KYLIN_FACT--default.json
+2022-12-06 17:19:41,812 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ORDER.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ORDER--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ACCOUNT.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ACCOUNT--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ACCOUNT.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ACCOUNT--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_CAL_DT.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_CAL_DT--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_CATEGORY_GROUPINGS.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_CATEGORY_GROUPINGS--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_SITES.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_SITES--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_SELLER_TYPE_DIM.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_SELLER_TYPE_DIM--default.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,813 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ci_left_join_model.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/ci_left_join_cube.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/ci_left_join_cube.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization ci_inner_join_cube of type CUBE
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_KYLIN_FACT.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_KYLIN_FACT--default.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ORDER.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ORDER--default.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ACCOUNT.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ACCOUNT--default.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_ACCOUNT.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_ACCOUNT--default.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_CAL_DT.json
+2022-12-06 17:19:41,814 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_CAL_DT--default.json
+2022-12-06 17:19:41,817 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_CATEGORY_GROUPINGS.json
+2022-12-06 17:19:41,818 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_CATEGORY_GROUPINGS--default.json
+2022-12-06 17:19:41,818 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_SITES.json
+2022-12-06 17:19:41,818 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_SITES--default.json
+2022-12-06 17:19:41,818 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/EDW.TEST_SELLER_TYPE_DIM.json
+2022-12-06 17:19:41,818 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/EDW.TEST_SELLER_TYPE_DIM--default.json
+2022-12-06 17:19:41,819 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,819 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,819 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.TEST_COUNTRY.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ci_inner_join_model.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/ci_inner_join_cube.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/ci_inner_join_cube.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization test_streaming_table_cube of type CUBE
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.STREAMING_TABLE.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.STREAMING_TABLE--default.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_table_model_desc.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/test_streaming_table_cube_desc.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/test_streaming_table_cube.json
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization ci_inner_join_hybrid of type HYBRID
+2022-12-06 17:19:41,820 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /hybrid/ci_inner_join_hybrid.json
+2022-12-06 17:19:41,820 ERROR [main] hybrid.HybridInstance:124 : Realization 'ci_inner_join_cube is disabled, remove from Hybrid 'ci_inner_join_hybrid'
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization ssb of type CUBE
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/SSB.V_LINEORDER.json
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/SSB.V_LINEORDER--default.json
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/SSB.PART.json
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/SSB.PART--default.json
+2022-12-06 17:19:41,822 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/SSB.CUSTOMER.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/SSB.CUSTOMER--default.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/SSB.SUPPLIER.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/SSB.SUPPLIER--default.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/SSB.DATES.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/SSB.DATES--default.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ssb.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/ssb.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/ssb.json
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization fifty_dim_full_build_cube of type CUBE
+2022-12-06 17:19:41,823 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.FIFTY_DIM.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.FIFTY_DIM--default.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/fifty_dim.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/fifty_dim.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/fifty_dim_full_build_cube.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization test_streaming_join_table_cube of type CUBE
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.STREAMING_TABLE.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.STREAMING_TABLE--default.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.STREAMING_CATEGORY.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.STREAMING_CATEGORY--default.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_join_table_model.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/test_streaming_join_table_cube.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/test_streaming_join_table_cube.json
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization test_streaming_v2_cube of type CUBE
+2022-12-06 17:19:41,824 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.STREAMING_V2_TABLE.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.STREAMING_V2_TABLE--default.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_v2_model.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/test_streaming_v2_cube.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/test_streaming_v2_cube.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:337 : Deal with realization test_streaming_v2_user_info_cube of type CUBE
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /table/DEFAULT.STREAMING_V2_USER_INFO_TABLE.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /table_exd/DEFAULT.STREAMING_V2_USER_INFO_TABLE--default.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_v2_user_info_model.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube_desc/test_streaming_v2_user_info_cube.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /project/default.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /cube/test_streaming_v2_user_info_cube.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ssb.json
+2022-12-06 17:19:41,825 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ci_inner_join_model.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ci_left_join_model.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_kylin_inner_join_model_desc.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_kylin_left_join_model_desc.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_table_model_desc.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/fifty_dim.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/twenty_dim.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/ut_large_dimension_number.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_join_table_model.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_v2_model.json
+2022-12-06 17:19:41,826 INFO  [main] extractor.CubeMetaExtractor:457 : adding required resource /model_desc/test_streaming_v2_user_info_model.json
+2022-12-06 17:19:41,827 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,827 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,872 INFO  [main] extractor.CubeMetaExtractor:462 : adding optional resource /bad_query/default.json
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:255 : The resource paths going to be extracted:
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /UUID is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /project/default.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.TEST_KYLIN_FACT.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.TEST_ORDER.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.TEST_ACCOUNT.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/EDW.TEST_CAL_DT.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.TEST_CATEGORY_GROUPINGS.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/EDW.TEST_SITES.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/EDW.TEST_SELLER_TYPE_DIM.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.TEST_COUNTRY.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/ci_left_join_model.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/ci_left_join_cube.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/ci_left_join_cube.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/ci_inner_join_model.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/ci_inner_join_cube.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/ci_inner_join_cube.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.STREAMING_TABLE.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_streaming_table_model_desc.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/test_streaming_table_cube_desc.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/test_streaming_table_cube.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /hybrid/ci_inner_join_hybrid.json is required resources.
+2022-12-06 17:19:41,874 INFO  [main] extractor.CubeMetaExtractor:257 : /table/SSB.V_LINEORDER.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/SSB.PART.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/SSB.CUSTOMER.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/SSB.SUPPLIER.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/SSB.DATES.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/ssb.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/ssb.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/ssb.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.FIFTY_DIM.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/fifty_dim.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/fifty_dim.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/fifty_dim_full_build_cube.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.STREAMING_CATEGORY.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_streaming_join_table_model.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/test_streaming_join_table_cube.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/test_streaming_join_table_cube.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.STREAMING_V2_TABLE.json is required resources.
+2022-12-06 17:19:41,875 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_streaming_v2_model.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/test_streaming_v2_cube.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/test_streaming_v2_cube.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /table/DEFAULT.STREAMING_V2_USER_INFO_TABLE.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_streaming_v2_user_info_model.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /cube_desc/test_streaming_v2_user_info_cube.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /cube/test_streaming_v2_user_info_cube.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_kylin_inner_join_model_desc.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/test_kylin_left_join_model_desc.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/twenty_dim.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:257 : /model_desc/ut_large_dimension_number.json is required resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.TEST_KYLIN_FACT--default.json is optional resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.TEST_ORDER--default.json is optional resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.TEST_ACCOUNT--default.json is optional resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/EDW.TEST_CAL_DT--default.json is optional resources.
+2022-12-06 17:19:41,876 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.TEST_CATEGORY_GROUPINGS--default.json is optional resources.
+2022-12-06 17:19:41,877 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/EDW.TEST_SITES--default.json is optional resources.
+2022-12-06 17:19:41,877 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/EDW.TEST_SELLER_TYPE_DIM--default.json is optional resources.
+2022-12-06 17:19:41,878 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.TEST_COUNTRY.json is optional resources.
+2022-12-06 17:19:41,878 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.STREAMING_TABLE--default.json is optional resources.
+2022-12-06 17:19:41,879 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/SSB.V_LINEORDER--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/SSB.PART--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/SSB.CUSTOMER--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/SSB.SUPPLIER--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/SSB.DATES--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.FIFTY_DIM--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.STREAMING_CATEGORY--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.STREAMING_V2_TABLE--default.json is optional resources.
+2022-12-06 17:19:41,880 INFO  [main] extractor.CubeMetaExtractor:260 : /table_exd/DEFAULT.STREAMING_V2_USER_INFO_TABLE--default.json is optional resources.
+2022-12-06 17:19:41,881 INFO  [main] extractor.CubeMetaExtractor:260 : /bad_query/default.json is optional resources.
+2022-12-06 17:19:41,881 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,883 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,884 INFO  [main] persistence.ResourceStore:90 : Using metadata url /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40 for resource store
+2022-12-06 17:19:41,885 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,885 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,885 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,886 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,895 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,896 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,899 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,900 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,900 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,900 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,900 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,908 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,909 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,909 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,909 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,909 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,910 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,910 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,911 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,912 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,912 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,912 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,912 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,914 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,914 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,914 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,914 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,915 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,915 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,915 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,916 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,916 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,916 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,916 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,917 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,918 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,919 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,920 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,921 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,922 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,922 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,922 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,922 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,924 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,924 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,924 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,926 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,926 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,926 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,926 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,926 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,927 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,927 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,928 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,928 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,928 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,929 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,929 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,929 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,930 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,931 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,931 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,932 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,932 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,932 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,932 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,932 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,933 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,934 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,935 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,937 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,937 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,937 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,937 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,937 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,938 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,939 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,940 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,941 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,941 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,941 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,941 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,942 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,943 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,944 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,946 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,946 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,946 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,946 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,947 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,947 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,947 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,948 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,948 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,949 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,949 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,949 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,950 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,950 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,951 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,952 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,953 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,953 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,953 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,953 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,953 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,954 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,955 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,955 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,955 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,955 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,956 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,960 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,960 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,961 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,962 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,963 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,964 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,965 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,966 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,967 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,968 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,968 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,969 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,972 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,972 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,972 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,973 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,973 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,974 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,975 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,975 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,976 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,977 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,977 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,977 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,977 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,978 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,979 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,980 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,980 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,980 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,981 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,981 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,981 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,981 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,981 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,982 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,985 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,986 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,986 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,987 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,987 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,987 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.TEST_ORDER--default.json
+2022-12-06 17:19:41,987 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,988 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,988 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,988 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,988 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.TEST_ACCOUNT--default.json
+2022-12-06 17:19:41,989 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,989 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,989 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,989 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,989 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/EDW.TEST_CAL_DT--default.json
+2022-12-06 17:19:41,990 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.TEST_CATEGORY_GROUPINGS--default.json
+2022-12-06 17:19:41,990 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,991 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,991 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,991 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/EDW.TEST_SITES--default.json
+2022-12-06 17:19:41,991 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,991 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,992 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,992 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,992 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/EDW.TEST_SELLER_TYPE_DIM--default.json
+2022-12-06 17:19:41,992 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:41,992 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:41,993 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:41,997 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,001 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,008 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,008 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,008 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.STREAMING_TABLE--default.json
+2022-12-06 17:19:42,009 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/SSB.V_LINEORDER--default.json
+2022-12-06 17:19:42,009 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,009 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/SSB.PART--default.json
+2022-12-06 17:19:42,010 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/SSB.CUSTOMER--default.json
+2022-12-06 17:19:42,010 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/SSB.SUPPLIER--default.json
+2022-12-06 17:19:42,010 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,010 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,011 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,011 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/SSB.DATES--default.json
+2022-12-06 17:19:42,011 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,011 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,011 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,011 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.FIFTY_DIM--default.json
+2022-12-06 17:19:42,012 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.STREAMING_CATEGORY--default.json
+2022-12-06 17:19:42,012 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,012 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,013 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,013 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.STREAMING_V2_TABLE--default.json
+2022-12-06 17:19:42,013 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+Resource not exist for /table_exd/DEFAULT.STREAMING_V2_USER_INFO_TABLE--default.json
+2022-12-06 17:19:42,014 INFO  [main] persistence.ResourceTool:237 : Copy from /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/tool/../examples/test_metadata to /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,014 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,015 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:42,015 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,015 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-06 17:19:42,015 INFO  [main] extractor.AbstractInfoExtractor:152 : 
+========================================
+Dump cubemeta package locates at: 
+/var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+========================================
+
+========================================
+Dump cubemeta package locates at: 
+/var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+========================================
+2022-12-06 17:19:42,024 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40
+2022-12-06 17:19:42,026 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:42,027 INFO  [main] persistence.ResourceStore:90 : Using metadata url /var/folders/z0/vqcdc61d0l54qs5ht0myg8xr0000gn/T/junit2192574722292278758/cubemeta_2022_12_06_17_19_40 for resource store
+2022-12-06 17:19:42,029 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-06 17:19:42,029 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,029 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+[/table/DEFAULT.FIFTY_DIM.json, /table/DEFAULT.STREAMING_CATEGORY.json, /table/DEFAULT.STREAMING_TABLE.json, /table/DEFAULT.STREAMING_V2_TABLE.json, /table/DEFAULT.STREAMING_V2_USER_INFO_TABLE.json, /table/DEFAULT.TEST_ACCOUNT.json, /table/DEFAULT.TEST_CATEGORY_GROUPINGS.json, /table/DEFAULT.TEST_COUNTRY.json, /table/DEFAULT.TEST_KYLIN_FACT.json, /table/DEFAULT.TEST_ORDER.json, /table/EDW.TEST_CAL_DT.json, /table/EDW.TEST_SELLER_TYPE_DIM.json, /table/EDW.TEST_SITES.json, /table/SSB.CUSTOMER.json, /table/SSB.DATES.json, /table/SSB.PART.json, /table/SSB.SUPPLIER.json, /table/SSB.V_LINEORDER.json]
+2022-12-06 17:19:42,032 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-06 17:19:42,032 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+[/table_exd/DEFAULT.TEST_COUNTRY.json, /table_exd/DEFAULT.TEST_KYLIN_FACT--default.json]
+2022-12-06 17:19:42,072 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
