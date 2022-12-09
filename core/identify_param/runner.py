@@ -84,7 +84,9 @@ class Runner:
             if "testSetKylinConfigInEnvIfMissingTakingEmptyProperties" in trace and "Test" not in trace:
                 return True
         if self.module == "kylin-cube":
-            if "SpecificConfigTest" in trace and "Test" not in trace:
+            if "ProjectSpecificConfigTest" in trace and "Test" not in trace:
+                return True
+            if "CubeSpecificConfigTest" in trace and "Test" not in trace:
                 return True
         if self.module == "kylin-tool":
             if "KylinConfigCLITest" in trace and "Test" not in trace:

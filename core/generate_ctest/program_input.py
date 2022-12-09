@@ -12,7 +12,7 @@ p_input = {
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
-    "use_surefire": True, # bool
+    "use_surefire": False, # bool
     # additional maven options to pass to `mvn surefire:test -Dtest=...`
     "maven_args": ["-DfailIfNoTests=false"], # list of strings, each element is an option
     # timeout on the mvn test command
