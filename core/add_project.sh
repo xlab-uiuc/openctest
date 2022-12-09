@@ -51,7 +51,7 @@ function setup_alluxio() {
 function setup_camel() {
     [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
     cd app/ctest-camel
-    git fetch && git checkout ctest-injection
+    git fetch && git checkout ctest-logging
     mvn clean install -DskipTests
 }
 
