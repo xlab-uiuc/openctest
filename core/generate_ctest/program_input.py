@@ -14,7 +14,7 @@ p_input = {
     # whether to use mvn test or mvn surefire:test
     "use_surefire": True, # bool
     # additional maven options to pass to `mvn surefire:test -Dtest=...`
-    "maven_args": [], # list of strings, each element is an option
+    "maven_args": ["-DfailIfNoTests=false"], # list of strings, each element is an option
     # timeout on the mvn test command
     "cmd_timeout": None, # int
 }

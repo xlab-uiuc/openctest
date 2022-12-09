@@ -1,1 +1,1 @@
-{}
+{"kylin.cube.aggrgroup.max-combination": ["org.apache.kylin.storage.hybrid.HybridManagerTest#testBasics"], "kylin.cube.rowkey.max-size": ["org.apache.kylin.storage.hybrid.HybridManagerTest#testBasics"], "kylin.cube.aggrgroup.is-mandatory-only-valid": ["org.apache.kylin.storage.hybrid.HybridManagerTest#testBasics"], "kylin.resourcestore.reconnect-base-ms": ["org.apache.kylin.storage.hybrid.HybridManagerTest#testBasics"], "kylin.metadata.check-copy-on-write": ["org.apache.kylin.storage.hybrid.HybridManagerTest#testBasics"]}
