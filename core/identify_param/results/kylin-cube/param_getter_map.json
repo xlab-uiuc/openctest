@@ -1,0 +1,35 @@
+{
+  "kylin.metadata.url": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.metadata.check-copy-on-write": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.resourcestore.reconnect-base-ms": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.metadata.sync-error-handler": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.cube.rowkey.max-size": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.source.hive.default-varchar-precision": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.source.hive.default-decimal-precision": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.source.hive.default-decimal-scale": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.cube.aggrgroup.is-mandatory-only-valid": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.cube.aggrgroup.max-combination": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ],
+  "kylin.storage.hbase.compression-codec": [
+    "org.apache.kylin.cube.CubeSpecificConfigTest#test2"
+  ]
+}

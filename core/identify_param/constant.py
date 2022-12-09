@@ -16,6 +16,8 @@ MODULE_PATH = {
     "alluxio-core": CTEST_ALLUXIO_DIR,
     "kylin-common": CTEST_KYLIN_DIR,
     "kylin-tool": CTEST_KYLIN_DIR,
+    "kylin-storage": CTEST_KYLIN_DIR,
+    "kylin-cube": CTEST_KYLIN_DIR,
 }
 
 SRC_SUBDIR = {

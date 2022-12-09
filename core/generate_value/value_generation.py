@@ -25,7 +25,7 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
-    elif module == "kylin-common" or module == "kylin-tool":
+    elif module == "kylin-common" or module == "kylin-tool" or module == "kylin-cube" or module == "kylin-storage":
         assert len(params) == 283
         return 283
     else:
