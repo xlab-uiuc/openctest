@@ -1,3 +1,0 @@
-org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute kylin.metadata.url
-org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson kylin.metadata.url
-org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson kylin.metadata.url

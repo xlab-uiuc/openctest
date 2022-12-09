@@ -1,0 +1,112 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-core-common:jar:4.0.2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-sql_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ org.apache.kylin:kylin:4.0.2, /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/pom.xml, line 1109, column 19
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-hive_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ org.apache.kylin:kylin:4.0.2, /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/pom.xml, line 1115, column 19
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-metadata:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 51, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-common:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 65, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-query:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 144, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-soft-affinity-cache:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 62, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin:pom:4.0.2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-sql_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ line 1109, column 19
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-hive_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ line 1115, column 19
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< org.apache.kylin:kylin-core-cube >------------------
+[INFO] Building Apache Kylin - Core Cube 4.0.2
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from maven-default-http-blocker: http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[WARNING] Could not transfer metadata net.minidev:json-smart/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven-version) @ kylin-core-cube ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (check-style) @ kylin-core-cube ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (pre-test) @ kylin-core-cube ---
+[INFO] surefireArgLine set to -javaagent:/Users/carolsong/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/../target/jacoco.exec,append=true
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.5:process (process-resource-bundles) @ kylin-core-cube ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ kylin-core-cube ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/src/main/resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ kylin-core-cube ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:copy (copy-jamm) @ kylin-core-cube ---
+[INFO] Configured Artifact: com.github.jbellis:jamm:?:jar
+[INFO] com.github.jbellis:jamm:0.3.1:jar already exists in /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/target/test-classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ kylin-core-cube ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ kylin-core-cube ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.21.0:test (default-test) @ kylin-core-cube ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.kylin.cube.DimensionRangeInfoTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.586 s <<< FAILURE! - in org.apache.kylin.cube.DimensionRangeInfoTest
+[ERROR] testMergeRangeMap(org.apache.kylin.cube.DimensionRangeInfoTest)  Time elapsed: 0.514 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.reflect.InvocationTargetException
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.RuntimeException: Failed to init DataModelManager from ../examples/test_metadata/
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.reflect.InvocationTargetException
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.reflect.InvocationTargetException
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+Caused by: java.lang.NumberFormatException: For input string: "0.1"
+	at org.apache.kylin.cube.DimensionRangeInfoTest.testMergeRangeMap(DimensionRangeInfoTest.java:46)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   DimensionRangeInfoTest.testMergeRangeMap:46 » Runtime java.lang.reflect.Invoca...
+[INFO] 
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.285 s
+[INFO] Finished at: 2022-12-08T18:43:00-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.21.0:test (default-test) on project kylin-core-cube: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/../target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date]-jvmRun[N].dump, [date].dumpstream and [date]-jvmRun[N].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
