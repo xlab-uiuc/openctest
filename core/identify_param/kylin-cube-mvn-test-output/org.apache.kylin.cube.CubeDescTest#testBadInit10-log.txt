@@ -1,0 +1,457 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-core-common:jar:4.0.2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-sql_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ org.apache.kylin:kylin:4.0.2, /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/pom.xml, line 1109, column 19
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-hive_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ org.apache.kylin:kylin:4.0.2, /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/pom.xml, line 1115, column 19
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-metadata:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 51, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-common:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 65, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-spark-query:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 144, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin-soft-affinity-cache:jar:4.0.2
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ line 62, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.kylin:kylin:pom:4.0.2
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-sql_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ line 1109, column 19
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.spark:spark-hive_${scala.binary.version}:jar -> duplicate declaration of version ${spark.version} @ line 1115, column 19
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< org.apache.kylin:kylin-core-cube >------------------
+[INFO] Building Apache Kylin - Core Cube 4.0.2
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from maven-default-http-blocker: http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[WARNING] Could not transfer metadata net.minidev:json-smart/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/net/minidev/json-smart/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven-version) @ kylin-core-cube ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (check-style) @ kylin-core-cube ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (pre-test) @ kylin-core-cube ---
+[INFO] surefireArgLine set to -javaagent:/Users/carolsong/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/../target/jacoco.exec,append=true
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.5:process (process-resource-bundles) @ kylin-core-cube ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:resources (default-resources) @ kylin-core-cube ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/src/main/resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:compile (default-compile) @ kylin-core-cube ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:copy (copy-jamm) @ kylin-core-cube ---
+[INFO] Configured Artifact: com.github.jbellis:jamm:?:jar
+[INFO] com.github.jbellis:jamm:0.3.1:jar already exists in /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/target/test-classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.1:testResources (default-testResources) @ kylin-core-cube ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5.1:testCompile (default-testCompile) @ kylin-core-cube ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.21.0:test (default-test) @ kylin-core-cube ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.kylin.cube.CubeDescTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2022-12-09 01:32:49,345 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-09 01:32:49,698 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-09 01:32:49,715 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 01:32:49,732 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:32:49,823 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-09 01:32:49,824 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-09 01:32:49,824 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 01:32:49,825 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 280744458
+2022-12-09 01:32:49,826 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-09 01:32:49,827 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-09 01:32:49,844 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.cube.CubeDescManager
+2022-12-09 01:32:49,848 WARN  [main] common.KylinConfigBase:91 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:32:49,860 INFO  [main] cube.CubeDescManager:91 : Initializing CubeDescManager with config ../examples/test_metadata/
+2022-12-09 01:32:49,867 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:32:49,868 INFO  [main] persistence.ResourceStore:90 : Using metadata url ../examples/test_metadata/ for resource store
+2022-12-09 01:32:49,875 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:32:49,878 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:49,881 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:49,881 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,385 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.project.ProjectManager
+2022-12-09 01:32:50,388 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:32:50,388 INFO  [main] project.ProjectManager:81 : Initializing ProjectManager with metadata url ../examples/test_metadata/
+2022-12-09 01:32:50,389 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:50,389 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:50,390 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,433 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.cachesync.Broadcaster
+2022-12-09 01:32:50,436 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.sync-error-handler
+2022-12-09 01:32:50,438 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.server.cluster-servers
+2022-12-09 01:32:50,438 WARN  [main] cachesync.Broadcaster:100 : There is no available rest server; check the 'kylin.server.cluster-servers' config
+2022-12-09 01:32:50,446 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:50,448 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.model.DataModelManager
+2022-12-09 01:32:50,448 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-manager-impl
+2022-12-09 01:32:50,449 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-impl
+2022-12-09 01:32:50,452 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:50,456 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.TableMetadataManager
+2022-12-09 01:32:50,457 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:50,457 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:50,457 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,575 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-varchar-precision
+2022-12-09 01:32:50,581 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-precision
+2022-12-09 01:32:50,581 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-scale
+2022-12-09 01:32:50,608 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:50,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:50,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,661 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:32:50,663 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:50,663 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,670 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:32:50,670 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:32:50,752 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-09 01:32:50,761 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-09 01:32:50,774 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.custom-dimension-encodings
+2022-12-09 01:32:50,776 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,777 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,778 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,782 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:50,792 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:50,792 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:50,793 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:50,793 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:50,795 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,796 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,796 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,797 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,797 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,797 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,797 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,798 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,798 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,801 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,802 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,802 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,802 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,803 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,803 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,803 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,803 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,803 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,804 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,804 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,805 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,805 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,806 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,809 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,809 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,809 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,809 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,809 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,810 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,811 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,811 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,811 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,811 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,812 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,812 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,812 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,812 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,813 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,814 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,814 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:50,815 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:50,818 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-09 01:32:50,827 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,467 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,485 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,509 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,510 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,515 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,519 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,519 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,520 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,520 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,520 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,521 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,522 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,522 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,522 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,523 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,535 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,540 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,541 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,541 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,541 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,541 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,541 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,542 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,547 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,547 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,547 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,549 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,551 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,551 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,551 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,552 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,554 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,555 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,556 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,556 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,556 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,557 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,557 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,558 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,558 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,558 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,559 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,560 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,560 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,560 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,560 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,560 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,561 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,561 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,561 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,561 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,562 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,562 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,562 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,562 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,562 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,563 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,564 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,564 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,566 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,566 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,567 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,568 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,568 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,568 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,568 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,569 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,569 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,569 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,569 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,570 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,571 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,572 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,575 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,575 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,576 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,577 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,578 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,578 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-09 01:32:51,580 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,589 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,590 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,591 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,591 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,591 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,592 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,593 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,593 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,593 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,595 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,595 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,595 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,596 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,597 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,597 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,597 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,597 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,597 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,598 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,599 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,599 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,600 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,601 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,601 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,601 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,602 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,602 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,603 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,603 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,604 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,606 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,607 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,607 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,607 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,607 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,609 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,610 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,610 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,610 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,612 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,613 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,614 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,614 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,616 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,617 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,618 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,618 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,618 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,618 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,618 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,619 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,619 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,620 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,620 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,620 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,623 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-09 01:32:51,624 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,629 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,630 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,630 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,630 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,630 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,632 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,632 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,633 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,633 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,633 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,634 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,635 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,636 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,637 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,638 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.cuboid-scheduler
+2022-12-09 01:32:51,638 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,638 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,639 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,639 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,639 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,639 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,640 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,640 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,641 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,644 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,644 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,644 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,645 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,645 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,645 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,645 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,645 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,646 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,646 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,647 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,647 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,648 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,648 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.max-combination
+2022-12-09 01:32:51,648 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.hbasemapping-adapter
+2022-12-09 01:32:51,661 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:32:51,662 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:32:51,663 ERROR [main] model.CubeDesc:914 : Aggregation group 1 a dimension exist in more than one joint: [TEST_KYLIN_FACT.LSTG_FORMAT_NAME, TEST_KYLIN_FACT.LSTG_SITE_ID]
+2022-12-09 01:32:51,736 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.685 s - in org.apache.kylin.cube.CubeDescTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (post-test) @ kylin-core-cube ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  35.874 s
+[INFO] Finished at: 2022-12-08T19:32:54-06:00
+[INFO] ------------------------------------------------------------------------

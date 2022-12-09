@@ -68,37 +68,18 @@ Audit done.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.kylin.cube.CubeDescTest
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.741 s <<< FAILURE! - in org.apache.kylin.cube.CubeDescTest
-[ERROR] testCiCube(org.apache.kylin.cube.CubeDescTest)  Time elapsed: 0.648 s  <<< ERROR!
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at org.apache.kylin.cube.CubeDescTest.setUp(CubeDescTest.java:85)
-Caused by: java.lang.reflect.InvocationTargetException
-	at org.apache.kylin.cube.CubeDescTest.setUp(CubeDescTest.java:85)
-Caused by: java.lang.NumberFormatException: For input string: "0.1"
-	at org.apache.kylin.cube.CubeDescTest.setUp(CubeDescTest.java:85)
-
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.814 s - in org.apache.kylin.cube.CubeDescTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[ERROR] Errors: 
-[ERROR]   CubeDescTest.setUp:85 » Runtime java.lang.reflect.InvocationTargetException
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
 [INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (post-test) @ kylin-core-cube ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  14.468 s
-[INFO] Finished at: 2022-12-08T18:45:13-06:00
+[INFO] Total time:  26.431 s
+[INFO] Finished at: 2022-12-08T19:27:39-06:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.21.0:test (default-test) on project kylin-core-cube: There are test failures.
-[ERROR] 
-[ERROR] Please refer to /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/../target/surefire-reports for the individual test results.
-[ERROR] Please refer to dump files (if any exist) [date]-jvmRun[N].dump, [date].dumpstream and [date]-jvmRun[N].dumpstream.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -68,33 +68,18 @@ Audit done.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.kylin.cube.AggregationGroupRuleTest
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.409 s <<< FAILURE! - in org.apache.kylin.cube.AggregationGroupRuleTest
-[ERROR] testGoodBecomeBadDesc(org.apache.kylin.cube.AggregationGroupRuleTest)  Time elapsed: 1.348 s  <<< FAILURE!
-java.lang.AssertionError
-	at org.apache.kylin.cube.AggregationGroupRuleTest.testGoodBecomeBadDesc(AggregationGroupRuleTest.java:88)
-
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.611 s - in org.apache.kylin.cube.AggregationGroupRuleTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[ERROR] Failures: 
-[ERROR]   AggregationGroupRuleTest.testGoodBecomeBadDesc:88
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
 [INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (post-test) @ kylin-core-cube ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  15.562 s
-[INFO] Finished at: 2022-12-08T18:43:33-06:00
+[INFO] Total time:  37.050 s
+[INFO] Finished at: 2022-12-08T19:25:55-06:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.21.0:test (default-test) on project kylin-core-cube: There are test failures.
-[ERROR] 
-[ERROR] Please refer to /Users/carolsong/openctest/core/identify_param/app/ctest-kylin/core-cube/../target/surefire-reports for the individual test results.
-[ERROR] Please refer to dump files (if any exist) [date]-jvmRun[N].dump, [date].dumpstream and [date]-jvmRun[N].dumpstream.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -3,17 +3,90 @@ SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4
 SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
-2022-12-09 00:44:55,492 INFO  [main] common.KylinConfig:188 : Destroy KylinConfig
-2022-12-09 00:44:55,644 INFO  [main] common.KylinConfig:118 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
-2022-12-09 00:44:55,651 WARN  [main] common.KylinConfig:136 : [CTEST][LOAD-PARAM] Loading ctest.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/ctest.properties
-2022-12-09 00:44:55,659 INFO  [main] common.KylinConfig:369 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-09 00:44:55,723 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.metadata.url.identifier : kylin_metadata
-2022-12-09 00:44:55,723 WARN  [main] common.KylinConfigBase:126 : KYLIN_HOME was not set
-2022-12-09 00:44:55,724 INFO  [main] common.KylinConfig:369 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-09 00:44:55,724 INFO  [main] common.KylinConfig:170 : Initialized a new KylinConfig from getInstanceFromEnv : 1897871865
-2022-12-09 00:44:55,724 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.metadata.url : ../examples/test_metadata/
-2022-12-09 00:44:55,725 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.env.hdfs-working-dir : file:///tmp/kylin
-2022-12-09 00:44:56,014 INFO  [main] common.KylinConfig:504 : Creating new manager instance of class org.apache.kylin.metadata.project.ProjectManager
-2022-12-09 00:44:56,022 INFO  [main] project.ProjectManager:81 : Initializing ProjectManager with metadata url ../examples/test_metadata/
-2022-12-09 00:44:56,024 INFO  [main] persistence.ResourceStore:90 : Using metadata url ../examples/test_metadata/ for resource store
-2022-12-09 00:44:56,095 INFO  [main] common.KylinConfig:188 : Destroy KylinConfig
+2022-12-09 01:27:09,219 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-09 01:27:09,439 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-09 01:27:09,453 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 01:27:09,460 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:27:09,528 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-09 01:27:09,529 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-09 01:27:09,529 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 01:27:09,529 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 648680157
+2022-12-09 01:27:09,530 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-09 01:27:09,530 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-09 01:27:09,853 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.project.ProjectManager
+2022-12-09 01:27:09,858 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:27:09,870 INFO  [main] project.ProjectManager:81 : Initializing ProjectManager with metadata url ../examples/test_metadata/
+2022-12-09 01:27:09,876 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:27:09,876 INFO  [main] persistence.ResourceStore:90 : Using metadata url ../examples/test_metadata/ for resource store
+2022-12-09 01:27:09,880 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:27:09,884 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:27:09,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:27:09,887 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:27:09,973 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.cachesync.Broadcaster
+2022-12-09 01:27:09,977 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.sync-error-handler
+2022-12-09 01:27:09,978 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.server.cluster-servers
+2022-12-09 01:27:09,978 WARN  [main] cachesync.Broadcaster:100 : There is no available rest server; check the 'kylin.server.cluster-servers' config
+2022-12-09 01:27:09,982 WARN  [main] common.BackwardCompatibilityConfig:95 : Config 'kylin.cube.aggrgroup.max.combination' is deprecated, use 'kylin.cube.aggrgroup.max-combination' instead
+2022-12-09 01:27:09,982 WARN  [main] common.BackwardCompatibilityConfig:95 : Config 'kylin.job.cubing.inmem.sampling.percent' is deprecated, use 'kylin.job.sampling-percentage' instead
+2022-12-09 01:27:09,982 WARN  [main] common.BackwardCompatibilityConfig:95 : Config 'kylin.hbase.default.compression.codec' is deprecated, use 'kylin.storage.hbase.compression-codec' instead
+2022-12-09 01:27:09,983 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.rowkey.max-size
+2022-12-09 01:27:09,984 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.model.DataModelManager
+2022-12-09 01:27:09,984 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-manager-impl
+2022-12-09 01:27:09,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.data-model-impl
+2022-12-09 01:27:09,985 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:27:09,989 INFO  [main] common.KylinConfig:494 : Creating new manager instance of class org.apache.kylin.metadata.TableMetadataManager
+2022-12-09 01:27:09,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:27:09,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:27:09,990 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:27:10,072 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-varchar-precision
+2022-12-09 01:27:10,080 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-precision
+2022-12-09 01:27:10,081 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.source.hive.default-decimal-scale
+2022-12-09 01:27:10,090 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:27:10,091 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:27:10,091 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:27:10,115 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.check-copy-on-write
+2022-12-09 01:27:10,115 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:27:10,115 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:27:10,127 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-base-ms
+2022-12-09 01:27:10,129 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.resourcestore.reconnect-max-ms
+2022-12-09 01:27:10,199 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-09 01:27:10,207 WARN  [main] model.DataModelDesc:573 : PK TableRef[SELLER_ACCOUNT:TEST_ACCOUNT].ACCOUNT_ID.bigint are not consistent with FK TableRef[TEST_KYLIN_FACT].SELLER_ID.integer
+2022-12-09 01:27:10,219 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.custom-dimension-encodings
+2022-12-09 01:27:10,221 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,223 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,223 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,223 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,223 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,224 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,225 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,225 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,226 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,229 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,229 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,229 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,230 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,230 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,230 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,231 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,231 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,231 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,232 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,233 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,233 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,233 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,233 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,237 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,238 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,238 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,238 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,238 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,238 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.kylin.cube.rowkey-encoding-auto-convert
+2022-12-09 01:27:10,241 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:27:10,253 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:27:10,253 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.cube.aggrgroup.is-mandatory-only-valid
+2022-12-09 01:27:10,375 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig

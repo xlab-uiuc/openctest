@@ -68,7 +68,7 @@ Audit done.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.kylin.cube.AggregationGroupRuleTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.919 s - in org.apache.kylin.cube.AggregationGroupRuleTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.986 s - in org.apache.kylin.cube.AggregationGroupRuleTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -80,6 +80,6 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  14.531 s
-[INFO] Finished at: 2022-12-08T18:44:28-06:00
+[INFO] Total time:  14.745 s
+[INFO] Finished at: 2022-12-08T19:26:54-06:00
 [INFO] ------------------------------------------------------------------------

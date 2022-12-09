@@ -1,0 +1,11 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2022-12-09 01:36:05,123 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 01:36:05,238 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-09 01:36:05,238 INFO  [main] common.KylinConfig:293 : Resetting SYS_ENV_INSTANCE by a input stream: 846238611
+2022-12-09 01:36:05,245 WARN  [Thread-1] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.stream.settled.storage
+2022-12-09 01:36:05,246 WARN  [Thread-1] common.KylinConfigBase:246 : [CTEST][GET-PARAM] kylin.storage.provider.0
+2022-12-09 01:36:05,252 WARN  [Thread-2] common.KylinConfigBase:246 : [CTEST][GET-PARAM] kylin.storage.provider.0
