@@ -175,6 +175,11 @@ class Runner:
                 cmd = ["mvn", "-pl", "core-common", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             elif self.module == "kylin-tool":
                 cmd = ["mvn", "-pl", "tool", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-cube":
+                cmd = ["mvn", "-pl", "core-cube", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-storage":
+                cmd = ["mvn", "-pl", "core-storage", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             command = " ".join(cmd)
@@ -199,7 +204,7 @@ class Runner:
 
             class_name = method.split("#")[0]
             suffix_filename_to_check = class_name  + ".txt"
-            if self.module == "kylin-common" or "kylin-tool":
+            if self.module == "kylin-common" or "kylin-tool" or "kylin-cube"  or "kylin-storage":
                 suffix_filename_to_check = class_name + "-output" + ".txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
             print(full_path)

@@ -26,6 +26,9 @@ SRC_SUBDIR = {
     "alluxio-core": "core",
     "kylin-common": "",
     "kylin-tool": "",
+    "kylin-storage": "",
+    "kylin-cube": "",
+
 }
 
 MVN_TEST_PATH = {
@@ -36,6 +39,8 @@ MVN_TEST_PATH = {
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
     "kylin-common":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-common"]),
     "kylin-tool":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-tool"]),
+    "kylin-storage":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-storage"]),
+    "kylin-cube":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-cube"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -46,6 +51,8 @@ LOCAL_CONF_PATH = {
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "kylin-common": "results/kylin-common/conf_params.txt",
     "kylin-tool": "results/kylin-tool/conf_params.txt",
+    "kylin-storage": "results/kylin-storage/conf_params.txt",
+    "kylin-cube": "results/kylin-cube/conf_params.txt"
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -79,6 +86,12 @@ CTEST_SUREFIRE_PATH = {
     "kylin-tool":  [
         os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
     ],
+    "kylin-storage":  [
+        os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
+    ],
+    "kylin-cube":  [
+        os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
+    ],
 }
 
 LOCAL_SUREFIRE_SUFFIX = "surefire-reports/*"
@@ -104,5 +117,11 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "kylin-tool": [
         os.path.join("surefire-reports/kylin-tool", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "kylin-storage": [
+        os.path.join("surefire-reports/kylin-storage", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "kylin-cube": [
+        os.path.join("surefire-reports/kylin-cube", LOCAL_SUREFIRE_SUFFIX)
     ]
 }
