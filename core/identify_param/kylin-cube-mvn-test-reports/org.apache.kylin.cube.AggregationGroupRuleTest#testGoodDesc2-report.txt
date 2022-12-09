@@ -3,14 +3,14 @@ SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4
 SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
-2022-12-09 01:26:11,350 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
-2022-12-09 01:26:11,552 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
-2022-12-09 01:26:11,564 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-09 01:26:11,572 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
-2022-12-09 01:26:11,637 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
-2022-12-09 01:26:11,639 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
-2022-12-09 01:26:11,640 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
-2022-12-09 01:26:11,640 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 648680157
-2022-12-09 01:26:11,640 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
-2022-12-09 01:26:11,641 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
-2022-12-09 01:26:12,034 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-09 02:07:54,083 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig
+2022-12-09 02:07:54,273 INFO  [main] common.KylinConfig:117 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-09 02:07:54,288 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 02:07:54,296 WARN  [main] common.KylinConfigBase:184 : [CTEST][GET-PARAM] kylin.metadata.url
+2022-12-09 02:07:54,357 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url.identifier kylin_metadata
+2022-12-09 02:07:54,358 WARN  [main] common.KylinConfigBase:118 : KYLIN_HOME was not set
+2022-12-09 02:07:54,359 INFO  [main] common.KylinConfig:359 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 02:07:54,359 INFO  [main] common.KylinConfig:160 : Initialized a new KylinConfig from getInstanceFromEnv : 648680157
+2022-12-09 02:07:54,360 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.metadata.url ../examples/test_metadata/
+2022-12-09 02:07:54,360 WARN  [main] common.KylinConfigBase:283 : [CTEST][SET-PARAM] kylin.env.hdfs-working-dir file:///tmp/kylin
+2022-12-09 02:07:54,784 INFO  [main] common.KylinConfig:178 : Destroy KylinConfig

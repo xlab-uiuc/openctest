@@ -68,7 +68,7 @@ Audit done.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.kylin.cube.CubeDescManagerTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.kylin.cube.CubeDescManagerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.kylin.cube.CubeDescManagerTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -80,6 +80,6 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  17.341 s
-[INFO] Finished at: 2022-12-08T19:24:02-06:00
+[INFO] Total time:  18.066 s
+[INFO] Finished at: 2022-12-08T20:05:38-06:00
 [INFO] ------------------------------------------------------------------------

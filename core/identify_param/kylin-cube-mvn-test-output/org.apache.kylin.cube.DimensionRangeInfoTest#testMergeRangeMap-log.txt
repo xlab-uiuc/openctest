@@ -68,7 +68,7 @@ Audit done.
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.apache.kylin.cube.DimensionRangeInfoTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.44 s - in org.apache.kylin.cube.DimensionRangeInfoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.373 s - in org.apache.kylin.cube.DimensionRangeInfoTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -80,6 +80,6 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  16.375 s
-[INFO] Finished at: 2022-12-08T19:24:58-06:00
+[INFO] Total time:  18.791 s
+[INFO] Finished at: 2022-12-08T20:06:37-06:00
 [INFO] ------------------------------------------------------------------------
