@@ -1,0 +1,117 @@
+{
+  "kylin.metadata.url": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testError",
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testTimeout",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.KylinConfigCLITest#testGetPrefix",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testNormal",
+    "org.apache.kylin.tool.KylinConfigCLITest#testGetProperty",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.job.use-remote-cli": [
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testNormal",
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testTimeout",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj",
+    "org.apache.kylin.tool.ClientEnvExtractorTest#testError"
+  ],
+  "kylin.resourcestore.reconnect-base-ms": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.metadata.check-copy-on-write": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.source.hive.default-decimal-precision": [
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.source.hive.default-decimal-scale": [
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.metadata.sync-error-handler": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.cube.rowkey.max-size": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.cube.aggrgroup.is-mandatory-only-valid": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.cube.aggrgroup.max-combination": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap",
+    "org.apache.kylin.tool.CubeMetaExtractorTest#testExtractorByPrj"
+  ],
+  "kylin.storage.hbase.table-name-prefix": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap"
+  ],
+  "kylin.storage.hbase.namespace": [
+    "org.apache.kylin.tool.HybridCubeCLITest#test3Delete",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentOverlap",
+    "org.apache.kylin.tool.HybridCubeCLITest#test1Create",
+    "org.apache.kylin.tool.HybridCubeCLITest#test2Update",
+    "org.apache.kylin.tool.HybridCubeCLITest#testSegmentNotOverlap"
+  ],
+  "kylin.env": [
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson"
+  ],
+  "kylin.source.hive.default-varchar-precision": [
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testExecute",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testReadSinkToolsJson",
+    "org.apache.kylin.tool.metrics.systemcube.SCCreatorTest#testWriteSinkToolsJson"
+  ]
+}

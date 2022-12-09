@@ -67,12 +67,12 @@ Audit done.
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running org.apache.kylin.storage.StorageFactoryTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.463 s - in org.apache.kylin.storage.StorageFactoryTest
+[INFO] Running org.apache.kylin.storage.gtrecord.DictGridTableTest
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.017 s - in org.apache.kylin.storage.gtrecord.DictGridTableTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1
 [INFO] 
 [INFO] 
 [INFO] --- jacoco-maven-plugin:0.8.2:report (post-test) @ kylin-core-storage ---
@@ -80,6 +80,6 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  19.387 s
-[INFO] Finished at: 2022-12-08T18:31:21-06:00
+[INFO] Total time:  11.165 s
+[INFO] Finished at: 2022-12-08T18:35:30-06:00
 [INFO] ------------------------------------------------------------------------

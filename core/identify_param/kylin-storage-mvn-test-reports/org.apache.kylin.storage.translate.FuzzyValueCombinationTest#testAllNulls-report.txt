@@ -1,0 +1,17 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/carolsong/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2022-12-09 00:34:01,520 INFO  [main] common.KylinConfig:188 : Destroy KylinConfig
+2022-12-09 00:34:01,787 INFO  [main] common.KylinConfig:118 : Loading kylin-defaults.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/kylin-defaults.properties
+2022-12-09 00:34:01,805 WARN  [main] common.KylinConfig:136 : [CTEST][LOAD-PARAM] Loading ctest.properties from file:/Users/carolsong/.m2/repository/org/apache/kylin/kylin-core-common/4.0.2/kylin-core-common-4.0.2.jar!/ctest.properties
+2022-12-09 00:34:01,812 INFO  [main] common.KylinConfig:369 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 00:34:01,957 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.metadata.url.identifier : kylin_metadata
+2022-12-09 00:34:01,958 WARN  [main] common.KylinConfigBase:126 : KYLIN_HOME was not set
+2022-12-09 00:34:01,958 INFO  [main] common.KylinConfig:369 : Use KYLIN_CONF=../examples/test_metadata/
+2022-12-09 00:34:01,959 INFO  [main] common.KylinConfig:170 : Initialized a new KylinConfig from getInstanceFromEnv : 990416209
+2022-12-09 00:34:01,959 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.metadata.url : ../examples/test_metadata/
+2022-12-09 00:34:01,959 INFO  [main] common.KylinConfigBase:261 : Kylin Config was updated with kylin.env.hdfs-working-dir : file:///tmp/kylin
+test all nulls ============================================================================
+2022-12-09 00:34:02,142 INFO  [main] common.KylinConfig:188 : Destroy KylinConfig

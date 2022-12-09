@@ -67,8 +67,8 @@ Audit done.
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running org.apache.kylin.storage.StorageFactoryTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.463 s - in org.apache.kylin.storage.StorageFactoryTest
+[INFO] Running org.apache.kylin.storage.StorageContextTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.207 s - in org.apache.kylin.storage.StorageContextTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -80,6 +80,6 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  19.387 s
-[INFO] Finished at: 2022-12-08T18:31:21-06:00
+[INFO] Total time:  20.544 s
+[INFO] Finished at: 2022-12-08T18:32:26-06:00
 [INFO] ------------------------------------------------------------------------
