@@ -1,1 +1,0 @@
-["org.apache.kylin.storage.StorageContextTest#testSetLimit", "org.apache.kylin.storage.StorageContextTest#testApplyLimitPushDownUsingStorageLimitLevelNO_LIMIT", "org.apache.kylin.storage.hybrid.HybridInstanceTest#testGetCost", "org.apache.kylin.storage.hybrid.HybridInstanceTest#testIsCapable"]
