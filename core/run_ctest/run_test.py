@@ -14,7 +14,7 @@ import run_test_utils
 display_mode = p_input["display_mode"]
 project = p_input["project"]
 cmd_timeout = p_input["cmd_timeout"]
-testing_dir = os.path.join(PROJECT_DIR[project], MODULE_SUBDIR[project])
+testing_dir = os.path.join(PROJECT_DIR[project])
 
 
 def run_test_batch(param_values, associated_test_map):
