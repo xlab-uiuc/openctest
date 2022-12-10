@@ -44,6 +44,7 @@ MODULE_SUBDIR = {
 # surefire report
 SUREFIRE_SUBDIR = "target/surefire-reports/"
 SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
+HIVE_SUREFIRE_XML =  "TEST-org.apache.hadoop.hive.conf.{}.xml" # slot is the classname
 SUREFIRE_TXT = "{}.txt" # testclass
 SUREFIRE_OUTTXT = "{}-output.txt" #testclass 
 
@@ -104,7 +105,7 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     HIVE: [
-        os.path.join(CTEST_HIVE_DIR, "common/hive-ctest.xml")
+        os.path.join(CTEST_HIVE_DIR, "conf/hive-ctest.xml")
     ]
 }
 

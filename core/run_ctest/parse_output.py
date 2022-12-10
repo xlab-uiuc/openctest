@@ -19,12 +19,15 @@ def parse_surefire(clsname, expected_methods):
     try:
         fpath = None
         for surefire_path in SUREFIRE_DIR[project]:
-            xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
+            xml_path = os.path.join(surefire_path, HIVE_SUREFIRE_XML.format(clsname))
+            print(">>>>[ctest_core] surefire report path: " + xml_path)
             if os.path.exists(xml_path):
                 print(">>>>[ctest_core] surefire report path: " + xml_path)
                 fpath = open(xml_path)
         tree = ET.parse(fpath)
+
         root = tree.getroot()
+
         tsinfo = root.attrib
         print(">>>>[ctest_core] test class outcome: {}".format(tsinfo))
         for tc in tree.iter(tag="testcase"):
