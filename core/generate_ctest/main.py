@@ -33,7 +33,7 @@ def test_value_pair(test_input):
         mt_file = open(os.path.join(GENCTEST_TR_DIR, project, MT_FILE.format(id=param)), "w")
 
         associated_tests = mapping[param] if param in mapping else []
-        if len(mapping[param]) != 0:
+        if len(associated_tests) != 0:
             for value in values:
                 tr = run_test_seperate(param, value, associated_tests)
                 

@@ -48,6 +48,13 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_kylin(){
+  [ ! -d "app/ctest-kylin" ] && git clone https://github.com/rtao6/kylin.git app/ctest-kylin
+  cd app/ctest-kylin
+  git fetch && git checkout ctest-injection
+  mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +71,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            kylin) setup_kylin ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, and kylin." ;;
         esac
     fi
 }

@@ -1,0 +1,115 @@
+From 35a50d5105f5a8c86822d1633913c9b2386c359c Mon Sep 17 00:00:00 2001
+From: ConstaT99 <slyvestert@outlook.com>
+Date: Thu, 8 Dec 2022 19:33:08 -0600
+Subject: [PATCH] logging
+
+---
+ .../apache/kylin/common/KylinConfigBase.java  | 41 +++++++++++++++----
+ pom.xml                                       |  3 +-
+ 2 files changed, 34 insertions(+), 10 deletions(-)
+
+diff --git a/core-common/src/main/java/org/apache/kylin/common/KylinConfigBase.java b/core-common/src/main/java/org/apache/kylin/common/KylinConfigBase.java
+index f800dfd21c..63850d3509 100644
+--- a/core-common/src/main/java/org/apache/kylin/common/KylinConfigBase.java
++++ b/core-common/src/main/java/org/apache/kylin/common/KylinConfigBase.java
+@@ -22,16 +22,8 @@ import java.io.File;
+ import java.io.IOException;
+ import java.io.Serializable;
+ import java.nio.file.Paths;
+-import java.util.Arrays;
+-import java.util.Collection;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.Map;
++import java.util.*;
+ import java.util.Map.Entry;
+-import java.util.Properties;
+-import java.util.SortedSet;
+-import java.util.TimeZone;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+ 
+@@ -180,6 +172,20 @@ public abstract class KylinConfigBase implements Serializable {
+     protected String getOptional(String prop, String dft) {
+ 
+         final String property = System.getProperty(prop);
++        /*
++         * begin ctest
++         * */
++        String res;
++        if(property != null){
++            res = getSubstitutor().replace(property, System.getenv());
++            logger.warn("[CTEST][GET-PARAM] " + prop + ' '+ res);//ctest
++        }else{
++            res = getSubstitutor().replace(properties.getProperty(prop, dft), System.getenv());
++            logger.warn("[CTEST][GET-PARAM] " + prop + ' '+ res);//ctest
++        }
++        /*
++         * end ctest
++         * */
+         return property != null ? getSubstitutor().replace(property, System.getenv())
+                 : getSubstitutor().replace(properties.getProperty(prop, dft), System.getenv());
+     }
+@@ -201,6 +207,21 @@ public abstract class KylinConfigBase implements Serializable {
+                 filteredProperties.put(entry.getKey(), sub.replace((String) entry.getValue()));
+             }
+         }
++        /**
++         * get properties for ctest
++         */
++        if (propertyKeys != null) {
++            Set<String> names = filteredProperties.stringPropertyNames();
++            Iterator<String> namesIterator = names.iterator();
++            int i = 0; //ctest
++            while (namesIterator.hasNext()){
++                logger.warn("[CTEST][GET-PARAM]" + namesIterator.next() + " index: " + i);
++                i ++;
++            }
++        }
++        /**
++         * end ctest
++         */
+         return filteredProperties;
+     }
+ 
+@@ -222,6 +243,7 @@ public abstract class KylinConfigBase implements Serializable {
+         for (Entry<Object, Object> entry : getAllProperties().entrySet()) {
+             String key = (String) entry.getKey();
+             if (key.startsWith(prefix)) {
++                logger.warn("[CTEST][GET-PARAM] " + key);//ctest
+                 result.put(key.substring(prefix.length()), (String) entry.getValue());
+             }
+         }
+@@ -258,6 +280,7 @@ public abstract class KylinConfigBase implements Serializable {
+      * Use with care, properties should be read-only. This is for testing only.
+      */
+     final public void setProperty(String key, String value) {
++        logger.warn("[CTEST][SET-PARAM] {} {}", key, value);// Ctest
+         logger.info("Kylin Config was updated with {} : {}", key, value);
+         properties.setProperty(BCC.check(key), value);
+     }
+diff --git a/pom.xml b/pom.xml
+index 4153ca9f49..818ccafcf4 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1582,6 +1582,7 @@
+             <configuration>
+               <reportsDirectory>${project.basedir}/../target/surefire-reports
+               </reportsDirectory>
++              <redirectTestOutputToFile>true</redirectTestOutputToFile>
+               <excludes>
+                 <exclude>**/IT*.java</exclude>
+                 <exclude>org.apache.kylin.engine.spark2.NManualBuildAndQueryCuboidTest</exclude>
+@@ -1601,7 +1602,7 @@
+                 </property>
+               </systemProperties>
+               <argLine>-javaagent:${project.build.testOutputDirectory}/jamm.jar
+-                ${argLine} ${surefireArgLine}
++                ${argLine}
+               </argLine>
+             </configuration>
+           </plugin>
+-- 
+2.38.1
+

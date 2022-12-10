@@ -35,8 +35,8 @@ class Runner:
     def get_full_report_path(self, suffix):
         all_reports = utils.get_ctest_surefire_report(self.module)
         for report in all_reports:
-                if report.endswith(suffix):
-                    return report
+            if report.endswith(suffix):
+                return report
         return "none"
 
     def traceInTestCode(self, trace):
@@ -78,6 +78,20 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == "kylin-common":
+            if "testThreadLocalOverride" in trace and "Test" not in trace:
+                return True
+            if "testSetKylinConfigInEnvIfMissingTakingEmptyProperties" in trace and "Test" not in trace:
+                return True
+        if self.module == "kylin-cube":
+            if "ProjectSpecificConfigTest" in trace and "Test" not in trace:
+                return True
+            if "CubeSpecificConfigTest" in trace and "Test" not in trace:
+                return True
+        if self.module == "kylin-tool":
+            if "KylinConfigCLITest" in trace and "Test" not in trace:
+                return True
+
         return False
 
     def setInTest(self, stacktrace):
@@ -103,7 +117,7 @@ class Runner:
                 assert line.count(" ") == 1, "more than one whitespace in " + line
                 param_name = line.split(" ")[1]
                 if param_name in self.params:
-                    is_getter = True 
+                    is_getter = True
                     self.getter_record.write(method + " " + param_name + "\n")
                     self.getter_record.flush()
             elif "[CTEST][SET-PARAM]" in line:
@@ -144,10 +158,10 @@ class Runner:
     def run_individual_testmethod(self):
         all_test_methods = json.load(open("%s" % (self.run_list)))
         length = len(all_test_methods)
-        print ("number of all test methods: " + str(length))
+        print("number of all test methods: " + str(length))
 
         old_path = os.getcwd()
-        print (old_path)
+        print(old_path)
         os.chdir(constant.MVN_TEST_PATH[self.module])
         print("change to " + constant.MVN_TEST_PATH[self.module])
 
@@ -163,11 +177,22 @@ class Runner:
             method_out = open(out_dir + method + "-log.txt", "w+")
             method_report_path = report_dir + method + "-report.txt"
             start_time_for_this_method = time.time()
+
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-common":
+                cmd = ["mvn", "-pl", "core-common", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-tool":
+                cmd = ["mvn", "-pl", "tool", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-cube":
+                cmd = ["mvn", "-pl", "core-cube", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "kylin-storage":
+                cmd = ["mvn", "-pl", "core-storage", "test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            
             else:
-                cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
+                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            command = " ".join(cmd)
+            print(command)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 
@@ -187,11 +212,14 @@ class Runner:
                 continue
 
             class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name + "-output.txt"
+            suffix_filename_to_check = class_name  + ".txt"
+            if self.module == "kylin-common" or "kylin-tool" or "kylin-cube"  or "kylin-storage":
+                suffix_filename_to_check = class_name + "-output" + ".txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
+            print(full_path)
             if full_path == "none":
                 print("no report for " + method)
-                self.no_report_list.append(method)     
+                self.no_report_list.append(method)
             else:
                 shutil.copy(full_path, method_report_path)
                 self.parse(open(full_path, "r").readlines(), method)

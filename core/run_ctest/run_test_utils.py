@@ -8,6 +8,7 @@ from program_input import p_input
 maven_args = p_input["maven_args"]
 use_surefire = p_input["use_surefire"]
 ansi_escape = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]')
+project = p_input["project"]
 
 class TestResult:
     def __init__(self, ran_tests_and_time=set(), failed_tests=set()):
@@ -19,7 +20,13 @@ def maven_cmd(test, add_time=False):
     # surefire:test reuses test build from last compilation
     # if you modified the test and want to rerun it, you must use `mvn test`
     test_mode = "surefire:test" if use_surefire else "test"
-    cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
+    if project in [KCUBE, KSTORAGE]:
+        modulename = "core-" + project.split("-")[1]
+        cmd = ["mvn", "-pl", "core-common,"+ modulename, test_mode, "-Dtest={}".format(test)] + maven_args
+    elif project == KTOOL:
+        cmd = ["mvn", "-pl", "core-common,tool", test_mode, "-Dtest={}".format(test)] + maven_args
+    else:
+        cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
     if add_time:
         cmd = ["time"] + cmd
     print(">>>>[ctest_core] command: " + " ".join(cmd))
