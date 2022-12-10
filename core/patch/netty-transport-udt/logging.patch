@@ -7,31 +7,18 @@ index 0000000000..9c1cc4cd02
 +This is a test file
 +Testing assigning correct user name 1
 diff --git a/pom.xml b/pom.xml
-index 8feec579c9..81fba47a32 100644
+index 8feec579c9..dc91de01fc 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -1049,6 +1049,11 @@
-   </dependencyManagement>
- 
-   <dependencies>
-+    <dependency>
-+      <groupId>org.json</groupId>
-+      <artifactId>json</artifactId>
-+      <version>20160810</version>
-+    </dependency>
-     <!-- Testing frameworks and related dependencies -->
-     <dependency>
-       <groupId>org.junit.jupiter</groupId>
-@@ -1443,6 +1448,8 @@
+@@ -1443,6 +1443,7 @@
        <plugin>
          <artifactId>maven-surefire-plugin</artifactId>
          <configuration>
 +          <reportFormat>plain</reportFormat>
-+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
            <includes>
              <include>**/*Test*.java</include>
              <include>**/*Benchmark*.java</include>
-@@ -1452,6 +1459,7 @@
+@@ -1452,6 +1453,7 @@
              <exclude>**/*TestUtil*</exclude>
            </excludes>
            <runOrder>random</runOrder>
@@ -39,7 +26,7 @@ index 8feec579c9..81fba47a32 100644
            <systemPropertyVariables>
              <logback.configurationFile>${logging.config}</logback.configurationFile>
              <logLevel>${logging.logLevel}</logLevel>
-@@ -1710,7 +1718,7 @@
+@@ -1710,7 +1712,7 @@
          <!-- keep surefire and failsafe in sync -->
          <plugin>
            <artifactId>maven-surefire-plugin</artifactId>
@@ -49,7 +36,7 @@ index 8feec579c9..81fba47a32 100644
          <!-- keep surefire and failsafe in sync -->
          <plugin>
 diff --git a/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpChannelConfig.java b/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpChannelConfig.java
-index 616efdba43..b7fd5bb9d2 100644
+index 616efdba43..bb03de8447 100644
 --- a/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpChannelConfig.java
 +++ b/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpChannelConfig.java
 @@ -29,6 +29,7 @@ import io.netty.util.internal.PlatformDependent;
@@ -139,108 +126,279 @@ index 616efdba43..b7fd5bb9d2 100644
              return javaChannel.getOption(SctpStandardSocketOptions.SCTP_INIT_MAXSTREAMS);
          } catch (IOException e) {
              throw new ChannelException(e);
-diff --git a/transport-udt/ctest.json b/transport-udt/ctest.json
-new file mode 100644
-index 0000000000..9e26dfeeb6
---- /dev/null
-+++ b/transport-udt/ctest.json
-@@ -0,0 +1 @@
-+{}
-\ No newline at end of file
+@@ -169,6 +186,7 @@ public class DefaultSctpChannelConfig extends DefaultChannelConfig implements Sc
+     @Override
+     public SctpChannelConfig setInitMaxStreams(SctpStandardSocketOptions.InitMaxStreams initMaxStreams) {
+         try {
++            this.LOGGER.warning("[CTEST][SET-PARAM] initMaxStreams" + getStackTrace());
+             javaChannel.setOption(SctpStandardSocketOptions.SCTP_INIT_MAXSTREAMS, initMaxStreams);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+diff --git a/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpServerChannelConfig.java b/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpServerChannelConfig.java
+index 2860ba74b5..366544a7a6 100644
+--- a/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpServerChannelConfig.java
++++ b/transport-sctp/src/main/java/io/netty/channel/sctp/DefaultSctpServerChannelConfig.java
+@@ -1,3 +1,4 @@
++
+ /*
+ * Copyright 2011 The Netty Project
+ *
+@@ -32,6 +33,7 @@ import io.netty.util.internal.ObjectUtil;
+ 
+ import java.io.IOException;
+ import java.util.Map;
++import java.util.logging.Logger;
+ 
+ /**
+  * The default {@link SctpServerChannelConfig} implementation for SCTP.
+@@ -40,6 +42,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+ 
+     private final SctpServerChannel javaChannel;
+     private volatile int backlog = NetUtil.SOMAXCONN;
++    private Logger LOGGER = Logger.getLogger("InfoLogging");
+ 
+     /**
+      * Creates a new instance.
+@@ -50,6 +53,14 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+         this.javaChannel = ObjectUtil.checkNotNull(javaChannel, "javaChannel");
+     }
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++          stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     @Override
+     public Map<ChannelOption<?>, Object> getOptions() {
+         return getOptions(
+@@ -92,6 +103,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public int getSendBufferSize() {
+         try {
++            this.LOGGER.warning("[CTEST][GET-PARAM] sendBufferSize");
+             return javaChannel.getOption(SctpStandardSocketOptions.SO_SNDBUF);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -101,6 +113,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public SctpServerChannelConfig setSendBufferSize(int sendBufferSize) {
+         try {
++            this.LOGGER.warning("[CTEST][SET-PARAM] sendBufferSize" + getStackTrace());
+             javaChannel.setOption(SctpStandardSocketOptions.SO_SNDBUF, sendBufferSize);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -111,6 +124,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public int getReceiveBufferSize() {
+         try {
++            this.LOGGER.warning("[CTEST][GET-PARAM] receiveBufferSize");
+             return javaChannel.getOption(SctpStandardSocketOptions.SO_RCVBUF);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -120,6 +134,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public SctpServerChannelConfig setReceiveBufferSize(int receiveBufferSize) {
+         try {
++            this.LOGGER.warning("[CTEST][SET-PARAM] receiveBufferSize" + getStackTrace());
+             javaChannel.setOption(SctpStandardSocketOptions.SO_RCVBUF, receiveBufferSize);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -130,6 +145,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public SctpStandardSocketOptions.InitMaxStreams getInitMaxStreams() {
+         try {
++            this.LOGGER.warning("[CTEST][GET-PARAM] initMaxStreams");
+             return javaChannel.getOption(SctpStandardSocketOptions.SCTP_INIT_MAXSTREAMS);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -139,6 +155,7 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+     @Override
+     public SctpServerChannelConfig setInitMaxStreams(SctpStandardSocketOptions.InitMaxStreams initMaxStreams) {
+         try {
++            this.LOGGER.warning("[CTEST][SET-PARAM] initMaxStreams" + getStackTrace());
+             javaChannel.setOption(SctpStandardSocketOptions.SCTP_INIT_MAXSTREAMS, initMaxStreams);
+         } catch (IOException e) {
+             throw new ChannelException(e);
+@@ -148,11 +165,13 @@ public class DefaultSctpServerChannelConfig extends DefaultChannelConfig impleme
+ 
+     @Override
+     public int getBacklog() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] backlog");
+         return backlog;
+     }
+ 
+     @Override
+     public SctpServerChannelConfig setBacklog(int backlog) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] backlog" + getStackTrace());
+         checkPositiveOrZero(backlog, "backlog");
+         this.backlog = backlog;
+         return this;
 diff --git a/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtChannelConfig.java b/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtChannelConfig.java
-index 85ff205dd2..f96ef3a912 100644
+index 85ff205dd2..38f92fbe26 100644
 --- a/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtChannelConfig.java
 +++ b/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtChannelConfig.java
-@@ -37,6 +37,13 @@ import static io.netty.channel.udt.UdtChannelOption.PROTOCOL_SEND_BUFFER_SIZE;
- import static io.netty.channel.udt.UdtChannelOption.SYSTEM_RECEIVE_BUFFER_SIZE;
- import static io.netty.channel.udt.UdtChannelOption.SYSTEM_SEND_BUFFER_SIZE;
+@@ -27,6 +27,7 @@ import io.netty.channel.WriteBufferWaterMark;
  
+ import java.io.IOException;
+ import java.util.Map;
 +import java.util.logging.Logger;
-+import org.json.JSONObject;
-+import org.json.JSONTokener;
-+import java.io.File;
-+import java.io.FileInputStream;
-+import java.io.InputStream;
-+
- /**
-  * The default {@link UdtChannelConfig} implementation.
-  *
-@@ -46,6 +53,7 @@ import static io.netty.channel.udt.UdtChannelOption.SYSTEM_SEND_BUFFER_SIZE;
+ 
+ import static io.netty.channel.ChannelOption.SO_LINGER;
+ import static io.netty.channel.ChannelOption.SO_RCVBUF;
+@@ -46,6 +47,8 @@ import static io.netty.channel.udt.UdtChannelOption.SYSTEM_SEND_BUFFER_SIZE;
  public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
          UdtChannelConfig {
  
 +    private Logger LOGGER = Logger.getLogger("InfoLogging");
++
      private static final int K = 1024;
      private static final int M = K * K;
  
-@@ -66,6 +74,48 @@ public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
-             final ChannelUDT channelUDT, final boolean apply)
-             throws IOException {
-         super(channel);
-+        try {
-+            File file = new File("ctest.json");
-+            InputStream is = new FileInputStream(file);
-+            JSONTokener tokener = new JSONTokener(is);
-+            JSONObject injection_map =  new JSONObject(tokener);
-+
-+            if (injection_map.has("protocolReceiveBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING protocolReceiveBufferSize");
-+                setProtocolReceiveBufferSize(Integer.parseInt(injection_map.getString("protocolReceiveBufferSize")));
-+            }
-+            if (injection_map.has("receiveBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING receiveBufferSize");
-+                setReceiveBufferSize(Integer.parseInt(injection_map.getString("receiveBufferSize")));
-+            }
-+            if (injection_map.has("sendBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING sendBufferSize");
-+                setSendBufferSize(Integer.parseInt(injection_map.getString("sendBufferSize")));
-+            }
-+            if (injection_map.has("soLinger")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING soLinger");
-+                setSoLinger(Integer.parseInt(injection_map.getString("soLinger")));
-+            }
-+            if (injection_map.has("reuseAddress")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING reuseAddress");
-+                setReuseAddress(injection_map.getString("reuseAddress").equals("false")?false:true);
-+            }
-+            if (injection_map.has("systemReceiveBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING systemReceiveBufferSize");
-+                setSystemReceiveBufferSize(Integer.parseInt(injection_map.getString("systemReceiveBufferSize")));
-+            }
-+            if (injection_map.has("protocolSendBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING protocolSendBufferSize");
-+                setProtocolSendBufferSize(Integer.parseInt(injection_map.getString("protocolSendBufferSize")));
-+            }
-+            if (injection_map.has("systemSendBufferSize")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING systemSendBufferSize");
-+                setSystemSendBufferSize(Integer.parseInt(injection_map.getString("systemSendBufferSize")));
-+            }
-+        } catch (Exception e) {
-+            throw new RuntimeException();
-+            System.exit(1);
+@@ -92,6 +95,7 @@ public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
+ 
+     @Override
+     public int getProtocolReceiveBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] protocolReceiveBufferSize");
+         return protocolReceiveBufferSize;
+     }
+ 
+@@ -125,6 +129,14 @@ public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
+         return super.getOption(option);
+     }
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++          stacktrace = stacktrace.concat(element.getClassName() + "\t");
 +        }
-         if (apply) {
-             apply(channelUDT);
-         }
++        return stacktrace;
++    }
++
+     @Override
+     public Map<ChannelOption<?>, Object> getOptions() {
+         return getOptions(super.getOptions(), PROTOCOL_RECEIVE_BUFFER_SIZE,
+@@ -135,26 +147,31 @@ public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
+ 
+     @Override
+     public int getReceiveBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] receiveBufferSize");
+         return allocatorReceiveBufferSize;
+     }
+ 
+     @Override
+     public int getSendBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] sendBufferSize");
+         return allocatorSendBufferSize;
+     }
+ 
+     @Override
+     public int getSoLinger() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] soLinger");
+         return soLinger;
+     }
+ 
+     @Override
+     public boolean isReuseAddress() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] reuseAddress");
+         return reuseAddress;
+     }
+ 
+     @Override
+     public UdtChannelConfig setProtocolReceiveBufferSize(final int protocolReceiveBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] protocolReceiveBufferSize" + getStackTrace());
+         this.protocolReceiveBufferSize = protocolReceiveBufferSize;
+         return this;
+     }
+@@ -186,61 +203,71 @@ public class DefaultUdtChannelConfig extends DefaultChannelConfig implements
+ 
+     @Override
+     public UdtChannelConfig setReceiveBufferSize(final int receiveBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] receiveBufferSize" + getStackTrace());
+         allocatorReceiveBufferSize = receiveBufferSize;
+         return this;
+     }
+ 
+     @Override
+     public UdtChannelConfig setReuseAddress(final boolean reuseAddress) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] reuseAddress" + getStackTrace());
+         this.reuseAddress = reuseAddress;
+         return this;
+     }
+ 
+     @Override
+     public UdtChannelConfig setSendBufferSize(final int sendBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] sendBufferSize" + getStackTrace());
+         allocatorSendBufferSize = sendBufferSize;
+         return this;
+     }
+ 
+     @Override
+     public UdtChannelConfig setSoLinger(final int soLinger) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] soLinger" + getStackTrace());
+         this.soLinger = soLinger;
+         return this;
+     }
+ 
+     @Override
+     public int getSystemReceiveBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] systemReceiveBufferSize");
+         return systemReceiveBufferSize;
+     }
+ 
+     @Override
+-    public UdtChannelConfig setSystemSendBufferSize(
++    public UdtChannelConfig setSystemReceiveBufferSize(
+             final int systemReceiveBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] systemReceiveBufferSize" + getStackTrace());
+         this.systemReceiveBufferSize = systemReceiveBufferSize;
+         return this;
+     }
+ 
+     @Override
+     public int getProtocolSendBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] protocolSendBufferSize");
+         return protocolSendBufferSize;
+     }
+ 
+     @Override
+     public UdtChannelConfig setProtocolSendBufferSize(
+             final int protocolSendBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] protocolSendBufferSize" + getStackTrace());
+         this.protocolSendBufferSize = protocolSendBufferSize;
+         return this;
+     }
+ 
+     @Override
+-    public UdtChannelConfig setSystemReceiveBufferSize(
++    public UdtChannelConfig setSystemSendBufferSize(
+             final int systemSendBufferSize) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] systemReceiveBufferSize" + getStackTrace());
+         this.systemSendBufferSize = systemSendBufferSize;
+         return this;
+     }
+ 
+     @Override
+     public int getSystemSendBufferSize() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] systemSendBufferSize");
+         return systemSendBufferSize;
+     }
+ 
 diff --git a/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtServerChannelConfig.java b/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtServerChannelConfig.java
-index 269dd38ce9..36c61ee9ae 100644
+index 269dd38ce9..b7c979d2f4 100644
 --- a/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtServerChannelConfig.java
 +++ b/transport-udt/src/main/java/io/netty/channel/udt/DefaultUdtServerChannelConfig.java
-@@ -25,6 +25,13 @@ import io.netty.channel.WriteBufferWaterMark;
+@@ -24,6 +24,7 @@ import io.netty.channel.WriteBufferWaterMark;
+ 
  import java.io.IOException;
  import java.util.Map;
- 
 +import java.util.logging.Logger;
-+import org.json.JSONObject;
-+import org.json.JSONTokener;
-+import java.io.File;
-+import java.io.FileInputStream;
-+import java.io.InputStream;
-+
+ 
  import static io.netty.channel.ChannelOption.SO_BACKLOG;
  
- /**
-@@ -36,11 +43,26 @@ import static io.netty.channel.ChannelOption.SO_BACKLOG;
+@@ -36,6 +37,7 @@ import static io.netty.channel.ChannelOption.SO_BACKLOG;
  public class DefaultUdtServerChannelConfig extends DefaultUdtChannelConfig
          implements UdtServerChannelConfig {
  
@@ -248,196 +406,71 @@ index 269dd38ce9..36c61ee9ae 100644
      private volatile int backlog = 64;
  
      public DefaultUdtServerChannelConfig(
-             final UdtChannel channel, final ChannelUDT channelUDT, final boolean apply) throws IOException {
-         super(channel, channelUDT, apply);
-+        try {
-+            File file = new File("ctest.json");
-+            InputStream is = new FileInputStream(file);
-+            JSONTokener tokener = new JSONTokener(is);
-+            JSONObject injection_map =  new JSONObject(tokener);
-+
-+            if (injection_map.has("backlog")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING backlog");
-+                setBacklog(Integer.parseInt(injection_map.getString("backlog")));
-+            }
-+        } catch (Exception e) {
-+            e.printStackTrace();
-+            throw new RuntimeException();
-+        }
-         if (apply) {
-             apply(channelUDT);
+@@ -46,6 +48,14 @@ public class DefaultUdtServerChannelConfig extends DefaultUdtChannelConfig
          }
-diff --git a/transport/ctest.json b/transport/ctest.json
-new file mode 100644
-index 0000000000..0967ef424b
---- /dev/null
-+++ b/transport/ctest.json
-@@ -0,0 +1 @@
-+{}
-diff --git a/transport/pom.xml b/transport/pom.xml
-index 8580910a20..e07c78a644 100644
---- a/transport/pom.xml
-+++ b/transport/pom.xml
-@@ -33,6 +33,11 @@
-   </properties>
- 
-   <dependencies>
-+    <dependency>
-+      <groupId>org.json</groupId>
-+      <artifactId>json</artifactId>
-+      <version>20160810</version>
-+    </dependency>
-     <dependency>
-       <groupId>${project.groupId}</groupId>
-       <artifactId>netty-common</artifactId>
-diff --git a/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java b/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
-index c6506010e5..b52accfb18 100644
---- a/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
-+++ b/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
-@@ -41,10 +41,21 @@ import static io.netty.util.internal.ObjectUtil.checkNotNull;
- import static io.netty.util.internal.ObjectUtil.checkPositive;
- import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
- 
-+import java.util.logging.Logger;
-+import org.json.JSONObject;
-+import org.json.JSONTokener;
-+// import java.io.FileReader;
-+// import java.io.IOException;
-+import java.io.File;
-+import java.io.FileInputStream;
-+import java.io.InputStream;
-+import java.lang.reflect.Constructor;
-+
- /**
-  * The default {@link ChannelConfig} implementation.
-  */
- public class DefaultChannelConfig implements ChannelConfig {
-+    private Logger LOGGER = Logger.getLogger("InfoLogging");
-     private static final MessageSizeEstimator DEFAULT_MSG_SIZE_ESTIMATOR = DefaultMessageSizeEstimator.DEFAULT;
- 
-     private static final int DEFAULT_CONNECT_TIMEOUT = 30000;
-@@ -58,17 +69,24 @@ public class DefaultChannelConfig implements ChannelConfig {
-     protected final Channel channel;
- 
-     private volatile ByteBufAllocator allocator = ByteBufAllocator.DEFAULT;
-+
-     private volatile RecvByteBufAllocator rcvBufAllocator;
-+
-     private volatile MessageSizeEstimator msgSizeEstimator = DEFAULT_MSG_SIZE_ESTIMATOR;
- 
-     private volatile int connectTimeoutMillis = DEFAULT_CONNECT_TIMEOUT;
-+
-     private volatile int writeSpinCount = 16;
-+
-     private volatile int maxMessagesPerWrite = Integer.MAX_VALUE;
- 
-     @SuppressWarnings("FieldMayBeFinal")
-     private volatile int autoRead = 1;
-+
-     private volatile boolean autoClose = true;
--    private volatile WriteBufferWaterMark writeBufferWaterMark = WriteBufferWaterMark.DEFAULT;
-+
-+    private volatile WriteBufferWaterMark writeBufferWaterMark = WriteBufferWaterMark.DEFAULT; //incomplete
-+
-     private volatile boolean pinEventExecutor = true;
- 
-     public DefaultChannelConfig(Channel channel) {
-@@ -76,8 +94,93 @@ public class DefaultChannelConfig implements ChannelConfig {
      }
  
-     protected DefaultChannelConfig(Channel channel, RecvByteBufAllocator allocator) {
--        setRecvByteBufAllocator(allocator, channel.metadata());
-         this.channel = channel;
-+        try {
-+            // System.out.println("Working Directory = " + System.getProperty("user.dir"));
-+            LOGGER.warning("[INJECTING CTEST] START INJECTION");
-+            File file = new File("ctest.json");
-+            InputStream is = new FileInputStream(file);
-+            JSONTokener tokener = new JSONTokener(is);
-+            JSONObject injection_map =  new JSONObject(tokener);
-+            setRecvByteBufAllocator(allocator, channel.metadata());
-+
-+            if (injection_map.has("connectTimeoutMillis")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING connectTimeoutMillis");
-+                connectTimeoutMillis = Integer.parseInt(injection_map.getString("connectTimeoutMillis"));
-+            }
-+            if (injection_map.has("maxMessagesPerRead")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING maxMessagesPerRead");
-+                setMaxMessagesPerRead(Integer.parseInt(injection_map.getString("maxMessagesPerRead")));
-+            }
-+            if (injection_map.has("maxMessagesPerWrite")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING maxMessagesPerWrite");
-+                maxMessagesPerWrite = Integer.parseInt(injection_map.getString("maxMessagesPerWrite"));
-+            }
-+            if (injection_map.has("writeSpinCount")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING writeSpinCount");
-+                writeSpinCount = Integer.parseInt(injection_map.getString("writeSpinCount"));
-+            }
-+            if (injection_map.has("allocator")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING allocator");
-+                Class<?> clazz = Class.forName(injection_map.getString("allocator"));
-+                Constructor<?> ctor = clazz.getConstructor();
-+                Object obj = ctor.newInstance();
-+                setAllocator((ByteBufAllocator) obj);
-+            }
-+            if (injection_map.has("recvByteBufAllocator")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING recvByteBufAllocator");
-+                Class<?> clazz = Class.forName(injection_map.getString("recvByteBufAllocator"));
-+                Constructor<?> ctor = clazz.getConstructor();
-+                Object obj = ctor.newInstance();
-+                setRecvByteBufAllocator((RecvByteBufAllocator) obj);
-+            }
-+            if (injection_map.has("autoRead")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING autoRead");
-+                autoRead = Integer.parseInt(injection_map.getString("autoRead"));
-+            }
-+            if (injection_map.has("autoClose")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING autoClose");
-+                autoClose = injection_map.getString("autoClose").equals("false")?false:true;
-+            }
-+            if (injection_map.has("writeBufferHighWaterMark")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING writeBufferHighWaterMark");
-+                setWriteBufferHighWaterMark(Integer.parseInt(injection_map.getString("writeBufferHighWaterMark")));
-+            }
-+            if (injection_map.has("writeBufferLowWaterMark")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING writeBufferLowWaterMark");
-+                setWriteBufferLowWaterMark(Integer.parseInt(injection_map.getString("writeBufferLowWaterMark")));
-+            }
-+            if (injection_map.has("writeBufferWaterMark")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING writeBufferWaterMark");
-+                Class<?> clazz = Class.forName(injection_map.getString("writeBufferWaterMark"));
-+                Constructor<?> ctor = clazz.getConstructor(new Class[] { int.class, int.class });
-+                Object obj = ctor.newInstance(new Object[] { 32 * 1024, 64 * 1024 });
-+                setWriteBufferWaterMark((WriteBufferWaterMark) obj);
-+            }
-+            if (injection_map.has("messageSizeEstimator")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING messageSizeEstimator");
-+                Class<?> clazz = Class.forName(injection_map.getString("messageSizeEstimator"));
-+                Constructor<?> ctor = clazz.getConstructor(new Class[] { int.class });
-+                Object obj = ctor.newInstance(new Object[] { 8 });
-+                setMessageSizeEstimator((MessageSizeEstimator) obj);
-+            }
-+            if (injection_map.has("pinEventExecutor")) {
-+                LOGGER.warning("[INJECTING CTEST] INJECTING pinEventExecutor");
-+                pinEventExecutor = injection_map.getString("pinEventExecutor").equals("false")?false:true;
-+            }
-+
-+        } catch (Exception e) {
-+            e.printStackTrace();
-+            throw new RuntimeException();
-+        }
-+    }
-+
 +    private String getStackTrace() {
 +        String stacktrace = " ";
 +        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
 +          stacktrace = stacktrace.concat(element.getClassName() + "\t");
 +        }
 +        return stacktrace;
-     }
++    }
++
+     @Override
+     protected void apply(final ChannelUDT channelUDT) throws IOException {
+         // nothing to apply for now.
+@@ -53,6 +63,7 @@ public class DefaultUdtServerChannelConfig extends DefaultUdtChannelConfig
  
      @Override
-@@ -121,7 +224,6 @@ public class DefaultChannelConfig implements ChannelConfig {
+     public int getBacklog() {
++        this.LOGGER.warning("[CTEST][GET-PARAM] getBacklog");
+         return backlog;
+     }
+ 
+@@ -72,6 +83,7 @@ public class DefaultUdtServerChannelConfig extends DefaultUdtChannelConfig
+ 
+     @Override
+     public UdtServerChannelConfig setBacklog(final int backlog) {
++        this.LOGGER.warning("[CTEST][SET-PARAM] backlog" + getStackTrace());
+         this.backlog = backlog;
+         return this;
+     }
+diff --git a/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java b/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
+index c6506010e5..06cf27ab7e 100644
+--- a/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
++++ b/transport/src/main/java/io/netty/channel/DefaultChannelConfig.java
+@@ -41,10 +41,13 @@ import static io.netty.util.internal.ObjectUtil.checkNotNull;
+ import static io.netty.util.internal.ObjectUtil.checkPositive;
+ import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+ 
++import java.util.logging.Logger;
++
+ /**
+  * The default {@link ChannelConfig} implementation.
+  */
+ public class DefaultChannelConfig implements ChannelConfig {
++    Logger LOGGER = Logger.getLogger("InfoLogging");
+     private static final MessageSizeEstimator DEFAULT_MSG_SIZE_ESTIMATOR = DefaultMessageSizeEstimator.DEFAULT;
+ 
+     private static final int DEFAULT_CONNECT_TIMEOUT = 30000;
+@@ -80,6 +83,14 @@ public class DefaultChannelConfig implements ChannelConfig {
+         this.channel = channel;
+     }
+ 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++          stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     @Override
+     @SuppressWarnings("deprecation")
+     public Map<ChannelOption<?>, Object> getOptions() {
+@@ -121,7 +132,6 @@ public class DefaultChannelConfig implements ChannelConfig {
      @SuppressWarnings({ "unchecked", "deprecation" })
      public <T> T getOption(ChannelOption<T> option) {
          ObjectUtil.checkNotNull(option, "option");
@@ -445,7 +478,7 @@ index c6506010e5..b52accfb18 100644
          if (option == CONNECT_TIMEOUT_MILLIS) {
              return (T) Integer.valueOf(getConnectTimeoutMillis());
          }
-@@ -208,6 +310,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -208,6 +218,7 @@ public class DefaultChannelConfig implements ChannelConfig {
  
      @Override
      public int getConnectTimeoutMillis() {
@@ -453,7 +486,7 @@ index c6506010e5..b52accfb18 100644
          return connectTimeoutMillis;
      }
  
-@@ -215,6 +318,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -215,6 +226,7 @@ public class DefaultChannelConfig implements ChannelConfig {
      public ChannelConfig setConnectTimeoutMillis(int connectTimeoutMillis) {
          checkPositiveOrZero(connectTimeoutMillis, "connectTimeoutMillis");
          this.connectTimeoutMillis = connectTimeoutMillis;
@@ -461,7 +494,7 @@ index c6506010e5..b52accfb18 100644
          return this;
      }
  
-@@ -229,6 +333,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -229,6 +241,7 @@ public class DefaultChannelConfig implements ChannelConfig {
      public int getMaxMessagesPerRead() {
          try {
              MaxMessagesRecvByteBufAllocator allocator = getRecvByteBufAllocator();
@@ -469,7 +502,7 @@ index c6506010e5..b52accfb18 100644
              return allocator.maxMessagesPerRead();
          } catch (ClassCastException e) {
              throw new IllegalStateException("getRecvByteBufAllocator() must return an object of type " +
-@@ -248,6 +353,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -248,6 +261,7 @@ public class DefaultChannelConfig implements ChannelConfig {
          try {
              MaxMessagesRecvByteBufAllocator allocator = getRecvByteBufAllocator();
              allocator.maxMessagesPerRead(maxMessagesPerRead);
@@ -477,7 +510,7 @@ index c6506010e5..b52accfb18 100644
              return this;
          } catch (ClassCastException e) {
              throw new IllegalStateException("getRecvByteBufAllocator() must return an object of type " +
-@@ -260,6 +366,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -260,6 +274,7 @@ public class DefaultChannelConfig implements ChannelConfig {
       * reached we will continue to process other events before trying to write the remaining messages.
       */
      public int getMaxMessagesPerWrite() {
@@ -485,7 +518,7 @@ index c6506010e5..b52accfb18 100644
          return maxMessagesPerWrite;
      }
  
-@@ -269,11 +376,13 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -269,11 +284,13 @@ public class DefaultChannelConfig implements ChannelConfig {
       */
      public ChannelConfig setMaxMessagesPerWrite(int maxMessagesPerWrite) {
          this.maxMessagesPerWrite = ObjectUtil.checkPositive(maxMessagesPerWrite, "maxMessagesPerWrite");
@@ -499,7 +532,7 @@ index c6506010e5..b52accfb18 100644
          return writeSpinCount;
      }
  
-@@ -288,29 +397,34 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -288,29 +305,34 @@ public class DefaultChannelConfig implements ChannelConfig {
              --writeSpinCount;
          }
          this.writeSpinCount = writeSpinCount;
@@ -534,7 +567,7 @@ index c6506010e5..b52accfb18 100644
          return this;
      }
  
-@@ -327,10 +441,12 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -327,10 +349,12 @@ public class DefaultChannelConfig implements ChannelConfig {
              ((MaxMessagesRecvByteBufAllocator) allocator).maxMessagesPerRead(metadata.defaultMaxMessagesPerRead());
          }
          setRecvByteBufAllocator(allocator);
@@ -547,7 +580,7 @@ index c6506010e5..b52accfb18 100644
          return autoRead == 1;
      }
  
-@@ -342,6 +458,7 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -342,6 +366,7 @@ public class DefaultChannelConfig implements ChannelConfig {
          } else if (!autoRead && oldAutoRead) {
              autoReadCleared();
          }
@@ -555,7 +588,7 @@ index c6506010e5..b52accfb18 100644
          return this;
      }
  
-@@ -353,23 +470,27 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -353,23 +378,27 @@ public class DefaultChannelConfig implements ChannelConfig {
  
      @Override
      public boolean isAutoClose() {
@@ -583,7 +616,7 @@ index c6506010e5..b52accfb18 100644
          for (;;) {
              WriteBufferWaterMark waterMark = writeBufferWaterMark;
              if (writeBufferHighWaterMark < waterMark.low()) {
-@@ -387,12 +508,14 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -387,12 +416,14 @@ public class DefaultChannelConfig implements ChannelConfig {
  
      @Override
      public int getWriteBufferLowWaterMark() {
@@ -598,7 +631,7 @@ index c6506010e5..b52accfb18 100644
          for (;;) {
              WriteBufferWaterMark waterMark = writeBufferWaterMark;
              if (writeBufferLowWaterMark > waterMark.high()) {
-@@ -411,31 +534,37 @@ public class DefaultChannelConfig implements ChannelConfig {
+@@ -411,31 +442,37 @@ public class DefaultChannelConfig implements ChannelConfig {
      @Override
      public ChannelConfig setWriteBufferWaterMark(WriteBufferWaterMark writeBufferWaterMark) {
          this.writeBufferWaterMark = checkNotNull(writeBufferWaterMark, "writeBufferWaterMark");
@@ -634,81 +667,6 @@ index c6506010e5..b52accfb18 100644
      private boolean getPinEventExecutorPerGroup() {
 +        LOGGER.warning("[CTEST][GET-PARAM] pinEventExecutorPerGroup");
          return pinEventExecutor;
-     }
- 
-diff --git a/transport/src/main/java/io/netty/channel/socket/DefaultServerSocketChannelConfig.java b/transport/src/main/java/io/netty/channel/socket/DefaultServerSocketChannelConfig.java
-index c6bcfe575e..10fb78e178 100644
---- a/transport/src/main/java/io/netty/channel/socket/DefaultServerSocketChannelConfig.java
-+++ b/transport/src/main/java/io/netty/channel/socket/DefaultServerSocketChannelConfig.java
-@@ -29,6 +29,7 @@ import io.netty.util.internal.ObjectUtil;
- import java.net.ServerSocket;
- import java.net.SocketException;
- import java.util.Map;
-+import java.util.logging.Logger;
- 
- import static io.netty.channel.ChannelOption.SO_BACKLOG;
- import static io.netty.channel.ChannelOption.SO_RCVBUF;
-@@ -43,6 +44,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
- 
-     protected final ServerSocket javaSocket;
-     private volatile int backlog = NetUtil.SOMAXCONN;
-+    private Logger LOGGER = Logger.getLogger("InfoLogging");
- 
-     /**
-      * Creates a new instance.
-@@ -52,6 +54,14 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
-         this.javaSocket = ObjectUtil.checkNotNull(javaSocket, "javaSocket");
-     }
- 
-+    private String getStackTrace() {
-+        String stacktrace = " ";
-+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
-+          stacktrace = stacktrace.concat(element.getClassName() + "\t");
-+        }
-+        return stacktrace;
-+    }
-+
-     @Override
-     public Map<ChannelOption<?>, Object> getOptions() {
-         return getOptions(super.getOptions(), SO_RCVBUF, SO_REUSEADDR, SO_BACKLOG);
-@@ -93,6 +103,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
-     @Override
-     public boolean isReuseAddress() {
-         try {
-+            this.LOGGER.warning("[CTEST][GET-PARAM] reuseAddress");
-             return javaSocket.getReuseAddress();
-         } catch (SocketException e) {
-             throw new ChannelException(e);
-@@ -102,6 +113,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
-     @Override
-     public ServerSocketChannelConfig setReuseAddress(boolean reuseAddress) {
-         try {
-+            this.LOGGER.warning("[CTEST][SET-PARAM] reuseAddress" + getStackTrace());
-             javaSocket.setReuseAddress(reuseAddress);
-         } catch (SocketException e) {
-             throw new ChannelException(e);
-@@ -112,6 +124,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
-     @Override
-     public int getReceiveBufferSize() {
-         try {
-+            this.LOGGER.warning("[CTEST][GET-PARAM] receiveBufferSize");
-             return javaSocket.getReceiveBufferSize();
-         } catch (SocketException e) {
-             throw new ChannelException(e);
-@@ -121,6 +134,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
-     @Override
-     public ServerSocketChannelConfig setReceiveBufferSize(int receiveBufferSize) {
-         try {
-+            this.LOGGER.warning("[CTEST][SET-PARAM] receiveBufferSize" + getStackTrace());
-             javaSocket.setReceiveBufferSize(receiveBufferSize);
-         } catch (SocketException e) {
-             throw new ChannelException(e);
-@@ -136,6 +150,7 @@ public class DefaultServerSocketChannelConfig extends DefaultChannelConfig
- 
-     @Override
-     public int getBacklog() {
-+        this.LOGGER.warning("[CTEST][GET-PARAM] backlog");
-         return backlog;
      }
  
 diff --git a/transport_prog1.log b/transport_prog1.log
