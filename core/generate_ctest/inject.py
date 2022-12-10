@@ -1,5 +1,6 @@
 """inject parameter, values into sw config"""
 
+import shutil
 import sys
 import xml.etree.ElementTree as ET
 

@@ -20,7 +20,8 @@ def maven_cmd(test, add_time=False, project=None):
     # if you modified the test and want to rerun it, you must use `mvn test`
     cmd = None
     if project == SPARK:
-        cmd = ["mvn", "test", "-Dtest=none", "-Dsuites=" + test] + maven_args
+        test_mode = "scalatest:test" if use_surefire else "test"
+        cmd = ["mvn", test_mode, "-Dtest=none", "-Dsuites=" + test] + maven_args
     else:
         test_mode = "surefire:test" if use_surefire else "test"
         cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
@@ -49,7 +50,7 @@ def join_test_string(tests, project=None):
         ret += ","
     return ret
 
-def group_test_by_cls(tests):
+def group_test_by_cls(tests, project=None):
     d = {}
     split = None
     if project == SPARK:
