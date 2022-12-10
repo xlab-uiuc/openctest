@@ -52,6 +52,8 @@ function setup_netty_udt() {
     cd app/ctest-netty-udt
     git fetch && git checkout ctest-logging
     home_dir=$PWD
+    cd $home_dir/transport
+    mvn clean package -DskipTests
     cd $home_dir/transport-udt
     mvn clean package -DskipTests
 }
