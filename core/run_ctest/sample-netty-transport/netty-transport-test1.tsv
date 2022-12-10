@@ -1,4 +1,4 @@
-connectTimeoutMillis	30000	
+connectTimeoutMillis	9999	
 maxMessagesPerRead	1	
 maxMessagesPerWrite	2147483647	
 writeSpinCount	16	

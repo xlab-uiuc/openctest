@@ -2,12 +2,12 @@ connectTimeoutMillis	15000	60000
 maxMessagesPerRead	0	2
 maxMessagesPerWrite	1073741823	4294967294
 writeSpinCount	8	32
-allocator	SKIP	SKIP
-recvByteBufAllocator	SKIP	SKIP
-autoRead	0	2
+allocator	io.netty.buffer.UnpooledByteBufAllocator	SKIP
+recvByteBufAllocator	io.netty.channel.ServerChannelRecvByteBufAllocator	SKIP
+autoRead	1	SKIP
 autoClose	false	SKIP
 writeBufferHighWaterMark	32768	131072
 writeBufferLowWaterMark	16384	65536
 writeBufferWaterMark	SKIP	SKIP
-messageSizeEstimator	SKIP	SKIP
+messageSizeEstimator	io.netty.channel.DefaultMessageSizeEstimator	SKIP
 pinEventExecutorPerGroup	false	SKIP

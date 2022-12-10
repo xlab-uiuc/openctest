@@ -53,7 +53,7 @@ def clean_conf_file(project):
     if project in [NETTY_TRANSPORT]:
         for inject_path in INJECTION_PATH[project]:
             file = open(inject_path, "w")
-            file.write("\{\}\n")
+            file.write("{}\n")
             file.close()
     elif project in [ZOOKEEPER, ALLUXIO]:
         for inject_path in INJECTION_PATH[project]:

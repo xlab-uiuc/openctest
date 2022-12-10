@@ -8,7 +8,7 @@ p_input = {
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-netty-transport.json", # string
     # input directory hosting configuration files to be test, target-project-format specific
-    "conf_file_dir": "../default_configs/netty-transport-default.tsv", # string
+    "conf_file_dir": "sample-netty-transport", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
