@@ -34,7 +34,6 @@ def load_default_conf(path):
     for row in data:
         param, value = row[:2]
         conf_map[param] = value
-        # print("-------->load_default_conf:", param, value)
     return conf_map
 
 
@@ -101,9 +100,6 @@ def extract_conf_diff(path):
     print(">>>>[ctest_core] new input conf file: {} (param, value) pairs".format(len(new_conf_map.keys())))
     conf_diff = {}
     for param, value in new_conf_map.items():
-        # print("->", param, "<-")
-        # print(default_conf_map)
-        # print(new_conf_map[param] != default_conf_map[param])
         if param not in default_conf_map:
             print(">>>>[ctest_core] parameter {} in input config file is not in default config file".format(param))
         if param not in default_conf_map or new_conf_map[param] != default_conf_map[param]:
