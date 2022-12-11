@@ -51,8 +51,7 @@ function setup_nifi(){
     [ ! -d "app/ctest-nifi" ] && git clone https://github.com/lilacyl/nifi.git app/ctest-nifi
     cd app/ctest-nifi
     git fetch && git checkout ctest-logging
-    cd nifi
-    mvn install -pl nifi-commons/nifi-properties/ -am -DskipTest
+    mvn install -pl nifi-commons/ -am -DskipTest
 
 }
 

@@ -23,7 +23,7 @@ SRC_SUBDIR = {
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
-    "nifi-commons": "nifi-commons"
+    "nifi-commons": ""
 }
 
 MVN_TEST_PATH = {
@@ -70,7 +70,7 @@ CTEST_SUREFIRE_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/server/master", SUREFIRE_SUBDIR)
     ],
     "nifi-commons": [
-        os.path.join(CTEST_NIFI_DIR, "nifi-commons", SUREFIRE_SUBDIR)
+        os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties", SUREFIRE_SUBDIR)
     ]
 }
 

@@ -166,8 +166,9 @@ class Runner:
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             else:
-                cmd = ["mvn", "surefire:test", "-Dtest=" + method]
+                cmd = ["mvn" ,"-pl", "nifi-commons/",  "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false" , "-Dsurefire.failIfNoSpecifiedTests=false"]
             print ("mvn surefire:test -Dtest="+method)
+
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 

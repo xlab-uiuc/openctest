@@ -21,7 +21,7 @@ def read_tsv(module):
     tsv_file = open("../default_configs/" + module + "-default.tsv")
     read_tsv = csv.reader(tsv_file, delimiter="\t")
     for row in read_tsv:
-        params.append(Param(row[0], row[1], row[2]))
+        params.append(Param(row[0], row[1]))
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
