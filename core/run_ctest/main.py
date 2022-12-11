@@ -20,7 +20,7 @@ def main():
     s = time.time()
     os.makedirs(os.path.join(RUNCTEST_TR_DIR, project), exist_ok=True)
     if run_mode == "run_ctest":
-        print(sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))))
+        # print(sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))))
         for conf_file_path in sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))):
             
             print(">>>>[ctest_core] input conf file: {}".format(conf_file_path))
