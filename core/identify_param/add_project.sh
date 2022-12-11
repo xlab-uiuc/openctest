@@ -50,7 +50,7 @@ function setup_alluxio() {
 function setup_hive(){
     [ ! -d "app/ctest-hive" ] && git clone https://github.com/lilacyl/hive.git app/ctest-hive
     cd app/ctest-hive
-    git fetch && git checkout ctest
+    git fetch && git checkout ctest-logging
     cd common
     mvn clean install -DskipTests
 }
