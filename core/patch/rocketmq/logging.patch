@@ -1,0 +1,168 @@
+diff --git a/common/src/main/java/org/apache/rocketmq/common/PlainAccessConfig.java b/common/src/main/java/org/apache/rocketmq/common/PlainAccessConfig.java
+index b9e7c21a7..f313ec9aa 100644
+--- a/common/src/main/java/org/apache/rocketmq/common/PlainAccessConfig.java
++++ b/common/src/main/java/org/apache/rocketmq/common/PlainAccessConfig.java
+@@ -15,10 +15,16 @@
+  * limitations under the License.
+  */
+ package org.apache.rocketmq.common;
++// ADDED
++import org.apache.rocketmq.logging.InternalLogger;
++import org.apache.rocketmq.logging.InternalLoggerFactory;
++import org.apache.rocketmq.common.constant.LoggerName;
+ 
+ import java.util.List;
+ 
+ public class PlainAccessConfig {
++    // added
++    private static final InternalLogger log = InternalLoggerFactory.getLogger(LoggerName.COMMON_LOGGER_NAME);
+ 
+     private String accessKey;
+ 
+@@ -36,67 +42,107 @@ public class PlainAccessConfig {
+ 
+     private List<String> groupPerms;
+ 
++    // ctest addition 
++    private String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     public String getAccessKey() {
++        log.warn("[CTEST][GET-PARAM] " + "accessKey"); //CTEST
++
+         return accessKey;
+     }
+ 
+     public void setAccessKey(String accessKey) {
++        log.warn("[CTEST][SET-PARAM] " + "accessKey" + getStackTrace()); //CTEST
++
+         this.accessKey = accessKey;
+     }
+ 
+     public String getSecretKey() {
++        log.warn("[CTEST][GET-PARAM] " + "secretKey"); //CTEST
++
+         return secretKey;
+     }
+ 
+     public void setSecretKey(String secretKey) {
++        log.warn("[CTEST][SET-PARAM] " + "secretKey" + getStackTrace()); //CTEST
++
+         this.secretKey = secretKey;
+     }
+ 
+     public String getWhiteRemoteAddress() {
++        log.warn("[CTEST][GET-PARAM] " + "whiteRemoteAddress"); //CTEST
++
+         return whiteRemoteAddress;
+     }
+ 
+     public void setWhiteRemoteAddress(String whiteRemoteAddress) {
++        log.warn("[CTEST][SET-PARAM] " + "whiteRemoteAddress" + getStackTrace()); //CTEST
++
+         this.whiteRemoteAddress = whiteRemoteAddress;
+     }
+ 
+     public boolean isAdmin() {
++        log.warn("[CTEST][GET-PARAM] " + "admin"); //CTEST
++
+         return admin;
+     }
+ 
+     public void setAdmin(boolean admin) {
++        log.warn("[CTEST][SET-PARAM] " + "admin" + getStackTrace()); //CTEST
++
+         this.admin = admin;
+     }
+ 
+     public String getDefaultTopicPerm() {
++        log.warn("[CTEST][GET-PARAM] " + "defaultTopicPerm"); //CTEST
++
+         return defaultTopicPerm;
+     }
+ 
+     public void setDefaultTopicPerm(String defaultTopicPerm) {
++        log.warn("[CTEST][SET-PARAM] " + "defaultTopicPerm" + getStackTrace()); //CTEST
++
+         this.defaultTopicPerm = defaultTopicPerm;
+     }
+ 
+     public String getDefaultGroupPerm() {
++        log.warn("[CTEST][GET-PARAM] " + "defaultGroupPerm"); //CTEST
++        // log.warn("default group perm is:" + defaultGroupPerm);
+         return defaultGroupPerm;
+     }
+ 
+     public void setDefaultGroupPerm(String defaultGroupPerm) {
++        log.warn("[CTEST][SET-PARAM] " + "defaultGroupPerm" + getStackTrace()); //CTEST
+         this.defaultGroupPerm = defaultGroupPerm;
++        
+     }
+ 
+     public List<String> getTopicPerms() {
++        log.warn("[CTEST][GET-PARAM] " + "topicPerms"); //CTEST
+         return topicPerms;
+     }
+ 
+     public void setTopicPerms(List<String> topicPerms) {
++        log.warn("[CTEST][SET-PARAM] " + "topicPerms" + getStackTrace()); //CTEST
++
+         this.topicPerms = topicPerms;
+     }
+ 
+     public List<String> getGroupPerms() {
++        log.warn("[CTEST][GET-PARAM] " + "groupPerms"); //CTEST
++
+         return groupPerms;
+     }
+ 
+     public void setGroupPerms(List<String> groupPerms) {
++        log.warn("[CTEST][SET-PARAM] " + "groupPerms" + getStackTrace()); //CTEST
++
+         this.groupPerms = groupPerms;
+     }
+diff --git a/pom.xml b/pom.xml
+index 7299bff7a..e8e342bab 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -155,7 +155,7 @@
+         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
++        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+         <sonar-maven-plugin.version>3.0.2</sonar-maven-plugin.version>
+         <spotbugs-plugin.version>4.2.2</spotbugs-plugin.version>
+         <maven-assembly-plugin.version>3.0.0</maven-assembly-plugin.version>
+@@ -374,11 +374,13 @@
+             </plugin>
+             <plugin>
+                 <artifactId>maven-surefire-plugin</artifactId>
+-                <version>${maven-surefire-plugin.version}</version>
++                <version>3.0.0-M4</version>
+                 <configuration>
+                     <skipAfterFailureCount>1</skipAfterFailureCount>
+                     <forkCount>1</forkCount>
+                     <reuseForks>true</reuseForks>
++                    <!-- <reportFormat>plain</reportFormat> -->
++                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                     <excludes>
+                         <exclude>**/IT*.java</exclude>
+                     </excludes>
+@@ -624,6 +626,11 @@
+                 <artifactId>slf4j-api</artifactId>
+                 <version>${slf4j.version}</version>
+             </dependency>
++            <!-- <dependency>
++                <groupId>org.slf4j</groupId>
++                <artifactId>slf4j-simple</artifactId>
++                <version>${slf4j.version}</version>
++            </dependency> -->
+             <dependency>
+                 <groupId>ch.qos.logback</groupId>
+                 <artifactId>logback-classic</artifactId>

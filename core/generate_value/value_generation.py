@@ -108,6 +108,8 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "rocketmq-acl":
+        assert len(params) == 9
     else:
         assert len(params) >= 90
     for param in params:

@@ -1,0 +1,2 @@
+>>>>[ctest_core] missing test for rocketmq-acl	groupPerms	groupA=DENY
+>>>>[ctest_core] missing test for rocketmq-acl	groupPerms	groupB=SUB

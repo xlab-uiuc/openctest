@@ -7,7 +7,8 @@ sys.path.append("..")
 from ctest_const import *
 
 from program_input import p_input
-
+# FOR ROCKETMQ
+import yaml
 project = p_input["project"]
 
 def inject_config(param_value_pairs):
@@ -60,11 +61,11 @@ def inject_config(param_value_pairs):
                     elif p == 'globalWhiteAddrs':
                         dict_global_addr['globalWhiteRemoteAddresses'].append(v)
                         
-            # dict_global_addr.append(acc)
-            # acc_cnt = acc_cnt + 1 
-            if not dict_global_addr['globalWhiteRemoteAddresses']:
-                dict_global_addr['globalWhiteRemoteAddresses'] = ['10.10.103.*','192.168.0.*']
-            yaml.dump(dict_global_addr, file)
+           
+            # if not dict_global_addr['globalWhiteRemoteAddresses']:
+            #     dict_global_addr['globalWhiteRemoteAddresses'] = ['10.10.103.*','192.168.0.*']
+            if dict_global_addr['globalWhiteRemoteAddresses']:
+                yaml.dump(dict_global_addr, file)
             yaml.dump(dict_accounts, file)
             file.close()
     else:

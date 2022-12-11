@@ -18,7 +18,7 @@ CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
-CTEST_ROCKETMQ_DIR = os.path.join("../../", "rocketmq")
+CTEST_ROCKETMQ_DIR = os.path.join(APP_DIR, "ctest-rocketmq")
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
     HDFS: CTEST_HADOOP_DIR,
@@ -61,7 +61,7 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
-    ROCKETMQ: [os.path.join(CTEST_ROCKETMQ_DIR, MODULE_SUBDIR[ROCKETMQ], SUREFIRE_SUBDIR)]
+    ROCKETMQ: [os.path.join(CTEST_ROCKETMQ_DIR, MODULE_SUBDIR[ROCKETMQ], SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
@@ -103,7 +103,7 @@ INJECTION_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
     ],
     ROCKETMQ: [
-        os.path.join(CTEST_ROCKET_DIR, "acl/src/test/resources/conf/ctest.yml")
+        os.path.join(CTEST_ROCKETMQ_DIR, "acl/src/test/resources/conf/ctest.yml")
     ]
 }
 

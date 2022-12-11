@@ -14,15 +14,22 @@ project = p_input["project"]
 def parse_surefire(clsname, expected_methods):
     """method expected to show up in surefire"""
     expected_methods = set(expected_methods)
+    # print(expected_methods)
     times = {}
     errors = {}
+    # print("abfcc")
     try:
         fpath = None
+        # print("surefire dir list: ")
         for surefire_path in SUREFIRE_DIR[project]:
+            
+            # print("surefire path: " + surefire_path)
             xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
+            # print(xml_path)
             if os.path.exists(xml_path):
                 print(">>>>[ctest_core] surefire report path: " + xml_path)
                 fpath = open(xml_path)
+        # print("---debug")
         tree = ET.parse(fpath)
         root = tree.getroot()
         tsinfo = root.attrib
@@ -62,6 +69,7 @@ def parse_surefire(clsname, expected_methods):
         if set(times.keys()) != expected_methods:
             print(">>>>[ctest_core] [strange] tests run not the same as expected tests")
     except Exception as e:
+        print(clsname)
         print(">>>>[ctest_core] failed to parse surefire file: {}".format(e))
 
     # pretty printing

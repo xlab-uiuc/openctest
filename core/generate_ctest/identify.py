@@ -13,6 +13,7 @@ project = p_input["project"]
 def identify_ctest(project):
     test_result_dir = os.path.join(GENCTEST_TR_DIR, project)
     ctest_file = os.path.join(CTESTS_DIR, CTESTS_FILE.format(project=project))
+    print("ctest file: " + ctest_file)
     try:
         ctests = json.load(open(ctest_file, "r"))
         ctest_file.close()
