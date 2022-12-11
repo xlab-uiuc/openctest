@@ -28,3 +28,12 @@ dfs.federation.router.heartbeat.interval	2500	10000
 dfs.federation.router.heartbeat-state.interval	1s	10s
 dfs.federation.router.namenode.heartbeat.enable	SKIP	SKIP
 dfs.federation.router.safemode.enable	false	SKIP
+dfs.federation.router.monitor.namenode	SKIP	SKIP
+dfs.federation.router.monitor.localnamenode.enable	false	SKIP
+dfs.federation.router.quota.enable	true	SKIP
+dfs.federation.router.quota-cache.update.interval	1s	120s
+dfs.federation.router.client.thread-size	16	64
+dfs.federation.router.client.retry.max.attempts	1	6
+dfs.federation.router.client.reject.overload	true	SKIP
+dfs.federation.router.client.allow-partial-listing	false	SKIP
+dfs.federation.router.client.mount-status.time-out	10s	2s

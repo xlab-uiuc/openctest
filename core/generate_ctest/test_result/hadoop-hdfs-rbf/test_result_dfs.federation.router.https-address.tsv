@@ -1,8 +1,8 @@
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	0.0.0.0:3000	p	0.165
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	0.0.0.0:3000	p	0.136
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	0.0.0.0:3000	p	0.145
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	0.0.0.0:3000	p	0.128
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	0.0.0.0:3001	p	0.159
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	0.0.0.0:3001	p	0.142
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	0.0.0.0:3001	p	0.159
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	0.0.0.0:3001	p	0.134
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	0.0.0.0:3000	p	0.158
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	0.0.0.0:3000	p	0.143
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	0.0.0.0:3000	p	0.142
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	0.0.0.0:3000	p	0.153
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	0.0.0.0:3001	p	0.238
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	0.0.0.0:3001	p	0.172
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	0.0.0.0:3001	p	0.202
+dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	0.0.0.0:3001	p	0.171

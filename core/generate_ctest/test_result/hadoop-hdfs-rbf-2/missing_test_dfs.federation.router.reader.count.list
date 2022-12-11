@@ -1,0 +1,20 @@
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.reader.count	0
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRenewLeaseForReplicaFile
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testPreviousBlockNotNull
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRpcService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testProxyGetAndUnsetStoragePolicy
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSetBalancerBandwidth
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirsWithCallerContext
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSubclusterDown
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirWithDisableNameService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetContentSummaryEc
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetServerDefaults
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testIsFileClosed
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetCachedDatanodeReport
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRecoverLease
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.reader.count	2
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRenewLeaseForReplicaFile
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSetBalancerBandwidth
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirsWithCallerContext
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirWithDisableNameService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetCachedDatanodeReport

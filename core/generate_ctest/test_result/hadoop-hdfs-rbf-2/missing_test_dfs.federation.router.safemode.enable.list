@@ -1,0 +1,6 @@
+>>>>[ctest_core] missing test for hadoop-hdfs-rbf	dfs.federation.router.safemode.enable	false
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testRenewLeaseForReplicaFile
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testSetBalancerBandwidth
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirsWithCallerContext
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testMkdirWithDisableNameService
+org.apache.hadoop.hdfs.server.federation.router.TestRouterRpcMultiDestination#testGetCachedDatanodeReport
