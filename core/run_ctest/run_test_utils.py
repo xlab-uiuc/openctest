@@ -15,11 +15,16 @@ class TestResult:
         self.ran_tests_and_time = ran_tests_and_time
 
 
-def maven_cmd(test, add_time=False):
+def maven_cmd(test, add_time=False, project=None):
     # surefire:test reuses test build from last compilation
     # if you modified the test and want to rerun it, you must use `mvn test`
-    test_mode = "surefire:test" if use_surefire else "test"
-    cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
+    cmd = None
+    if project == SPARK:
+        test_mode = "scalatest:test" if use_surefire else "test"
+        cmd = ["mvn", test_mode, "-Dtest=none", "-Dsuites=" + test] + maven_args
+    else:
+        test_mode = "surefire:test" if use_surefire else "test"
+        cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
     if add_time:
         cmd = ["time"] + cmd
     print(">>>>[ctest_core] command: " + " ".join(cmd))
@@ -30,20 +35,30 @@ def strip_ansi(s):
     return ansi_escape.sub('', s)
 
 
-def join_test_string(tests):
-    test_by_cls = group_test_by_cls(tests)
+def join_test_string(tests, project=None):
+    test_by_cls = group_test_by_cls(tests, project)
     ret = ""
+    split = None
+    if project == SPARK:
+        split = " @ "
+    else:
+        split = "#"
     for clsname, methods in test_by_cls.items():
         ret += clsname
-        ret += "#"
+        ret += split
         ret += "+".join(list(methods))
         ret += ","
     return ret
 
-def group_test_by_cls(tests):
+def group_test_by_cls(tests, project=None):
     d = {}
+    split = None
+    if project == SPARK:
+        split = " @ "
+    else:
+        split = "#"
     for t in tests:
-        clsname, method = t.split("#")
+        clsname, method = t.split(split)
         if clsname not in d:
             d[clsname] = set()
         d[clsname].add(method)

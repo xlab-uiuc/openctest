@@ -1,0 +1,98 @@
+From add1459f8e356b4dcd8c9f517b94dd6d495b7b9d Mon Sep 17 00:00:00 2001
+From: ZHLOLin <linzhaolong.2010@gmail.com>
+Date: Thu, 1 Dec 2022 21:38:30 -0600
+Subject: [PATCH] Update SparkConf.scala
+
+Enable ctest logging
+---
+ .../scala/org/apache/spark/SparkConf.scala    | 25 ++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/core/src/main/scala/org/apache/spark/SparkConf.scala b/core/src/main/scala/org/apache/spark/SparkConf.scala
+index 5f37a1abb1..d8794706a4 100644
+--- a/core/src/main/scala/org/apache/spark/SparkConf.scala
++++ b/core/src/main/scala/org/apache/spark/SparkConf.scala
+@@ -70,6 +70,14 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+     loadFromSystemProperties(false)
+   }
+ 
++  // For CTest
++  private[spark] def getStackTrace(): String = {
++    var stackTrace = " "
++    for (e <- Thread.currentThread().getStackTrace())
++      stackTrace = stackTrace.concat(e.getClassName() + "\t")
++    stackTrace
++  }
++
+   private[spark] def loadFromSystemProperties(silent: Boolean): SparkConf = {
+     // Load any spark.* system properties
+     for ((key, value) <- Utils.getSystemProperties if key.startsWith("spark.")) {
+@@ -83,7 +91,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+     set(key, value, false)
+   }
+ 
+-  private[spark] def set(key: String, value: String, silent: Boolean): SparkConf = {
++  private[spark] def set(key: String, value: String, silent: Boolean
++  , ctest: Boolean = true): SparkConf = {
+     if (key == null) {
+       throw new NullPointerException("null key")
+     }
+@@ -94,6 +103,10 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+       logDeprecationWarning(key)
+     }
+     settings.put(key, value)
++    if (ctest) {
++      // scalastyle:off println
++      Console.println("[CTEST][SET-PARAM] " + key + getStackTrace())  // CTest
++    }
+     this
+   }
+ 
+@@ -175,6 +188,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+ 
+   /** Set a parameter if it isn't already configured */
+   def setIfMissing(key: String, value: String): SparkConf = {
++    // scalastyle:off println
++    Console.println("[CTEST][SET-PARAM] " + key + getStackTrace())
+     if (settings.putIfAbsent(key, value) == null) {
+       logDeprecationWarning(key)
+     }
+@@ -182,6 +197,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+   }
+ 
+   private[spark] def setIfMissing[T](entry: ConfigEntry[T], value: T): SparkConf = {
++    // scalastyle:off println
++    Console.println("[CTEST][SET-PARAM] " + entry.key + getStackTrace())
+     if (settings.putIfAbsent(entry.key, entry.stringConverter(value)) == null) {
+       logDeprecationWarning(entry.key)
+     }
+@@ -189,6 +206,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+   }
+ 
+   private[spark] def setIfMissing[T](entry: OptionalConfigEntry[T], value: T): SparkConf = {
++    // scalastyle:off println
++    Console.println("[CTEST][SET-PARAM] " + entry.key + getStackTrace())
+     if (settings.putIfAbsent(entry.key, entry.rawStringConverter(value)) == null) {
+       logDeprecationWarning(entry.key)
+     }
+@@ -258,6 +277,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+    * - This will throw an exception is the config is not optional and the value is not set.
+    */
+   private[spark] def get[T](entry: ConfigEntry[T]): T = {
++    // scalastyle:off println
++    Console.println("[CTEST][GET-PARAM] " + entry.key) // CTest
+     entry.readFrom(reader)
+   }
+ 
+@@ -385,6 +406,8 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
+ 
+   /** Get a parameter as an Option */
+   def getOption(key: String): Option[String] = {
++    // scalastyle:off println
++    Console.println("[CTEST][GET-PARAM] " + key) // CTest
+     Option(settings.get(key)).orElse(getDeprecatedConfig(key, settings))
+   }
+ 
+-- 
+2.25.1
+

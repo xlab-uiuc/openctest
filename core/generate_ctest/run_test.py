@@ -25,7 +25,7 @@ def run_test_seperate(param, value, associated_tests):
     print(">>>>[ctest_core] chdir to {}".format(testing_dir))
     start_time = time.time()
     for test in associated_tests:
-        cmd = run_test_utils.maven_cmd(test)
+        cmd = run_test_utils.maven_cmd(test, project=project)
         if display_mode:
             os.system(" ".join(cmd))
             continue
@@ -40,7 +40,10 @@ def run_test_seperate(param, value, associated_tests):
                 # test hanged, treated as failure.
                 process.kill()
                 print(">>>>[ctest_core] maven cmd timeout {}".format(e))
-                clsname, testname = test.split("#")
+                if project in [SPARK]:
+                    clsname, testname = test.split(" @ ")
+                else:
+                    clsname, testname = test.split("#")
                 tr.ran_tests_and_time.add(test + "\t" + str(cmd_timeout))
                 tr.failed_tests.add(test)
                 continue
@@ -49,7 +52,10 @@ def run_test_seperate(param, value, associated_tests):
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
         print(print_output)
-        clsname, testname = test.split("#")
+        if project in [SPARK]:
+            clsname, testname = test.split(" @ ")
+        else:
+            clsname, testname = test.split("#")
         times, errors = parse_surefire(clsname, [testname])
         if testname in times:
             tr.ran_tests_and_time.add(test + "\t" + times[testname])

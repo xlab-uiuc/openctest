@@ -23,7 +23,7 @@ def main(argv):
 
 def test_conf_file(test_input, ctestname):
     params = test_input.keys()
-    associated_test_map = {p: [ctestname] for p in params if ctestname in mapping[p]}
+    associated_test_map = {p: [ctestname] for p in params if p in mapping[ctestname]}
     print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
     tr = run_test_batch(test_input, associated_test_map)
     tup = tr.ran_tests_and_time.pop()

@@ -47,6 +47,13 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_spark() {
+    [ ! -d "app/ctest-spark" ] && git clone https://github.com/ZHLOLin/spark.git app/ctest-spark
+    cd app/ctest-spark
+    git fetch && git checkout ctest_enable_logging
+    mvn clean install -pl core -am -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -63,7 +70,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            spark) setup_spark ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, spark and alluxio." ;;
         esac
     fi
 }

@@ -30,11 +30,11 @@ def run_test_batch(param_values, associated_test_map):
         tested_params, tests = group
         inject_config({p: param_values[p] for p in tested_params})
         print(">>>>[ctest_core] running group {} where {} params shares {} ctests".format(index, len(tested_params), len(tests)))
-        test_str = run_test_utils.join_test_string(tests)
+        test_str = run_test_utils.join_test_string(tests, project=project)
         os.chdir(testing_dir)
         print(">>>>[ctest_core] chdir to {}".format(testing_dir))
 
-        cmd = run_test_utils.maven_cmd(test_str)
+        cmd = run_test_utils.maven_cmd(test_str, project=project)
         if display_mode:
             os.system(" ".join(cmd))
             continue
@@ -60,7 +60,7 @@ def run_test_batch(param_values, associated_test_map):
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
         print(print_output)
-        test_by_cls = run_test_utils.group_test_by_cls(tests)
+        test_by_cls = run_test_utils.group_test_by_cls(tests, project=project)
         for clsname, methods in test_by_cls.items():
             times, errors = parse_surefire(clsname, methods)
             for m in methods:
