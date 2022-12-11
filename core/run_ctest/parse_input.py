@@ -43,6 +43,8 @@ def parse_conf_file(path):
         return parse_conf_file_xml(path)
     else:
         # parsing for alluxio and zookeeper conf file format
+        if project in [ROCKETMQ]:
+            return parse_conf_file_yml(path)
         if "no default configuration file" in path:
             return {}
         return parse_conf_file_properties(path)
@@ -71,16 +73,44 @@ def parse_conf_file_xml(path):
             conf_map[cur_key] = cur_value
     return conf_map
 
+# ctest
+def parse_conf_file_xml(path):
+    deprecate_conf = load_deprecate_config_map()
+    conf_map = {}
+    fd = ET.parse(path)
+    for kv in fd.getroot():
+        # get key value pair
+        cur_value = None
+        cur_key = None
+        for prop in kv:
+            if prop.tag == "name":
+                cur_key = re.sub('\n|\t', '', re.sub(' +', ' ', prop.text))
+            elif prop.tag == "value" and cur_key:
+                cur_value = prop.text
+            else:
+                pass
+        if cur_key not in conf_map:
+            if cur_key in deprecate_conf:
+                print(">>>>[ctest_core] {} in your input conf file is deprecated in the project,".format(cur_key)
+                 + " replaced with {}".format(deprecate_conf[cur_key]))
+                cur_key = deprecate_conf[cur_key]
+            conf_map[cur_key] = cur_value
+    return conf_map   
 
-def parse_conf_file_properties(path):
+def parse_conf_file_yml(path):
     deprecate_conf = load_deprecate_config_map()
     conf_map = {}
     for line in open(path):
         if line.startswith("#"):
             continue
-        seg = line.strip("\n").split("=")
+        seg = line.strip("\n").split(": ")
+        
         if len(seg) == 2:
             cur_key, cur_value = [x.strip() for x in seg]
+            # print(cur_key+','+cur_value)
+            if '-' in cur_key:
+                cur_key.replace('-','')
+            cur_key.strip()
             if cur_key not in conf_map:
                 if cur_key in deprecate_conf:
                     print(">>>>[ctest_core] {} in your input conf file is deprecated in the project,".format(cur_key)

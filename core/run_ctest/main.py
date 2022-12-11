@@ -15,11 +15,14 @@ project = p_input["project"]
 
 
 def main():
+    print('../default_configs/rocketmq-acl-default.tsv')
     print(">>>>[ctest_core] running project {}".format(project))
     s = time.time()
     os.makedirs(os.path.join(RUNCTEST_TR_DIR, project), exist_ok=True)
     if run_mode == "run_ctest":
+        print(sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))))
         for conf_file_path in sorted(glob.glob(os.path.join(p_input["conf_file_dir"], "*"))):
+            
             print(">>>>[ctest_core] input conf file: {}".format(conf_file_path))
             test_input = extract_conf_diff(conf_file_path)
             test_conf_file(conf_file_path, test_input)
