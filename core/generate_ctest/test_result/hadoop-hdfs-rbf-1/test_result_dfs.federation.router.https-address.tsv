@@ -1,8 +1,0 @@
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	0.0.0.0:3000	p	0.181
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	0.0.0.0:3000	p	0.282
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	0.0.0.0:3000	p	0.2
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	0.0.0.0:3000	p	0.189
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	0.0.0.0:3001	p	0.175
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	0.0.0.0:3001	p	0.203
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	0.0.0.0:3001	p	0.326
-dfs.federation.router.https-address	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	0.0.0.0:3001	p	0.208

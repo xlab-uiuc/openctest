@@ -1,5 +1,0 @@
-dfs.federation.router.safemode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareXmlAgainstConfigurationClass	false	p	0.192
-dfs.federation.router.safemode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testCompareConfigurationClassAgainstXml	false	p	0.167
-dfs.federation.router.safemode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testDefaultValueCollision	false	p	0.202
-dfs.federation.router.safemode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRBFConfigFields#testXmlAgainstDefaultValuesInConfigurationClass	false	p	0.276
-dfs.federation.router.safemode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRouter#testNamenodeHeartBeatEnableDefault	false	p	1.052

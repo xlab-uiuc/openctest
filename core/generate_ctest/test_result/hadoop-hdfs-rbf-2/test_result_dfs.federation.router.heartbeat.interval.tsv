@@ -1,8 +1,0 @@
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterUpdateAPICall	2500	p	0.128
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterAddAPICall	2500	p	0.105
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testCachedRouterClientBehaviourAfterRouterStoped	2500	p	1.158
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterRemoveAPICall	2500	p	0.096
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testCachedRouterClientBehaviourAfterRouterStoped	10000	p	1.135
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterAddAPICall	10000	p	0.107
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterRemoveAPICall	10000	p	0.119
-dfs.federation.router.heartbeat.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterUpdateAPICall	10000	p	0.143

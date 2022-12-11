@@ -1,8 +1,0 @@
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	1s	p	0.133
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	1s	p	0.154
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	1s	p	0.143
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	1s	p	0.159
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesTextFormat	120s	p	0.188
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyNoDatanodesJsonFormat	120s	p	0.148
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyTextFormat	120s	p	0.151
-dfs.federation.router.quota-cache.update.interval	org.apache.hadoop.hdfs.server.federation.router.TestRouterNetworkTopologyServlet#testPrintTopologyJsonFormat	120s	p	0.149

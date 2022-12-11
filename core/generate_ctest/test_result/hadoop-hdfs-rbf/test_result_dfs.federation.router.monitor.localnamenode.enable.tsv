@@ -1,4 +1,0 @@
-dfs.federation.router.monitor.localnamenode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testCachedRouterClientBehaviourAfterRouterStoped	false	p	1.165
-dfs.federation.router.monitor.localnamenode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterAddAPICall	false	p	0.149
-dfs.federation.router.monitor.localnamenode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterUpdateAPICall	false	p	0.122
-dfs.federation.router.monitor.localnamenode.enable	org.apache.hadoop.hdfs.server.federation.router.TestRouterMountTableCacheRefreshSecure#testMountTableEntriesCacheUpdatedAfterRemoveAPICall	false	p	0.109
