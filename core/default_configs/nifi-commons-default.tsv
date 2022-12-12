@@ -1,0 +1,229 @@
+nifi.properties.file.path		
+nifi.flow.configuration.file		
+nifi.flow.configuration.json.file		
+nifi.flow.configuration.archive.enabled	"true"	
+nifi.flow.configuration.archive.dir		
+nifi.flow.configuration.archive.max.time	"30 days"	
+nifi.flow.configuration.archive.max.storage	"500 MB"	
+nifi.flow.configuration.archive.max.count		
+nifi.authorizer.configuration.file	"conf/authorizers.xml"	
+nifi.login.identity.provider.configuration.file	"conf/login-identity-providers.xml"	
+nifi.database.directory		
+nifi.restore.directory		
+nifi.flowservice.writedelay.interval		
+nifi.flowcontroller.autoResumeState	true	
+nifi.flowcontroller.graceful.shutdown.period		
+nifi.nar.library.directory		
+nifi.nar.library.directory.		
+nifi.nar.library.autoload.directory		
+nifi.nar.working.directory		
+nifi.nar.unpack.uber.jar	false	
+nifi.documentation.working.directory	"./work/docs/components"	
+nifi.sensitive.props.key		
+nifi.sensitive.props.algorithm		
+nifi.h2.url.append		
+nifi.remote.input.host		
+nifi.remote.input.socket.port	null	
+nifi.remote.input.secure		
+nifi.remote.input.http.enabled		
+nifi.remote.input.http.transaction.ttl	"30 secs"	
+nifi.remote.contents.cache.expiration		
+nifi.templates.directory	Paths.get("conf", "templates")	
+nifi.administrative.yield.duration	"30 sec"	
+nifi.bored.yield.duration	"10 millis"	
+nifi.processor.scheduling.timeout		
+nifi.queue.backpressure.count	10_000L	
+nifi.queue.backpressure.size	"1 GB"	
+nifi.listener.bootstrap.port	0	
+nifi.repository.encryption.protocol.version		
+nifi.repository.encryption.key.id		
+nifi.repository.encryption.key.provider		
+nifi.repository.encryption.key.provider.keystore.location		
+nifi.repository.encryption.key.provider.keystore.password		
+nifi.content.repository.directory.		
+nifi.content.repository.implementation		
+nifi.content.claim.max.appendable.size	"1 MB"	
+nifi.content.claim.max.flow.files	100	
+nifi.content.repository.archive.max.retention.period		
+nifi.content.repository.archive.max.usage.percentage		
+nifi.content.repository.archive.backpressure.percentage		
+nifi.content.repository.archive.enabled		
+nifi.content.repository.archive.cleanup.frequency		
+nifi.content.viewer.url		
+nifi.content.repository.encryption.key		
+nifi.content.repository.encryption.key.id		
+nifi.content.repository.encryption.key.provider.implementation		
+nifi.content.repository.encryption.key.provider.location		
+nifi.content.repository.encryption.key.provider.password		
+nifi.flowfile.repository.implementation		
+nifi.flowfile.repository.wal.implementation		
+nifi.flowfile.repository.always.sync		
+nifi.flowfile.repository.directory		
+nifi.flowfile.repository.checkpoint.interval		
+nifi.flowfile.repository.encryption.key		
+nifi.flowfile.repository.encryption.key.id		
+nifi.flowfile.repository.encryption.key.provider.implementation		
+nifi.flowfile.repository.encryption.key.provider.location		
+nifi.flowfile.repository.encryption.key.provider.password		
+nifi.swap.manager.implementation		
+nifi.queue.swap.threshold	20000	
+nifi.provenance.repository.implementation		
+nifi.provenance.repository.directory.		
+nifi.provenance.repository.max.storage.time		
+nifi.provenance.repository.max.storage.size		
+nifi.provenance.repository.rollover.time		
+nifi.provenance.repository.rollover.size		
+nifi.provenance.repository.rollover.events		
+nifi.provenance.repository.query.threads		
+nifi.provenance.repository.index.threads		
+nifi.provenance.repository.compress.on.rollover		
+nifi.provenance.repository.indexed.fields		
+nifi.provenance.repository.indexed.attributes		
+nifi.provenance.repository.index.shard.size		
+nifi.provenance.repository.journal.count		
+nifi.provenance.repository.encryption.key		
+nifi.provenance.repository.encryption.key.id		
+nifi.provenance.repository.encryption.key.provider.implementation		
+nifi.provenance.repository.encryption.key.provider.location		
+nifi.provenance.repository.encryption.key.provider.password		
+nifi.provenance.repository.debug.frequency		
+nifi.components.status.repository.implementation		
+nifi.components.status.snapshot.frequency	"5 mins"	
+nifi.status.repository.questdb.persist.node.days		
+nifi.status.repository.questdb.persist.component.days		
+nifi.status.repository.questdb.persist.location		
+nifi.security.keystore		
+nifi.security.keystoreType		
+nifi.security.keystorePasswd		
+nifi.security.keyPasswd		
+nifi.security.truststore		
+nifi.security.truststoreType		
+nifi.security.truststorePasswd		
+nifi.security.autoreload.enabled		
+nifi.security.autoreload.interval	"10 secs"	
+nifi.security.user.authorizer		
+nifi.security.allow.anonymous.authentication		
+nifi.security.user.login.identity.provider		
+nifi.security.ocsp.responder.url		
+nifi.security.ocsp.responder.certificate		
+nifi.security.identity.mapping.pattern.		
+nifi.security.identity.mapping.value.		
+nifi.security.identity.mapping.transform.		
+nifi.security.group.mapping.pattern.		
+nifi.security.group.mapping.value.		
+nifi.security.group.mapping.transform.		
+nifi.security.user.jws.key.rotation.period		
+nifi.security.user.oidc.discovery.url		
+nifi.security.user.oidc.connect.timeout	"5 secs"	
+nifi.security.user.oidc.read.timeout	"5 secs"	
+nifi.security.user.oidc.client.id		
+nifi.security.user.oidc.client.secret		
+nifi.security.user.oidc.truststore.strategy	"JDK"	
+nifi.security.user.oidc.preferred.jwsalgorithm		
+nifi.security.user.oidc.additional.scopes		
+nifi.security.user.oidc.claim.identifying.user		
+nifi.security.user.oidc.claim.groups		
+nifi.security.user.oidc.fallback.claims.identifying.user		
+nifi.security.user.knox.url		
+nifi.security.user.knox.publicKey		
+nifi.security.user.knox.cookieName		
+nifi.security.user.knox.audiences		
+nifi.security.user.saml.idp.metadata.url		
+nifi.security.user.saml.sp.entity.id		
+nifi.security.user.saml.identity.attribute.name		
+nifi.security.user.saml.group.attribute.name		
+nifi.security.user.saml.metadata.signing.enabled	"false"	
+nifi.security.user.saml.request.signing.enabled	"false"	
+nifi.security.user.saml.want.assertions.signed	"true"	
+nifi.security.user.saml.signature.algorithm	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"	
+nifi.security.user.saml.signature.digest.algorithm		
+nifi.security.user.saml.message.logging.enabled	"false"	
+nifi.security.user.saml.authentication.expiration	"12 hours"	
+nifi.security.user.saml.single.logout.enabled	"false"	
+nifi.security.user.saml.http.client.truststore.strategy	"JDK"	
+nifi.security.user.saml.http.client.connect.timeout	"30 secs"	
+nifi.security.user.saml.http.client.read.timeout	"30 secs"	
+nifi.web.http.port		
+nifi.web.http.port.forwarding		
+nifi.web.http.host		
+nifi.web.http.network.interface.		
+nifi.web.https.port		
+nifi.web.https.port.forwarding		
+nifi.web.https.host		
+nifi.web.https.application.protocols		
+nifi.web.https.ciphersuites.include		
+nifi.web.https.ciphersuites.exclude		
+nifi.web.https.network.interface.		
+nifi.web.jetty.working.directory	"./work/jetty"	
+nifi.web.jetty.threads	200	
+nifi.web.max.header.size	"16 KB"	
+nifi.web.proxy.context.path		
+nifi.web.proxy.host		
+nifi.web.max.content.size	"20 MB"	
+nifi.web.max.requests.per.second	30000	
+nifi.web.max.access.token.requests.per.second	25	
+nifi.web.request.timeout	"60 secs"	
+nifi.web.request.ip.whitelist		
+nifi.web.should.send.server.version	"true"	
+nifi.web.request.log.format		
+nifi.ui.banner.text		
+nifi.ui.autorefresh.interval		
+nifi.cluster.protocol.heartbeat.interval	"5 sec"	
+nifi.cluster.protocol.heartbeat.missable.max	8	
+nifi.cluster.protocol.is.secure		
+nifi.cluster.is.node		
+nifi.cluster.node.address		
+nifi.cluster.node.protocol.port		
+nifi.cluster.node.protocol.max.threads	50	
+nifi.cluster.node.connection.timeout	"5 sec"	
+nifi.cluster.node.read.timeout	"5 sec"	
+nifi.cluster.node.max.concurrent.requests	100	
+nifi.cluster.firewall.file		
+nifi.cluster.flow.election.max.wait.time	"5 mins"	
+nifi.cluster.flow.election.max.candidates		
+nifi.cluster.load.balance.host		
+nifi.cluster.load.balance.port	6342	
+nifi.cluster.load.balance.connections.per.node	4	
+nifi.cluster.load.balance.max.thread.count	8	
+nifi.cluster.load.balance.comms.timeout	"30 sec"	
+nifi.zookeeper.connect.string		
+nifi.zookeeper.connect.timeout	"3 secs"	
+nifi.zookeeper.session.timeout	"3 secs"	
+nifi.zookeeper.root.node	"/nifi"	
+nifi.zookeeper.client.secure	false	
+nifi.zookeeper.security.keystore		
+nifi.zookeeper.security.keystoreType		
+nifi.zookeeper.security.keystorePasswd		
+nifi.zookeeper.security.truststore		
+nifi.zookeeper.security.truststoreType		
+nifi.zookeeper.security.truststorePasswd		
+nifi.zookeeper.auth.type	"default"	
+nifi.zookeeper.kerberos.removeHostFromPrincipal	"true"	
+nifi.zookeeper.kerberos.removeRealmFromPrincipal	"true"	
+nifi.zookeeper.jute.maxbuffer	1048575	
+nifi.kerberos.krb5.file		
+nifi.kerberos.service.principal		
+nifi.kerberos.service.keytab.location		
+nifi.kerberos.spnego.principal		
+nifi.kerberos.spnego.keytab.location		
+nifi.kerberos.spnego.authentication.expiration	"12 hours"	
+nifi.state.management.configuration.file	"conf/state-management.xml"	
+nifi.state.management.provider.local		
+nifi.state.management.provider.cluster		
+nifi.state.management.embedded.zookeeper.start		
+nifi.state.management.embedded.zookeeper.properties		
+nifi.variable.registry.properties		
+nifi.analytics.predict.enabled	"false"	
+nifi.analytics.predict.interval	"3 mins"	
+nifi.analytics.query.interval	"3 mins"	
+nifi.analytics.connection.model.implementation		
+nifi.analytics.connection.model.score.name		
+nifi.analytics.connection.model.score.threshold		
+nifi.monitor.long.running.task.schedule		
+nifi.monitor.long.running.task.threshold		
+nifi.diagnostics.on.shutdown.enabled		
+nifi.diagnostics.on.shutdown.verbose		
+nifi.diagnostics.on.shutdown.directory	"./diagnostics"	
+nifi.diagnostics.on.shutdown.max.filecount	10	
+nifi.diagnostics.on.shutdown.max.directory.size	"10 MB"	
+nifi.performance.tracking.percentage	0	

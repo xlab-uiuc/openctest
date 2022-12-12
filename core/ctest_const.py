@@ -44,6 +44,7 @@ MODULE_SUBDIR = {
 # surefire report
 SUREFIRE_SUBDIR = "target/surefire-reports/"
 SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
+SUREFIRE_XML_NIFI = "TEST-org.apache.nifi.util.{}.xml" # slot is the classname
 SUREFIRE_TXT = "{}.txt" # testclass
 SUREFIRE_OUTTXT = "{}-output.txt" #testclass 
 
@@ -62,7 +63,7 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
-    NIFI: [os.path.join(CTEST_NIFI_DIR, MODULE_SUBDIR[NIFI], SUREFIRE_SUBDIR)],
+    NIFI: [os.path.join(CTEST_NIFI_DIR, MODULE_SUBDIR[NIFI],"nifi-properties", SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
