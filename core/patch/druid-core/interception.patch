@@ -1,0 +1,601 @@
+From 73fd13483be2662727caca457911f7247e67a7a7 Mon Sep 17 00:00:00 2001
+From: sylvia <sylvia@MacBook-Pro-2.local>
+Date: Sun, 11 Dec 2022 17:46:44 -0600
+Subject: [PATCH] Add codes to support ctest injection
+
+---
+ core/pom.xml                                  |  1 +
+ .../config/NullValueHandlingConfig.java       | 31 +++++++
+ .../emitter/core/BaseHttpEmittingConfig.java  | 87 +++++++++++++++++++
+ .../emitter/core/LoggingEmitterConfig.java    | 31 +++++++
+ .../core/ParametrizedUriEmitterConfig.java    | 20 +++++
+ .../util/http/client/HttpClientConfig.java    | 65 ++++++++++++++
+ .../org/apache/druid/js/JavaScriptConfig.java | 22 +++++
+ .../math/expr/ExpressionProcessingConfig.java | 53 +++++++++++
+ 8 files changed, 310 insertions(+)
+
+diff --git a/core/pom.xml b/core/pom.xml
+index ac4e92b7cd..49cbb4a25d 100644
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -428,6 +428,7 @@
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
+         <configuration>
++          <reportFormat>plain</reportFormat>
+           <!-- use normal classpath instead of manifest jar for JvmUtilsTest.testSystemClassPath -->
+           <useManifestOnlyJar>false</useManifestOnlyJar>
+         </configuration>
+diff --git a/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java b/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
+index fbdc852105..ec62e387d2 100644
+--- a/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
++++ b/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
+@@ -21,9 +21,18 @@ package org.apache.druid.common.config;
+ 
+ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
++
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
+ 
+ public class NullValueHandlingConfig
+ {
++  private static final Logger log = new Logger(NullValueHandlingConfig.class);
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   public static final String NULL_HANDLING_CONFIG_STRING = "druid.generic.useDefaultValueForNull";
+ 
+   //added to preserve backward compatibility
+@@ -65,11 +74,33 @@ public class NullValueHandlingConfig
+ 
+   public boolean isIgnoreNullsForStringCardinality()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.generic.ignoreNullsForStringCardinality");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.generic.ignoreNullsForStringCardinality") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.generic.ignoreNullsForStringCardinality"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return ignoreNullsForStringCardinality;
+   }
+ 
+   public boolean isUseDefaultValuesForNull()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.generic.useDefaultValueForNull");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.generic.useDefaultValueForNull") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.generic.useDefaultValueForNull"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return useDefaultValuesForNull;
+   }
+ }
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
+index 44ecaf9d33..472757de50 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
+@@ -21,14 +21,23 @@ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ import org.apache.druid.java.util.common.Pair;
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.apache.druid.metadata.PasswordProvider;
+ import org.apache.druid.utils.JvmUtils;
+ 
+ import javax.validation.constraints.Min;
+ import java.util.concurrent.TimeUnit;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ public class BaseHttpEmittingConfig
+ {
++  private static final Logger log = new Logger(BaseHttpEmittingConfig.class.getName()); //ctest
++
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
+   public static final long DEFAULT_FLUSH_MILLIS = 60 * 1000;
+   public static final int DEFAULT_FLUSH_COUNTS = 500;
+ 
+@@ -115,16 +124,49 @@ public class BaseHttpEmittingConfig
+ 
+   public long getFlushMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushMillis"); 
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.flushMillis") != null){
++        return Long.parseLong(configProps.getProperty("druid.emitter.http.flushMillis"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return flushMillis;
+   }
+ 
+   public int getFlushCount()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushCount"); 
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.flushCount") != null){
++        return Integer.parseInt(configProps.getProperty("druid.emitter.http.flushCount"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return flushCount;
+   }
+ 
+   public long getFlushTimeOut()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushTimeOut"); 
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.flushTimeOut") != null){
++        return Long.parseLong(configProps.getProperty("druid.emitter.http.flushTimeOut"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return flushTimeOut;
+   }
+ 
+@@ -135,11 +177,33 @@ public class BaseHttpEmittingConfig
+ 
+   public BatchingStrategy getBatchingStrategy()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.batchingStrategy"); 
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.batchingStrategy") != null){
++        return BatchingStrategy.valueOf(configProps.getProperty("druid.emitter.http.batchingStrategy"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return batchingStrategy;
+   }
+ 
+   public int getMaxBatchSize()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.maxBatchSize");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.maxBatchSize") != null){
++        return Integer.parseInt(configProps.getProperty("druid.emitter.http.maxBatchSize"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return maxBatchSize;
+   }
+ 
+@@ -150,6 +214,18 @@ public class BaseHttpEmittingConfig
+ 
+   public int getBatchQueueSizeLimit()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.batchQueueSizeLimit");
++
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.batchQueueSizeLimit") != null){
++        return Integer.parseInt(configProps.getProperty("druid.emitter.http.batchQueueSizeLimit"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return batchQueueSizeLimit;
+   }
+ 
+@@ -160,6 +236,17 @@ public class BaseHttpEmittingConfig
+ 
+   public int getMinHttpTimeoutMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.minHttpTimeoutMillis");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.http.minHttpTimeoutMillis") != null){
++        return Integer.parseInt(configProps.getProperty("druid.emitter.http.minHttpTimeoutMillis"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return minHttpTimeoutMillis;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
+index 39b85126f7..f4d67f16a9 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
+@@ -20,13 +20,22 @@
+ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.validation.constraints.NotNull;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ /**
+  */
+ public class LoggingEmitterConfig
+ {
++  private static final Logger log = new Logger(LoggingEmitterConfig.class);
++
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
+   @NotNull
+   @JsonProperty
+   private String loggerClass = LoggingEmitter.class.getName();
+@@ -37,11 +46,33 @@ public class LoggingEmitterConfig
+ 
+   public String getLoggerClass()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.logging.loggerClass");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.logging.loggerClass") != null){
++        return configProps.getProperty("druid.emitter.logging.loggerClass");
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return loggerClass;
+   }
+ 
+   public String getLogLevel()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.logging.logLevel");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.logging.logLevel") != null){
++        return configProps.getProperty("druid.emitter.logging.logLevel");
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return logLevel;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
+index 9982f134db..30166868cb 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
+@@ -20,11 +20,19 @@
+ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.validation.constraints.NotNull;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ public class ParametrizedUriEmitterConfig
+ {
++  private static final Logger log = new Logger(ParametrizedUriEmitterConfig.class);
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
+   private static final BaseHttpEmittingConfig DEFAULT_HTTP_EMITTING_CONFIG = new BaseHttpEmittingConfig();
+ 
+   @NotNull
+@@ -36,11 +44,23 @@ public class ParametrizedUriEmitterConfig
+ 
+   public String getRecipientBaseUrlPattern()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.parametrized.recipientBaseUrlPattern");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.emitter.parametrized.recipientBaseUrlPattern") != null){
++        return configProps.getProperty("druid.emitter.parametrized.recipientBaseUrlPattern");
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return recipientBaseUrlPattern;
+   }
+ 
+   public HttpEmitterConfig buildHttpEmitterConfig(String baseUri)
+   {
++    log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.recipientBaseUrl " + "NoTestTrace");
+     return new HttpEmitterConfig(httpEmittingConfig, baseUri);
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java b/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
+index b652c0a274..8566bd37a5 100644
+--- a/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
+@@ -19,16 +19,26 @@
+ 
+ package org.apache.druid.java.util.http.client;
+ 
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.apache.druid.utils.JvmUtils;
+ import org.joda.time.Duration;
+ import org.joda.time.Period;
+ 
+ import javax.net.ssl.SSLContext;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ /**
+  */
+ public class HttpClientConfig
+ {
++  private static final Logger log = new Logger(HttpClientConfig.class);
++
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   public enum CompressionCodec
+   {
+     IDENTITY {
+@@ -118,11 +128,34 @@ public class HttpClientConfig
+ 
+   public int getNumConnections()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.numConnections");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.global.http.numConnections") != null){
++        return Integer.parseInt(configProps.getProperty("druid.global.http.numConnections"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return numConnections;
+   }
+ 
+   public boolean isEagerInitialization()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.eagerInitialization");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.global.http.eagerInitialization") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.global.http.eagerInitialization"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
++
+     return eagerInitialization;
+   }
+ 
+@@ -138,6 +171,17 @@ public class HttpClientConfig
+ 
+   public Duration getReadTimeout()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.readTimeout");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.global.http.readTimeout") != null){
++        return Duration.parse(configProps.getProperty("druid.global.http.readTimeout"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return readTimeout;
+   }
+ 
+@@ -158,11 +202,32 @@ public class HttpClientConfig
+ 
+   public CompressionCodec getCompressionCodec()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.compressionCodec");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.global.http.compressionCodec") != null){
++        return CompressionCodec.valueOf(configProps.getProperty("druid.global.http.compressionCodec"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return compressionCodec;
+   }
+ 
+   public Duration getUnusedConnectionTimeoutDuration()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.unusedConnectionTimeout");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.global.http.numConnections") != null){
++        return Duration.parse(configProps.getProperty("druid.global.http.numConnections"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return unusedConnectionTimeoutDuration;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java b/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
+index 1044710247..027279269d 100644
+--- a/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
++++ b/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
+@@ -23,6 +23,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ import org.apache.druid.guice.annotations.PublicApi;
+ 
++import org.apache.druid.java.util.common.logger.Logger;
++
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ /**
+  * Should be used by extension filters, aggregators, etc, that use JavaScript to determine if JavaScript is enabled
+  * or not.
+@@ -30,6 +36,11 @@ import org.apache.druid.guice.annotations.PublicApi;
+ @PublicApi
+ public class JavaScriptConfig
+ {
++  private static final Logger log = new Logger(JavaScriptConfig.class);
++
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   public static final int DEFAULT_OPTIMIZATION_LEVEL = 9;
+ 
+   private static final JavaScriptConfig ENABLED_INSTANCE = new JavaScriptConfig(true);
+@@ -47,6 +58,17 @@ public class JavaScriptConfig
+ 
+   public boolean isEnabled()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.javascript.enabled");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.javascript.enabled") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.javascript.enabled"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return enabled;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java b/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
+index b832578fe3..9a2c22b09a 100644
+--- a/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
++++ b/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
+@@ -21,11 +21,20 @@ package org.apache.druid.math.expr;
+ 
+ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.annotation.Nullable;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ public class ExpressionProcessingConfig
+ {
++  private static final Logger log = new Logger(ExpressionProcessingConfig.class);
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/core/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   public static final String NESTED_ARRAYS_CONFIG_STRING = "druid.expressions.allowNestedArrays";
+   public static final String NULL_HANDLING_LEGACY_LOGICAL_OPS_STRING = "druid.expressions.useStrictBooleans";
+   // Coerce arrays to multi value strings
+@@ -69,21 +78,65 @@ public class ExpressionProcessingConfig
+ 
+   public boolean allowNestedArrays()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.allowNestedArrays");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.expressions.allowNestedArrays") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.expressions.allowNestedArrays"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return allowNestedArrays;
+   }
+ 
+   public boolean isUseStrictBooleans()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.useStrictBooleans");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.expressions.useStrictBooleans") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.expressions.useStrictBooleans"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return useStrictBooleans;
+   }
+ 
+   public boolean processArraysAsMultiValueStrings()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.processArraysAsMultiValueStrings");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.expressions.processArraysAsMultiValueStrings") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.expressions.processArraysAsMultiValueStrings"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return processArraysAsMultiValueStrings;
+   }
+ 
+   public boolean isHomogenizeNullMultiValueStringArrays()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.isHomogenizeNullMultiValueStringArrays");
++
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.expressions.isHomogenizeNullMultiValueStringArrays") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.expressions.isHomogenizeNullMultiValueStringArrays"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return homogenizeNullMultiValueStringArrays;
+   }
+ 
+-- 
+2.37.0 (Apple Git-136)
+

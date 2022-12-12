@@ -1,0 +1,2 @@
+>>>>[ctest_core] missing test for druid-core	druid.emitter.http.minHttpTimeoutMillis	1
+>>>>[ctest_core] missing test for druid-core	druid.emitter.http.minHttpTimeoutMillis	-1

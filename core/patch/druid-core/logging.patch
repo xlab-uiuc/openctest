@@ -1,0 +1,425 @@
+From aae703183e3136565d4d81e3b7d62216d33feece Mon Sep 17 00:00:00 2001
+From: sylvia <sylvia@MacBook-Pro-2.local>
+Date: Sun, 11 Dec 2022 16:46:19 -0600
+Subject: [PATCH] Instrument GET/SET API on core
+
+---
+ .../druid/common/config/ConfigManagerConfig.java       |  4 ++++
+ .../druid/common/config/NullValueHandlingConfig.java   |  4 ++++
+ .../java/util/emitter/core/BaseHttpEmittingConfig.java | 10 ++++++++++
+ .../java/util/emitter/core/HttpEmitterConfig.java      | 10 ++++++++++
+ .../java/util/emitter/core/LoggingEmitterConfig.java   |  4 ++++
+ .../emitter/core/ParametrizedUriEmitterConfig.java     |  4 ++++
+ .../druid/java/util/http/client/HttpClientConfig.java  |  8 ++++++++
+ .../java/org/apache/druid/js/JavaScriptConfig.java     |  3 +++
+ .../druid/math/expr/ExpressionProcessingConfig.java    |  6 ++++++
+ 9 files changed, 53 insertions(+)
+
+diff --git a/core/src/main/java/org/apache/druid/common/config/ConfigManagerConfig.java b/core/src/main/java/org/apache/druid/common/config/ConfigManagerConfig.java
+index 472bacd5bf..da0d2d450c 100644
+--- a/core/src/main/java/org/apache/druid/common/config/ConfigManagerConfig.java
++++ b/core/src/main/java/org/apache/druid/common/config/ConfigManagerConfig.java
+@@ -20,6 +20,7 @@
+ package org.apache.druid.common.config;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.joda.time.Period;
+ 
+ import javax.validation.constraints.NotNull;
+@@ -28,6 +29,8 @@ import javax.validation.constraints.NotNull;
+  */
+ public class ConfigManagerConfig
+ {
++  private static final Logger log = new Logger(ConfigManagerConfig.class);
++
+   @JsonProperty
+   @NotNull
+   private Period pollDuration = new Period("PT1M");
+@@ -42,6 +45,7 @@ public class ConfigManagerConfig
+ 
+   public boolean isEnableCompareAndSwap()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.manager.config.pollDuration");
+     return enableCompareAndSwap;
+   }
+ }
+diff --git a/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java b/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
+index fbdc852105..b7906e93d7 100644
+--- a/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
++++ b/core/src/main/java/org/apache/druid/common/config/NullValueHandlingConfig.java
+@@ -21,9 +21,11 @@ package org.apache.druid.common.config;
+ 
+ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ public class NullValueHandlingConfig
+ {
++  private static final Logger log = new Logger(NullValueHandlingConfig.class);
+   public static final String NULL_HANDLING_CONFIG_STRING = "druid.generic.useDefaultValueForNull";
+ 
+   //added to preserve backward compatibility
+@@ -65,11 +67,13 @@ public class NullValueHandlingConfig
+ 
+   public boolean isIgnoreNullsForStringCardinality()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.generic.ignoreNullsForStringCardinality");
+     return ignoreNullsForStringCardinality;
+   }
+ 
+   public boolean isUseDefaultValuesForNull()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.generic.useDefaultValueForNull");
+     return useDefaultValuesForNull;
+   }
+ }
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
+index 44ecaf9d33..eac0a2068b 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/BaseHttpEmittingConfig.java
+@@ -21,6 +21,7 @@ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ import org.apache.druid.java.util.common.Pair;
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.apache.druid.metadata.PasswordProvider;
+ import org.apache.druid.utils.JvmUtils;
+ 
+@@ -29,6 +30,7 @@ import java.util.concurrent.TimeUnit;
+ 
+ public class BaseHttpEmittingConfig
+ {
++  private static final Logger log = new Logger(BaseHttpEmittingConfig.class); //ctest
+   public static final long DEFAULT_FLUSH_MILLIS = 60 * 1000;
+   public static final int DEFAULT_FLUSH_COUNTS = 500;
+ 
+@@ -115,31 +117,37 @@ public class BaseHttpEmittingConfig
+ 
+   public long getFlushMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushMillis");
+     return flushMillis;
+   }
+ 
+   public int getFlushCount()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushCount");
+     return flushCount;
+   }
+ 
+   public long getFlushTimeOut()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.flushTimeOut");
+     return flushTimeOut;
+   }
+ 
+   public PasswordProvider getBasicAuthentication()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.basicAuthentication");
+     return basicAuthentication;
+   }
+ 
+   public BatchingStrategy getBatchingStrategy()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.batchingStrategy");
+     return batchingStrategy;
+   }
+ 
+   public int getMaxBatchSize()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.maxBatchSize");
+     return maxBatchSize;
+   }
+ 
+@@ -150,6 +158,7 @@ public class BaseHttpEmittingConfig
+ 
+   public int getBatchQueueSizeLimit()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.batchQueueSizeLimit");
+     return batchQueueSizeLimit;
+   }
+ 
+@@ -160,6 +169,7 @@ public class BaseHttpEmittingConfig
+ 
+   public int getMinHttpTimeoutMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.http.minHttpTimeoutMillis");
+     return minHttpTimeoutMillis;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/HttpEmitterConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/HttpEmitterConfig.java
+index 91afe071e2..fd3e217fbc 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/HttpEmitterConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/HttpEmitterConfig.java
+@@ -20,6 +20,7 @@
+ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.apache.druid.metadata.PasswordProvider;
+ 
+ import javax.validation.constraints.NotNull;
+@@ -28,6 +29,7 @@ import javax.validation.constraints.NotNull;
+  */
+ public class HttpEmitterConfig extends BaseHttpEmittingConfig
+ {
++  private static final Logger log = new Logger(HttpEmitterConfig.class);
+   @NotNull
+   @JsonProperty
+   String recipientBaseUrl = null;
+@@ -77,48 +79,56 @@ public class HttpEmitterConfig extends BaseHttpEmittingConfig
+ 
+     public Builder setFlushMillis(long flushMillis)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.flushTimeOut " + "NoTestTrace");
+       this.flushMillis = flushMillis;
+       return this;
+     }
+ 
+     public Builder setFlushTimeout(long flushTimeout)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.flushTimeOut " + "NoTestTrace");
+       this.flushTimeOut = flushTimeout;
+       return this;
+     }
+ 
+     public Builder setFlushCount(int flushCount)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.flushCount " + "NoTestTrace");
+       this.flushCount = flushCount;
+       return this;
+     }
+ 
+     public Builder setBasicAuthentication(PasswordProvider basicAuthentication)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.basicAuthentication " + "NoTestTrace");
+       this.basicAuthentication = basicAuthentication;
+       return this;
+     }
+ 
+     public Builder setBatchingStrategy(BatchingStrategy batchingStrategy)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.batchingStrategy " + "NoTestTrace");
+       this.batchingStrategy = batchingStrategy;
+       return this;
+     }
+ 
+     public Builder setMaxBatchSize(int maxBatchSize)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.maxBatchSize " + "NoTestTrace");
+       this.maxBatchSize = maxBatchSize;
+       return this;
+     }
+ 
+     public Builder setContentEncoding(ContentEncoding contentEncoding)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.broker.http.compressionCodec " + "NoTestTrace");
+       this.contentEncoding = contentEncoding;
+       return this;
+     }
+ 
+     public Builder setBatchQueueSizeLimit(int batchQueueSizeLimit)
+     {
++      log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.batchQueueSizeLimit " + "NoTestTrace");
+       this.batchQueueSizeLimit = batchQueueSizeLimit;
+       return this;
+     }
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
+index 39b85126f7..8a658fa4ab 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/LoggingEmitterConfig.java
+@@ -20,6 +20,7 @@
+ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.validation.constraints.NotNull;
+ 
+@@ -27,6 +28,7 @@ import javax.validation.constraints.NotNull;
+  */
+ public class LoggingEmitterConfig
+ {
++  private static final Logger log = new Logger(LoggingEmitterConfig.class);
+   @NotNull
+   @JsonProperty
+   private String loggerClass = LoggingEmitter.class.getName();
+@@ -37,11 +39,13 @@ public class LoggingEmitterConfig
+ 
+   public String getLoggerClass()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.logging.loggerClass");
+     return loggerClass;
+   }
+ 
+   public String getLogLevel()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.logging.logLevel");
+     return logLevel;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java b/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
+index 9982f134db..2878f82a91 100644
+--- a/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/emitter/core/ParametrizedUriEmitterConfig.java
+@@ -20,11 +20,13 @@
+ package org.apache.druid.java.util.emitter.core;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.validation.constraints.NotNull;
+ 
+ public class ParametrizedUriEmitterConfig
+ {
++  private static final Logger log = new Logger(ParametrizedUriEmitterConfig.class);
+   private static final BaseHttpEmittingConfig DEFAULT_HTTP_EMITTING_CONFIG = new BaseHttpEmittingConfig();
+ 
+   @NotNull
+@@ -36,11 +38,13 @@ public class ParametrizedUriEmitterConfig
+ 
+   public String getRecipientBaseUrlPattern()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.emitter.parametrized.recipientBaseUrlPattern");
+     return recipientBaseUrlPattern;
+   }
+ 
+   public HttpEmitterConfig buildHttpEmitterConfig(String baseUri)
+   {
++    log.info("[CTEST][SET-PARAM] " + "druid.emitter.http.recipientBaseUrl " + "NoTestTrace");
+     return new HttpEmitterConfig(httpEmittingConfig, baseUri);
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java b/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
+index b652c0a274..63012f9c63 100644
+--- a/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
++++ b/core/src/main/java/org/apache/druid/java/util/http/client/HttpClientConfig.java
+@@ -19,6 +19,7 @@
+ 
+ package org.apache.druid.java.util.http.client;
+ 
++import org.apache.druid.java.util.common.logger.Logger;
+ import org.apache.druid.utils.JvmUtils;
+ import org.joda.time.Duration;
+ import org.joda.time.Period;
+@@ -29,6 +30,8 @@ import javax.net.ssl.SSLContext;
+  */
+ public class HttpClientConfig
+ {
++  private static final Logger log = new Logger(HttpClientConfig.class);
++
+   public enum CompressionCodec
+   {
+     IDENTITY {
+@@ -118,11 +121,13 @@ public class HttpClientConfig
+ 
+   public int getNumConnections()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.numConnections");
+     return numConnections;
+   }
+ 
+   public boolean isEagerInitialization()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.eagerInitialization");
+     return eagerInitialization;
+   }
+ 
+@@ -138,6 +143,7 @@ public class HttpClientConfig
+ 
+   public Duration getReadTimeout()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.readTimeout");
+     return readTimeout;
+   }
+ 
+@@ -158,11 +164,13 @@ public class HttpClientConfig
+ 
+   public CompressionCodec getCompressionCodec()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.compressionCodec");
+     return compressionCodec;
+   }
+ 
+   public Duration getUnusedConnectionTimeoutDuration()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.global.http.unusedConnectionTimeout");
+     return unusedConnectionTimeoutDuration;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java b/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
+index 1044710247..bb16aebb14 100644
+--- a/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
++++ b/core/src/main/java/org/apache/druid/js/JavaScriptConfig.java
+@@ -22,6 +22,7 @@ package org.apache.druid.js;
+ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ import org.apache.druid.guice.annotations.PublicApi;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ /**
+  * Should be used by extension filters, aggregators, etc, that use JavaScript to determine if JavaScript is enabled
+@@ -30,6 +31,7 @@ import org.apache.druid.guice.annotations.PublicApi;
+ @PublicApi
+ public class JavaScriptConfig
+ {
++  private static final Logger log = new Logger(JavaScriptConfig.class);
+   public static final int DEFAULT_OPTIMIZATION_LEVEL = 9;
+ 
+   private static final JavaScriptConfig ENABLED_INSTANCE = new JavaScriptConfig(true);
+@@ -47,6 +49,7 @@ public class JavaScriptConfig
+ 
+   public boolean isEnabled()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.javascript.enabled");
+     return enabled;
+   }
+ 
+diff --git a/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java b/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
+index b832578fe3..fd678ec051 100644
+--- a/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
++++ b/core/src/main/java/org/apache/druid/math/expr/ExpressionProcessingConfig.java
+@@ -21,11 +21,13 @@ package org.apache.druid.math.expr;
+ 
+ import com.fasterxml.jackson.annotation.JsonCreator;
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import javax.annotation.Nullable;
+ 
+ public class ExpressionProcessingConfig
+ {
++  private static final Logger log = new Logger(ExpressionProcessingConfig.class);
+   public static final String NESTED_ARRAYS_CONFIG_STRING = "druid.expressions.allowNestedArrays";
+   public static final String NULL_HANDLING_LEGACY_LOGICAL_OPS_STRING = "druid.expressions.useStrictBooleans";
+   // Coerce arrays to multi value strings
+@@ -69,21 +71,25 @@ public class ExpressionProcessingConfig
+ 
+   public boolean allowNestedArrays()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.allowNestedArrays");
+     return allowNestedArrays;
+   }
+ 
+   public boolean isUseStrictBooleans()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.useStrictBooleans");
+     return useStrictBooleans;
+   }
+ 
+   public boolean processArraysAsMultiValueStrings()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.processArraysAsMultiValueStrings");
+     return processArraysAsMultiValueStrings;
+   }
+ 
+   public boolean isHomogenizeNullMultiValueStringArrays()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.expressions.isHomogenizeNullMultiValueStringArrays");
+     return homogenizeNullMultiValueStringArrays;
+   }
+ 
+-- 
+2.37.0 (Apple Git-136)
+
