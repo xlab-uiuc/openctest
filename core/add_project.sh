@@ -51,7 +51,7 @@ function setup_alluxio() {
 function setup_druid() {
     [ ! -d "app/ctest-druid" ] && git clone https://github.com/b06902047/druid.git app/ctest-druid
     cd app/ctest-druid
-    git fetch && git checkout ctest-processing-logging-inject
+    git fetch && git checkout ctest-processing-inject-release
     cd processing
     mvn install -DskipTests -Dcheckstyle.skip
 }
