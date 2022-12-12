@@ -1,0 +1,1208 @@
+From 60a1e7aa5b85e3c81aa7f07bb4fadf83ec8a960c Mon Sep 17 00:00:00 2001
+From: yenc3 <yenc3@fa22-cs527-006.cs.illinois.edu>
+Date: Tue, 6 Dec 2022 02:35:23 -0600
+Subject: [PATCH 1/3] Instrument GET/SET API & Change maven-durefire-plugin
+ version
+
+---
+ processing/core-ctest.xml                     |   0
+ processing/pom.xml                            |   7 +
+ .../apache/druid/guice/ExtensionsConfig.java  |  66 ++++++-
+ .../druid/query/DruidProcessingConfig.java    | 161 +++++++++++++++++-
+ .../query/groupby/GroupByQueryConfig.java     | 121 +++++++++++++
+ .../druid/query/search/SearchQueryConfig.java |  31 ++++
+ .../druid/query/topn/TopNQueryConfig.java     |  20 +++
+ 7 files changed, 402 insertions(+), 4 deletions(-)
+ create mode 100644 processing/core-ctest.xml
+
+diff --git a/processing/core-ctest.xml b/processing/core-ctest.xml
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/processing/pom.xml b/processing/pom.xml
+index 712188a3cd..e4dc88014b 100644
+--- a/processing/pom.xml
++++ b/processing/pom.xml
+@@ -261,6 +261,13 @@
+ 
+     <build>
+         <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-surefire-plugin</artifactId>
++                <configuration>
++                        <reportFormat>plain</reportFormat>
++                </configuration>
++            </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-compiler-plugin</artifactId>
+diff --git a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+index c48d27eb58..fb678d4219 100644
+--- a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
++++ b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+@@ -23,6 +23,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.NotNull;
+ import java.util.LinkedHashSet;
++import org.apache.druid.java.util.common.logger.Logger;
++
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
+ 
+ /**
+  */
+@@ -51,8 +56,26 @@ public class ExtensionsConfig
+   @JsonProperty
+   private LinkedHashSet<String> loadList;
+ 
++  @JsonProperty
++  private static final Logger logger 
++            = new Logger(ExtensionsConfig.class.getName());
++
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/processing/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
++
+   public boolean searchCurrentClassloader()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.searchCurrentClassloader");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.extensions.searchCurrentClassloader") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.extensions.searchCurrentClassloader"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return searchCurrentClassloader;
+   }
+ 
+@@ -63,26 +86,67 @@ public class ExtensionsConfig
+ 
+   public boolean isUseExtensionClassloaderFirst()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.useExtensionClassloaderFirst");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.extensions.useExtensionClassloaderFirst") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.extensions.useExtensionClassloaderFirst"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return useExtensionClassloaderFirst;
+   }
+ 
+   public String getHadoopDependenciesDir()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopDependenciesDir");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.extensions.hadoopDependenciesDir") != null){
++        return configProps.getProperty("druid.extensions.hadoopDependenciesDir");
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return hadoopDependenciesDir;
+   }
+ 
+   public String getHadoopContainerDruidClasspath()
+   {
+-    return hadoopContainerDruidClasspath;
++   logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopContainerDruidClasspath");
++   try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.extensions.hadoopContainerDruidClasspath") != null){
++        return configProps.getProperty("druid.extensions.hadoopContainerDruidClasspath");
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
++   return hadoopContainerDruidClasspath;
+   }
+ 
+   public boolean getAddExtensionsToHadoopContainer()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.addExtensionsToHadoopContainer");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.extensions.addExtensionsToHadoopContainer") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.extensions.addExtensionsToHadoopContainer"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return addExtensionsToHadoopContainer;
+   }
+ 
+   public LinkedHashSet<String> getLoadList()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.loadList");
+     return loadList;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+index d8e4cd731b..50cdbb583b 100644
+--- a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+@@ -28,7 +28,11 @@ import org.apache.druid.segment.column.ColumnConfig;
+ import org.apache.druid.utils.JvmUtils;
+ import org.skife.config.Config;
+ 
++
+ import java.util.concurrent.atomic.AtomicReference;
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
+ 
+ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implements ColumnConfig
+ {
+@@ -40,11 +44,14 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   public static final int DEFAULT_MERGE_POOL_AWAIT_SHUTDOWN_MILLIS = 60_000;
+   public static final int DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL = 0;
+ 
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/processing/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++    
+   private AtomicReference<Integer> computedBufferSizeBytes = new AtomicReference<>();
+ 
+   @Config({"druid.computation.buffer.size", "${base_path}.buffer.sizeBytes"})
+   public HumanReadableBytes intermediateComputeSizeBytesConfigured()
+-  {
++  { 
+     return DEFAULT_PROCESSING_BUFFER_SIZE_BYTES;
+   }
+ 
+@@ -52,11 +59,14 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   {
+     HumanReadableBytes sizeBytesConfigured = intermediateComputeSizeBytesConfigured();
+     if (!DEFAULT_PROCESSING_BUFFER_SIZE_BYTES.equals(sizeBytesConfigured)) {
++      log.info("[CTEST][SET-PARAM] " + "druid.processing.buffer.sizeBytes "+"TestNoTrace");
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       if (sizeBytesConfigured.getBytes() > Integer.MAX_VALUE) {
+         throw new IAE("druid.processing.buffer.sizeBytes must be less than 2GiB");
+       }
+       return sizeBytesConfigured.getBytesInInt();
+     } else if (computedBufferSizeBytes.get() != null) {
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       return computedBufferSizeBytes.get();
+     }
+ 
+@@ -90,6 +100,8 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+           numMergeBuffers
+       );
+     }
++
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+     return computedSizePerBuffer;
+   }
+ 
+@@ -101,6 +113,16 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config({"druid.computation.buffer.poolCacheMaxCount", "${base_path}.buffer.poolCacheMaxCount"})
+   public int poolCacheMaxCount()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheMaxCount");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.buffer.poolCacheMaxCount") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.buffer.poolCacheMaxCount"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return Integer.MAX_VALUE;
+   }
+ 
+@@ -110,6 +132,16 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   })
+   public int getNumInitalBuffersForIntermediatePool()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheInitialCount" + DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL);
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.buffer.poolCacheInitialCount") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.buffer.poolCacheInitialCount"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL;
+   }
+ 
+@@ -117,15 +149,29 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.numThreads")
+   public int getNumThreadsConfigured()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.numThreads");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.numThreads") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.numThreads"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return DEFAULT_NUM_THREADS;
+   }
+ 
+   public int getNumMergeBuffers()
+   {
+     int numMergeBuffersConfigured = getNumMergeBuffersConfigured();
++    
+     if (numMergeBuffersConfigured != DEFAULT_NUM_MERGE_BUFFERS) {
++      log.info("[CTEST][SET-PARAM] " + "druid.processing.numMergeBuffers "+"TestNoTrace");
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return numMergeBuffersConfigured;
+     } else {
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return Math.max(2, getNumThreads() / 4);
+     }
+   }
+@@ -138,7 +184,16 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+    */
+   @Config("${base_path}.numMergeBuffers")
+   public int getNumMergeBuffersConfigured()
+-  {
++  { 
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.numMergeBuffers") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.numMergeBuffers"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return DEFAULT_NUM_MERGE_BUFFERS;
+   }
+ 
+@@ -146,24 +201,64 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.columnCache.sizeBytes")
+   public int columnCacheSizeBytes()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.columnCache.sizeBytes");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.columnCache.sizeBytes") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.columnCache.sizeBytes"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return 0;
+   }
+ 
+   @Config(value = "${base_path}.fifo")
+   public boolean isFifo()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.fifo");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.fifo") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.processing.fifo"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return true;
+   }
+ 
+   @Config(value = "${base_path}.tmpDir")
+   public String getTmpDir()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.tmpDir");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.tmpDir") != null){
++        return configProps.getProperty("druid.processing.tmpDir");
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return System.getProperty("java.io.tmpdir");
+   }
+ 
+   @Config(value = "${base_path}.merge.useParallelMergePool")
+   public boolean useParallelMergePoolConfigured()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.useParallelMergePool");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.useParallelMergePool") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.processing.merge.useParallelMergePool"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return true;
+   }
+ 
+@@ -186,7 +281,17 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+ 
+   @Config(value = "${base_path}.merge.pool.parallelism")
+   public int getMergePoolParallelismConfigured()
+-  {
++  { 
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.parallelism");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.pool.parallelism") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.merge.pool.parallelism"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return DEFAULT_NUM_THREADS;
+   }
+ 
+@@ -204,6 +309,16 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.pool.awaitShutdownMillis")
+   public long getMergePoolAwaitShutdownMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.awaitShutdownMillis");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.pool.awaitShutdownMillis") != null){
++        return Long.parseLong(configProps.getProperty("druid.processing.merge.pool.awaitShutdownMillis"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return DEFAULT_MERGE_POOL_AWAIT_SHUTDOWN_MILLIS;
+   }
+ 
+@@ -211,24 +326,64 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   public int getMergePoolDefaultMaxQueryParallelism()
+   {
+     // assume 2 hyper-threads per core, so that this value is probably by default the number of physical cores
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.defaultMaxQueryParallelism");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.pool.defaultMaxQueryParallelism") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.merge.pool.defaultMaxQueryParallelism"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return (int) Math.max(JvmUtils.getRuntimeInfo().getAvailableProcessors() * 0.5, 1);
+   }
+ 
+   @Config(value = "${base_path}.merge.task.targetRunTimeMillis")
+   public int getMergePoolTargetTaskRunTimeMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.targetRunTimeMillis");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.task.targetRunTimeMillis") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.merge.task.targetRunTimeMillis"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_TARGET_RUN_TIME_MILLIS;
+   }
+ 
+   @Config(value = "${base_path}.merge.task.initialYieldNumRows")
+   public int getMergePoolTaskInitialYieldRows()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.initialYieldNumRows");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.task.initialYieldNumRows") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.merge.task.initialYieldNumRows"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_INITIAL_YIELD_NUM_ROWS;
+   }
+ 
+   @Config(value = "${base_path}.merge.task.smallBatchNumRows")
+   public int getMergePoolSmallBatchRows()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.smallBatchNumRows");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.processing.merge.task.targetRunTimeMillis") != null){
++        return Integer.parseInt(configProps.getProperty("druid.processing.merge.task.smallBatchNumRows"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_SMALL_BATCH_NUM_ROWS;
+   }
+ }
+diff --git a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+index 6125577ac3..1a6790e6e8 100644
+--- a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+@@ -27,6 +27,9 @@ import org.apache.druid.query.QueryContexts;
+ import org.apache.druid.query.groupby.strategy.GroupByStrategySelector;
+ import org.apache.druid.utils.JvmUtils;
+ 
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
+ /**
+  *
+  */
+@@ -56,6 +59,9 @@ public class GroupByQueryConfig
+   private static final String CTX_KEY_NUM_PARALLEL_COMBINE_THREADS = "numParallelCombineThreads";
+   private static final String CTX_KEY_MERGE_THREAD_LOCAL = "mergeThreadLocal";
+ 
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/processing/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   // Constants for sizing merging and selector dictionaries. Rationale for these constants:
+   //  1) In no case do we want total aggregate dictionary size to exceed 40% of max memory.
+   //  2) In no case do we want any dictionary to exceed 1GB of memory: if heaps are giant, better to spill at
+@@ -140,36 +146,79 @@ public class GroupByQueryConfig
+ 
+   public String getDefaultStrategy()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultStrategy");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.defaultStrategy") != null){
++        return configProps.getProperty("druid.query.groupBy.defaultStrategy");
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return defaultStrategy;
+   }
+ 
+   public boolean isSingleThreaded()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.singleThreaded");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.singleThreaded") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.query.groupBy.singleThreaded"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return singleThreaded;
+   }
+ 
+   public void setSingleThreaded(boolean singleThreaded)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.singleThreaded " + "NoTestTrace");
+     this.singleThreaded = singleThreaded;
+   }
+ 
+   public int getMaxIntermediateRows()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxIntermediateRows");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.maxIntermediateRows") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.groupBy.maxIntermediateRows"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return maxIntermediateRows;
+   }
+ 
+   public void setMaxIntermediateRows(int maxIntermediateRows)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxIntermediateRows " + "NoTestTrace");
+     this.maxIntermediateRows = maxIntermediateRows;
+   }
+ 
+   public int getMaxResults()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxResults");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.maxResults") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.groupBy.maxResults"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return maxResults;
+   }
+ 
+   public void setMaxResults(int maxResults)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxResults "+ "NoTestTrace");
+     this.maxResults = maxResults;
+   }
+ 
+@@ -180,11 +229,31 @@ public class GroupByQueryConfig
+ 
+   public float getBufferGrouperMaxLoadFactor()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperMaxLoadFactor");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.bufferGrouperMaxLoadFactor") != null){
++        return Float.parseFloat(configProps.getProperty("druid.query.groupBy.bufferGrouperMaxLoadFactor"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return bufferGrouperMaxLoadFactor;
+   }
+ 
+   public int getBufferGrouperInitialBuckets()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperInitialBuckets");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.bufferGrouperInitialBuckets") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.groupBy.bufferGrouperInitialBuckets"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return bufferGrouperInitialBuckets;
+   }
+ 
+@@ -193,6 +262,16 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxSelectorDictionarySize()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxSelectorDictionarySize");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.maxSelectorDictionarySize") != null){
++        return Long.parseLong(configProps.getProperty("druid.query.groupBy.maxSelectorDictionarySize"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return maxSelectorDictionarySize.getBytes();
+   }
+ 
+@@ -231,6 +310,16 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxMergingDictionarySize()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxMergingDictionarySize");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.maxMergingDictionarySize") != null){
++        return Long.parseLong(configProps.getProperty("druid.query.groupBy.maxMergingDictionarySize"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return maxMergingDictionarySize.getBytes();
+   }
+ 
+@@ -266,6 +355,7 @@ public class GroupByQueryConfig
+ 
+   public HumanReadableBytes getMaxOnDiskStorage()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxOnDiskStorage");
+     return maxOnDiskStorage;
+   }
+ 
+@@ -279,6 +369,7 @@ public class GroupByQueryConfig
+    */
+   public HumanReadableBytes getDefaultOnDiskStorage()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultOnDiskStorage");
+     return defaultOnDiskStorage.getBytes() < 0L ? getMaxOnDiskStorage() : defaultOnDiskStorage;
+   }
+ 
+@@ -294,16 +385,46 @@ public class GroupByQueryConfig
+ 
+   public boolean isForceHashAggregation()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.forceHashAggregation");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.forceHashAggregation") != null){
++        return Boolean.parseBoolean(configProps.getProperty("druid.query.groupBy.forceHashAggregation"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return forceHashAggregation;
+   }
+ 
+   public int getIntermediateCombineDegree()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.intermediateCombineDegree");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.intermediateCombineDegree") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.groupBy.intermediateCombineDegree"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return intermediateCombineDegree;
+   }
+ 
+   public int getNumParallelCombineThreads()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.numParallelCombineThreads");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.groupBy.numParallelCombineThreads") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.groupBy.numParallelCombineThreads"));
++      }
++    }
++    catch(IOException e){
++        logger.info(CTESTFILEPATH);
++    }
+     return numParallelCombineThreads;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+index c45793c985..3700f2875b 100644
+--- a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+@@ -23,12 +23,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.Min;
+ 
++import org.apache.druid.java.util.common.logger.Logger;
++
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
++
+ /**
+  */
+ public class SearchQueryConfig
+ {
++  private static final Logger log = new Logger(SearchQueryConfig.class);
+   public static final String CTX_KEY_STRATEGY = "searchStrategy";
+ 
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/processing/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
+   @JsonProperty
+   @Min(1)
+   private int maxSearchLimit = 1000;
+@@ -38,16 +48,37 @@ public class SearchQueryConfig
+ 
+   public int getMaxSearchLimit()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.search.maxSearchLimit");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.search.maxSearchLimit") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.search.maxSearchLimit"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return maxSearchLimit;
+   }
+ 
+   public String getSearchStrategy()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.search.searchStrategy");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.search.searchStrategy") != null){
++        return configProps.getProperty("druid.query.search.searchStrategy");
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return searchStrategy;
+   }
+ 
+   public void setSearchStrategy(final String strategy)
+   {
++    log.info("[CTEST][SET-PARAM] " + "druid.query.search.searchStrategy " + "NoTestTrace");
+     this.searchStrategy = strategy;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+index 2793b270b8..cdefcd94f0 100644
+--- a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+@@ -22,19 +22,39 @@ package org.apache.druid.query.topn;
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.Min;
++import org.apache.druid.java.util.common.logger.Logger;
++
++import java.util.Properties;
++import java.io.FileInputStream;
++import java.io.IOException;
+ 
+ /**
+  */
+ public class TopNQueryConfig
+ {
++  private static final Logger log = new Logger(TopNQueryConfig.class);
+   public static final int DEFAULT_MIN_TOPN_THRESHOLD = 1000;
+ 
++  public static String CTESTFILEPATH = System.getProperty("user.dir").split("/druid/processing/")[0] + "/core-ctest.xml";
++  public static Properties configProps = new Properties();
++
++
+   @JsonProperty
+   @Min(1)
+   private int minTopNThreshold = DEFAULT_MIN_TOPN_THRESHOLD;
+ 
+   public int getMinTopNThreshold()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.topN.minTopNThreshold");
++    try{
++      configProps.load(new FileInputStream(CTESTFILEPATH));
++      if(configProps.getProperty("druid.query.topN.minTopNThreshold") != null){
++        return Integer.parseInt(configProps.getProperty("druid.query.topN.minTopNThreshold"));
++      }
++    }
++    catch(IOException e){
++        log.info(CTESTFILEPATH);
++    }
+     return minTopNThreshold;
+   }
+ }
+-- 
+2.25.1
+
+
+From 2bf058de478a032d02f64886ce50c18644a1935f Mon Sep 17 00:00:00 2001
+From: yenc3 <yenc3@fa22-cs527-006.cs.illinois.edu>
+Date: Tue, 6 Dec 2022 02:44:22 -0600
+Subject: [PATCH 2/3] Update maven-surefire-version
+
+---
+ processing/pom.xml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/processing/pom.xml b/processing/pom.xml
+index e4dc88014b..cbcc258e52 100644
+--- a/processing/pom.xml
++++ b/processing/pom.xml
+@@ -264,7 +264,8 @@
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-surefire-plugin</artifactId>
+-                <configuration>
++		<version>3.0.0-M4</version>
++		<configuration>
+                         <reportFormat>plain</reportFormat>
+                 </configuration>
+             </plugin>
+-- 
+2.25.1
+
+
+From 2dd632385b2a42d94b3ebf1bef72c8083271dd7a Mon Sep 17 00:00:00 2001
+From: yenc3 <yenc3@fa22-cs527-006.cs.illinois.edu>
+Date: Sun, 11 Dec 2022 13:12:47 -0600
+Subject: [PATCH 3/3] Remove logging code but keep injection code
+
+---
+ .../apache/druid/guice/ExtensionsConfig.java  |  8 +-------
+ .../druid/query/DruidProcessingConfig.java    | 20 -------------------
+ .../query/groupby/GroupByQueryConfig.java     | 16 ---------------
+ .../druid/query/search/SearchQueryConfig.java |  3 ---
+ .../druid/query/topn/TopNQueryConfig.java     |  1 -
+ 5 files changed, 1 insertion(+), 47 deletions(-)
+
+diff --git a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+index fb678d4219..f070d3811e 100644
+--- a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
++++ b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+@@ -66,7 +66,6 @@ public class ExtensionsConfig
+ 
+   public boolean searchCurrentClassloader()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.searchCurrentClassloader");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.extensions.searchCurrentClassloader") != null){
+@@ -86,7 +85,6 @@ public class ExtensionsConfig
+ 
+   public boolean isUseExtensionClassloaderFirst()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.useExtensionClassloaderFirst");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.extensions.useExtensionClassloaderFirst") != null){
+@@ -101,7 +99,6 @@ public class ExtensionsConfig
+ 
+   public String getHadoopDependenciesDir()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopDependenciesDir");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.extensions.hadoopDependenciesDir") != null){
+@@ -116,8 +113,7 @@ public class ExtensionsConfig
+ 
+   public String getHadoopContainerDruidClasspath()
+   {
+-   logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopContainerDruidClasspath");
+-   try{
++    try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.extensions.hadoopContainerDruidClasspath") != null){
+         return configProps.getProperty("druid.extensions.hadoopContainerDruidClasspath");
+@@ -131,7 +127,6 @@ public class ExtensionsConfig
+ 
+   public boolean getAddExtensionsToHadoopContainer()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.addExtensionsToHadoopContainer");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.extensions.addExtensionsToHadoopContainer") != null){
+@@ -146,7 +141,6 @@ public class ExtensionsConfig
+ 
+   public LinkedHashSet<String> getLoadList()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.loadList");
+     return loadList;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+index 50cdbb583b..dd5a9bac9e 100644
+--- a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+@@ -59,14 +59,11 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   {
+     HumanReadableBytes sizeBytesConfigured = intermediateComputeSizeBytesConfigured();
+     if (!DEFAULT_PROCESSING_BUFFER_SIZE_BYTES.equals(sizeBytesConfigured)) {
+-      log.info("[CTEST][SET-PARAM] " + "druid.processing.buffer.sizeBytes "+"TestNoTrace");
+-      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       if (sizeBytesConfigured.getBytes() > Integer.MAX_VALUE) {
+         throw new IAE("druid.processing.buffer.sizeBytes must be less than 2GiB");
+       }
+       return sizeBytesConfigured.getBytesInInt();
+     } else if (computedBufferSizeBytes.get() != null) {
+-      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       return computedBufferSizeBytes.get();
+     }
+ 
+@@ -101,7 +98,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+       );
+     }
+ 
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+     return computedSizePerBuffer;
+   }
+ 
+@@ -113,7 +109,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config({"druid.computation.buffer.poolCacheMaxCount", "${base_path}.buffer.poolCacheMaxCount"})
+   public int poolCacheMaxCount()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheMaxCount");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.buffer.poolCacheMaxCount") != null){
+@@ -132,7 +127,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   })
+   public int getNumInitalBuffersForIntermediatePool()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheInitialCount" + DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL);
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.buffer.poolCacheInitialCount") != null){
+@@ -149,7 +143,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.numThreads")
+   public int getNumThreadsConfigured()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.numThreads");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.numThreads") != null){
+@@ -167,11 +160,8 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+     int numMergeBuffersConfigured = getNumMergeBuffersConfigured();
+     
+     if (numMergeBuffersConfigured != DEFAULT_NUM_MERGE_BUFFERS) {
+-      log.info("[CTEST][SET-PARAM] " + "druid.processing.numMergeBuffers "+"TestNoTrace");
+-      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return numMergeBuffersConfigured;
+     } else {
+-      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return Math.max(2, getNumThreads() / 4);
+     }
+   }
+@@ -201,7 +191,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.columnCache.sizeBytes")
+   public int columnCacheSizeBytes()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.columnCache.sizeBytes");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.columnCache.sizeBytes") != null){
+@@ -217,7 +206,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.fifo")
+   public boolean isFifo()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.fifo");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.fifo") != null){
+@@ -233,7 +221,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.tmpDir")
+   public String getTmpDir()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.tmpDir");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.tmpDir") != null){
+@@ -249,7 +236,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.useParallelMergePool")
+   public boolean useParallelMergePoolConfigured()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.useParallelMergePool");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.useParallelMergePool") != null){
+@@ -282,7 +268,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.pool.parallelism")
+   public int getMergePoolParallelismConfigured()
+   { 
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.parallelism");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.pool.parallelism") != null){
+@@ -309,7 +294,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.pool.awaitShutdownMillis")
+   public long getMergePoolAwaitShutdownMillis()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.awaitShutdownMillis");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.pool.awaitShutdownMillis") != null){
+@@ -326,7 +310,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   public int getMergePoolDefaultMaxQueryParallelism()
+   {
+     // assume 2 hyper-threads per core, so that this value is probably by default the number of physical cores
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.defaultMaxQueryParallelism");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.pool.defaultMaxQueryParallelism") != null){
+@@ -342,7 +325,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.task.targetRunTimeMillis")
+   public int getMergePoolTargetTaskRunTimeMillis()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.targetRunTimeMillis");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.task.targetRunTimeMillis") != null){
+@@ -358,7 +340,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.task.initialYieldNumRows")
+   public int getMergePoolTaskInitialYieldRows()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.initialYieldNumRows");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.task.initialYieldNumRows") != null){
+@@ -374,7 +355,6 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.task.smallBatchNumRows")
+   public int getMergePoolSmallBatchRows()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.smallBatchNumRows");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.processing.merge.task.targetRunTimeMillis") != null){
+diff --git a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+index 1a6790e6e8..5298d26213 100644
+--- a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+@@ -146,7 +146,6 @@ public class GroupByQueryConfig
+ 
+   public String getDefaultStrategy()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultStrategy");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.defaultStrategy") != null){
+@@ -161,7 +160,6 @@ public class GroupByQueryConfig
+ 
+   public boolean isSingleThreaded()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.singleThreaded");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.singleThreaded") != null){
+@@ -176,13 +174,11 @@ public class GroupByQueryConfig
+ 
+   public void setSingleThreaded(boolean singleThreaded)
+   {
+-    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.singleThreaded " + "NoTestTrace");
+     this.singleThreaded = singleThreaded;
+   }
+ 
+   public int getMaxIntermediateRows()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxIntermediateRows");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.maxIntermediateRows") != null){
+@@ -197,13 +193,11 @@ public class GroupByQueryConfig
+ 
+   public void setMaxIntermediateRows(int maxIntermediateRows)
+   {
+-    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxIntermediateRows " + "NoTestTrace");
+     this.maxIntermediateRows = maxIntermediateRows;
+   }
+ 
+   public int getMaxResults()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxResults");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.maxResults") != null){
+@@ -218,7 +212,6 @@ public class GroupByQueryConfig
+ 
+   public void setMaxResults(int maxResults)
+   {
+-    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxResults "+ "NoTestTrace");
+     this.maxResults = maxResults;
+   }
+ 
+@@ -229,7 +222,6 @@ public class GroupByQueryConfig
+ 
+   public float getBufferGrouperMaxLoadFactor()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperMaxLoadFactor");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.bufferGrouperMaxLoadFactor") != null){
+@@ -244,7 +236,6 @@ public class GroupByQueryConfig
+ 
+   public int getBufferGrouperInitialBuckets()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperInitialBuckets");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.bufferGrouperInitialBuckets") != null){
+@@ -262,7 +253,6 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxSelectorDictionarySize()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxSelectorDictionarySize");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.maxSelectorDictionarySize") != null){
+@@ -310,7 +300,6 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxMergingDictionarySize()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxMergingDictionarySize");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.maxMergingDictionarySize") != null){
+@@ -355,7 +344,6 @@ public class GroupByQueryConfig
+ 
+   public HumanReadableBytes getMaxOnDiskStorage()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxOnDiskStorage");
+     return maxOnDiskStorage;
+   }
+ 
+@@ -369,7 +357,6 @@ public class GroupByQueryConfig
+    */
+   public HumanReadableBytes getDefaultOnDiskStorage()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultOnDiskStorage");
+     return defaultOnDiskStorage.getBytes() < 0L ? getMaxOnDiskStorage() : defaultOnDiskStorage;
+   }
+ 
+@@ -385,7 +372,6 @@ public class GroupByQueryConfig
+ 
+   public boolean isForceHashAggregation()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.forceHashAggregation");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.forceHashAggregation") != null){
+@@ -400,7 +386,6 @@ public class GroupByQueryConfig
+ 
+   public int getIntermediateCombineDegree()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.intermediateCombineDegree");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.intermediateCombineDegree") != null){
+@@ -415,7 +400,6 @@ public class GroupByQueryConfig
+ 
+   public int getNumParallelCombineThreads()
+   {
+-    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.numParallelCombineThreads");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.groupBy.numParallelCombineThreads") != null){
+diff --git a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+index 3700f2875b..9d4baec932 100644
+--- a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+@@ -48,7 +48,6 @@ public class SearchQueryConfig
+ 
+   public int getMaxSearchLimit()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.query.search.maxSearchLimit");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.search.maxSearchLimit") != null){
+@@ -63,7 +62,6 @@ public class SearchQueryConfig
+ 
+   public String getSearchStrategy()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.query.search.searchStrategy");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.search.searchStrategy") != null){
+@@ -78,7 +76,6 @@ public class SearchQueryConfig
+ 
+   public void setSearchStrategy(final String strategy)
+   {
+-    log.info("[CTEST][SET-PARAM] " + "druid.query.search.searchStrategy " + "NoTestTrace");
+     this.searchStrategy = strategy;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+index cdefcd94f0..e14b33c82c 100644
+--- a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+@@ -45,7 +45,6 @@ public class TopNQueryConfig
+ 
+   public int getMinTopNThreshold()
+   {
+-    log.info("[CTEST][GET-PARAM] " + "druid.query.topN.minTopNThreshold");
+     try{
+       configProps.load(new FileInputStream(CTESTFILEPATH));
+       if(configProps.getProperty("druid.query.topN.minTopNThreshold") != null){
+-- 
+2.25.1
+

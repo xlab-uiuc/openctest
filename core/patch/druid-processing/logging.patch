@@ -1,0 +1,489 @@
+From 5042660b2ed02a760ecd2b7a3e3efec83e8d88bf Mon Sep 17 00:00:00 2001
+From: yenc3 <yenc3@fa22-cs527-006.cs.illinois.edu>
+Date: Tue, 6 Dec 2022 02:12:55 -0600
+Subject: [PATCH] Instrument GET/SET API & Change maven-durefire-plugin version
+
+---
+ processing/pom.xml                            | 10 +++++++-
+ .../apache/druid/guice/ExtensionsConfig.java  | 13 +++++++++-
+ .../org/apache/druid/guice/ModulesConfig.java |  4 ++++
+ .../druid/query/DruidProcessingConfig.java    | 24 ++++++++++++++++++-
+ .../query/groupby/GroupByQueryConfig.java     | 16 +++++++++++++
+ .../metadata/SegmentMetadataQueryConfig.java  |  5 ++++
+ .../druid/query/search/SearchQueryConfig.java |  5 ++++
+ .../druid/query/topn/TopNQueryConfig.java     |  3 +++
+ 8 files changed, 77 insertions(+), 3 deletions(-)
+
+diff --git a/processing/pom.xml b/processing/pom.xml
+index 712188a3cd..b603143545 100644
+--- a/processing/pom.xml
++++ b/processing/pom.xml
+@@ -260,7 +260,15 @@
+     </dependencies>
+ 
+     <build>
+-        <plugins>
++	<plugins>
++ 	   <plugin>
++                    <groupId>org.apache.maven.plugins</groupId>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>3.0.0-M4</version>
++                    <configuration>
++                            <reportFormat>plain</reportFormat>
++                    </configuration>
++            </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-compiler-plugin</artifactId>
+diff --git a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+index c48d27eb58..4e1b53257a 100644
+--- a/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
++++ b/processing/src/main/java/org/apache/druid/guice/ExtensionsConfig.java
+@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.NotNull;
+ import java.util.LinkedHashSet;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ /**
+  */
+@@ -51,8 +52,13 @@ public class ExtensionsConfig
+   @JsonProperty
+   private LinkedHashSet<String> loadList;
+ 
++  @JsonProperty
++  private static final Logger logger 
++            = new Logger(ExtensionsConfig.class.getName());
++
+   public boolean searchCurrentClassloader()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.searchCurrentClassloader");
+     return searchCurrentClassloader;
+   }
+ 
+@@ -63,26 +69,31 @@ public class ExtensionsConfig
+ 
+   public boolean isUseExtensionClassloaderFirst()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.useExtensionClassloaderFirst");
+     return useExtensionClassloaderFirst;
+   }
+ 
+   public String getHadoopDependenciesDir()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopDependenciesDir");
+     return hadoopDependenciesDir;
+   }
+ 
+   public String getHadoopContainerDruidClasspath()
+   {
+-    return hadoopContainerDruidClasspath;
++   logger.info("[CTEST][GET-PARAM] " + "druid.extensions.hadoopContainerDruidClasspath");
++   return hadoopContainerDruidClasspath;
+   }
+ 
+   public boolean getAddExtensionsToHadoopContainer()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.addExtensionsToHadoopContainer");
+     return addExtensionsToHadoopContainer;
+   }
+ 
+   public LinkedHashSet<String> getLoadList()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.extensions.loadList");
+     return loadList;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/guice/ModulesConfig.java b/processing/src/main/java/org/apache/druid/guice/ModulesConfig.java
+index 5ff8dee917..53cdbbd8ae 100644
+--- a/processing/src/main/java/org/apache/druid/guice/ModulesConfig.java
++++ b/processing/src/main/java/org/apache/druid/guice/ModulesConfig.java
+@@ -20,6 +20,7 @@
+ package org.apache.druid.guice;
+ 
+ import com.fasterxml.jackson.annotation.JsonProperty;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import java.util.Collections;
+ import java.util.List;
+@@ -31,11 +32,14 @@ public class ModulesConfig
+    * ExtensionsConfig#loadList} or the standard list of modules loaded by some node type, e. g. {@code
+    * CliPeon}.
+    */
++  private static final Logger log = new Logger(ModulesConfig.class);
++
+   @JsonProperty
+   private List<String> excludeList = Collections.emptyList();
+ 
+   public List<String> getExcludeList()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.modules.excludeList");
+     return excludeList;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+index d8e4cd731b..b8719e9f63 100644
+--- a/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/DruidProcessingConfig.java
+@@ -28,6 +28,7 @@ import org.apache.druid.segment.column.ColumnConfig;
+ import org.apache.druid.utils.JvmUtils;
+ import org.skife.config.Config;
+ 
++
+ import java.util.concurrent.atomic.AtomicReference;
+ 
+ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implements ColumnConfig
+@@ -52,11 +53,14 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   {
+     HumanReadableBytes sizeBytesConfigured = intermediateComputeSizeBytesConfigured();
+     if (!DEFAULT_PROCESSING_BUFFER_SIZE_BYTES.equals(sizeBytesConfigured)) {
++      log.info("[CTEST][SET-PARAM] " + "druid.processing.buffer.sizeBytes "+"TestNoTrace");
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       if (sizeBytesConfigured.getBytes() > Integer.MAX_VALUE) {
+         throw new IAE("druid.processing.buffer.sizeBytes must be less than 2GiB");
+       }
+       return sizeBytesConfigured.getBytesInInt();
+     } else if (computedBufferSizeBytes.get() != null) {
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+       return computedBufferSizeBytes.get();
+     }
+ 
+@@ -90,6 +94,8 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+           numMergeBuffers
+       );
+     }
++
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.sizeBytes");
+     return computedSizePerBuffer;
+   }
+ 
+@@ -101,6 +107,7 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config({"druid.computation.buffer.poolCacheMaxCount", "${base_path}.buffer.poolCacheMaxCount"})
+   public int poolCacheMaxCount()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheMaxCount");
+     return Integer.MAX_VALUE;
+   }
+ 
+@@ -110,6 +117,7 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   })
+   public int getNumInitalBuffersForIntermediatePool()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.buffer.poolCacheInitialCount" + DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL);
+     return DEFAULT_INITIAL_BUFFERS_FOR_INTERMEDIATE_POOL;
+   }
+ 
+@@ -117,6 +125,7 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.numThreads")
+   public int getNumThreadsConfigured()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.numThreads");
+     return DEFAULT_NUM_THREADS;
+   }
+ 
+@@ -124,8 +133,11 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   {
+     int numMergeBuffersConfigured = getNumMergeBuffersConfigured();
+     if (numMergeBuffersConfigured != DEFAULT_NUM_MERGE_BUFFERS) {
++      log.info("[CTEST][SET-PARAM] " + "druid.processing.numMergeBuffers "+"TestNoTrace");
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return numMergeBuffersConfigured;
+     } else {
++      log.info("[CTEST][GET-PARAM] " + "druid.processing.numMergeBuffers");
+       return Math.max(2, getNumThreads() / 4);
+     }
+   }
+@@ -146,24 +158,28 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.columnCache.sizeBytes")
+   public int columnCacheSizeBytes()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.columnCache.sizeBytes");
+     return 0;
+   }
+ 
+   @Config(value = "${base_path}.fifo")
+   public boolean isFifo()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.fifo");
+     return true;
+   }
+ 
+   @Config(value = "${base_path}.tmpDir")
+   public String getTmpDir()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.tmpDir");
+     return System.getProperty("java.io.tmpdir");
+   }
+ 
+   @Config(value = "${base_path}.merge.useParallelMergePool")
+   public boolean useParallelMergePoolConfigured()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.useParallelMergePool");
+     return true;
+   }
+ 
+@@ -186,7 +202,8 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+ 
+   @Config(value = "${base_path}.merge.pool.parallelism")
+   public int getMergePoolParallelismConfigured()
+-  {
++  { 
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.parallelism");
+     return DEFAULT_NUM_THREADS;
+   }
+ 
+@@ -204,6 +221,7 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   @Config(value = "${base_path}.merge.pool.awaitShutdownMillis")
+   public long getMergePoolAwaitShutdownMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.awaitShutdownMillis");
+     return DEFAULT_MERGE_POOL_AWAIT_SHUTDOWN_MILLIS;
+   }
+ 
+@@ -211,24 +229,28 @@ public abstract class DruidProcessingConfig extends ExecutorServiceConfig implem
+   public int getMergePoolDefaultMaxQueryParallelism()
+   {
+     // assume 2 hyper-threads per core, so that this value is probably by default the number of physical cores
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.pool.defaultMaxQueryParallelism");
+     return (int) Math.max(JvmUtils.getRuntimeInfo().getAvailableProcessors() * 0.5, 1);
+   }
+ 
+   @Config(value = "${base_path}.merge.task.targetRunTimeMillis")
+   public int getMergePoolTargetTaskRunTimeMillis()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.targetRunTimeMillis");
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_TARGET_RUN_TIME_MILLIS;
+   }
+ 
+   @Config(value = "${base_path}.merge.task.initialYieldNumRows")
+   public int getMergePoolTaskInitialYieldRows()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.initialYieldNumRows");
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_INITIAL_YIELD_NUM_ROWS;
+   }
+ 
+   @Config(value = "${base_path}.merge.task.smallBatchNumRows")
+   public int getMergePoolSmallBatchRows()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.processing.merge.task.smallBatchNumRows");
+     return ParallelMergeCombiningSequence.DEFAULT_TASK_SMALL_BATCH_NUM_ROWS;
+   }
+ }
+diff --git a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+index 6125577ac3..8c86bb8acb 100644
+--- a/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/groupby/GroupByQueryConfig.java
+@@ -140,36 +140,43 @@ public class GroupByQueryConfig
+ 
+   public String getDefaultStrategy()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultStrategy");
+     return defaultStrategy;
+   }
+ 
+   public boolean isSingleThreaded()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.singleThreaded");
+     return singleThreaded;
+   }
+ 
+   public void setSingleThreaded(boolean singleThreaded)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.singleThreaded " + "NoTestTrace");
+     this.singleThreaded = singleThreaded;
+   }
+ 
+   public int getMaxIntermediateRows()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxIntermediateRows");
+     return maxIntermediateRows;
+   }
+ 
+   public void setMaxIntermediateRows(int maxIntermediateRows)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxIntermediateRows " + "NoTestTrace");
+     this.maxIntermediateRows = maxIntermediateRows;
+   }
+ 
+   public int getMaxResults()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxResults");
+     return maxResults;
+   }
+ 
+   public void setMaxResults(int maxResults)
+   {
++    logger.info("[CTEST][SET-PARAM] " + "druid.query.groupBy.maxResults "+ "NoTestTrace");
+     this.maxResults = maxResults;
+   }
+ 
+@@ -180,11 +187,13 @@ public class GroupByQueryConfig
+ 
+   public float getBufferGrouperMaxLoadFactor()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperMaxLoadFactor");
+     return bufferGrouperMaxLoadFactor;
+   }
+ 
+   public int getBufferGrouperInitialBuckets()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.bufferGrouperInitialBuckets");
+     return bufferGrouperInitialBuckets;
+   }
+ 
+@@ -193,6 +202,7 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxSelectorDictionarySize()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxSelectorDictionarySize");
+     return maxSelectorDictionarySize.getBytes();
+   }
+ 
+@@ -231,6 +241,7 @@ public class GroupByQueryConfig
+    */
+   long getConfiguredMaxMergingDictionarySize()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxMergingDictionarySize");
+     return maxMergingDictionarySize.getBytes();
+   }
+ 
+@@ -266,6 +277,7 @@ public class GroupByQueryConfig
+ 
+   public HumanReadableBytes getMaxOnDiskStorage()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.maxOnDiskStorage");
+     return maxOnDiskStorage;
+   }
+ 
+@@ -279,6 +291,7 @@ public class GroupByQueryConfig
+    */
+   public HumanReadableBytes getDefaultOnDiskStorage()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.defaultOnDiskStorage");
+     return defaultOnDiskStorage.getBytes() < 0L ? getMaxOnDiskStorage() : defaultOnDiskStorage;
+   }
+ 
+@@ -294,16 +307,19 @@ public class GroupByQueryConfig
+ 
+   public boolean isForceHashAggregation()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.forceHashAggregation");
+     return forceHashAggregation;
+   }
+ 
+   public int getIntermediateCombineDegree()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.intermediateCombineDegree");
+     return intermediateCombineDegree;
+   }
+ 
+   public int getNumParallelCombineThreads()
+   {
++    logger.info("[CTEST][GET-PARAM] " + "druid.query.groupBy.numParallelCombineThreads");
+     return numParallelCombineThreads;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/metadata/SegmentMetadataQueryConfig.java b/processing/src/main/java/org/apache/druid/query/metadata/SegmentMetadataQueryConfig.java
+index 0045b05098..648fed50ed 100644
+--- a/processing/src/main/java/org/apache/druid/query/metadata/SegmentMetadataQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/metadata/SegmentMetadataQueryConfig.java
+@@ -24,11 +24,13 @@ import org.apache.druid.query.metadata.metadata.SegmentMetadataQuery;
+ import org.joda.time.Period;
+ import org.joda.time.format.ISOPeriodFormat;
+ import org.joda.time.format.PeriodFormatter;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ import java.util.EnumSet;
+ 
+ public class SegmentMetadataQueryConfig
+ {
++  private static final Logger log = new Logger(SegmentMetadataQueryConfig.class);
+   private static final String DEFAULT_PERIOD_STRING = "P1W";
+   private static final PeriodFormatter ISO_FORMATTER = ISOPeriodFormat.standard();
+   private static final EnumSet<SegmentMetadataQuery.AnalysisType> DEFAULT_ANALYSIS_TYPES = EnumSet.of(
+@@ -54,16 +56,19 @@ public class SegmentMetadataQueryConfig
+ 
+   public Period getDefaultHistory()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.segmentMetadata.defaultHistory");
+     return defaultHistory;
+   }
+ 
+   public EnumSet<SegmentMetadataQuery.AnalysisType> getDefaultAnalysisTypes()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.segmentMetadata.defaultAnalysisTypes");
+     return defaultAnalysisTypes;
+   }
+ 
+   public void setDefaultAnalysisTypes(EnumSet<SegmentMetadataQuery.AnalysisType> defaultAnalysisTypes)
+   {
++    log.info("[CTEST][SET-PARAM] " + "druid.query.segmentMetadata.defaultAnalysisTypes " + "NoTestTrace");
+     this.defaultAnalysisTypes = defaultAnalysisTypes;
+   }
+ }
+diff --git a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+index c45793c985..7270255794 100644
+--- a/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/search/SearchQueryConfig.java
+@@ -23,10 +23,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.Min;
+ 
++import org.apache.druid.java.util.common.logger.Logger;
+ /**
+  */
+ public class SearchQueryConfig
+ {
++  private static final Logger log = new Logger(SearchQueryConfig.class);
+   public static final String CTX_KEY_STRATEGY = "searchStrategy";
+ 
+   @JsonProperty
+@@ -38,16 +40,19 @@ public class SearchQueryConfig
+ 
+   public int getMaxSearchLimit()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.search.maxSearchLimit");
+     return maxSearchLimit;
+   }
+ 
+   public String getSearchStrategy()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.search.searchStrategy");
+     return searchStrategy;
+   }
+ 
+   public void setSearchStrategy(final String strategy)
+   {
++    log.info("[CTEST][SET-PARAM] " + "druid.query.search.searchStrategy " + "NoTestTrace");
+     this.searchStrategy = strategy;
+   }
+ 
+diff --git a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+index 2793b270b8..c0c367bf82 100644
+--- a/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
++++ b/processing/src/main/java/org/apache/druid/query/topn/TopNQueryConfig.java
+@@ -22,11 +22,13 @@ package org.apache.druid.query.topn;
+ import com.fasterxml.jackson.annotation.JsonProperty;
+ 
+ import javax.validation.constraints.Min;
++import org.apache.druid.java.util.common.logger.Logger;
+ 
+ /**
+  */
+ public class TopNQueryConfig
+ {
++  private static final Logger log = new Logger(TopNQueryConfig.class);
+   public static final int DEFAULT_MIN_TOPN_THRESHOLD = 1000;
+ 
+   @JsonProperty
+@@ -35,6 +37,7 @@ public class TopNQueryConfig
+ 
+   public int getMinTopNThreshold()
+   {
++    log.info("[CTEST][GET-PARAM] " + "druid.query.topN.minTopNThreshold");
+     return minTopNThreshold;
+   }
+ }
+-- 
+2.25.1
+
