@@ -1,0 +1,46 @@
+configuration.apollo.apolloEnv	DEV	Configure appolo environment
+services[1].duration	20000	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+configuration.nacos.port	49317	Nacos Server Port
+configuration.zookeeper.hostPort	localhost:49315	Zookeeper host port
+configuration.nacos.username	nacos	Nacos auth username
+configuration.nacos.port	49319	Nacos Server Port
+storage.mysql.metadataQueryMaxSize	5000	Metadata query max size
+configuration.apollo.period	1	Unit seconds sync period default fetch every 60 seconds
+configuration.nacos.period	2	Unit seconds sync period default fetch every 60 seconds
+configuration.nacos.accessKey		Nacos auth accessKey
+configuration.consul.period	1	Sync period in seconds. Defaults to 60 seconds.
+configuration.etcd.period	1	Unit seconds sync period default fetch every 60 seconds
+configuration.zookeeper.maxRetries	3	max number of times to retry
+configuration.apollo.apolloCluster	default	Apollo cluster name
+configuration.zookeeper.hostPort	localhost:49310	Zookeeper host port
+core.default.enableDataKeeperExecutor	TRUE	Set a timeout on metrics data. After the timeout has expired, the metrics data will automatically be deleted.
+default.rate	10000	The sample rate precision is 1/10000. 10000 means 100% sample in default
+receiver-zipkin.default.restPort	9411	Port used by OAP to collect zipkin trace from HTTP
+services[1].name	name1	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+services[0].rate	2000	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+MO-1.MO-1-P1.prop2	value2-prop	Example configs
+MO-1.MO-1-P1.p1	value1	Example configs
+configuration.consul.hostAndPorts	localhost:49296	Consul host and ports separated by comma eg 1.2.3.4:8500,2.3.4.5:8500
+configuration.zookeeper.namespace	/default	Zookeeper namespace
+configuration.nacos.secretKey		Nacos auth accessKey
+configuration.apollo.appId	SampleApp	Apollo application id
+storage.mysql.properties.jdbcUrl	jdbc:mysql://localhost:3306/swtest?rewriteBatchedStatements	Mysql jdbc connection string
+configuration.nacos.serverAddr	localhost	Nacos Server Host
+configuration.etcd.endpoints	http://127.0.0.1:49305	Etcd Server Host
+services[1].rate	1000	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+configuration.nacos.group	skywalking	Nacos Configuration Group
+configuration.apollo.apolloMeta	http://localhost:49284	Apollo host and port
+configuration.etcd.endpoints	http://127.0.0.1:49302	Etcd Server Host
+services[0].name	name2	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+configuration.zookeeper.baseSleepTimeMs	1000	initial amount of time to wait between retries
+storage.mysql.properties.dataSource.password	!AI!3B	Mysql datasource password
+configuration.apollo.apolloMeta	http://localhost:49287	Apollo host and port
+default.duration	-1	The sample rate precision is 1/10000. 10000 means 100% sample in default
+configuration.consul.hostAndPorts	localhost:49290	localhost:49296	Consul host and ports separated by comma eg 1.2.3.4:8500,2.3.4.5:8500
+receiver-zipkin.default.restHost	0.0.0.0	Host used by OAP to collect zipkin trace from HTTP
+configuration.nacos.namespace		Nacos Configuration namespace
+configuration.nacos.password	nacos	Nacos auth username
+MO-1.MO-1-P1.p2 value2	Example configs	
+services[0].duration	30000	The sample rate precision is 1/10000. 10000 means 100% sample in default. Setting this threshold about the latency would make the slow trace segments sampled if they cost more time, even the sampling mechanism activated. The default value is `-1`, which means would not sample slow traces. Unit, millisecond.
+configuration.zookeeper.period	1	Unit seconds sync period default fetch every 60 seconds
+configuration.etcd.namespace	/skywalking/	Etcd Configuration Group

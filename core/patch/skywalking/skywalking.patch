@@ -1,0 +1,1115 @@
+diff --git a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
+index a22d7ab..32f6d1f 100644
+--- a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
++++ b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
+@@ -43,9 +43,35 @@ public class TraceSamplingPolicyWatcher extends ConfigChangeWatcher {
+     public TraceSamplingPolicyWatcher(AnalyzerModuleConfig moduleConfig, ModuleProvider provider) {
+         super(AnalyzerModule.NAME, provider, "traceSamplingPolicy");
+         this.defaultSamplingPolicySettings = parseFromFile(moduleConfig.getTraceSamplingPolicySettingsFile());
++        SamplingPolicySettings overrides = parseFromFile("trace-sampling-policy-settings2.yml");
++        log.info("[CTest SETTINGS MAP OVERRIDES] " + overrides);
++        overrideSamplingPolicySettings(overrides);
++        log.info("[CTest SETTINGS MAP AFTER OVERRIDE] " + this.defaultSamplingPolicySettings);
+         loadDefaultPolicySettings();
+     }
+ 
++    public void overrideSamplingPolicySettings(SamplingPolicySettings overrides) {
++        if (overrides == null) {
++            return;
++        }
++        if (overrides.getDefaultPolicy().getDuration() != null && overrides.getDefaultPolicy().getDuration() != -1) {
++            this.defaultSamplingPolicySettings.getDefaultPolicy().setDuration(overrides.getDefaultPolicy().getDuration());
++        }
++        if (overrides.getDefaultPolicy().getRate() != null && overrides.getDefaultPolicy().getRate() != 10000) {
++            this.defaultSamplingPolicySettings.getDefaultPolicy().setRate(overrides.getDefaultPolicy().getRate());
++        }
++        if (overrides.getServices() != null) {
++            overrides.getServices().forEach((k, v) -> {
++                if (overrides.get(k).getDuration() != null) {
++                    this.defaultSamplingPolicySettings.get(k).setDuration(overrides.get(k).getDuration());
++                }
++                if (overrides.get(k).getRate() != null) {
++                    this.defaultSamplingPolicySettings.get(k).setRate(overrides.get(k).getRate());
++                }
++            });
++        }
++    }
++
+     @Override
+     public void notify(ConfigChangeEvent value) {
+         if (EventType.DELETE.equals(value.getEventType()) || StringUtil.isBlank(value.getNewValue())) {
+@@ -106,10 +132,10 @@ public class TraceSamplingPolicyWatcher extends ConfigChangeWatcher {
+      */
+     private boolean shouldSampleService(SamplingPolicy samplingPolicy, int sample, int duration) {
+         return (samplingPolicy.getDuration() != null && isOverSlowThreshold(duration, samplingPolicy.getDuration()))
+-            || (samplingPolicy.getRate() != null && withinRateRange(sample, samplingPolicy.getRate()))
+-            // global policy
+-            || (samplingPolicy.getDuration() == null && isOverDefaultSlowThreshold(duration))
+-            || (samplingPolicy.getRate() == null && withinDefaultRateRange(sample));
++                || (samplingPolicy.getRate() != null && withinRateRange(sample, samplingPolicy.getRate()))
++                // global policy
++                || (samplingPolicy.getDuration() == null && isOverDefaultSlowThreshold(duration))
++                || (samplingPolicy.getRate() == null && withinDefaultRateRange(sample));
+     }
+ 
+     private boolean withinDefaultRateRange(int sample) {
+@@ -146,7 +172,7 @@ public class TraceSamplingPolicyWatcher extends ConfigChangeWatcher {
+             log.info("[trace-sampling-policy] Updating trace-sample-policy with: {}", samplingPolicySettings);
+         } else {
+             log.info(
+-                "[trace-sampling-policy] Parse yaml fail, retain last configuration: {}", this.samplingPolicySettings);
++                    "[trace-sampling-policy] Parse yaml fail, retain last configuration: {}", this.samplingPolicySettings);
+         }
+     }
+ 
+diff --git a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/sampling/SamplingPolicySettings.java b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/sampling/SamplingPolicySettings.java
+index 5009ed5..aa1e293 100644
+--- a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/sampling/SamplingPolicySettings.java
++++ b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/sampling/SamplingPolicySettings.java
+@@ -28,6 +28,7 @@ public class SamplingPolicySettings {
+ 
+     @Getter
+     private SamplingPolicy defaultPolicy;
++    @Getter
+     private Map<String, SamplingPolicy> services;
+ 
+     /**
+diff --git a/oap-server/analyzer/agent-analyzer/src/main/resources/trace-sampling-policy-settings2.yml b/oap-server/analyzer/agent-analyzer/src/main/resources/trace-sampling-policy-settings2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/analyzer/agent-analyzer/src/test/resources/log4j2.xml b/oap-server/analyzer/agent-analyzer/src/test/resources/log4j2.xml
+new file mode 100644
+index 0000000..55a6aef
+--- /dev/null
++++ b/oap-server/analyzer/agent-analyzer/src/test/resources/log4j2.xml
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++  ~ Licensed to the Apache Software Foundation (ASF) under one or more
++  ~ contributor license agreements.  See the NOTICE file distributed with
++  ~ this work for additional information regarding copyright ownership.
++  ~ The ASF licenses this file to You under the Apache License, Version 2.0
++  ~ (the "License"); you may not use this file except in compliance with
++  ~ the License.  You may obtain a copy of the License at
++  ~
++  ~     http://www.apache.org/licenses/LICENSE-2.0
++  ~
++  ~ Unless required by applicable law or agreed to in writing, software
++  ~ distributed under the License is distributed on an "AS IS" BASIS,
++  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  ~ See the License for the specific language governing permissions and
++  ~ limitations under the License.
++  ~
++  -->
++
++<Configuration status="DEBUG">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout>
++                <LevelPatternSelector defaultPattern="%d %c %L [%t] %-5p %x - %m%n">
++                    <PatternMatch key="ERROR" pattern="%d %c %L [%t] %-5p %x - [%swversion] %m%n" />
++                </LevelPatternSelector>
++            </PatternLayout>
++        </Console>
++    </Appenders>
++    <Loggers>
++        <logger name="org.apache.skywalking.oap.server.analyzer.provider.trace" level="INFO"/>
++        <Root level="DEBUG">
++            <AppenderRef ref="Console"/>
++        </Root>
++    </Loggers>
++</Configuration>
+diff --git a/oap-server/server-configuration/configuration-apollo/src/test/java/org/apache/skywalking/oap/server/configuration/apollo/ITApolloConfigurationTest.java b/oap-server/server-configuration/configuration-apollo/src/test/java/org/apache/skywalking/oap/server/configuration/apollo/ITApolloConfigurationTest.java
+index 6bb3de3..73aa586 100644
+--- a/oap-server/server-configuration/configuration-apollo/src/test/java/org/apache/skywalking/oap/server/configuration/apollo/ITApolloConfigurationTest.java
++++ b/oap-server/server-configuration/configuration-apollo/src/test/java/org/apache/skywalking/oap/server/configuration/apollo/ITApolloConfigurationTest.java
+@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
+ import java.io.IOException;
+ import java.io.Reader;
+ import java.time.Duration;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Properties;
+ import java.util.concurrent.TimeUnit;
+@@ -63,15 +64,15 @@ public class ITApolloConfigurationTest {
+ 
+     @ClassRule
+     public final static DockerComposeContainer<?> ENVIRONMENT =
+-        new DockerComposeContainer<>(new File(ITApolloConfigurationTest.class
+-                                                .getClassLoader()
+-                                                .getResource("docker/docker-compose.yaml").getPath()))
+-            .withExposedService("apollo-config-and-portal", 8080,
+-                                Wait.forLogMessage(".*Config service started.*", 1))
+-            .withExposedService("apollo-config-and-portal", 8070,
+-                                Wait.forLogMessage(".*Portal started. You can visit.*", 1)
++            new DockerComposeContainer<>(new File(ITApolloConfigurationTest.class
++                    .getClassLoader()
++                    .getResource("docker/docker-compose.yaml").getPath()))
++                    .withExposedService("apollo-config-and-portal", 8080,
++                            Wait.forLogMessage(".*Config service started.*", 1))
++                    .withExposedService("apollo-config-and-portal", 8070,
++                            Wait.forLogMessage(".*Portal started. You can visit.*", 1)
+                                     .withStartupTimeout(Duration.ofSeconds(100))
+-            );
++                    );
+ 
+     @Before
+     public void setUp() throws Exception {
+@@ -208,7 +209,10 @@ public class ITApolloConfigurationTest {
+     @SuppressWarnings("unchecked")
+     private void loadConfig(ApplicationConfiguration configuration) throws FileNotFoundException {
+         Reader applicationReader = ResourceUtils.read("application.yml");
+-        Map<String, Map<String, Map<String, ?>>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++        Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++        Reader applicationReader2 = ResourceUtils.read("application2.yml");
++        Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++        Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+         if (CollectionUtils.isNotEmpty(moduleConfig)) {
+             moduleConfig.forEach((moduleName, providerConfig) -> {
+                 if (providerConfig.size() > 0) {
+@@ -216,7 +220,7 @@ public class ITApolloConfigurationTest {
+                     providerConfig.forEach((name, propertiesConfig) -> {
+                         Properties properties = new Properties();
+                         if (propertiesConfig != null) {
+-                            propertiesConfig.forEach((key, value) -> {
++                            ((Map) propertiesConfig).forEach((key, value) -> {
+                                 properties.put(key, value);
+                                 final Object replaceValue = yaml.load(PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
+                                 if (replaceValue != null) {
+@@ -231,6 +235,30 @@ public class ITApolloConfigurationTest {
+         }
+     }
+ 
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
++
+     //for retry
+     private String httpExec(HttpUriRequest request, ResponseHandler responseHandler) {
+         try {
+diff --git a/oap-server/server-configuration/configuration-apollo/src/test/resources/application2.yml b/oap-server/server-configuration/configuration-apollo/src/test/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-configuration/configuration-consul/src/test/java/org/apache/skywalking/oap/server/configuration/consul/ITConsulConfigurationTest.java b/oap-server/server-configuration/configuration-consul/src/test/java/org/apache/skywalking/oap/server/configuration/consul/ITConsulConfigurationTest.java
+index f69dd64..13f8605 100644
+--- a/oap-server/server-configuration/configuration-consul/src/test/java/org/apache/skywalking/oap/server/configuration/consul/ITConsulConfigurationTest.java
++++ b/oap-server/server-configuration/configuration-consul/src/test/java/org/apache/skywalking/oap/server/configuration/consul/ITConsulConfigurationTest.java
+@@ -21,8 +21,10 @@ package org.apache.skywalking.oap.server.configuration.consul;
+ import com.google.common.net.HostAndPort;
+ import com.orbitz.consul.Consul;
+ import com.orbitz.consul.KeyValueClient;
++import lombok.extern.slf4j.Slf4j;
+ import java.io.FileNotFoundException;
+ import java.io.Reader;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Properties;
+ import org.apache.skywalking.oap.server.library.util.PropertyPlaceholderHelper;
+@@ -43,6 +45,7 @@ import static org.junit.Assert.assertNotNull;
+ import static org.junit.Assert.assertNull;
+ import static org.junit.Assert.assertTrue;
+ 
++@Slf4j
+ public class ITConsulConfigurationTest {
+     private final Yaml yaml = new Yaml();
+ 
+@@ -50,9 +53,9 @@ public class ITConsulConfigurationTest {
+ 
+     @Rule
+     public final GenericContainer<?> container =
+-        new GenericContainer<>(DockerImageName.parse("consul:0.9"))
+-            .waitingFor(Wait.forLogMessage(".*Synced node info.*", 1))
+-            .withCommand("agent", "-server", "-bootstrap-expect=1", "-client=0.0.0.0");
++            new GenericContainer<>(DockerImageName.parse("consul:0.9"))
++                    .waitingFor(Wait.forLogMessage(".*Synced node info.*", 1))
++                    .withCommand("agent", "-server", "-bootstrap-expect=1", "-client=0.0.0.0");
+ 
+     @Before
+     public void setUp() throws Exception {
+@@ -74,9 +77,9 @@ public class ITConsulConfigurationTest {
+ 
+         String hostAndPort = System.getProperty("consul.address", "127.0.0.1:8500");
+         Consul consul = Consul.builder()
+-                              .withHostAndPort(HostAndPort.fromString(hostAndPort))
+-                              .withConnectTimeoutMillis(5000)
+-                              .build();
++                .withHostAndPort(HostAndPort.fromString(hostAndPort))
++                .withConnectTimeoutMillis(5000)
++                .build();
+         KeyValueClient client = consul.keyValueClient();
+ 
+         assertTrue(client.putValue("test-module.default.testKey", "1000"));
+@@ -100,9 +103,9 @@ public class ITConsulConfigurationTest {
+ 
+         String hostAndPort = System.getProperty("consul.address", "127.0.0.1:8500");
+         Consul consul = Consul.builder()
+-                              .withHostAndPort(HostAndPort.fromString(hostAndPort))
+-                              .withConnectTimeoutMillis(5000)
+-                              .build();
++                .withHostAndPort(HostAndPort.fromString(hostAndPort))
++                .withConnectTimeoutMillis(5000)
++                .build();
+         KeyValueClient client = consul.keyValueClient();
+ 
+         assertTrue(client.putValue("test-module.default.testKeyGroup/item1", "100"));
+@@ -134,7 +137,10 @@ public class ITConsulConfigurationTest {
+     @SuppressWarnings("unchecked")
+     private void loadConfig(ApplicationConfiguration configuration) throws FileNotFoundException {
+         Reader applicationReader = ResourceUtils.read("application.yml");
+-        Map<String, Map<String, Map<String, ?>>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++        Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++        Reader applicationReader2 = ResourceUtils.read("application2.yml");
++        Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++        Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+         if (CollectionUtils.isNotEmpty(moduleConfig)) {
+             moduleConfig.forEach((moduleName, providerConfig) -> {
+                 if (providerConfig.size() > 0) {
+@@ -142,7 +148,7 @@ public class ITConsulConfigurationTest {
+                     providerConfig.forEach((name, propertiesConfig) -> {
+                         Properties properties = new Properties();
+                         if (propertiesConfig != null) {
+-                            propertiesConfig.forEach((key, value) -> {
++                            ((Map) propertiesConfig).forEach((key, value) -> {
+                                 properties.put(key, value);
+                                 final Object replaceValue = yaml.load(PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
+                                 if (replaceValue != null) {
+@@ -156,4 +162,28 @@ public class ITConsulConfigurationTest {
+             });
+         }
+     }
++
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
+ }
+diff --git a/oap-server/server-configuration/configuration-consul/src/test/resources/application2.yml b/oap-server/server-configuration/configuration-consul/src/test/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-configuration/configuration-consul/src/test/resources/log4j2.xml b/oap-server/server-configuration/configuration-consul/src/test/resources/log4j2.xml
+new file mode 100644
+index 0000000..f23f14f
+--- /dev/null
++++ b/oap-server/server-configuration/configuration-consul/src/test/resources/log4j2.xml
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++  ~ Licensed to the Apache Software Foundation (ASF) under one or more
++  ~ contributor license agreements.  See the NOTICE file distributed with
++  ~ this work for additional information regarding copyright ownership.
++  ~ The ASF licenses this file to You under the Apache License, Version 2.0
++  ~ (the "License"); you may not use this file except in compliance with
++  ~ the License.  You may obtain a copy of the License at
++  ~
++  ~     http://www.apache.org/licenses/LICENSE-2.0
++  ~
++  ~ Unless required by applicable law or agreed to in writing, software
++  ~ distributed under the License is distributed on an "AS IS" BASIS,
++  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  ~ See the License for the specific language governing permissions and
++  ~ limitations under the License.
++  ~
++  -->
++
++<Configuration status="DEBUG">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout>
++                <LevelPatternSelector defaultPattern="%d %c %L [%t] %-5p %x - %m%n">
++                    <PatternMatch key="ERROR" pattern="%d %c %L [%t] %-5p %x - [%swversion] %m%n" />
++                </LevelPatternSelector>
++            </PatternLayout>
++        </Console>
++    </Appenders>
++    <Loggers>
++        <logger name="org.apache.skywalking.oap.server.configuration.consul" level="INFO"/>
++        <Root level="DEBUG">
++            <AppenderRef ref="Console"/>
++        </Root>
++    </Loggers>
++</Configuration>
+diff --git a/oap-server/server-configuration/configuration-etcd/src/test/java/org/apache/skywalking/oap/server/configuration/etcd/ITEtcdConfigurationTest.java b/oap-server/server-configuration/configuration-etcd/src/test/java/org/apache/skywalking/oap/server/configuration/etcd/ITEtcdConfigurationTest.java
+index 8a6c0d0..3c5aaea 100644
+--- a/oap-server/server-configuration/configuration-etcd/src/test/java/org/apache/skywalking/oap/server/configuration/etcd/ITEtcdConfigurationTest.java
++++ b/oap-server/server-configuration/configuration-etcd/src/test/java/org/apache/skywalking/oap/server/configuration/etcd/ITEtcdConfigurationTest.java
+@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
+ import java.io.Reader;
+ import java.nio.charset.Charset;
+ import java.util.Collections;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Properties;
+ import java.util.concurrent.TimeUnit;
+@@ -50,14 +51,14 @@ import static org.junit.Assert.assertNull;
+ public class ITEtcdConfigurationTest {
+     @Rule
+     public final GenericContainer<?> container =
+-        new GenericContainer<>(DockerImageName.parse("quay.io/coreos/etcd:v3.5.0"))
+-            .waitingFor(Wait.forLogMessage(".*ready to serve client requests.*", 1))
+-            .withEnv(Collections.singletonMap("ALLOW_NONE_AUTHENTICATION", "yes"))
+-            .withCommand(
+-                "etcd",
+-                "--advertise-client-urls", "http://0.0.0.0:2379",
+-                "--listen-client-urls", "http://0.0.0.0:2379"
+-            );
++            new GenericContainer<>(DockerImageName.parse("quay.io/coreos/etcd:v3.5.0"))
++                    .waitingFor(Wait.forLogMessage(".*ready to serve client requests.*", 1))
++                    .withEnv(Collections.singletonMap("ALLOW_NONE_AUTHENTICATION", "yes"))
++                    .withCommand(
++                            "etcd",
++                            "--advertise-client-urls", "http://0.0.0.0:2379",
++                            "--listen-client-urls", "http://0.0.0.0:2379"
++                    );
+ 
+     private EtcdConfigurationTestProvider provider;
+ 
+@@ -81,15 +82,15 @@ public class ITEtcdConfigurationTest {
+         assertNull(provider.watcher.value());
+ 
+         KV client = Client.builder()
+-                          .endpoints("http://localhost:" + container.getMappedPort(2379))
+-                          .namespace(ByteSequence.from("/skywalking/", Charset.defaultCharset()))
+-                          .build()
+-                          .getKVClient();
++                .endpoints("http://localhost:" + container.getMappedPort(2379))
++                .namespace(ByteSequence.from("/skywalking/", Charset.defaultCharset()))
++                .build()
++                .getKVClient();
+ 
+         String testValue = "value";
+         client.put(
+-            ByteSequence.from("test-module.default.testKey", Charset.defaultCharset()),
+-            ByteSequence.from(testValue, Charset.defaultCharset())
++                ByteSequence.from("test-module.default.testKey", Charset.defaultCharset()),
++                ByteSequence.from(testValue, Charset.defaultCharset())
+         ).get();
+ 
+         for (String v = provider.watcher.value(); v == null; v = provider.watcher.value()) {
+@@ -113,18 +114,18 @@ public class ITEtcdConfigurationTest {
+         assertEquals("{}", provider.groupWatcher.groupItems().toString());
+ 
+         KV client = Client.builder()
+-                          .endpoints("http://localhost:" + container.getMappedPort(2379))
+-                          .namespace(ByteSequence.from("/skywalking/", Charset.defaultCharset()))
+-                          .build()
+-                          .getKVClient();
++                .endpoints("http://localhost:" + container.getMappedPort(2379))
++                .namespace(ByteSequence.from("/skywalking/", Charset.defaultCharset()))
++                .build()
++                .getKVClient();
+ 
+         client.put(
+-            ByteSequence.from("test-module.default.testKeyGroup/item1", Charset.defaultCharset()),
+-            ByteSequence.from("100", Charset.defaultCharset())
++                ByteSequence.from("test-module.default.testKeyGroup/item1", Charset.defaultCharset()),
++                ByteSequence.from("100", Charset.defaultCharset())
+         ).get();
+         client.put(
+-            ByteSequence.from("test-module.default.testKeyGroup/item2", Charset.defaultCharset()),
+-            ByteSequence.from("200", Charset.defaultCharset())
++                ByteSequence.from("test-module.default.testKeyGroup/item2", Charset.defaultCharset()),
++                ByteSequence.from("200", Charset.defaultCharset())
+         ).get();
+ 
+         for (String v = provider.groupWatcher.groupItems().get("item1"); v == null; v = provider.groupWatcher.groupItems().get("item1")) {
+@@ -148,8 +149,8 @@ public class ITEtcdConfigurationTest {
+ 
+         //test modify item2
+         client.put(
+-            ByteSequence.from("test-module.default.testKeyGroup/item2", Charset.defaultCharset()),
+-            ByteSequence.from("300", Charset.defaultCharset())
++                ByteSequence.from("test-module.default.testKeyGroup/item2", Charset.defaultCharset()),
++                ByteSequence.from("300", Charset.defaultCharset())
+         ).get();
+         for (String v = provider.groupWatcher.groupItems().get("item2"); v.equals("200"); v = provider.groupWatcher.groupItems().get("item2")) {
+             log.info("value is : {}", provider.groupWatcher.groupItems().get("item2"));
+@@ -163,19 +164,22 @@ public class ITEtcdConfigurationTest {
+         final Yaml yaml = new Yaml();
+ 
+         Reader applicationReader = ResourceUtils.read("application.yml");
+-        Map<String, Map<String, Map<String, ?>>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++        Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++        Reader applicationReader2 = ResourceUtils.read("application2.yml");
++        Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++        Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+         if (CollectionUtils.isNotEmpty(moduleConfig)) {
+             moduleConfig.forEach((moduleName, providerConfig) -> {
+                 if (providerConfig.size() > 0) {
+                     ApplicationConfiguration.ModuleConfiguration moduleConfiguration = configuration.addModule(
+-                        moduleName);
++                            moduleName);
+                     providerConfig.forEach((name, propertiesConfig) -> {
+                         Properties properties = new Properties();
+                         if (propertiesConfig != null) {
+-                            propertiesConfig.forEach((key, value) -> {
++                            ((Map) propertiesConfig).forEach((key, value) -> {
+                                 properties.put(key, value);
+                                 final Object replaceValue = yaml.load(
+-                                    PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
++                                        PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
+                                 if (replaceValue != null) {
+                                     properties.replace(key, replaceValue);
+                                 }
+@@ -187,4 +191,28 @@ public class ITEtcdConfigurationTest {
+             });
+         }
+     }
++
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
+ }
+diff --git a/oap-server/server-configuration/configuration-etcd/src/test/resources/application2.yml b/oap-server/server-configuration/configuration-etcd/src/test/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-configuration/configuration-nacos/src/test/java/org/apache/skywalking/oap/server/configuration/nacos/ITNacosConfigurationTest.java b/oap-server/server-configuration/configuration-nacos/src/test/java/org/apache/skywalking/oap/server/configuration/nacos/ITNacosConfigurationTest.java
+index cca5dad..27bbef4 100644
+--- a/oap-server/server-configuration/configuration-nacos/src/test/java/org/apache/skywalking/oap/server/configuration/nacos/ITNacosConfigurationTest.java
++++ b/oap-server/server-configuration/configuration-nacos/src/test/java/org/apache/skywalking/oap/server/configuration/nacos/ITNacosConfigurationTest.java
+@@ -24,6 +24,7 @@ import com.alibaba.nacos.api.exception.NacosException;
+ import java.io.FileNotFoundException;
+ import java.io.Reader;
+ import java.util.Collections;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Properties;
+ import lombok.extern.slf4j.Slf4j;
+@@ -53,9 +54,9 @@ public class ITNacosConfigurationTest {
+ 
+     @Rule
+     public final GenericContainer<?> container =
+-        new GenericContainer<>(DockerImageName.parse("nacos/nacos-server:1.4.2"))
+-            .waitingFor(Wait.forLogMessage(".*Nacos started successfully.*", 1))
+-            .withEnv(Collections.singletonMap("MODE", "standalone"));
++            new GenericContainer<>(DockerImageName.parse("nacos/nacos-server:1.4.2"))
++                    .waitingFor(Wait.forLogMessage(".*Nacos started successfully.*", 1))
++                    .withEnv(Collections.singletonMap("MODE", "standalone"));
+ 
+     @Before
+     public void setUp() throws Exception {
+@@ -147,7 +148,10 @@ public class ITNacosConfigurationTest {
+     @SuppressWarnings("unchecked")
+     private void loadConfig(ApplicationConfiguration configuration) throws FileNotFoundException {
+         Reader applicationReader = ResourceUtils.read("application.yml");
+-        Map<String, Map<String, Map<String, ?>>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++        Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++        Reader applicationReader2 = ResourceUtils.read("application2.yml");
++        Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++        Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+         if (CollectionUtils.isNotEmpty(moduleConfig)) {
+             moduleConfig.forEach((moduleName, providerConfig) -> {
+                 if (providerConfig.size() > 0) {
+@@ -155,7 +159,7 @@ public class ITNacosConfigurationTest {
+                     providerConfig.forEach((name, propertiesConfig) -> {
+                         Properties properties = new Properties();
+                         if (propertiesConfig != null) {
+-                            propertiesConfig.forEach((key, value) -> {
++                            ((Map) propertiesConfig).forEach((key, value) -> {
+                                 properties.put(key, value);
+                                 final Object replaceValue = yaml.load(PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
+                                 if (replaceValue != null) {
+@@ -169,4 +173,28 @@ public class ITNacosConfigurationTest {
+             });
+         }
+     }
++
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
+ }
+diff --git a/oap-server/server-configuration/configuration-nacos/src/test/resources/application2.yml b/oap-server/server-configuration/configuration-nacos/src/test/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-configuration/configuration-nacos/src/test/resources/log4j2.xml b/oap-server/server-configuration/configuration-nacos/src/test/resources/log4j2.xml
+new file mode 100644
+index 0000000..a46d185
+--- /dev/null
++++ b/oap-server/server-configuration/configuration-nacos/src/test/resources/log4j2.xml
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++  ~ Licensed to the Apache Software Foundation (ASF) under one or more
++  ~ contributor license agreements.  See the NOTICE file distributed with
++  ~ this work for additional information regarding copyright ownership.
++  ~ The ASF licenses this file to You under the Apache License, Version 2.0
++  ~ (the "License"); you may not use this file except in compliance with
++  ~ the License.  You may obtain a copy of the License at
++  ~
++  ~     http://www.apache.org/licenses/LICENSE-2.0
++  ~
++  ~ Unless required by applicable law or agreed to in writing, software
++  ~ distributed under the License is distributed on an "AS IS" BASIS,
++  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  ~ See the License for the specific language governing permissions and
++  ~ limitations under the License.
++  ~
++  -->
++
++<Configuration status="DEBUG">
++    <Appenders>
++        <Console name="Console" target="SYSTEM_OUT">
++            <PatternLayout>
++                <LevelPatternSelector defaultPattern="%d %c %L [%t] %-5p %x - %m%n">
++                    <PatternMatch key="ERROR" pattern="%d %c %L [%t] %-5p %x - [%swversion] %m%n" />
++                </LevelPatternSelector>
++            </PatternLayout>
++        </Console>
++    </Appenders>
++    <Loggers>
++        <logger name="org.apache.skywalking.oap.server.configuration.nacos" level="INFO"/>
++        <Root level="DEBUG">
++            <AppenderRef ref="Console"/>
++        </Root>
++    </Loggers>
++</Configuration>
+diff --git a/oap-server/server-configuration/configuration-zookeeper/src/test/java/org/apache/skywalking/oap/server/configuration/zookeeper/it/ITZookeeperConfigurationTest.java b/oap-server/server-configuration/configuration-zookeeper/src/test/java/org/apache/skywalking/oap/server/configuration/zookeeper/it/ITZookeeperConfigurationTest.java
+index 6c76f8b..deead76 100644
+--- a/oap-server/server-configuration/configuration-zookeeper/src/test/java/org/apache/skywalking/oap/server/configuration/zookeeper/it/ITZookeeperConfigurationTest.java
++++ b/oap-server/server-configuration/configuration-zookeeper/src/test/java/org/apache/skywalking/oap/server/configuration/zookeeper/it/ITZookeeperConfigurationTest.java
+@@ -20,6 +20,7 @@ package org.apache.skywalking.oap.server.configuration.zookeeper.it;
+ 
+ import java.io.FileNotFoundException;
+ import java.io.Reader;
++import java.util.List;
+ import java.util.Map;
+ import java.util.Properties;
+ import lombok.extern.slf4j.Slf4j;
+@@ -53,8 +54,8 @@ public class ITZookeeperConfigurationTest {
+ 
+     @Rule
+     public final GenericContainer<?> container =
+-        new GenericContainer<>(DockerImageName.parse("zookeeper:3.5"))
+-            .waitingFor(Wait.forLogMessage(".*binding to port.*", 1));
++            new GenericContainer<>(DockerImageName.parse("zookeeper:3.5"))
++                    .waitingFor(Wait.forLogMessage(".*binding to port.*", 1));
+ 
+     private String zkAddress;
+ 
+@@ -70,7 +71,7 @@ public class ITZookeeperConfigurationTest {
+         moduleManager.init(applicationConfiguration);
+ 
+         provider = (MockZookeeperConfigurationProvider) moduleManager.find(MockZookeeperConfigurationModule.NAME)
+-                                                                     .provider();
++                .provider();
+ 
+         assertNotNull(provider);
+     }
+@@ -139,7 +140,10 @@ public class ITZookeeperConfigurationTest {
+     @SuppressWarnings("unchecked")
+     private void loadConfig(ApplicationConfiguration configuration) throws FileNotFoundException {
+         Reader applicationReader = ResourceUtils.read("application.yml");
+-        Map<String, Map<String, Map<String, ?>>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++        Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++        Reader applicationReader2 = ResourceUtils.read("application2.yml");
++        Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++        Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+         if (CollectionUtils.isNotEmpty(moduleConfig)) {
+             moduleConfig.forEach((moduleName, providerConfig) -> {
+                 if (providerConfig.size() > 0) {
+@@ -147,7 +151,7 @@ public class ITZookeeperConfigurationTest {
+                     providerConfig.forEach((name, propertiesConfig) -> {
+                         Properties properties = new Properties();
+                         if (propertiesConfig != null) {
+-                            propertiesConfig.forEach((key, value) -> {
++                            ((Map) propertiesConfig).forEach((key, value) -> {
+                                 properties.put(key, value);
+                                 final Object replaceValue = yaml.load(PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(value + "", properties));
+                                 if (replaceValue != null) {
+@@ -158,7 +162,31 @@ public class ITZookeeperConfigurationTest {
+                         moduleConfiguration.addProviderConfiguration(name, properties);
+                     });
+                 }
+-             });
++            });
+         }
+     }
++
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
+ }
+diff --git a/oap-server/server-configuration/configuration-zookeeper/src/test/resources/application2.yml b/oap-server/server-configuration/configuration-zookeeper/src/test/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
+index f4f0586..4fc02f7 100644
+--- a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
++++ b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
+@@ -20,10 +20,12 @@ package org.apache.skywalking.oap.server.library.module;
+ 
+ import java.util.HashMap;
+ import java.util.Properties;
++import lombok.extern.slf4j.Slf4j;
+ 
+ /**
+  * Modulization configurations. The {@link ModuleManager} is going to start, lookup, start modules based on this.
+  */
++@Slf4j
+ public class ApplicationConfiguration {
+     private HashMap<String, ModuleConfiguration> modules = new HashMap<>();
+ 
+@@ -32,6 +34,7 @@ public class ApplicationConfiguration {
+     }
+ 
+     public ModuleConfiguration addModule(String moduleName) {
++        log.warn("[CTEST][getModuleConfiguration] ###" + moduleName + "###" + getStackTrace());
+         ModuleConfiguration newModule = new ModuleConfiguration();
+         modules.put(moduleName, newModule);
+         return newModule;
+@@ -42,19 +45,30 @@ public class ApplicationConfiguration {
+     }
+ 
+     public ModuleConfiguration getModuleConfiguration(String name) {
++        log.warn("[CTEST][getModuleConfiguration] ###" + name + "###" + getStackTrace());
+         return modules.get(name);
+     }
+ 
++    private static String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     /**
+      * The configurations about a certain module.
+      */
++    @Slf4j
+     public static class ModuleConfiguration {
+         private HashMap<String, ProviderConfiguration> providers = new HashMap<>();
+ 
+         private ModuleConfiguration() {
+         }
+ 
+-        public Properties getProviderConfiguration(String name) {
++        public PropertiesWrapper getProviderConfiguration(String name) {
++            log.warn("[CTEST][getProviderConfiguration] ###" + name + "### providers " + providers.get(name).getProperties() + getStackTrace());
+             return providers.get(name).getProperties();
+         }
+ 
+@@ -63,24 +77,72 @@ public class ApplicationConfiguration {
+         }
+ 
+         public ModuleConfiguration addProviderConfiguration(String name, Properties properties) {
++            log.warn("[CTEST][getProviderConfiguration] ###" + name + "### providers " + properties + getStackTrace());
+             ProviderConfiguration newProvider = new ProviderConfiguration(properties);
+             providers.put(name, newProvider);
+             return this;
+         }
+     }
+ 
++    @Slf4j
++    public static class PropertiesWrapper extends Properties {
++        @Override
++        public synchronized Object get(Object key) {
++            log.info("[CTEST][PropertiesWrapper] ###" + key + "### test");
++            return super.get(key);
++        }
++
++        @Override
++        public String getProperty(String key) {
++            log.info("[CTEST][PropertiesWrapper] ###" + key + "###");
++            return super.getProperty(key);
++        }
++
++        @Override
++        public synchronized java.lang.Object put(java.lang.Object key, java.lang.Object value) {
++            log.info("[CTEST][PropertiesWrapper-reset] ###" + key + "### " + "***" + value + "***");
++            return super.put(key, value);
++        }
++    }
++
++    @Slf4j
++    public static class SubPropertiesWrapper extends Properties {
++        @Override
++        public synchronized Object get(Object key) {
++            log.info("[CTEST][SubPropertiesWrapper] ###" + key + "### test");
++            return super.get(key);
++        }
++
++        @Override
++        public String getProperty(String key) {
++            log.info("[CTEST][SubPropertiesWrapper] ###" + key + "###");
++            return super.getProperty(key);
++        }
++
++        @Override
++        public synchronized java.lang.Object put(java.lang.Object key, java.lang.Object value) {
++            log.info("[CTEST][SubPropertiesWrapper-reset] ###" + key + "### " + "***" + value + "***");
++            return super.put(key, value);
++        }
++    }
++
+     /**
+      * The configuration about a certain provider of a module.
+      */
++    @Slf4j
+     public static class ProviderConfiguration {
+-        private Properties properties;
++        private PropertiesWrapper propertiesWrapper;
+ 
+         ProviderConfiguration(Properties properties) {
+-            this.properties = properties;
++            PropertiesWrapper wrapper = new PropertiesWrapper();
++            properties.forEach((k, v) -> {
++                wrapper.put(k, v);
++            });
++            this.propertiesWrapper = wrapper;
+         }
+ 
+-        private Properties getProperties() {
+-            return properties;
++        private PropertiesWrapper getProperties() {
++            return propertiesWrapper;
+         }
+     }
+ }
+diff --git a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
+index 418f5da..a20f188 100644
+--- a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
++++ b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
+@@ -21,14 +21,16 @@ package org.apache.skywalking.oap.server.library.module;
+ import java.lang.reflect.Field;
+ import java.lang.reflect.InvocationTargetException;
+ import java.util.Enumeration;
+-import java.util.Properties;
+ import java.util.ServiceLoader;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
++import lombok.extern.slf4j.Slf4j;
++import static org.apache.skywalking.oap.server.library.module.ApplicationConfiguration.PropertiesWrapper;
+ 
+ /**
+  * A module definition.
+  */
++@Slf4j
+ public abstract class ModuleDefine implements ModuleProviderHolder {
+ 
+     private static final Logger LOGGER = LoggerFactory.getLogger(ModuleDefine.class);
+@@ -109,7 +111,7 @@ public abstract class ModuleDefine implements ModuleProviderHolder {
+         loadedProvider.prepare();
+     }
+ 
+-    private void copyProperties(ModuleConfig dest, Properties src, String moduleName,
++    private void copyProperties(ModuleConfig dest, PropertiesWrapper src, String moduleName,
+                                 String providerName) throws IllegalAccessException {
+         if (dest == null) {
+             return;
+diff --git a/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java b/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
+index 3bccd30..fdd3115 100644
+--- a/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
++++ b/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
+@@ -21,6 +21,7 @@ package org.apache.skywalking.oap.server.starter.config;
+ import java.io.FileNotFoundException;
+ import java.io.Reader;
+ import java.util.ArrayList;
++import java.util.List;
+ import java.util.Iterator;
+ import java.util.Map;
+ import java.util.Properties;
+@@ -57,18 +58,21 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+     private void loadConfig(ApplicationConfiguration configuration) throws ConfigFileNotFoundException {
+         try {
+             Reader applicationReader = ResourceUtils.read("application.yml");
+-            Map<String, Map<String, Object>> moduleConfig = yaml.loadAs(applicationReader, Map.class);
++            Map<String, Map<String, Object>> first = yaml.loadAs(applicationReader, Map.class);
++            Reader applicationReader2 = ResourceUtils.read("application2.yml");
++            Map<String, Map<String, Object>> second = yaml.loadAs(applicationReader2, Map.class);
++            Map<String, Map<String, Object>> moduleConfig = deepMerge(first, second);
+             if (CollectionUtils.isNotEmpty(moduleConfig)) {
+                 selectConfig(moduleConfig);
+                 moduleConfig.forEach((moduleName, providerConfig) -> {
+                     if (providerConfig.size() > 0) {
+                         log.info("Get a module define from application.yml, module name: {}", moduleName);
+                         ApplicationConfiguration.ModuleConfiguration moduleConfiguration = configuration.addModule(
+-                            moduleName);
++                                moduleName);
+                         providerConfig.forEach((providerName, config) -> {
+                             log.info(
+-                                "Get a provider define belong to {} module, provider name: {}", moduleName,
+-                                providerName
++                                    "Get a provider define belong to {} module, provider name: {}", moduleName,
++                                    providerName
+                             );
+                             final Map<String, ?> propertiesConfig = (Map<String, ?>) config;
+                             final Properties properties = new Properties();
+@@ -80,7 +84,11 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+                                             subProperties.put(key, value);
+                                             replacePropertyAndLog(key, value, subProperties, providerName);
+                                         });
+-                                        properties.put(propertyName, subProperties);
++                                        ApplicationConfiguration.SubPropertiesWrapper subPropertiesWrapper = new ApplicationConfiguration.SubPropertiesWrapper();
++                                        subProperties.forEach((k, v) -> {
++                                            subPropertiesWrapper.put(k, v);
++                                        });
++                                        properties.put(propertyName, subPropertiesWrapper);
+                                     } else {
+                                         properties.put(propertyName, propertyValue);
+                                         replacePropertyAndLog(propertyName, propertyValue, properties, providerName);
+@@ -91,8 +99,8 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+                         });
+                     } else {
+                         log.warn(
+-                            "Get a module define from application.yml, but no provider define, use default, module name: {}",
+-                            moduleName
++                                "Get a module define from application.yml, but no provider define, use default, module name: {}",
++                                moduleName
+                         );
+                     }
+                 });
+@@ -102,10 +110,34 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+         }
+     }
+ 
++    private static Map deepMerge(Map original, Map newMap) {
++        if (newMap == null) {
++            return original;
++        }
++        for (Object key : newMap.keySet()) {
++            if (newMap.get(key) instanceof Map && original.get(key) instanceof Map) {
++                Map originalChild = (Map) original.get(key);
++                Map newChild = (Map) newMap.get(key);
++                original.put(key, deepMerge(originalChild, newChild));
++            } else if (newMap.get(key) instanceof List && original.get(key) instanceof List) {
++                List originalChild = (List) original.get(key);
++                List newChild = (List) newMap.get(key);
++                for (Object each : newChild) {
++                    if (!originalChild.contains(each)) {
++                        originalChild.add(each);
++                    }
++                }
++            } else {
++                original.put(key, newMap.get(key));
++            }
++        }
++        return original;
++    }
++
+     private void replacePropertyAndLog(final Object propertyName, final Object propertyValue, final Properties target,
+                                        final Object providerName) {
+         final String valueString = PropertyPlaceholderHelper.INSTANCE
+-            .replacePlaceholders(propertyValue + "", target);
++                .replacePlaceholders(propertyValue + "", target);
+         if (valueString != null) {
+             if (valueString.trim().length() == 0) {
+                 target.replace(propertyName, valueString);
+@@ -116,10 +148,10 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+                 if (replaceValue != null) {
+                     target.replace(propertyName, replaceValue);
+                     log.info(
+-                        "Provider={} config={} has been set as {}",
+-                        providerName,
+-                        propertyName,
+-                        replaceValue.toString()
++                            "Provider={} config={} has been set as {}",
++                            providerName,
++                            propertyName,
++                            replaceValue.toString()
+                     );
+                 }
+             }
+@@ -157,7 +189,7 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+             }
+             final String selector = (String) providerConfig.get(SELECTOR);
+             final String resolvedSelector = PropertyPlaceholderHelper.INSTANCE.replacePlaceholders(
+-                selector, System.getProperties()
++                    selector, System.getProperties()
+             );
+             providerConfig.entrySet().removeIf(e -> !resolvedSelector.equals(e.getKey()));
+ 
+@@ -167,9 +199,9 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+ 
+             if (!DISABLE_SELECTOR.equals(resolvedSelector)) {
+                 throw new ProviderNotFoundException(
+-                    "no provider found for module " + moduleName + ", " +
+-                        "if you're sure it's not required module and want to remove it, " +
+-                        "set the selector to -"
++                        "no provider found for module " + moduleName + ", " +
++                                "if you're sure it's not required module and want to remove it, " +
++                                "set the selector to -"
+                 );
+             }
+ 
+@@ -187,7 +219,7 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+         String moduleName = key.substring(0, moduleAndConfigSeparator);
+         String providerSettingSubKey = key.substring(moduleAndConfigSeparator + 1);
+         ApplicationConfiguration.ModuleConfiguration moduleConfiguration = configuration.getModuleConfiguration(
+-            moduleName);
++                moduleName);
+         if (moduleConfiguration == null) {
+             return;
+         }
+@@ -200,7 +232,7 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+         if (!moduleConfiguration.has(providerName)) {
+             return;
+         }
+-        Properties providerSettings = moduleConfiguration.getProviderConfiguration(providerName);
++        ApplicationConfiguration.PropertiesWrapper providerSettings = moduleConfiguration.getProviderConfiguration(providerName);
+         if (!providerSettings.containsKey(settingKey)) {
+             return;
+         }
+@@ -219,8 +251,8 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+         }
+ 
+         log.info(
+-            "The setting has been override by key: {}, value: {}, in {} provider of {} module through {}", settingKey,
+-            value, providerName, moduleName, "System.properties"
++                "The setting has been override by key: {}, value: {}, in {} provider of {} module through {}", settingKey,
++                value, providerName, moduleName, "System.properties"
+         );
+     }
+ }
+diff --git a/oap-server/server-starter/src/main/resources/application2.yml b/oap-server/server-starter/src/main/resources/application2.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java b/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
+index 8e927cf..b63ef45 100644
+--- a/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
++++ b/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
+@@ -44,8 +44,8 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("storage")
+-                                                            .getProviderConfiguration("mysql");
++        ApplicationConfiguration.PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("storage")
++                .getProviderConfiguration("mysql");
+         assertThat(providerConfig.get("metadataQueryMaxSize"), is(5000));
+         assertThat(providerConfig.get("properties"), instanceOf(Properties.class));
+         Properties properties = (Properties) providerConfig.get("properties");
+@@ -54,7 +54,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadStringTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
++        ApplicationConfiguration.PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
+                 .getProviderConfiguration("default");
+         String host = (String) providerConfig.get("restHost");
+         assertEquals("0.0.0.0", host);
+@@ -62,7 +62,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadIntegerTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
++        ApplicationConfiguration.PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
+                 .getProviderConfiguration("default");
+         Integer port = (Integer) providerConfig.get("restPort");
+         assertEquals(Integer.valueOf(9411), port);
+@@ -70,7 +70,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadBooleanTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("core")
++        ApplicationConfiguration.PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("core")
+                 .getProviderConfiguration("default");
+         Boolean enableDataKeeperExecutor = (Boolean) providerConfig.get("enableDataKeeperExecutor");
+         assertEquals(Boolean.TRUE, enableDataKeeperExecutor);
+@@ -78,7 +78,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadSpecialStringTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("storage")
++        ApplicationConfiguration.PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("storage")
+                 .getProviderConfiguration("mysql");
+         Properties properties = (Properties) providerConfig.get("properties");
+         String password = (String) properties.get("dataSource.password");

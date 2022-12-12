@@ -48,6 +48,8 @@ In the container, you can generate and run ctests as shown below.
 
 Run `./setup_ubuntu.sh` or `sudo ./setup_ubuntu.sh`.
 
+For Apache Skywalking Project - Run `sudo ./setup_ubuntu_skywalking.sh`
+
 ### 2. Target Project
 
 To generate ctests or run ctest, you need to first clone the target project. 
@@ -60,6 +62,8 @@ To generate ctests or run ctest, you need to first clone the target project.
 2. In `openctest/core/identify_param`, run `./add_project.sh <main project>` to clone the project, switch to and build the branch `ctest-logging`. This branch will be later used by `identify_param`.
 
 `<main project>` can be `hadoop`, `hbase`, `zookeeper` or `alluxio`.
+
+For Apache Skywalking Project - Run `./add_project_skywalking.sh -r <skwywalking_release_version>`
 
 ## Usage
 

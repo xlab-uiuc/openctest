@@ -1,0 +1,161 @@
+{
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated": [
+      "configuration.apollo.apolloMeta",
+      "configuration.apollo.appId",
+      "configuration.apollo.period",
+      "configuration.apollo.apolloEnv",
+      "configuration.apollo.apolloCluster"
+    ],
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated": [
+      "configuration.zookeeper.maxRetries",
+      "configuration.zookeeper.period",
+      "configuration.zookeeper.hostPort",
+      "configuration.zookeeper.baseSleepTimeMs",
+      "configuration.zookeeper.namespace"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate": [
+      "services[1].rate",
+      "services[0].duration",
+      "default.duration",
+      "services[0].name",
+      "services[1].name",
+      "services[0].rate",
+      "default.rate",
+      "services[1].duration"
+    ],
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup": [
+      "configuration.nacos.port",
+      "configuration.nacos.serverAddr",
+      "configuration.nacos.accessKey",
+      "configuration.nacos.group",
+      "configuration.nacos.namespace",
+      "configuration.nacos.password",
+      "configuration.nacos.username",
+      "configuration.nacos.period",
+      "configuration.nacos.secretKey"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate": [
+      "default.duration",
+      "services[0].duration",
+      "services[1].duration",
+      "services[1].name",
+      "default.rate",
+      "services[0].rate",
+      "services[1].rate",
+      "services[0].name"
+    ],
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated4Group": [
+      "configuration.etcd.period",
+      "configuration.etcd.endpoints",
+      "configuration.etcd.namespace"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify": [
+      "services[1].duration",
+      "services[1].name",
+      "services[0].rate",
+      "services[0].duration",
+      "default.duration",
+      "services[1].rate",
+      "default.rate",
+      "services[0].name"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate": [
+      "services[1].duration",
+      "default.duration",
+      "services[0].name",
+      "services[0].rate",
+      "services[1].name",
+      "default.rate",
+      "services[1].rate",
+      "services[0].duration"
+    ],
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group": [
+      "configuration.apollo.period",
+      "configuration.apollo.apolloEnv",
+      "configuration.apollo.apolloCluster",
+      "configuration.apollo.appId",
+      "configuration.apollo.apolloMeta"
+    ],
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated": [
+      "configuration.etcd.period",
+      "configuration.etcd.endpoints",
+      "configuration.etcd.namespace"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify": [
+      "default.rate",
+      "services[0].rate",
+      "services[1].duration",
+      "services[1].rate",
+      "default.duration",
+      "services[0].duration",
+      "services[1].name",
+      "services[0].name"
+    ],
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated": [
+      "configuration.nacos.password",
+      "configuration.nacos.port",
+      "configuration.nacos.accessKey",
+      "configuration.nacos.secretKey",
+      "configuration.nacos.namespace",
+      "configuration.nacos.group",
+      "configuration.nacos.period",
+      "configuration.nacos.serverAddr",
+      "configuration.nacos.username"
+    ],
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated4Group": [
+      "configuration.consul.hostAndPorts",
+      "configuration.consul.period"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify": [
+      "services[0].name",
+      "services[0].duration",
+      "services[1].name",
+      "services[0].rate",
+      "default.duration",
+      "services[1].rate",
+      "services[1].duration",
+      "default.rate"
+    ],
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadConfig": [
+      "storage.mysql.metadataQueryMaxSize",
+      "storage.mysql.properties.jdbcUrl"
+    ],
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig": [
+      "configuration.zookeeper.maxRetries",
+      "configuration.zookeeper.period",
+      "configuration.zookeeper.baseSleepTimeMs",
+      "configuration.zookeeper.namespace",
+      "configuration.zookeeper.hostPort"
+    ],
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated": [
+      "configuration.consul.hostAndPorts",
+      "configuration.consul.period"
+    ],
+    "org.apache.skywalking.oap.server.library.module.ApplicationConfigurationTest#testBuildConfig": [
+      "MO-1.MO-1-P1.prop2",
+      "MO-1.MO-1-P1.p1",
+      "MO-1.MO-1-P1.p2"
+    ],
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadStringTypeConfig": [
+      "receiver-zipkin.default.restHost"
+    ],
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit": [
+      "services[0].name",
+      "default.rate",
+      "services[1].name",
+      "services[0].duration",
+      "services[1].rate",
+      "default.duration",
+      "services[1].duration",
+      "services[0].rate"
+    ],
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadBooleanTypeConfig": [
+      "core.default.enableDataKeeperExecutor"
+    ],
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadSpecialStringTypeConfig": [
+      "storage.mysql.properties.dataSource.password"
+    ],
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadIntegerTypeConfig": [
+      "receiver-zipkin.default.restPort"
+    ]
+  }

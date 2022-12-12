@@ -1,0 +1,280 @@
+diff --git a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
+index a22d7ab..04036eb 100644
+--- a/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
++++ b/oap-server/analyzer/agent-analyzer/src/main/java/org/apache/skywalking/oap/server/analyzer/provider/trace/TraceSamplingPolicyWatcher.java
+@@ -43,6 +43,7 @@ public class TraceSamplingPolicyWatcher extends ConfigChangeWatcher {
+     public TraceSamplingPolicyWatcher(AnalyzerModuleConfig moduleConfig, ModuleProvider provider) {
+         super(AnalyzerModule.NAME, provider, "traceSamplingPolicy");
+         this.defaultSamplingPolicySettings = parseFromFile(moduleConfig.getTraceSamplingPolicySettingsFile());
++        log.info("[CTest SETTINGS MAP] " + defaultSamplingPolicySettings);
+         loadDefaultPolicySettings();
+     }
+ 
+diff --git a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
+index f4f0586..4fc02f7 100644
+--- a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
++++ b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ApplicationConfiguration.java
+@@ -20,10 +20,12 @@ package org.apache.skywalking.oap.server.library.module;
+ 
+ import java.util.HashMap;
+ import java.util.Properties;
++import lombok.extern.slf4j.Slf4j;
+ 
+ /**
+  * Modulization configurations. The {@link ModuleManager} is going to start, lookup, start modules based on this.
+  */
++@Slf4j
+ public class ApplicationConfiguration {
+     private HashMap<String, ModuleConfiguration> modules = new HashMap<>();
+ 
+@@ -32,6 +34,7 @@ public class ApplicationConfiguration {
+     }
+ 
+     public ModuleConfiguration addModule(String moduleName) {
++        log.warn("[CTEST][getModuleConfiguration] ###" + moduleName + "###" + getStackTrace());
+         ModuleConfiguration newModule = new ModuleConfiguration();
+         modules.put(moduleName, newModule);
+         return newModule;
+@@ -42,19 +45,30 @@ public class ApplicationConfiguration {
+     }
+ 
+     public ModuleConfiguration getModuleConfiguration(String name) {
++        log.warn("[CTEST][getModuleConfiguration] ###" + name + "###" + getStackTrace());
+         return modules.get(name);
+     }
+ 
++    private static String getStackTrace() {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }
++
+     /**
+      * The configurations about a certain module.
+      */
++    @Slf4j
+     public static class ModuleConfiguration {
+         private HashMap<String, ProviderConfiguration> providers = new HashMap<>();
+ 
+         private ModuleConfiguration() {
+         }
+ 
+-        public Properties getProviderConfiguration(String name) {
++        public PropertiesWrapper getProviderConfiguration(String name) {
++            log.warn("[CTEST][getProviderConfiguration] ###" + name + "### providers " + providers.get(name).getProperties() + getStackTrace());
+             return providers.get(name).getProperties();
+         }
+ 
+@@ -63,24 +77,72 @@ public class ApplicationConfiguration {
+         }
+ 
+         public ModuleConfiguration addProviderConfiguration(String name, Properties properties) {
++            log.warn("[CTEST][getProviderConfiguration] ###" + name + "### providers " + properties + getStackTrace());
+             ProviderConfiguration newProvider = new ProviderConfiguration(properties);
+             providers.put(name, newProvider);
+             return this;
+         }
+     }
+ 
++    @Slf4j
++    public static class PropertiesWrapper extends Properties {
++        @Override
++        public synchronized Object get(Object key) {
++            log.info("[CTEST][PropertiesWrapper] ###" + key + "### test");
++            return super.get(key);
++        }
++
++        @Override
++        public String getProperty(String key) {
++            log.info("[CTEST][PropertiesWrapper] ###" + key + "###");
++            return super.getProperty(key);
++        }
++
++        @Override
++        public synchronized java.lang.Object put(java.lang.Object key, java.lang.Object value) {
++            log.info("[CTEST][PropertiesWrapper-reset] ###" + key + "### " + "***" + value + "***");
++            return super.put(key, value);
++        }
++    }
++
++    @Slf4j
++    public static class SubPropertiesWrapper extends Properties {
++        @Override
++        public synchronized Object get(Object key) {
++            log.info("[CTEST][SubPropertiesWrapper] ###" + key + "### test");
++            return super.get(key);
++        }
++
++        @Override
++        public String getProperty(String key) {
++            log.info("[CTEST][SubPropertiesWrapper] ###" + key + "###");
++            return super.getProperty(key);
++        }
++
++        @Override
++        public synchronized java.lang.Object put(java.lang.Object key, java.lang.Object value) {
++            log.info("[CTEST][SubPropertiesWrapper-reset] ###" + key + "### " + "***" + value + "***");
++            return super.put(key, value);
++        }
++    }
++
+     /**
+      * The configuration about a certain provider of a module.
+      */
++    @Slf4j
+     public static class ProviderConfiguration {
+-        private Properties properties;
++        private PropertiesWrapper propertiesWrapper;
+ 
+         ProviderConfiguration(Properties properties) {
+-            this.properties = properties;
++            PropertiesWrapper wrapper = new PropertiesWrapper();
++            properties.forEach((k, v) -> {
++                wrapper.put(k, v);
++            });
++            this.propertiesWrapper = wrapper;
+         }
+ 
+-        private Properties getProperties() {
+-            return properties;
++        private PropertiesWrapper getProperties() {
++            return propertiesWrapper;
+         }
+     }
+ }
+diff --git a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
+index ad04576..453ebc5 100644
+--- a/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
++++ b/oap-server/server-library/library-module/src/main/java/org/apache/skywalking/oap/server/library/module/ModuleDefine.java
+@@ -20,14 +20,16 @@ package org.apache.skywalking.oap.server.library.module;
+ 
+ import java.lang.reflect.Field;
+ import java.util.Enumeration;
+-import java.util.Properties;
++import lombok.extern.slf4j.Slf4j;
+ import java.util.ServiceLoader;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
++import static org.apache.skywalking.oap.server.library.module.ApplicationConfiguration.PropertiesWrapper;
+ 
+ /**
+  * A module definition.
+  */
++@Slf4j
+ public abstract class ModuleDefine implements ModuleProviderHolder {
+ 
+     private static final Logger LOGGER = LoggerFactory.getLogger(ModuleDefine.class);
+@@ -96,8 +98,8 @@ public abstract class ModuleDefine implements ModuleProviderHolder {
+         loadedProvider.prepare();
+     }
+ 
+-    private void copyProperties(ModuleConfig dest, Properties src, String moduleName,
+-        String providerName) throws IllegalAccessException {
++    private void copyProperties(ModuleConfig dest, PropertiesWrapper src, String moduleName,
++                                String providerName) throws IllegalAccessException {
+         if (dest == null) {
+             return;
+         }
+diff --git a/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java b/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
+index 3bccd30..0e86f74 100644
+--- a/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
++++ b/oap-server/server-starter/src/main/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoader.java
+@@ -21,12 +21,15 @@ package org.apache.skywalking.oap.server.starter.config;
+ import java.io.FileNotFoundException;
+ import java.io.Reader;
+ import java.util.ArrayList;
++import java.util.List;
+ import java.util.Iterator;
+ import java.util.Map;
+ import java.util.Properties;
+ import lombok.extern.slf4j.Slf4j;
+ import org.apache.skywalking.oap.server.library.util.PropertyPlaceholderHelper;
+ import org.apache.skywalking.oap.server.library.module.ApplicationConfiguration;
++import static org.apache.skywalking.oap.server.library.module.ApplicationConfiguration.PropertiesWrapper;
++import static org.apache.skywalking.oap.server.library.module.ApplicationConfiguration.SubPropertiesWrapper;
+ import org.apache.skywalking.oap.server.library.module.ProviderNotFoundException;
+ import org.apache.skywalking.oap.server.library.util.CollectionUtils;
+ import org.apache.skywalking.oap.server.library.util.ResourceUtils;
+@@ -80,7 +83,11 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+                                             subProperties.put(key, value);
+                                             replacePropertyAndLog(key, value, subProperties, providerName);
+                                         });
+-                                        properties.put(propertyName, subProperties);
++                                        SubPropertiesWrapper subPropertiesWrapper = new SubPropertiesWrapper();
++                                        subProperties.forEach((k, v) -> {
++                                            subPropertiesWrapper.put(k, v);
++                                        });
++                                        properties.put(propertyName, subPropertiesWrapper);
+                                     } else {
+                                         properties.put(propertyName, propertyValue);
+                                         replacePropertyAndLog(propertyName, propertyValue, properties, providerName);
+@@ -200,7 +207,7 @@ public class ApplicationConfigLoader implements ConfigLoader<ApplicationConfigur
+         if (!moduleConfiguration.has(providerName)) {
+             return;
+         }
+-        Properties providerSettings = moduleConfiguration.getProviderConfiguration(providerName);
++        PropertiesWrapper providerSettings = moduleConfiguration.getProviderConfiguration(providerName);
+         if (!providerSettings.containsKey(settingKey)) {
+             return;
+         }
+diff --git a/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java b/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
+index 8e927cf..12e0157 100644
+--- a/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
++++ b/oap-server/server-starter/src/test/java/org/apache/skywalking/oap/server/starter/config/ApplicationConfigLoaderTestCase.java
+@@ -19,6 +19,7 @@
+ package org.apache.skywalking.oap.server.starter.config;
+ 
+ import org.apache.skywalking.oap.server.library.module.ApplicationConfiguration;
++import static org.apache.skywalking.oap.server.library.module.ApplicationConfiguration.PropertiesWrapper;
+ import org.junit.Before;
+ import org.junit.Test;
+ 
+@@ -44,8 +45,8 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("storage")
+-                                                            .getProviderConfiguration("mysql");
++        PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("storage")
++                                                                   .getProviderConfiguration("mysql");
+         assertThat(providerConfig.get("metadataQueryMaxSize"), is(5000));
+         assertThat(providerConfig.get("properties"), instanceOf(Properties.class));
+         Properties properties = (Properties) providerConfig.get("properties");
+@@ -54,7 +55,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadStringTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
++        PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
+                 .getProviderConfiguration("default");
+         String host = (String) providerConfig.get("restHost");
+         assertEquals("0.0.0.0", host);
+@@ -62,7 +63,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadIntegerTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
++        PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("receiver-zipkin")
+                 .getProviderConfiguration("default");
+         Integer port = (Integer) providerConfig.get("restPort");
+         assertEquals(Integer.valueOf(9411), port);
+@@ -70,7 +71,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadBooleanTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("core")
++        PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("core")
+                 .getProviderConfiguration("default");
+         Boolean enableDataKeeperExecutor = (Boolean) providerConfig.get("enableDataKeeperExecutor");
+         assertEquals(Boolean.TRUE, enableDataKeeperExecutor);
+@@ -78,7 +79,7 @@ public class ApplicationConfigLoaderTestCase {
+ 
+     @Test
+     public void testLoadSpecialStringTypeConfig() {
+-        Properties providerConfig = applicationConfiguration.getModuleConfiguration("storage")
++        PropertiesWrapper providerConfig = applicationConfiguration.getModuleConfiguration("storage")
+                 .getProviderConfiguration("mysql");
+         Properties properties = (Properties) providerConfig.get("properties");
+         String password = (String) properties.get("dataSource.password");

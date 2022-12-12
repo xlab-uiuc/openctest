@@ -1,0 +1,197 @@
+{
+  "services[1].name": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.nacos.serverAddr": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "receiver-zipkin.default.restHost": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadStringTypeConfig"
+  ],
+  "configuration.nacos.secretKey": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.apollo.apolloCluster": [
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group",
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated"
+  ],
+  "services[0].rate": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.consul.hostAndPorts": [
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated4Group"
+  ],
+  "configuration.etcd.period": [
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated4Group"
+  ],
+  "configuration.apollo.appId": [
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group",
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.nacos.username": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.apollo.period": [
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group",
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated"
+  ],
+  "storage.mysql.properties.jdbcUrl": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadConfig"
+  ],
+  "storage.mysql.metadataQueryMaxSize": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadConfig"
+  ],
+  "configuration.etcd.endpoints": [
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated4Group"
+  ],
+  "configuration.nacos.period": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "MO-1.MO-1-P1.p2": [
+    "org.apache.skywalking.oap.server.library.module.ApplicationConfigurationTest#testBuildConfig"
+  ],
+  "services[0].name": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.zookeeper.baseSleepTimeMs": [
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig"
+  ],
+  "configuration.apollo.apolloEnv": [
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group",
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated"
+  ],
+  "core.default.enableDataKeeperExecutor": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadBooleanTypeConfig"
+  ],
+  "default.rate": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "services[0].duration": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.consul.period": [
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.consul.ITConsulConfigurationTest#shouldReadUpdated4Group"
+  ],
+  "configuration.zookeeper.maxRetries": [
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig"
+  ],
+  "storage.mysql.properties.dataSource.password": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadSpecialStringTypeConfig"
+  ],
+  "configuration.zookeeper.hostPort": [
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig"
+  ],
+  "receiver-zipkin.default.restPort": [
+    "org.apache.skywalking.oap.server.starter.config.ApplicationConfigLoaderTestCase#testLoadIntegerTypeConfig"
+  ],
+  "configuration.apollo.apolloMeta": [
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated4Group",
+    "org.apache.skywalking.oap.server.configuration.apollo.ITApolloConfigurationTest#shouldReadUpdated"
+  ],
+  "default.duration": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.nacos.accessKey": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.nacos.port": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "services[1].rate": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.nacos.namespace": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.etcd.namespace": [
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.etcd.ITEtcdConfigurationTest#shouldReadUpdated4Group"
+  ],
+  "MO-1.MO-1-P1.p1": [
+    "org.apache.skywalking.oap.server.library.module.ApplicationConfigurationTest#testBuildConfig"
+  ],
+  "services[1].duration": [
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testStaticConfigInit",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testTraceLatencyThresholdDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateDynamicUpdate",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testDefaultSampleRateNotify",
+    "org.apache.skywalking.oap.server.analyzer.provider.trace.TraceSamplingPolicyWatcherTest#testServiceSampleRateNotify"
+  ],
+  "configuration.nacos.group": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ],
+  "configuration.zookeeper.period": [
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig"
+  ],
+  "MO-1.MO-1-P1.prop2": [
+    "org.apache.skywalking.oap.server.library.module.ApplicationConfigurationTest#testBuildConfig"
+  ],
+  "configuration.zookeeper.namespace": [
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated",
+    "org.apache.skywalking.oap.server.configuration.zookeeper.it.ITZookeeperConfigurationTest#shouldReadUpdated4GroupConfig"
+  ],
+  "configuration.nacos.password": [
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdatedGroup",
+    "org.apache.skywalking.oap.server.configuration.nacos.ITNacosConfigurationTest#shouldReadUpdated"
+  ]
+}
