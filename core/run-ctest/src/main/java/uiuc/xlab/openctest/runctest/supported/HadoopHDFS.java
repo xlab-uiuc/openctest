@@ -42,8 +42,10 @@ import java.util.Set;
 
 
 public final class HadoopHDFS implements CTestRunnable {
+    /** logger for this class. */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(HadoopHDFS.class);
+    /** surefire file name template. */
     private static final String SUREFIRE_OUTPUT_XML = "TEST-@.xml";
     /** root path of the target project. */
     private Path rootPath;

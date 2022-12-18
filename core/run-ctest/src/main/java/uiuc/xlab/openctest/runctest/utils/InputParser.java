@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 public final class InputParser {
+    /** logger for this class. */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(InputParser.class);
 

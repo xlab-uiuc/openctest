@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 public final class CTestMain {
+    /** logger for this class. */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(CTestMain.class);
 

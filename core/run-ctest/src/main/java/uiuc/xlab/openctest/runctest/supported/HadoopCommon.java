@@ -41,8 +41,10 @@ import java.util.Properties;
 import java.util.Set;
 
 public final class HadoopCommon implements CTestRunnable {
+    /** logger for this class. */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(HadoopCommon.class);
+    /** surefire file name template. */
     private static final String SUREFIRE_OUTPUT_XML = "TEST-@.xml";
     /** root path of the target project. */
     private Path rootPath;
