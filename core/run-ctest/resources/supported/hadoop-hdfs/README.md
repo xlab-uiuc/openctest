@@ -4,11 +4,8 @@ Prerequisites:
 - Maven 3
 
 Steps:
-1. clone hadoop, `git clone https://github.com/apache/hadoop.git ../../../app/hadoop && cd ../../../app/hadoop`
-2. checkout commit, `git checkout a585a73`
-3. apply injection patch, `git apply ../../resources/supported/hadoop-hdfs/ctest-injection.patch`
-4. build the project, `mvn -pl hadoop-hdfs-project/hadoop-hdfs -am install -DskipTests`
-5. verify setup, `mvn -pl hadoop-hdfs-project/hadoop-hdfs test -Dtest=org.apache.hadoop.hdfs.TestEncryptionZonesWithKMS#testIsEncryptedMethod`
+1. run setup script, `./setup.sh`
+2. (Optional) go to hadoop directory and verify setup, `mvn -pl hadoop-hdfs-project/hadoop-hdfs test -Dtest=org.apache.hadoop.hdfs.TestEncryptionZonesWithKMS#testIsEncryptedMethod`
 
 # Additional Parameters For CTest
 For running CTest, please refer to [doc](../../../README.md#how-to-run-ctest)

@@ -4,11 +4,8 @@ Prerequisites:
 - Maven 3
 
 Steps:
-1. clone hadoop, `git clone https://github.com/apache/hadoop.git ../../../app/hadoop && cd ../../../app/hadoop`
-2. checkout commit, `git checkout a585a73`
-3. apply injection patch, `git apply ../../resources/supported/hadoop-common/ctest-injection.patch`
-4. build the project, `mvn -pl hadoop-common-project/hadoop-common -am install -DskipTests`
-5. verify setup, `mvn -pl hadoop-common-project/hadoop-common test -Dtest=org.apache.hadoop.crypto.TestCryptoStreams#testAvailable`
+1. run setup script, `./setup.sh`
+2. (Optional) go to hadoop directory and verify setup, `mvn -pl hadoop-common-project/hadoop-common test -Dtest=org.apache.hadoop.crypto.TestCryptoStreams#testAvailable`
 
 # Additional Parameters For CTest
 For running CTest, please refer to [doc](../../../README.md#how-to-run-ctest)
