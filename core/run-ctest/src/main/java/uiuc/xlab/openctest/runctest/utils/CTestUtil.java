@@ -1,22 +1,31 @@
 package uiuc.xlab.openctest.runctest.utils;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+public final class CTestUtil {
+    private CTestUtil() {
+        throw new IllegalStateException("Utility class cannot be instantiated");
+    }
 
-public class CTestUtil {
     /**
-     * Filter out those tests that are not affected by the modified configuration
-     * values.
+     * Filter out those tests that are not affected by the
+     * modified configuration values.
      *
+     * @param paramTestMapping a map of parameters and test methods.
+     * @param modifiedConfig   a map of config and its modified value.
+     * @param toBeTestedTest   a set of tests to be tested.
      * @return a set of affected tests.
      */
-    public static Set<String> filterUnaffectedTest(JSONObject paramTestMapping,
-            Map<String, Object> modifiedConfig, Set<String> toBeTestedTest) {
+    public static Set<String> filterUnaffectedTest(
+            final JSONObject paramTestMapping,
+            final Map<String, Object> modifiedConfig,
+            final Set<String> toBeTestedTest) {
         Map<String, Set<String>> paramTestMap = new HashMap<>();
         modifiedConfig.keySet().forEach(param -> {
             JSONArray tests = (JSONArray) paramTestMapping.get(param);
@@ -26,7 +35,8 @@ public class CTestUtil {
             }
 
             for (Object test : tests) {
-                paramTestMap.computeIfAbsent(param, k -> new HashSet<String>()).add(test.toString());
+                paramTestMap.computeIfAbsent(
+                        param, k -> new HashSet<String>()).add(test.toString());
             }
         });
 
@@ -36,9 +46,6 @@ public class CTestUtil {
             associatedTest.retainAll(tests);
             affectedTest.addAll(associatedTest);
         });
-
-        // Set<String> unaffectedTest = new HashSet<>(toBeTestedTest);
-        // unaffectedTest.removeAll(affectedTest);
 
         return affectedTest;
     }

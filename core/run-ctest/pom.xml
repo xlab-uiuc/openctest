@@ -2,15 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>openctest</artifactId>
-    <groupId>uiuc.xlab</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
 
-  <artifactId>run-ctest</artifactId>
+  <groupId>uiuc.xlab</groupId>
+  <artifactId>openctest</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <url>https://github.com/xlab-uiuc/openctest</url>
+  <packaging>pom</packaging>
+
+  <organization>
+    <name>XLAB-UIUC</name>
+  </organization>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -57,7 +58,7 @@
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -71,7 +72,28 @@
                 <mainClass>uiuc.xlab.openctest.runctest.CTestMain</mainClass>
             </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.2.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>10.5.0</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <configLocation>checkstyle.xml</configLocation>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
+
+  <reporting>
+    <plugins>
+
+    </plugins>
+  </reporting>
 </project>

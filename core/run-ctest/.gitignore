@@ -19,6 +19,9 @@
 .project
 .settings/
 
+# IntelliJ
+.idea
+
 # Maven (from: https://github.com/github/gitignore/blob/master/Maven.gitignore)
 target/
 pom.xml.tag
