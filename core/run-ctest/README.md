@@ -23,38 +23,40 @@ To run the CTest, you need to pass following parameters:
 
 `project.path`
 - required
-- the relative path to the target project. If the target project is a submodule of a larger parent project, you have to specify the path to the submodule not the parent project
+- the relative or absolute path to the target project.
+- note: if the target project is a submodule of a larger parent project, you have to specify the path to the submodule not the parent project. For example, if the target project is the hadoop-common module in the hadoop, use `.../hadoop/hadoop-common-project/hadoop-common`
 
 `mapping.path`
 - required
-- the relative path to the `param_unset_getter_map.json` or `ctests-<project>.json`
+- the relative or absolute path to the `param_unset_getter_map.json` or `ctests-<project>.json`
 
 `conf.pairs`
-- if `conf.file` is not specified, this parameter must be set. For target projects accepting complex configurations, such as nested values, you need to use the `conf.file` parameter
 - a list of modified configuration parameter-value pairs, separated by `,`
+- note: if `conf.file` is not specified, this parameter must be set.
+- note: for target projects accepting complex configurations, such as nested values, you need to use the `conf.file` parameter
 
 `conf.file`
-- if `conf.pairs` is not specified, this parameter must be set
-- the relative path to a `YAML` file containing modified configuration values
+- the relative or absolute path to a `YAML` file containing modified configuration values
+- note: if `conf.pairs` is not specified, this parameter must be set
 
 `test.methods`
-- if `test.file` is not specified, this parameter must be set
 - a list of tests that you want to test, separated by `,`
+- note: if `test.file` is not specified, this parameter must be set
 
 `test.file`
-- if `test.methods` is not specified, this parameter must be set
-- the relative path to a `TXT` file containing all tests that you want to test, separated by new line
+- the relative or absolute path to a `TXT` file containing all tests that you want to test, separated by new line
+- note: if `test.methods` is not specified, this parameter must be set
 
 `project.props`
-- generally optional, please check the `README` of specific project for required command line properties
 - a list of command line properties that you want to pass to the target project, separated by `,`
+- note: generally optional, please check the `README` of specific project for required command line properties
 
 `project.args`
-- generally optional, please check the `README` of specific project for required command line arguments
 - a list of command line arguments that you want to pass to the target project, separated by `,`
+- note: generally optional, please check the `README` of specific project for required command line arguments
 
 ### Command Examples
-Example with 2 Success and 1 Skip. `testCedeActive` is skipped because it is not affected by the modified configuration
+Example with 2 Success and 1 Skip. `testCedeActive` is skipped because it is not affected by the modified configuration.
 ```
 mvn exec:java -q \
 -Dproject.name=hadoop-common \
