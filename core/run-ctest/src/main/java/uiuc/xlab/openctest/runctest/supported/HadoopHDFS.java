@@ -53,8 +53,8 @@ public final class HadoopHDFS implements CTestRunnable {
     private Path configInjectionPath;
 
     @Override
-    public void setProjectRootPath(final Path rootPath) {
-        this.rootPath = rootPath;
+    public void setProjectRootPath(final Path targetPath) {
+        this.rootPath = targetPath;
         surefirePath = Path.of(
                 this.rootPath.toString(),
                 "target/surefire-reports");

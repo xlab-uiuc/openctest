@@ -52,8 +52,8 @@ public final class HadoopCommon implements CTestRunnable {
     private Path configInjectionPath;
 
     @Override
-    public void setProjectRootPath(final Path rootPath) {
-        this.rootPath = rootPath;
+    public void setProjectRootPath(final Path targePath) {
+        this.rootPath = targePath;
         surefirePath = Path.of(this.rootPath.toString(),
                 "target/surefire-reports");
         configInjectionPath = Path.of(this.rootPath.toString(),
