@@ -9,7 +9,7 @@ Using the following instructions to add support for new project.
 
 ## Instrument Target Project
 - You may need to modify the source code of target project, so the target project will load the modified configuration values when it is running.
-    - One way is to use the project build-in function to load modified configuration files during runtime. Check out example [git patch](../resources/supported/hadoop-common/ctest-injection.patch).
+    - One way is to use the project build-in function to load modified configuration files during runtime. Check out example [git patch](../../patch/hadoop-common/interception.patch).
     - Another way is to first load the default configuration values as a Map object then load the modified configuration files as another Map object, and merge them together, then pass the merged one into downstream operation.
 - Pack the modification as a git patch for future reference.
 
