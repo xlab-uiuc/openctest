@@ -63,7 +63,7 @@ public final class HadoopHDFS implements CTestRunnable {
         configInjectionPath = Path.of(
                 this.rootPath.toString(),
                 "target/classes",
-                "ctest-injected.xml");
+                "core-ctest.xml");
     }
 
     @Override
