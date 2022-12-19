@@ -9,10 +9,11 @@ import org.yaml.snakeyaml.Yaml;
 import uiuc.xlab.openctest.runctest.interfaces.CTestRunnable;
 import uiuc.xlab.openctest.runctest.supported.CTestSupported;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.FileReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +26,9 @@ import java.util.Map;
 import java.util.Set;
 
 public final class InputParser {
-    /** logger for this class. */
+    /**
+     * logger for this class.
+     */
     private static final Logger LOGGER =
             LoggerFactory.getLogger(InputParser.class);
 
@@ -58,12 +61,27 @@ public final class InputParser {
             throw new NullPointerException("cannot read property project.path");
         }
 
-        return Paths.get(projectPath).toAbsolutePath();
+        // Java path cannot parse ~, which is home directory for current
+        // user in Linux, manually parse it here.
+        File injectedFile = new File(projectPath.trim().replaceFirst(
+                "^~",
+                System.getProperty("user.home")));
+        String canonicalPath = "";
+
+        // try to get the canonical path of the file
+        try {
+            canonicalPath = injectedFile.getCanonicalPath();
+            return Paths.get(canonicalPath).toAbsolutePath();
+        } catch (IOException ex) {
+            throw new NullPointerException(
+                "failed to inject, cannot find injected file.");
+        }
     }
 
     /**
      * Return additional command line parameters passed to the target project.
-     * <p> Example: you can suppress INFO log using `-Dproject.args=-q`.
+     * <p>
+     * Example: you can suppress INFO log using `-Dproject.args=-q`.
      * Or, you can pass use.surefire=true to avoid recompiling using
      * `-Dproject.props=use.surefire=true`.
      *
