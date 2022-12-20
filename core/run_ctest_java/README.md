@@ -68,5 +68,16 @@ mvn exec:java -q \
 -Dproject.args=-q
 ```
 
+Example with 1 Success and 1 Fail. `testCqlBatch_MultipleTablesAuditing` is failed because `num_tokens must be >= 1`
+```
+mvn exec:java -q \
+-Dproject.name=cassandra \
+-Dproject.path=app/cassandra \
+-Dmapping.path=resources/supported/cassandra/param_unset_getter_map.json \
+-Dconf.file=examples/example-config.yaml \
+-Dtest.file=examples/example-test.txt \
+-Dproject.props=use.jdk11=true
+```
+
 ## How To Support New Project
 Check out instructions in [here](./docs/Support-New-Project.md)

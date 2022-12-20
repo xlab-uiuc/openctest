@@ -19,9 +19,11 @@ public final class CTestSupported {
                 return new HadoopCommon();
             case "hadoop-hdfs":
                 return new HadoopHDFS();
+            case "cassandra":
+                return new Cassandra();
             default:
                 throw new IllegalStateException(String.format(
-                        "run-ctest doesn't support {}", project));
+                        "run-ctest doesn't support %s", project));
         }
     }
 }
