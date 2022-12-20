@@ -12,11 +12,13 @@ HDFS = "hadoop-hdfs"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
+CAMEL = "camel-core"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
+CTEST_CAMEL_DIR = os.path.join(APP_DIR, "ctest-camel")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -24,6 +26,7 @@ PROJECT_DIR = {
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
+    CAMEL: CTEST_CAMEL_DIR
 }
 
 
@@ -34,6 +37,7 @@ MODULE_SUBDIR = {
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
+    CAMEL: "core/camel-core"
 }
 
 
@@ -58,6 +62,7 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
+    CAMEL: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[CAMEL], SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
@@ -74,7 +79,8 @@ DEFAULT_CONF_FILE = {
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
-    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    CAMEL: os.path.join(DEFAULT_CONF_DIR, CAMEL + "-default.tsv")
 }
 
 
@@ -96,6 +102,9 @@ INJECTION_PATH = {
     ],
     ALLUXIO: [
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
+    ],
+    CAMEL: [
+        os.path.join(CTEST_CAMEL_DIR, "core/camel-core/camel-ctest.properties")
     ]
 }
 

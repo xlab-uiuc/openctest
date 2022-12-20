@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_camel() {
+    [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
+    cd app/ctest-camel
+    git fetch && git checkout ctest-logging
+    mvn clean install -DskipTests
+}
+
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +72,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            camel) setup_camel ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and camel." ;;
         esac
     fi
 }
