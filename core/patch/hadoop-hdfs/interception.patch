@@ -1,0 +1,42 @@
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java b/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
+index 65efaf9dfae..05d13b209b6 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
++++ b/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
+@@ -38,6 +38,7 @@ public class HdfsConfiguration extends Configuration {
+     Configuration.addDefaultResource("hdfs-rbf-default.xml");
+     Configuration.addDefaultResource("hdfs-site.xml");
+     Configuration.addDefaultResource("hdfs-rbf-site.xml");
++    Configuration.addDefaultResource("ctest-injected.xml"); //CTEST
+   }
+
+   public HdfsConfiguration() {
+diff --git a/hadoop-hdfs-project/hadoop-hdfs/pom.xml b/hadoop-hdfs-project/hadoop-hdfs/pom.xml
+index 2e4c2991f99..5480c205f85 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs/pom.xml
+@@ -222,6 +222,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/pom.xml b/pom.xml
+index f4e435c7493..f1611bfab1a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -142,6 +142,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++       <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
