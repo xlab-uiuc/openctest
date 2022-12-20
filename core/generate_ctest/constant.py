@@ -1,7 +1,8 @@
 import os
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
-APP_DIR = os.path.join(CUR_DIR, "app")
+APP_DIR = os.path.realpath(os.path.join(CUR_DIR, "..", "app"))
+GEN_CTEST_DIR = CUR_DIR
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
@@ -9,13 +10,32 @@ CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_CASSANDRA_DIR = os.path.join(APP_DIR, "ctest-cassandra")
 
-MODULE_PATH = {
-    "hadoop-common": CTEST_HADOOP_DIR,
-    "hadoop-hdfs": CTEST_HADOOP_DIR,
-    "hbase-server": CTEST_HBASE_DIR,
-    "alluxio-core": CTEST_ALLUXIO_DIR,
+HCOMMON = "hadoop-common"
+HDFS = "hadoop-hdfs"
+HBASE = "hbase-server"
+ZOOKEEPER = "zookeeper-server"
+ALLUXIO = "alluxio-core"
+CASSANDRA = "cassandra"
+
+PROJECT_DIR = {
+    HCOMMON: CTEST_HADOOP_DIR,
+    HDFS: CTEST_HADOOP_DIR,
+    HBASE: CTEST_HBASE_DIR,
+    ZOOKEEPER: CTEST_ZOOKEEPER_DIR,
+    ALLUXIO: CTEST_ALLUXIO_DIR,
     "cassandra": CTEST_CASSANDRA_DIR
 }
+
+# the module of the project we experimented on
+MODULE_SUBDIR = {
+    HCOMMON: "hadoop-common-project/hadoop-common",
+    HDFS: "hadoop-hdfs-project/hadoop-hdfs",
+    HBASE: "hbase-server",
+    ZOOKEEPER: "zookeeper-server",
+    ALLUXIO: "core",
+    "cassandra": ""
+}
+
 
 SRC_SUBDIR = {
     "hadoop-common": "hadoop-common-project/hadoop-common",
@@ -45,6 +65,27 @@ LOCAL_CONF_PATH = {
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
+SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
+
+SUREFIRE_DIR = {
+    HCOMMON: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HCOMMON], SUREFIRE_SUBDIR)],
+    HDFS: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HDFS], SUREFIRE_SUBDIR)],
+    HBASE: [os.path.join(CTEST_HBASE_DIR, MODULE_SUBDIR[HBASE], SUREFIRE_SUBDIR)],
+    ZOOKEEPER: [os.path.join(CTEST_ZOOKEEPER_DIR, MODULE_SUBDIR[ZOOKEEPER], SUREFIRE_SUBDIR)],
+    ALLUXIO: [
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "base", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "client/fs", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "client/hdfs", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "common", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/common", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/proxy", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
+        os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
+    ],
+    "cassandra": [
+        os.path.join(CTEST_CASSANDRA_DIR, 'build/test/output')
+    ]
+}
 
 CTEST_SUREFIRE_PATH = {
     "hadoop-common": [
@@ -96,3 +137,42 @@ LOCAL_SUREFIRE_PATH = {
         os.path.join("surefire-reports/cassandra", LOCAL_SUREFIRE_SUFFIX)
     ]
 }
+
+# injecting config file location
+INJECTION_PATH = {
+    HCOMMON: [
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-common-project/hadoop-common/target/classes/core-ctest.xml")
+    ],
+    HDFS: [
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/core-ctest.xml"),
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/hdfs-ctest.xml")
+    ],
+    HBASE: [
+        os.path.join(CTEST_HBASE_DIR, "hbase-server/target/classes/core-ctest.xml"),
+        os.path.join(CTEST_HBASE_DIR, "hbase-server/target/classes/hbase-ctest.xml")
+    ],
+    ZOOKEEPER: [
+        os.path.join(CTEST_ZOOKEEPER_DIR, "zookeeper-server/ctest.cfg")
+    ],
+    ALLUXIO: [
+        os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
+    ],
+    "cassandra": [
+        os.path.join(CTEST_CASSANDRA_DIR, "test/conf/ctest-injection.yaml")
+    ]
+}
+
+# constants for ctest generation -- generated test result file
+GENCTEST_TR_DIR = os.path.join(GEN_CTEST_DIR, "test_result") # test result directory
+os.makedirs(GENCTEST_TR_DIR, exist_ok=True)
+TR_FILE = "test_result_{id}.tsv"
+MT_FILE = "missing_test_{id}.list"
+FAIL = "f" # test failed
+PASS = "p" # test passed
+GOOD_VAL = "GOOD"
+BAD_VAL = "BAD"
+SKIP_VAL = "SKIP"
+
+CTESTS_DIR = os.path.join(GEN_CTEST_DIR, "ctest_mapping")
+os.makedirs(CTESTS_DIR, exist_ok=True)
+CTESTS_FILE = "ctests-{project}.json"

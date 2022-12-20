@@ -1,7 +1,7 @@
 import re, sys
 
 sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 from program_input import p_input
 
@@ -25,15 +25,22 @@ def maven_cmd(test, add_time=False):
     print(">>>>[ctest_core] command: " + " ".join(cmd))
     return cmd
 
+def ant_cmd(affected_tests):
+    # affected_tests example: {'org.apache.cassandra.hints.HintsCatalogTest#deleteHintsTest'}
+    for test in affected_tests:
+        test_name, test_method = test.split('#')
+        cmd = ['ant', 'testsome', "-Dtest.name={}".format(test_name), "-Dtest.methods={}".format(test_method)]
+        print(">>>>[ctest_core] command: " + " ".join(cmd))
+    return cmd
 
 def strip_ansi(s):
     return ansi_escape.sub('', s)
 
 
 def join_test_string(tests):
-    test_by_cls = group_test_by_cls(tests)
+    classname_method_dict = group_test_by_cls(tests)
     ret = ""
-    for clsname, methods in test_by_cls.items():
+    for clsname, methods in classname_method_dict.items():
         ret += clsname
         ret += "#"
         ret += "+".join(list(methods))
@@ -59,11 +66,11 @@ def reverse_map(map):
             r_map[test].add(param)
     return r_map
 
-def encode_signature(params, tested_params):
+def encode_signature(params, affected_params):
     signature = ""
     for i in range(len(params)):
         param = params[i]
-        if param in tested_params:
+        if param in affected_params:
             signature = signature + "1"
         else:
             signature = signature + "0"
@@ -78,19 +85,21 @@ def decode_signature(params, signature):
             tested_params.add(params[i])
     return tested_params
 
-def split_tests(associated_test_map):
+def split_tests(param_test_dict):
     """split test to rule out value assumption interference"""
-    reversed_map = reverse_map(associated_test_map)
-    params = sorted(list(associated_test_map.keys()))
+    test_param_dict = reverse_map(param_test_dict)
+    params = sorted(list(param_test_dict.keys()))
     group_map = {}
-    for test in reversed_map.keys():
-        signature = encode_signature(params, reversed_map[test])
-        if signature not in group_map.keys():
-            group_map[signature] = set()
-        group_map[signature].add(test)
-    
-    for sig in group_map.keys():
-        tested_params = decode_signature(params, sig)
-        group_map[sig] = (tested_params, group_map[sig])
+    for test in test_param_dict.keys():
+        param_sign = encode_signature(params, test_param_dict[test])
+        if param_sign not in group_map.keys():
+            group_map[param_sign] = set()
+        group_map[param_sign].add(test)
 
-    return list(group_map.values())
+    res = {}
+    for sig in group_map.keys():
+        affected_params = decode_signature(params, sig)
+        # group_map[sig] = (affected_params, group_map[sig])
+        res[sig] = (affected_params, group_map[sig])
+
+    return list(res.values())

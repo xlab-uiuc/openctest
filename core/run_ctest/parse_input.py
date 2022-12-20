@@ -1,9 +1,6 @@
 """parse the param / value to inject"""
 
-import json, sys, re
-
-sys.path.append("..")
-from ctest_const import *
+import json, re
 
 import xml.etree.ElementTree as ET
 from program_input import p_input
@@ -49,7 +46,6 @@ def parse_conf_file(path):
 
 
 def parse_conf_file_xml(path):
-    deprecate_conf = load_deprecate_config_map()
     conf_map = {}
     fd = ET.parse(path)
     for kv in fd.getroot():
@@ -106,14 +102,14 @@ def extract_conf_diff(path):
     return conf_diff
 
 def extract_conf_diff_from_pair(param_value_dict):
-    default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project]) 
+    default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project])
     conf_diff = {}
     for param, value in param_value_dict.items():
         if param not in default_conf_map:
             print(">>>>[ctest_core] parameter {} in input config file is not in default config file".format(param))
         if param not in default_conf_map or value != default_conf_map[param]:
             conf_diff[param] = value
-    return conf_diff    
+    return conf_diff
 
 def parse_mapping(path):
     print(">>>>[ctest_core] loading mapping {}".format(path))

@@ -10,14 +10,14 @@ See **[Generating Parameter Sets for Ctests](https://github.com/xlab-uiuc/openct
 
 ```python
 p_input = {
-    "run_mode": "generate_ctest",
-    "project": "hadoop-common",
-    "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json",
-    "param_value_tsv": "sample-hadoop-common.tsv",
-    "display_mode": False,
-    "use_surefire": True,
-    "maven_args": [],
-    "cmd_timeout": None,
+    "run_mode": "generate_ctest", # string
+    "project": "cassandra", # string
+    "mapping_path": "../identify_param/results/cassandra/param_unset_getter_map.json", # string
+    "param_value_tsv": "sample-cassandra.tsv", # string
+    "display_mode": False, # bool
+    "use_surefire": True, # bool
+    "maven_args": [], # list of strings, each element is an option
+    "cmd_timeout": None, # int
 }
 ```
 
@@ -34,7 +34,7 @@ p_input = {
 
 Test result file is formatted as
 ```
-parameter	test1	value1	test_result	testcase_time	
+parameter	test1	value1	test_result	testcase_time
 parameter	test2	value1	test_result	testcase_time
 ...
 parameter	test1	value2	test_result	testcase_time

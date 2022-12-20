@@ -1,14 +1,14 @@
 """take meta argument and run the injection infrastructure"""
 
-import os, re, time, sys
+import os, time, sys
 from subprocess import Popen, PIPE, TimeoutExpired
 
 sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 from program_input import p_input
 from inject import inject_config, clean_conf_file
-from parse_output import parse_surefire
+from parse_output import *
 import run_test_utils
 
 display_mode = p_input["display_mode"]
@@ -17,9 +17,9 @@ cmd_timeout = p_input["cmd_timeout"]
 testing_dir = os.path.join(PROJECT_DIR[project], MODULE_SUBDIR[project])
 
 
-def run_test_batch(param_values, associated_test_map):
-    print(">>>>[ctest_core] start running ctests for {} parameters".format(len(associated_test_map)))
-    param_test_group = run_test_utils.split_tests(associated_test_map)
+def run_test_batch(param_value_dict, param_test_dict):
+    print(">>>>[ctest_core] start running ctests for {} parameters".format(len(param_test_dict)))
+    param_test_group = run_test_utils.split_tests(param_test_dict)
     print(">>>>[ctest_core] splitting into {} ctest group".format(len(param_test_group)))
     for index, group in enumerate(param_test_group):
         print(">>>>[ctest_core] group {}, tested_params: {}, group size: {}".format(index, ",".join(group[0]), len(group[1])))
@@ -27,14 +27,13 @@ def run_test_batch(param_values, associated_test_map):
     tr = run_test_utils.TestResult(ran_tests_and_time=set(), failed_tests=set())
     for index, group in enumerate(param_test_group):
         # # do injection for different test group and chdir for testing everytime
-        tested_params, tests = group
-        inject_config({p: param_values[p] for p in tested_params})
-        print(">>>>[ctest_core] running group {} where {} params shares {} ctests".format(index, len(tested_params), len(tests)))
-        test_str = run_test_utils.join_test_string(tests)
+        affected_params, affected_tests = group
+        inject_config({p: param_value_dict[p] for p in affected_params})
+        print(">>>>[ctest_core] running group {} where {} params shares {} ctests".format(index, len(affected_params), len(affected_tests)))
         os.chdir(testing_dir)
         print(">>>>[ctest_core] chdir to {}".format(testing_dir))
 
-        cmd = run_test_utils.maven_cmd(test_str)
+        cmd = run_test_utils.ant_cmd(affected_tests)
         if display_mode:
             os.system(" ".join(cmd))
             continue
@@ -48,8 +47,8 @@ def run_test_batch(param_values, associated_test_map):
             except TimeoutExpired as e:
                 # test hanged, treated as failure.
                 process.kill()
-                print(">>>>[ctest_core] maven cmd timeout {}".format(e))
-                clsname, testname = test.split("#")
+                print(">>>>[ctest_core] ant cmd timeout {}".format(e))
+                test = affected_tests.pop()
                 tr.ran_tests_and_time.add(test + "\t" + str(cmd_timeout))
                 tr.failed_tests.add(test)
                 continue
@@ -60,9 +59,10 @@ def run_test_batch(param_values, associated_test_map):
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
         print(print_output)
-        test_by_cls = run_test_utils.group_test_by_cls(tests)
-        for clsname, methods in test_by_cls.items():
+        classname_method_dict = run_test_utils.group_test_by_cls(affected_tests)
+        for clsname, methods in classname_method_dict.items():
             times, errors = parse_surefire(clsname, methods)
+
             for m in methods:
                 if m in times:
                     tr.ran_tests_and_time.add(clsname + "#" + m + "\t" + times[m])

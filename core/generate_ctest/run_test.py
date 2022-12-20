@@ -1,10 +1,9 @@
 """take meta argument and run the injection infrastructure"""
 
-import os, re, time, sys
+import os, time, sys
 from subprocess import Popen, PIPE, TimeoutExpired
 
-sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 from program_input import p_input
 from inject import inject_config, clean_conf_file
@@ -25,7 +24,7 @@ def run_test_seperate(param, value, associated_tests):
     print(">>>>[ctest_core] chdir to {}".format(testing_dir))
     start_time = time.time()
     for test in associated_tests:
-        cmd = run_test_utils.maven_cmd(test)
+        cmd = run_test_utils.ant_cmd(test)
         if display_mode:
             os.system(" ".join(cmd))
             continue

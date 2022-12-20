@@ -78,6 +78,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == 'cassandra':
+            if 'daemonInitialization' in trace or 'toolInitialization' in trace:
+                return True
         return False
 
     def setInTest(self, stacktrace):
@@ -92,37 +95,42 @@ class Runner:
                     return False
 
     def parse(self, lines, method):
-        is_getter = False
-        is_setter = False
+        getter, setter = set(), set()
         for line in lines:
             line = line.strip("\n")
             if "[CTEST][GET-PARAM]" in line:
                 line = line[line.find("[CTEST][GET-PARAM]"):]
                 assert line.startswith("[CTEST][GET-PARAM] "), "wrong line: " + line
-                assert line.split(" ")[0] == "[CTEST][GET-PARAM]"
-                assert line.count(" ") == 1, "more than one whitespace in " + line
-                param_name = line.split(" ")[1]
+                comp = line.split(" ")
+                assert comp[0] == "[CTEST][GET-PARAM]"
+                assert len(comp) == 2, "more than one whitespace in " + line
+                param_name = comp[1]
                 if param_name in self.params:
-                    is_getter = True 
-                    self.getter_record.write(method + " " + param_name + "\n")
-                    self.getter_record.flush()
+                    full_name = method + " " + param_name + "\n"
+                    if full_name not in getter:
+                        self.getter_record.write(full_name)
+                        self.getter_record.flush()
+                        getter.add(full_name)
             elif "[CTEST][SET-PARAM]" in line:
                 line = line[line.find("[CTEST][SET-PARAM]"):]
                 assert line.startswith("[CTEST][SET-PARAM] "), "wrong line: " + line
-                assert line.split(" ")[0] == "[CTEST][SET-PARAM]"
-                assert line.count(" ") == 2, "more than one whitespace in " + line
-                param_name = line.split(" ")[1]
+                comp = line.split(" ")
+                assert len(comp) == 3, "more than two whitespaces in " + line
+                assert comp[0] == "[CTEST][SET-PARAM]"
+                param_name = comp[1]
                 if param_name in self.params:
-                    if self.aggressive or self.setInTest(line.split(" ")[2]):
-                        is_setter = True
-                        self.setter_record.write(method + " " + param_name + "\n")
-                        self.setter_record.flush()
+                    if self.aggressive or self.setInTest(comp[2]):
+                        full_name = method + " " + param_name + "\n"
+                        if full_name not in setter:
+                            self.setter_record.write(full_name)
+                            self.setter_record.flush()
+                            setter.add(full_name)
 
-        if is_getter or is_setter:
-            if is_getter:
+        if len(getter) or len(setter):
+            if len(getter):
                 print(method + " is a getter")
                 self.getter_list.append(method)
-            if is_setter:
+            if len(setter):
                 print(method + " is a setter")
                 self.setter_list.append(method)
         else:
@@ -165,11 +173,21 @@ class Runner:
             start_time_for_this_method = time.time()
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+                print ("mvn surefire:test -Dtest="+method)
+            elif self.module == "cassandra":
+                os.environ['CASSANDRA_USE_JDK11'] = 'true'
+                class_name, method_name = method.split('#')
+                cmd = ["ant", "testsome", "-Dtest.name=" + class_name, "-Dtest.methods=" + method_name]
+                print ("ant testsome -Dtest.name=" + class_name, " -Dtest.methods=" + method_name)
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
-            child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
-            child.wait()
+                print ("mvn surefire:test -Dtest="+method)
+            try:
+                subprocess.run(cmd, stdout=method_out, stderr=method_out, timeout=40)
+            except subprocess.TimeoutExpired:
+                print(f"{method} running too slow, skip")
+                self.no_report_list.append(method)
+                continue
 
             finish_time_for_this_method = time.time()
             time_elapsed = finish_time_for_this_method - start_time_for_this_method
@@ -186,12 +204,16 @@ class Runner:
                 self.failure_list.append(method)
                 continue
 
-            class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name + "-output.txt"
+            if self.module == 'cassandra':
+                method_name = method.split("#")[1]
+                suffix_filename_to_check = method_name + ".xml"
+            else:
+                class_name = method.split("#")[0]
+                suffix_filename_to_check = class_name + "-output.txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
             if full_path == "none":
                 print("no report for " + method)
-                self.no_report_list.append(method)     
+                self.no_report_list.append(method)
             else:
                 shutil.copy(full_path, method_report_path)
                 self.parse(open(full_path, "r").readlines(), method)

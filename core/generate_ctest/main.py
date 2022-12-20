@@ -1,13 +1,10 @@
 """take meta argument and run the injection infrastructure"""
 
-import os, sys, time, glob
+import os, sys, time
 
-sys.path.append("..")
-from ctest_const import *
-
+from constant import *
 from program_input import p_input
 from parse_input import *
-from inject import inject_config
 from run_test import run_test_seperate
 
 run_mode = p_input["run_mode"]
@@ -36,7 +33,7 @@ def test_value_pair(test_input):
         if len(mapping[param]) != 0:
             for value in values:
                 tr = run_test_seperate(param, value, associated_tests)
-                
+
                 ran_tests = set()
                 for tup in tr.ran_tests_and_time:
                     test, mvntime = tup.split("\t")

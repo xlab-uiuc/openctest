@@ -1,10 +1,9 @@
-"""generate ctests for a parameter by removing the hardcoded tests based on 
+"""generate ctests for a parameter by removing the hardcoded tests based on
 test result from config_injection"""
 
 import glob, json, os, re, sys
 
-sys.path.append("..")
-from ctest_const import *
+from constant import *
 
 from program_input import p_input
 
@@ -22,7 +21,7 @@ def identify_ctest(project):
     for result_file in glob.glob(os.path.join(test_result_dir, "*.tsv")):
         print(">>>>[ctest_core] processing test result file {}".format(result_file))
         testresult = [x.strip("\n").split("\t") for x in open(result_file)]
-        
+
         testinfo = {}
         for row in testresult:
             param, test, value, result, mvntime = row[:6]
