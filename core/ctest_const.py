@@ -12,11 +12,13 @@ HDFS = "hadoop-hdfs"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
+HIVE = "hive-common"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
+CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -24,6 +26,7 @@ PROJECT_DIR = {
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
+    HIVE: CTEST_HIVE_DIR,
 }
 
 
@@ -34,12 +37,14 @@ MODULE_SUBDIR = {
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
+    HIVE: "common",
 }
 
 
 # surefire report
 SUREFIRE_SUBDIR = "target/surefire-reports/"
 SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
+HIVE_SUREFIRE_XML =  "TEST-org.apache.hadoop.hive.conf.{}.xml" # slot is the classname
 SUREFIRE_TXT = "{}.txt" # testclass
 SUREFIRE_OUTTXT = "{}-output.txt" #testclass 
 
@@ -58,6 +63,7 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
+    HIVE: [os.path.join(CTEST_HIVE_DIR, MODULE_SUBDIR[HIVE], SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
@@ -74,7 +80,8 @@ DEFAULT_CONF_FILE = {
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
-    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    HIVE: os.path.join(DEFAULT_CONF_DIR, HIVE + "-default.tsv")
 }
 
 
@@ -96,6 +103,9 @@ INJECTION_PATH = {
     ],
     ALLUXIO: [
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
+    ],
+    HIVE: [
+        os.path.join(CTEST_HIVE_DIR, "conf/hive-ctest.xml")
     ]
 }
 
