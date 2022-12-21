@@ -4,6 +4,7 @@ from program_input import p_input
 sys.path.append("..")
 from ctest_const import *
 
+is_gradle = p_input["is_gradle"]
 maven_args = p_input["maven_args"]
 use_surefire = p_input["use_surefire"]
 ansi_escape = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]')
@@ -18,7 +19,10 @@ def maven_cmd(test, add_time=False):
     # surefire:test reuses test build from last compilation
     # if you modified the test and want to rerun it, you must use `mvn test`
     test_mode = "surefire:test" if use_surefire else "test"
-    cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
+    if is_gradle:
+        cmd = ["./gradlew", "-Prerun-tests", "core:test", "--tests", test, "-i"]
+    else:
+        cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
     if add_time:
         cmd = ["time"] + cmd
     print(">>>>[ctest_core] command: " + " ".join(cmd))

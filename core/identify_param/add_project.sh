@@ -47,6 +47,12 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_kafka() {
+    [ ! -d "app/ctest-kafka" ] && git clone https://github.com/wykkevin2/kafka.git app/ctest-kafka
+    cd app/ctest-kafka
+    git fetch && git checkout ctest-logging
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -63,7 +69,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            kafka) setup_kafka ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and kafka." ;;
         esac
     fi
 }

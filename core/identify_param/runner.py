@@ -78,10 +78,17 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == "kafka-core":
+            if "kafka.server.KafkaConfig" in trace or "kafka.log.LogConfig" in trace:
+                if "Test" not in trace:
+                    return True
         return False
 
     def setInTest(self, stacktrace):
-        traces = stacktrace.split("\t")
+        if self.module == "kafka-core":
+            traces = stacktrace.split("#")  # Kafka log uses a different delimiter to avoid space issues.
+        else:
+            traces = stacktrace.split("\t")
         for trace in traces:
             if self.skipTrace(trace):
                 continue
@@ -131,7 +138,7 @@ class Runner:
     def test_pass_or_not(self, log_content):
         if "BUILD SUCCESS" in log_content:
             return True
-        elif "BUILD FAILURE" in log_content:
+        elif "BUILD FAILURE" in log_content or "BUILD FAILED" in log_content:
             return False
         else:
             assert False, "wrong log content"
@@ -158,16 +165,21 @@ class Runner:
 
         for method in all_test_methods:
             print("==================================================================================")
-            assert method.count("#") == 1, "there should be only one #, but actually you have: " + method
+            if self.module != "kafka-core":  # Skip this check for kafka
+                assert method.count("#") == 1, "there should be only one #, but actually you have: " + method
 
             method_out = open(out_dir + method + "-log.txt", "w+")
             method_report_path = report_dir + method + "-report.txt"
             start_time_for_this_method = time.time()
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+                print("mvn surefire:test -Dtest=" + method)
+            elif self.module == "kafka-core":
+                cmd = ["./gradlew", "-Prerun-tests", "core:test", "--tests", method, "-i"]
+                print("Gradle test " + method)
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
+                print ("mvn surefire:test -Dtest="+method)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 
@@ -186,15 +198,19 @@ class Runner:
                 self.failure_list.append(method)
                 continue
 
-            class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name + "-output.txt"
-            full_path = self.get_full_report_path(suffix_filename_to_check)
-            if full_path == "none":
-                print("no report for " + method)
-                self.no_report_list.append(method)     
+            if self.module == "kafka-core":
+                # Skip all the surefire path because kafka is a gradle project
+                self.parse(open(out_dir + method + "-log.txt", "r").readlines(), method)
             else:
-                shutil.copy(full_path, method_report_path)
-                self.parse(open(full_path, "r").readlines(), method)
+                class_name = method.split("#")[0]
+                suffix_filename_to_check = class_name + "-output.txt"
+                full_path = self.get_full_report_path(suffix_filename_to_check)
+                if full_path == "none":
+                    print("no report for " + method)
+                    self.no_report_list.append(method)
+                else:
+                    shutil.copy(full_path, method_report_path)
+                    self.parse(open(full_path, "r").readlines(), method)
 
         shutil.rmtree(out_dir)
         shutil.rmtree(report_dir)
