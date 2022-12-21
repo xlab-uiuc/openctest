@@ -78,6 +78,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == "flink-core":
+            if "org.apache.flink.configuration" in trace and "Test" not in trace:
+                return True
         return False
 
     def setInTest(self, stacktrace):

@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_flink() {
+    [ ! -d "app/ctest-flink" ] && git clone https://github.com/jessicahuang523/flink app/ctest-flink
+    cd app/ctest-flink
+    git fetch && git checkout ctest-injection
+    cd flink-core
+    mvn clean install -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +72,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            flink) setup_flink ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and flink." ;;
         esac
     fi
 }
