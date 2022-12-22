@@ -1,0 +1,2 @@
+>>>>[ctest_core] missing test for rocketmq-acl	topicPerms	topicA=DENY
+>>>>[ctest_core] missing test for rocketmq-acl	topicPerms	topicC=SUB

@@ -4,11 +4,11 @@ p_input = {
     # run mode
     "run_mode": "generate_ctest", # string
     # name of the project, i.e. hadoop-common, hadoop-hdfs, see constant.py
-    "project": "hadoop-common", # string
+    "project": "rocketmq-acl", # string
     # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json", # string
+    "mapping_path": "../../data/ctest_mapping/opensource-rocketmq-acl.json", # string
     # good values of params tests will be run against
-    "param_value_tsv": "sample-hadoop-common.tsv", # string
+    "param_value_tsv": "../default_configs/rocketmq-acl-default.tsv", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test

@@ -1,0 +1,10 @@
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testOnlyAclFolderCase	10.10.103.*	f	0.465
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testBothAclFileAndFolderCase	10.10.103.*	f	0.47
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessValidatorTest#getAllAclConfigTest	10.10.103.*	f	0.428
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainPermissionManagerTest#updateGlobalWhiteAddrsConfigTest	10.10.103.*	p	0.517
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testEmptyAclFolderCase	10.10.103.*	f	0.473
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testEmptyAclFolderCase	192.168.0.*	f	0.376
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testOnlyAclFolderCase	192.168.0.*	f	0.418
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainPermissionManagerTest#updateGlobalWhiteAddrsConfigTest	192.168.0.*	p	0.449
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessControlFlowTest#testBothAclFileAndFolderCase	192.168.0.*	f	0.403
+globalWhiteAddrs	org.apache.rocketmq.acl.plain.PlainAccessValidatorTest#getAllAclConfigTest	192.168.0.*	f	0.4
