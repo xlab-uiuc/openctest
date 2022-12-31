@@ -48,6 +48,15 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_jetty() {
+    [ ! -d "app/ctest-jetty" ] && git clone https://github.com/Moonlor/ctest-jetty.git app/ctest-jetty
+    cd app/ctest-jetty
+    home_dir=$PWD
+    git fetch && git checkout ctest-injection
+    cd $home_dir/jetty-servlet
+    mvn clean install -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +73,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            jetty) setup_jetty;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and jetty." ;;
         esac
     fi
 }

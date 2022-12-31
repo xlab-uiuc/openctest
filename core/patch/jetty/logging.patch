@@ -1,0 +1,121 @@
+From 7c1150b205715f86ae7693571d08df97d30b0b9f Mon Sep 17 00:00:00 2001
+From: Moonlor <kenneth0875@gmail.com>
+Date: Tue, 15 Nov 2022 04:35:53 -0600
+Subject: [PATCH] feat: support ctest
+
+---
+ .../org/eclipse/jetty/servlet/Holder.java     | 41 ++++++++++++++++++-
+ .../eclipse/jetty/servlet/ServletHolder.java  |  2 +-
+ pom.xml                                       |  8 ++--
+ 3 files changed, 45 insertions(+), 6 deletions(-)
+
+diff --git a/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/Holder.java b/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/Holder.java
+index d342cfc3d4..7e30dd54da 100644
+--- a/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/Holder.java
++++ b/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/Holder.java
+@@ -45,11 +45,49 @@ public abstract class Holder<T> extends BaseHolder<T>
+ {
+     private static final Logger LOG = Log.getLogger(Holder.class);
+ 
+-    private final Map<String, String> _initParams = new HashMap<String, String>(3);
++    private final Map<String, String> _initParams = new HashMap<String, String>(3)
++    {
++        @Override
++        public String get(Object key) 
++        {
++            LOG.warn("[CTEST][GET-PARAM] " + key); //CTEST
++            LOG.warn("[CTEST][GET-PARAM-VAL] " + key + " -> " + super.get(key)); //CTEST
++            return super.get(key);
++        }
++
++        @Override
++        public String put(String key, String value) 
++        {
++            LOG.warn("[CTEST][SET-PARAM] " + key + getStackTrace()); //CTEST
++            LOG.warn("[CTEST][SET-PARAM-VAL] " + key + " -> " + value); //CTEST
++            return super.put(key, value);
++        }
++
++        @Override
++        public void putAll(Map<? extends String, ? extends String> m) 
++        {
++            for (Map.Entry<? extends String, ? extends String> en : m.entrySet()) 
++            {
++                LOG.warn("[CTEST][SET-PARAM] " + en.getKey() + getStackTrace()); //CTEST
++                LOG.warn("[CTEST][SET-PARAM-VAL] " + en.getKey() + " -> " + en.getValue()); //CTEST
++            }
++            super.putAll(m);
++        }
++    };
+     private String _displayName;
+     private boolean _asyncSupported;
+     private String _name;
+ 
++    private String getStackTrace() 
++    {
++        String stacktrace = " ";
++        for (StackTraceElement element : Thread.currentThread().getStackTrace()) 
++        {
++            stacktrace = stacktrace.concat(element.getClassName() + "\t");
++        }
++        return stacktrace;
++    }  
++
+     protected Holder(Source source)
+     {
+         super(source);
+@@ -293,4 +331,3 @@ public abstract class Holder<T> extends BaseHolder<T>
+ 
+ 
+ 
+-
+diff --git a/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/ServletHolder.java b/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/ServletHolder.java
+index 1c16fe871c..d96294713c 100644
+--- a/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/ServletHolder.java
++++ b/jetty-servlet/src/main/java/org/eclipse/jetty/servlet/ServletHolder.java
+@@ -1460,4 +1460,4 @@ public class ServletHolder extends Holder<Servlet> implements UserIdentity.Scope
+             }
+         }
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/pom.xml b/pom.xml
+index ac96ebb254..a67e997aa4 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -109,7 +109,7 @@
+     <maven.antrun.plugin.version>3.1.0</maven.antrun.plugin.version>
+     <maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
+     <maven.invoker.plugin.version>3.3.0</maven.invoker.plugin.version>
+-    <maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
++    <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
+     <maven.checkstyle.plugin.version>3.1.0</maven.checkstyle.plugin.version>
+     <maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
+     <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+@@ -714,12 +714,14 @@
+           <artifactId>maven-surefire-plugin</artifactId>
+           <version>${maven.surefire.plugin.version}</version>
+           <configuration>
++            <reportFormat>plain</reportFormat>
+             <trimStackTrace>false</trimStackTrace>
+             <rerunFailingTestsCount>${surefire.rerunFailingTestsCount}</rerunFailingTestsCount>
+             <forkedProcessTimeoutInSeconds>3600</forkedProcessTimeoutInSeconds>
++            <redirectTestOutputToFile>true</redirectTestOutputToFile>
+             <argLine>@{argLine} -Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xmx6g -Xms2g -XX:+PrintGCDetails</argLine>
+             <failIfNoTests>false</failIfNoTests>
+-            <forkCount>1</forkCount>
++            <forkCount>0</forkCount>
+             <reuseForks>true</reuseForks> <!-- to work around crash at https://github.com/junit-team/junit5/issues/801 -->
+             <systemPropertyVariables>
+               <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+@@ -1842,4 +1844,4 @@
+ <!--    </pluginRepository>-->
+ <!--  </pluginRepositories>-->
+ 
+-</project>
++</project>
+\ No newline at end of file
+-- 
+2.30.1 (Apple Git-130)
+
