@@ -12,11 +12,13 @@ HDFS = "hadoop-hdfs"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
+DROPWIZARD = "dropwizard-health"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
+CTEST_DROPWIZARD_DIR = os.path.join(APP_DIR, "ctest-dropwizard")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -24,6 +26,7 @@ PROJECT_DIR = {
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
+    DROPWIZARD: CTEST_DROPWIZARD_DIR,
 }
 
 
@@ -34,6 +37,7 @@ MODULE_SUBDIR = {
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
+    DROPWIZARD: "dropwizard-health"
 }
 
 
@@ -58,6 +62,9 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
+    DROPWIZARD: [
+        os.path.join(CTEST_DROPWIZARD_DIR, MODULE_SUBDIR[DROPWIZARD], SUREFIRE_SUBDIR)
+    ]
 }
 
 # default or deprecate conf path
@@ -74,7 +81,8 @@ DEFAULT_CONF_FILE = {
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
-    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
+    ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
+    DROPWIZARD: os.path.join(DEFAULT_CONF_DIR, DROPWIZARD + "-default.tsv")
 }
 
 
@@ -96,7 +104,43 @@ INJECTION_PATH = {
     ],
     ALLUXIO: [
         os.path.join(CTEST_ALLUXIO_DIR, "core/alluxio-ctest.properties")
-    ]
+    ],
+    DROPWIZARD: [
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/health-ctest.yml"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/healthCheck-ctest.yml"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/schedule-ctest.yml"),
+    ],
+}
+
+# line number of the configuration
+INJECTION_LINE_NUMBER = {
+    DROPWIZARD: {
+        "health.healthChecks.name" : 20,
+        "health.healthChecks.type" : 24,
+        "health.healthChecks.critical": 27,
+        "health.healthChecks.initialState": 30,
+    },
+}
+
+# code format of the configuration
+INJECTION_CODE_FORMAT = {
+    DROPWIZARD: {
+        "health.healthChecks.name" : "\tprivate String name = \"{}\";\n",
+        "health.healthChecks.type" : "\tprivate HealthCheckType type = {};\n",
+        "health.healthChecks.critical": "\tprivate boolean critical = {};\n",
+        "health.healthChecks.initialState": "\tprivate boolean initialState = {};\n",
+    },
+}
+
+# files being used in the clean_conf_file step
+INJECTION_CLEAN_UP_PATH = {
+    DROPWIZARD: [
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/health.yml"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/healthCheck.yml"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/main/java/io/dropwizard/health/HealthCheckConfiguration.java.default"),
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health/src/test/resources/yml/schedule.yml")
+    ],
 }
 
 

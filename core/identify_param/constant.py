@@ -7,12 +7,14 @@ CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
+CTEST_DROPWIZARD_DIR = os.path.join(APP_DIR, "ctest-dropwizard")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
     "hadoop-hdfs": CTEST_HADOOP_DIR,
     "hbase-server": CTEST_HBASE_DIR,
-    "alluxio-core": CTEST_ALLUXIO_DIR
+    "alluxio-core": CTEST_ALLUXIO_DIR,
+    "dropwizard-health": CTEST_DROPWIZARD_DIR
 }
 
 SRC_SUBDIR = {
@@ -20,7 +22,8 @@ SRC_SUBDIR = {
     "hadoop-hdfs": "hadoop-hdfs-project/hadoop-hdfs",
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
-    "alluxio-core": "core"
+    "alluxio-core": "core",
+    "dropwizard-health": "dropwizard-health"
 }
 
 MVN_TEST_PATH = {
@@ -29,6 +32,7 @@ MVN_TEST_PATH = {
     "hbase-server": os.path.join(CTEST_HBASE_DIR, SRC_SUBDIR["hbase-server"]),
     "zookeeper-server": os.path.join(CTEST_ZOOKEEPER_DIR, SRC_SUBDIR["zookeeper-server"]),
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
+    "dropwizard-health": os.path.join(CTEST_DROPWIZARD_DIR, SRC_SUBDIR["dropwizard-health"])
 }
 
 LOCAL_CONF_PATH = {
@@ -36,7 +40,8 @@ LOCAL_CONF_PATH = {
     "hadoop-hdfs": "results/hadoop-hdfs/conf_params.txt",
     "hbase-server": "results/hbase-server/conf_params.txt",
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
-    "alluxio-core": "results/alluxio-core/conf_params.txt"
+    "alluxio-core": "results/alluxio-core/conf_params.txt",
+    "dropwizard-health": "results/dropwizard-health/conf_params.txt"
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -63,6 +68,9 @@ CTEST_SUREFIRE_PATH = {
         os.path.join(CTEST_ALLUXIO_DIR, "core/server/proxy", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, "core/server/worker", SUREFIRE_SUBDIR),
         os.path.join(CTEST_ALLUXIO_DIR, "core/server/master", SUREFIRE_SUBDIR)
+    ],
+    "dropwizard-health": [
+        os.path.join(CTEST_DROPWIZARD_DIR, "dropwizard-health", SUREFIRE_SUBDIR)
     ]
 }
 
@@ -83,5 +91,8 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "alluxio-core": [
         os.path.join("surefire-reports/alluxio-core", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "dropwizard-health": [
+        os.path.join("surefire-reports/dropwizard-health", LOCAL_SUREFIRE_SUFFIX)
     ]
 }
