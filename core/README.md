@@ -14,13 +14,14 @@ A prototype for generating and running ctests. Below are the projects we current
 - Hbase 2.2.2: `hbase-server`.
 - ZooKeeper 3.5.6: `zookeeper-server`.
 - Alluxio 2.1.0: `core`.
-
+- Redisson 3.18.0: `redisson`.
 We also provided our instrumented versions of the above projects:
 
 - Hadoop 2.8.5: https://github.com/xlab-uiuc/hadoop
 - Hbase 2.2.2: https://github.com/xlab-uiuc/hbase
 - ZooKeeper 3.5.6: https://github.com/xlab-uiuc/zookeeper
 - Alluxio 2.1.0: https://github.com/xlab-uiuc/alluxio
+- Redisson 3.18.0: https://github.com/kfadillah/redisson
 
 Our instrumented version projects have two branches: 
 - `ctest-injection`: branch with "Intercept Configuration API" instrumentation (See `ADDING_NEW_PROJECT.md`). This branch is used by `generate_ctest` and `run_ctest`.
@@ -59,7 +60,7 @@ To generate ctests or run ctest, you need to first clone the target project.
 1. In `openctest/core`, run `./add_project.sh <main project>` to clone the project, switch to and build the branch `ctest-injection`. This branch will be later used by `generate_ctest` and `run_ctest`.
 2. In `openctest/core/identify_param`, run `./add_project.sh <main project>` to clone the project, switch to and build the branch `ctest-logging`. This branch will be later used by `identify_param`.
 
-`<main project>` can be `hadoop`, `hbase`, `zookeeper` or `alluxio`.
+`<main project>` can be `hadoop`, `hbase`, `zookeeper`, `redisson` or `alluxio`.
 
 ## Usage
 

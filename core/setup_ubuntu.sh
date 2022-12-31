@@ -3,8 +3,7 @@
 # set up env for Linux ubuntu
 sudo apt-get install openjdk-8-jdk
 sudo apt-get install maven
-sudo apt-get install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
-
+sudo apt-get install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev redis
 
 # install protobuf 2.5
 curdir=$PWD

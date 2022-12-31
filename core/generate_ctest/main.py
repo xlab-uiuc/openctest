@@ -31,7 +31,9 @@ def test_value_pair(test_input):
     for param, values in test_input.items():
         tr_file = open(os.path.join(GENCTEST_TR_DIR, project, TR_FILE.format(id=param)), "w")
         mt_file = open(os.path.join(GENCTEST_TR_DIR, project, MT_FILE.format(id=param)), "w")
-
+        if param not in mapping:
+            print(">>>>[ctest_core] param not in mapping" + param)
+            continue
         associated_tests = mapping[param] if param in mapping else []
         if len(mapping[param]) != 0:
             for value in values:

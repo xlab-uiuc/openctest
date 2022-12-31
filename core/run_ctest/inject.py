@@ -35,6 +35,13 @@ def inject_config(param_value_pairs):
             file.write(str.encode("<?xml version=\"1.0\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n"))
             file.write(ET.tostring(conf))
             file.close()
+    elif project == 'redisson':
+        for inject_path in INJECTION_PATH[project]:
+            print(">>>>[ctest_core] injecting into file: {}".format(inject_path))
+            file = open(inject_path, "w")
+            for p, v in param_value_pairs.items():
+                file.write(p + ": " + v + "\n")
+            file.close()
     else:
         sys.exit(">>>>[ctest_core] value injection for {} is not supported yet".format(project))
 
@@ -52,6 +59,11 @@ def clean_conf_file(project):
             file = open(inject_path, "wb")
             file.write(str.encode("<?xml version=\"1.0\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"configuration.xsl\"?>\n"))
             file.write(ET.tostring(conf))
+            file.close()
+    elif project == 'redisson':
+        for inject_path in INJECTION_PATH[project]:
+            file = open(inject_path, "w")
+            file.write("\n")
             file.close()
     else:
         sys.exit(">>>>[ctest_core] value injection for {} is not supported yet".format(project))

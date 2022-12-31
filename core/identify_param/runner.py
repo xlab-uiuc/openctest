@@ -40,6 +40,8 @@ class Runner:
         return "none"
 
     def traceInTestCode(self, trace):
+        if self.module == "redisson":
+            return True
         if "Test" in trace:
             return True
         if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server":
@@ -61,7 +63,7 @@ class Runner:
         return False
 
     def skipTrace(self, trace):
-        if "java.lang.Thread" in trace:
+        if trace == "java.lang.Thread":
             return True
         if "sun.reflect" in trace:
             return True
@@ -92,37 +94,42 @@ class Runner:
                     return False
 
     def parse(self, lines, method):
-        is_getter = False
-        is_setter = False
+        getter, setter = set(), set()
         for line in lines:
             line = line.strip("\n")
             if "[CTEST][GET-PARAM]" in line:
                 line = line[line.find("[CTEST][GET-PARAM]"):]
                 assert line.startswith("[CTEST][GET-PARAM] "), "wrong line: " + line
-                assert line.split(" ")[0] == "[CTEST][GET-PARAM]"
-                assert line.count(" ") == 1, "more than one whitespace in " + line
-                param_name = line.split(" ")[1]
+                comp = line.split(" ")
+                assert comp[0] == "[CTEST][GET-PARAM]"
+                assert len(comp) == 2, "more than one whitespace in " + line
+                param_name = comp[1]
                 if param_name in self.params:
-                    is_getter = True 
-                    self.getter_record.write(method + " " + param_name + "\n")
-                    self.getter_record.flush()
+                    full_name = method + " " + param_name + "\n"
+                    if full_name not in getter:
+                        self.getter_record.write(full_name)
+                        self.getter_record.flush()
+                        getter.add(full_name)
             elif "[CTEST][SET-PARAM]" in line:
                 line = line[line.find("[CTEST][SET-PARAM]"):]
                 assert line.startswith("[CTEST][SET-PARAM] "), "wrong line: " + line
-                assert line.split(" ")[0] == "[CTEST][SET-PARAM]"
-                assert line.count(" ") == 2, "more than one whitespace in " + line
-                param_name = line.split(" ")[1]
+                comp = line.split(" ")
+                assert len(comp) == 3, "more than two whitespaces in " + line
+                assert comp[0] == "[CTEST][SET-PARAM]"
+                param_name = comp[1]
                 if param_name in self.params:
-                    if self.aggressive or self.setInTest(line.split(" ")[2]):
-                        is_setter = True
-                        self.setter_record.write(method + " " + param_name + "\n")
-                        self.setter_record.flush()
+                    if self.aggressive or self.setInTest(comp[2]):
+                        full_name = method + " " + param_name + "\n"
+                        if full_name not in setter:
+                            self.setter_record.write(full_name)
+                            self.setter_record.flush()
+                            setter.add(full_name)
 
-        if is_getter or is_setter:
-            if is_getter:
+        if len(getter) or len(setter):
+            if len(getter):
                 print(method + " is a getter")
                 self.getter_list.append(method)
-            if is_setter:
+            if len(setter):
                 print(method + " is a setter")
                 self.setter_list.append(method)
         else:
@@ -131,7 +138,7 @@ class Runner:
     def test_pass_or_not(self, log_content):
         if "BUILD SUCCESS" in log_content:
             return True
-        elif "BUILD FAILURE" in log_content:
+        elif "BUILD FAIL" in log_content:
             return False
         else:
             assert False, "wrong log content"
@@ -165,9 +172,11 @@ class Runner:
             start_time_for_this_method = time.time()
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+            elif self.module == "redisson":
+                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DredisBinary=/usr/bin/redis-server", "-Dmaven.test.skip=false"]
             else:
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method]
-            print ("mvn surefire:test -Dtest="+method)
+            print(cmd)
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 
@@ -185,10 +194,11 @@ class Runner:
                 print(method + " failure")
                 self.failure_list.append(method)
                 continue
-
+            
             class_name = method.split("#")[0]
             suffix_filename_to_check = class_name + "-output.txt"
             full_path = self.get_full_report_path(suffix_filename_to_check)
+            print(full_path)
             if full_path == "none":
                 print("no report for " + method)
                 self.no_report_list.append(method)     
@@ -219,6 +229,6 @@ if __name__ == "__main__":
     (options, args) = parser.parse_args()
     module = args[0]
     aggr = options.aggressive
-    runner = Runner(module, aggr)
+    runner = Runner(module, False)
     runner.run_individual_testmethod()
     print("total time: {} mins".format((time.time() - s) / 60))
