@@ -48,6 +48,14 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_druid() {
+    [ ! -d "app/ctest-druid" ] && git clone https://github.com/b06902047/druid.git app/ctest-druid
+    cd app/ctest-druid
+    git fetch && git checkout ctest-core-inject-release
+    cd core
+    mvn install -DskipTests -Dcheckstyle.skip
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,7 +72,8 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            druid) setup_druid ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio and druid." ;;
         esac
     fi
 }
