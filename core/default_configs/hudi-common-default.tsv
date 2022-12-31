@@ -1,0 +1,28 @@
+hoodie.archivelog.folder	archived	path under the meta folder, to store archived timeline instants at.
+hoodie.table.type	COPY_ON_WRITE	The table type for the underlying data, for this write. This canât change between writes.
+hoodie.metastore.enable	false	Use metastore server to store hoodie table metadata
+hoodie.filesystem.operation.retry.enable	false	Enabled to handle list/get/delete etc file system performance issue.
+hoodie.consistency.check.enabled	false	Enabled to handle S3 eventual consistency issue. This property is no longer required since S3 is now strongly consistent. Will be removed in the future releases.
+hoodie.timeline.layout.version	N/A	Version of timeline used, by the table.
+hoodie.bootstrap.base.path	N/A	Base path of the dataset that needs to be bootstrapped as a Hudi table
+hoodie.bootstrap.index.enable	true	Whether or not, this is a bootstrapped table, with bootstrap base data and an mapping index defined, default true.
+hoodie.filesystem.view.type	MEMORY	File system view provides APIs for viewing the files on the underlying lake storage,  as file groups and file slices. This config controls how such a view is held. Options include MEMORY,SPILLABLE_DISK,EMBEDDED_KV_STORE,REMOTE_ONLY,REMOTE_FIRST which provide different trade offs for memory usage and API request performance.
+hoodie.filesystem.view.secondary.type	MEMORY	Specifies the secondary form of storage for file system view, if the primary (e.g timeline server)  is unavailable.
+hoodie.filesystem.view.remote.port	26754	Port to serve file system view queries, when remote. We expect this to be rarely hand configured.
+hoodie.filesystem.view.incr.timeline.sync.enable	false	Controls whether or not, the file system view is incrementally updated as new actions are performed on the timeline.
+hoodie.filesystem.view.rocksdb.base.path	/tmp/hoodie_timeline_rocksdb	Path on local storage to use, when storing file system view in embedded kv store/rocksdb.
+hoodie.bootstrap.index.class	org.apache.hudi.common.bootstrap.index.HFileBootstrapIndex	Implementation to use, for mapping base files to bootstrap base file, that contain actual data.
+hoodie.compaction.payload.class	org.apache.hudi.common.model.OverwriteWithLatestAvroPayload	Payload class to use for performing compactions, i.e merge delta logs with current base file and then  produce a new base file.
+hoodie.filesystem.view.spillable.mem	104857600	Amount of memory to be used in bytes for holding file system view, before spilling to disk.
+hoodie.filesystem.view.spillable.compaction.mem.fraction	0.8	Fraction of the file system view memory, to be used for holding compaction related metadata.
+hoodie.filesystem.view.spillable.bootstrap.base.file.mem.fraction	0.05	Fraction of the file system view memory, to be used for holding mapping to bootstrap base files.
+hoodie.filesystem.view.spillable.replaced.mem.fraction	0.01	Fraction of the file system view memory, to be used for holding replace commit related metadata.
+hoodie.filesystem.view.spillable.clustering.mem.fraction	0.01	Fraction of the file system view memory, to be used for holding clustering related metadata.
+hoodie.filesystem.view.spillable.dir	/tmp/	Path on local storage to use, when file system view is held in a spillable map.
+hoodie.common.spillable.diskmap.type	BITCASK	When handling input data that cannot be held in memory, to merge with a file on storage, a spillable diskmap is employed.  By default, we use a persistent hashmap based loosely on bitcask, that offers O(1) inserts, lookups. Change this to  to prefer using rocksDB, for handling the spill.
+hoodie.common.diskmap.compression.enabled	true	Turn on compression for BITCASK disk map used by the External Spillable Map
+hoodie.filesystem.operation.retry.max_interval_ms	2000	Maximum amount of time (in ms), to wait for next retry.
+hoodie.filesystem.operation.retry.max_numbers	4	Maximum number of retry actions to perform, with exponential backoff.
+hoodie.filesystem.operation.retry.initial_interval_ms	100	Amount of time (in ms) to wait, before retry to do operations on storage.
+hoodie.table.name	N/A	Table name to register to Hive metastore
+hoodie.table.precombine.field	N/A	Field used in preCombining before actual write. By default, when two records have the same key value, the largest value for the precombine field determined by Object.compareTo(..), is picked.

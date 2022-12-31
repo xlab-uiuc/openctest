@@ -1,0 +1,127 @@
+From 031e2381080ee63343abf17f0f36ac22adb2fd5f Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Sun, 20 Nov 2022 16:57:11 -0600
+Subject: [PATCH] ctest-injection
+
+---
+ .../config/DFSPropertiesConfiguration.java    | 31 +++++++++++++++++++
+ .../hudi/common/config/HoodieConfig.java      | 12 +++++++
+ .../src/main/resources/hudi-ctest.conf        | 19 ++++++++++++
+ 3 files changed, 62 insertions(+)
+ create mode 100644 hudi-common/src/main/resources/hudi-ctest.conf
+
+diff --git a/hudi-common/src/main/java/org/apache/hudi/common/config/DFSPropertiesConfiguration.java b/hudi-common/src/main/java/org/apache/hudi/common/config/DFSPropertiesConfiguration.java
+index 08cbd568df..32271cc76f 100644
+--- a/hudi-common/src/main/java/org/apache/hudi/common/config/DFSPropertiesConfiguration.java
++++ b/hudi-common/src/main/java/org/apache/hudi/common/config/DFSPropertiesConfiguration.java
+@@ -90,6 +90,13 @@ public class DFSPropertiesConfiguration {
+     this.visitedFilePaths = new HashSet<>();
+   }
+ 
++  public DFSPropertiesConfiguration(boolean isCtest) {
++    this.hadoopConfig = null;
++    this.currentFilePath = null;
++    this.hoodieConfig = new HoodieConfig(isCtest);
++    this.visitedFilePaths = new HashSet<>();
++  }
++
+   /**
+    * Load global props from hudi-defaults.conf which is under class loader or CONF_FILE_DIR_ENV_NAME.
+    * @return Typed Properties
+@@ -122,6 +129,22 @@ public class DFSPropertiesConfiguration {
+     return conf.getProps();
+   }
+ 
++  //Ctest
++  public static TypedProperties loadCtestProps() {
++    DFSPropertiesConfiguration conf = new DFSPropertiesConfiguration(true);
++    URL configFile = Thread.currentThread().getContextClassLoader().getResource("hudi-ctest.conf");
++    if (configFile != null) {
++      try (BufferedReader br = new BufferedReader(new InputStreamReader(configFile.openStream()))) {
++        conf.addPropsFromStream(br);
++        return conf.getProps();
++      } catch (IOException ioe) {
++        throw new HoodieIOException(
++            String.format("Failed to read %s from class loader", "hudi-ctest.conf"), ioe);
++      }
++    }
++    return conf.getProps();
++  }
++
+   public static void refreshGlobalProps() {
+     GLOBAL_PROPS = loadGlobalProps();
+   }
+@@ -196,6 +219,14 @@ public class DFSPropertiesConfiguration {
+     return globalProps;
+   }
+ 
++  // Ctest
++  public static TypedProperties getCtestPropsFF() {
++    final TypedProperties globalProps = new TypedProperties();
++    GLOBAL_PROPS = loadCtestProps();
++    globalProps.putAll(GLOBAL_PROPS);
++    return globalProps;
++  }
++
+   // test only
+   public static TypedProperties addToGlobalProps(String key, String value) {
+     GLOBAL_PROPS.put(key, value);
+diff --git a/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java b/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
+index 366d19fe6e..63dd4f71b0 100644
+--- a/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
++++ b/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
+@@ -52,6 +52,11 @@ public class HoodieConfig implements Serializable {
+ 
+   public HoodieConfig() {
+     this.props = new TypedProperties();
++    this.props = getCtestProps(); // Ctest
++  }
++
++  public HoodieConfig(boolean isCtest) {
++    this.props = new TypedProperties();
+   }
+ 
+   public HoodieConfig(Properties props) {
+@@ -219,6 +224,13 @@ public class HoodieConfig implements Serializable {
+     }
+   }
+ 
++  // Ctest
++  public TypedProperties getCtestProps() {
++    TypedProperties mergedProps = DFSPropertiesConfiguration.getCtestPropsFF();
++    mergedProps.putAll(props);
++    return mergedProps;
++  }
++
+   public void setDefaultOnCondition(boolean condition, HoodieConfig config) {
+     if (condition) {
+       setDefault(config);
+diff --git a/hudi-common/src/main/resources/hudi-ctest.conf b/hudi-common/src/main/resources/hudi-ctest.conf
+new file mode 100644
+index 0000000000..dd87c567d9
+--- /dev/null
++++ b/hudi-common/src/main/resources/hudi-ctest.conf
+@@ -0,0 +1,19 @@
++#
++# Licensed to the Apache Software Foundation (ASF) under one or more
++# contributor license agreements.  See the NOTICE file distributed with
++# this work for additional information regarding copyright ownership.
++# The ASF licenses this file to You under the Apache License, Version 2.0
++# (the "License"); you may not use this file except in compliance with
++# the License.  You may obtain a copy of the License at
++#
++#    http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++
++hoodie.index.type                              BLOOM
++hoodie.metadata.enable                         true
+\ No newline at end of file
+-- 
+2.25.1
+

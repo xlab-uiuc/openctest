@@ -1,0 +1,119 @@
+From 582e8253e2e594b9844d12f45ef8926637a3d617 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Wed, 2 Nov 2022 18:56:14 -0500
+Subject: [PATCH] first attempt to ctest-set-get
+
+---
+ hudi-common/pom.xml                           |  9 ++++++++
+ .../hudi/common/config/HoodieConfig.java      | 21 +++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+
+diff --git a/hudi-common/pom.xml b/hudi-common/pom.xml
+index 9f149f464f..6d1ebe6905 100644
+--- a/hudi-common/pom.xml
++++ b/hudi-common/pom.xml
+@@ -97,6 +97,15 @@
+           </imports>
+         </configuration>
+       </plugin>
++      <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <version>3.0.0-M4</version>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++            <redirectTestOutputToFile>true</redirectTestOutputToFile>
++          </configuration>
++        </plugin>
+     </plugins>
+   </build>
+ 
+diff --git a/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java b/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
+index 366d19fe6e..9362d79a24 100644
+--- a/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
++++ b/hudi-common/src/main/java/org/apache/hudi/common/config/HoodieConfig.java
+@@ -32,6 +32,7 @@ import java.lang.reflect.Modifier;
+ import java.util.Arrays;
+ import java.util.List;
+ import java.util.Properties;
++import java.util.Map;
+ 
+ /**
+  * This class deals with {@link ConfigProperty} and provides get/set functionalities.
+@@ -60,14 +61,21 @@ public class HoodieConfig implements Serializable {
+ 
+   public <T> void setValue(ConfigProperty<T> cfg, String val) {
+     cfg.checkValues(val);
++    LOG.warn("[CTEST][SET-PARAM] " + cfg.key() + getStackTrace()); // CTEST
+     props.setProperty(cfg.key(), val);
+   }
+ 
+   public <T> void setValue(String key, String val) {
++    LOG.warn("[CTEST][SET-PARAM] " + key + getStackTrace()); // CTEST
+     props.setProperty(key, val);
+   }
+ 
+   public void setAll(Properties properties) {
++    for (Map.Entry<?, ?> e : properties.entrySet()) {
++      if (!props.containsKey(String.valueOf(e.getKey()))) {
++        LOG.warn("[CTEST][SET-PARAM] " + e.getKey() + getStackTrace()); // CTEST
++      }
++    }
+     props.putAll(properties);
+   }
+ 
+@@ -77,12 +85,14 @@ public class HoodieConfig implements Serializable {
+       if (configProperty.getInferFunc().isPresent()) {
+         inferValue = configProperty.getInferFunc().get().apply(this);
+       }
++      LOG.warn("[CTEST][SET-PARAM] " + configProperty.key() + getStackTrace()); // CTEST
+       props.setProperty(configProperty.key(), inferValue.isPresent() ? inferValue.get().toString() : configProperty.defaultValue().toString());
+     }
+   }
+ 
+   public <T> void setDefaultValue(ConfigProperty<T> configProperty, T defaultVal) {
+     if (!contains(configProperty)) {
++      LOG.warn("[CTEST][SET-PARAM] " + configProperty.key() + getStackTrace()); // CTEST
+       props.setProperty(configProperty.key(), defaultVal.toString());
+     }
+   }
+@@ -100,6 +110,7 @@ public class HoodieConfig implements Serializable {
+ 
+   private <T> Option<Object> getRawValue(ConfigProperty<T> configProperty) {
+     if (props.containsKey(configProperty.key())) {
++      LOG.warn("[CTEST][GET-PARAM] " + configProperty.key()); // CTEST
+       return Option.ofNullable(props.get(configProperty.key()));
+     }
+     for (String alternative : configProperty.getAlternatives()) {
+@@ -107,6 +118,7 @@ public class HoodieConfig implements Serializable {
+         LOG.warn(String.format("The configuration key '%s' has been deprecated "
+                 + "and may be removed in the future. Please use the new key '%s' instead.",
+             alternative, configProperty.key()));
++        LOG.warn("[CTEST][GET-PARAM] " + configProperty.key()); // CTEST
+         return Option.ofNullable(props.get(alternative));
+       }
+     }
+@@ -144,6 +156,7 @@ public class HoodieConfig implements Serializable {
+   }
+ 
+   public String getString(String key) {
++    LOG.warn("[CTEST][GET-PARAM] " + key); // CTEST
+     return props.getProperty(key);
+   }
+ 
+@@ -237,4 +250,12 @@ public class HoodieConfig implements Serializable {
+       throw new HoodieException(errorMessage);
+     }
+   }
++
++  private String getStackTrace() { // ctest
++    String stacktrace = " ";
++    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++      stacktrace = stacktrace.concat(element.getClassName() + "\t");
++    }
++    return stacktrace;
++  }
+ }
+-- 
+2.25.1
+

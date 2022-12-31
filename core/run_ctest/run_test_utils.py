@@ -19,7 +19,7 @@ def maven_cmd(test, add_time=False):
     # surefire:test reuses test build from last compilation
     # if you modified the test and want to rerun it, you must use `mvn test`
     test_mode = "surefire:test" if use_surefire else "test"
-    cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args
+    cmd = ["mvn", test_mode, "-Dtest={}".format(test), "-Dcheckstyle.skip"] + maven_args
     if add_time:
         cmd = ["time"] + cmd
     print(">>>>[ctest_core] command: " + " ".join(cmd))

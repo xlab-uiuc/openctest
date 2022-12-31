@@ -78,6 +78,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == "hudi-common":
+            if "org.apache.hudi.configuration.common.config" in trace and "Test" not in trace:
+                return True
         return False
 
     def setInTest(self, stacktrace):
