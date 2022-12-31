@@ -2,7 +2,7 @@
 import sys, time
 
 from program_input import p_input
-from main import test_conf_file
+# from main import test_conf_file  
 from parse_input import *
 
 project = p_input["project"]
