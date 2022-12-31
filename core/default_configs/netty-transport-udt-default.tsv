@@ -1,0 +1,22 @@
+connectTimeoutMillis	30000	
+maxMessagesPerRead	1	
+maxMessagesPerWrite	2147483647	
+writeSpinCount	16	
+allocator	io.netty.buffer.PooledByteBufAllocator	
+recvByteBufAllocator	io.netty.channel.AdaptiveRecvByteBufAllocator	
+autoRead	1	
+autoClose	true	
+writeBufferHighWaterMark	65536	
+writeBufferLowWaterMark	32768	
+writeBufferWaterMark	io.netty.channel.WriteBufferWaterMark	Obj param must be (int, int)
+messageSizeEstimator	io.netty.channel.DefaultMessageSizeEstimator	Obj param must be (int)
+pinEventExecutorPerGroup	true	
+protocolReceiveBufferSize	10485760	
+receiveBufferSize	131072	
+sendBufferSize	131072	
+soLinger	0	
+reuseAddress	true	
+systemReceiveBufferSize	1048576	
+protocolSendBufferSize	10485760	
+systemSendBufferSize	1048576	
+backlog	64	

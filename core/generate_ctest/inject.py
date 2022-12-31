@@ -2,6 +2,7 @@
 
 import sys
 import xml.etree.ElementTree as ET
+import json
 
 sys.path.append("..")
 from ctest_const import *
@@ -13,8 +14,15 @@ project = p_input["project"]
 def inject_config(param_value_pairs):
     for p, v in param_value_pairs.items():
         print(">>>>[ctest_core] injecting {} with value {}".format(p, v))
-
-    if project in [ZOOKEEPER, ALLUXIO]:
+    
+    if project in [NETTY_UDT]:
+        for inject_path in INJECTION_PATH[project]:
+            print(">>>>[ctest_core] injecting into file: {}".format(inject_path))
+            file = open(inject_path, "w")
+            json_object = json.dumps(param_value_pairs, indent=4)
+            file.write(json_object)
+            file.close()
+    elif project in [ZOOKEEPER, ALLUXIO]:
         for inject_path in INJECTION_PATH[project]:
             print(">>>>[ctest_core] injecting into file: {}".format(inject_path))
             file = open(inject_path, "w")
@@ -41,7 +49,12 @@ def inject_config(param_value_pairs):
 
 def clean_conf_file(project):
     print(">>>> cleaning injected configuration from file")
-    if project in [ZOOKEEPER, ALLUXIO]:
+    if project in [NETTY_UDT]:
+        for inject_path in INJECTION_PATH[project]:
+            file = open(inject_path, "w")
+            file.write("{}\n")
+            file.close()
+    elif project in [ZOOKEEPER, ALLUXIO]:
         for inject_path in INJECTION_PATH[project]:
             file = open(inject_path, "w")
             file.write("\n")

@@ -58,6 +58,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.ConfigurationRule" in trace:
                 return True
+        if self.module == "netty-transport-udt":
+            if "io.netty.channel.DefaultChannelConfig" in trace:
+                return True
         return False
 
     def skipTrace(self, trace):
