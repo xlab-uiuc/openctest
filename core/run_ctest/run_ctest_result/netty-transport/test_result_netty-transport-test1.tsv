@@ -1,0 +1,8 @@
+io.netty.channel.socket.nio.NioDatagramChannelTest#testGetOptions	p	0.08
+io.netty.channel.socket.nio.NioSocketChannelTest#testShutdownOutputAndClose	p	0.049
+io.netty.channel.socket.nio.NioSocketChannelTest#testGetOptions	p	0.014
+io.netty.channel.socket.nio.NioSocketChannelTest#testChannelReRegisterReadDifferentEventLoop	p	0.043
+io.netty.channel.socket.nio.NioSocketChannelTest#testChannelReRegisterReadSameEventLoop	p	0.033
+io.netty.bootstrap.ServerBootstrapTest#optionsAndAttributesMustBeAvailableOnChildChannelInit	p	0.541
+io.netty.bootstrap.BootstrapTest#optionsAndAttributesMustBeAvailableOnChannelInit	p	0.021
+io.netty.channel.socket.nio.NioServerSocketChannelTest#testGetOptions	p	0.013

@@ -41,6 +41,8 @@ def parse_conf_file(path):
     """parse config file"""
     if project in [HCOMMON, HDFS, HBASE]:
         return parse_conf_file_xml(path)
+    elif project in [NETTY_TRANSPORT]:
+        return load_default_conf(path)
     else:
         # parsing for alluxio and zookeeper conf file format
         if "no default configuration file" in path:

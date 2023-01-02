@@ -40,6 +40,7 @@ class Runner:
         return "none"
 
     def traceInTestCode(self, trace):
+        # print("------traceInTestCode>", trace)
         if "Test" in trace:
             return True
         if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server":
@@ -58,10 +59,13 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.ConfigurationRule" in trace:
                 return True
+        if self.module == "netty-transport":
+            if "io.netty.channel.DefaultChannelConfig" in trace:
+                return True
         return False
 
     def skipTrace(self, trace):
-        if "java.lang.Thread" in trace:
+        if trace == "java.lang.Thread":
             return True
         if "sun.reflect" in trace:
             return True
@@ -81,9 +85,11 @@ class Runner:
         return False
 
     def setInTest(self, stacktrace):
+        # print("---setInTest>", stacktrace)
         traces = stacktrace.split("\t")
         for trace in traces:
             if self.skipTrace(trace):
+                # print("------------self.skipTrace(trace)>", trace)
                 continue
             else:
                 if self.traceInTestCode(trace):
