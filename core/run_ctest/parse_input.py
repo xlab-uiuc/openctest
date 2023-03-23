@@ -41,6 +41,8 @@ def parse_conf_file(path):
     """parse config file"""
     if project in [HCOMMON, HDFS, HBASE]:
         return parse_conf_file_xml(path)
+    elif project in [SYCOMMON]:
+        return load_default_conf(path)
     else:
         # parsing for alluxio and zookeeper conf file format
         if "no default configuration file" in path:
@@ -94,6 +96,7 @@ def extract_conf_diff(path):
     """get the config diff"""
     default_conf_map = load_default_conf(DEFAULT_CONF_FILE[project])
     new_conf_map = parse_conf_file(path)
+    print(new_conf_map)
     print(">>>>[ctest_core] default conf file: {}".format(DEFAULT_CONF_FILE[project]))
     print(">>>>[ctest_core] new input conf file: {} (param, value) pairs".format(len(new_conf_map.keys())))
     conf_diff = {}

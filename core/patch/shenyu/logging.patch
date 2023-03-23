@@ -1,0 +1,1321 @@
+From 77f94b95442f6270df0de4610c36b5d8dd1f3a21 Mon Sep 17 00:00:00 2001
+From: KobeNorris <kobenorriswu@gmail.com>
+Date: Mon, 5 Dec 2022 15:45:58 -0600
+Subject: [PATCH 1/2] feat: Update Pom files
+
+---
+ shenyu-common/pom.xml | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/shenyu-common/pom.xml b/shenyu-common/pom.xml
+index 203b9f661..b9cc958f8 100644
+--- a/shenyu-common/pom.xml
++++ b/shenyu-common/pom.xml
+@@ -64,4 +64,18 @@
+             <artifactId>commons-collections4</artifactId>
+         </dependency>
+     </dependencies>
++
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-surefire-plugin</artifactId>
++                <version>3.0.0-M4</version>
++                <configuration>
++                    <reportFormat>plain</reportFormat>
++                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
+ </project>
+-- 
+2.25.1
+
+
+From 0a3d11b804233a2c75d40ee7acf3715a48ea8571 Mon Sep 17 00:00:00 2001
+From: KobeNorris <kobenorriswu@gmail.com>
+Date: Mon, 5 Dec 2022 15:51:27 -0600
+Subject: [PATCH 2/2] feat: Instrumentalize ShenyuConfig.java
+
+---
+ .../shenyu/common/config/ShenyuConfig.java    | 174 +++++++++++++++++-
+ 1 file changed, 172 insertions(+), 2 deletions(-)
+
+diff --git a/shenyu-common/src/main/java/org/apache/shenyu/common/config/ShenyuConfig.java b/shenyu-common/src/main/java/org/apache/shenyu/common/config/ShenyuConfig.java
+index e1c18a3b0..ac9f1960d 100644
+--- a/shenyu-common/src/main/java/org/apache/shenyu/common/config/ShenyuConfig.java
++++ b/shenyu-common/src/main/java/org/apache/shenyu/common/config/ShenyuConfig.java
+@@ -19,6 +19,8 @@ package org.apache.shenyu.common.config;
+ 
+ import org.apache.shenyu.common.concurrent.MemoryLimitCalculator;
+ import org.springframework.util.StringUtils;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ import java.util.ArrayList;
+ import java.util.HashSet;
+@@ -33,6 +35,8 @@ import java.util.stream.Stream;
+  */
+ public class ShenyuConfig {
+ 
++    private static final Logger LOG = LoggerFactory.getLogger(ShenyuConfig.class);
++
+     private SwitchConfig switchConfig = new SwitchConfig();
+     
+     private FileConfig file = new FileConfig();
+@@ -65,12 +69,27 @@ public class ShenyuConfig {
+     
+     private MetricsConfig metrics = new MetricsConfig();
+     
++    /**
++     * Gets stack trace.
++     *
++     * @return the stack trace information
++     */
++    private static String getStackTrace() {
++        // String stacktrace = " ";
++        // for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++        //     stacktrace = stacktrace.concat(element.getClassName() + '#' + element.getMethodName() + ' ');
++        // }
++        // return stacktrace;
++        return "";
++    }
++    
+     /**
+      * Gets health.
+      *
+      * @return the health
+      */
+     public Health getHealth() {
++        LOG.warn("[CTEST][GET-PARAM] health" + getStackTrace());
+         return health;
+     }
+     
+@@ -80,6 +99,7 @@ public class ShenyuConfig {
+      * @param health the health
+      */
+     public void setHealth(final Health health) {
++        LOG.warn("[CTEST][SET-PARAM] health" + getStackTrace());
+         this.health = health;
+     }
+     
+@@ -89,6 +109,7 @@ public class ShenyuConfig {
+      * @return the metrics
+      */
+     public MetricsConfig getMetrics() {
++        LOG.warn("[CTEST][GET-PARAM] metrics" + getStackTrace());
+         return metrics;
+     }
+     
+@@ -98,6 +119,7 @@ public class ShenyuConfig {
+      * @param metrics the metrics
+      */
+     public void setMetrics(final MetricsConfig metrics) {
++        LOG.warn("[CTEST][SET-PARAM] metrics" + getStackTrace());
+         this.metrics = metrics;
+     }
+     
+@@ -107,6 +129,7 @@ public class ShenyuConfig {
+      * @return the shared thread pool config
+      */
+     public SharedPool getSharedPool() {
++        LOG.warn("[CTEST][GET-PARAM] sharedPool" + getStackTrace());
+         return sharedPool;
+     }
+     
+@@ -116,6 +139,7 @@ public class ShenyuConfig {
+      * @param sharedPool the shared thread pool config
+      */
+     public void setSharedPool(final SharedPool sharedPool) {
++        LOG.warn("[CTEST][SET-PARAM] sharedPool" + getStackTrace());
+         this.sharedPool = sharedPool;
+     }
+     
+@@ -125,6 +149,7 @@ public class ShenyuConfig {
+      * @return the local config
+      */
+     public Local getLocal() {
++        LOG.warn("[CTEST][GET-PARAM] local" + getStackTrace());
+         return local;
+     }
+     
+@@ -134,6 +159,7 @@ public class ShenyuConfig {
+      * @param local the local config
+      */
+     public void setLocal(final Local local) {
++        LOG.warn("[CTEST][SET-PARAM] local" + getStackTrace());
+         this.local = local;
+     }
+     
+@@ -143,6 +169,7 @@ public class ShenyuConfig {
+      * @return the ribbon
+      */
+     public RibbonConfig getRibbon() {
++        LOG.warn("[CTEST][GET-PARAM] ribbon" + getStackTrace());
+         return ribbon;
+     }
+     
+@@ -152,6 +179,7 @@ public class ShenyuConfig {
+      * @param ribbon the ribbon
+      */
+     public void setRibbon(final RibbonConfig ribbon) {
++        LOG.warn("[CTEST][SET-PARAM] ribbon" + getStackTrace());
+         this.ribbon = ribbon;
+     }
+     
+@@ -161,6 +189,7 @@ public class ShenyuConfig {
+      * @return the instance
+      */
+     public InstanceConfig getInstance() {
++        LOG.warn("[CTEST][GET-PARAM] instance" + getStackTrace());
+         return instance;
+     }
+     
+@@ -170,6 +199,7 @@ public class ShenyuConfig {
+      * @param instance the instance
+      */
+     public void setInstance(final InstanceConfig instance) {
++        LOG.warn("[CTEST][SET-PARAM] instance" + getStackTrace());
+         this.instance = instance;
+     }
+     
+@@ -179,6 +209,7 @@ public class ShenyuConfig {
+      * @return the switch config
+      */
+     public SwitchConfig getSwitchConfig() {
++        LOG.warn("[CTEST][GET-PARAM] switchConfig" + getStackTrace());
+         return switchConfig;
+     }
+     
+@@ -188,6 +219,7 @@ public class ShenyuConfig {
+      * @param switchConfig the switch config
+      */
+     public void setSwitchConfig(final SwitchConfig switchConfig) {
++        LOG.warn("[CTEST][SET-PARAM] switchConfig" + getStackTrace());
+         this.switchConfig = switchConfig;
+     }
+     
+@@ -197,6 +229,7 @@ public class ShenyuConfig {
+      * @return the scheduler
+      */
+     public Scheduler getScheduler() {
++        LOG.warn("[CTEST][GET-PARAM] scheduler" + getStackTrace());
+         return scheduler;
+     }
+     
+@@ -206,6 +239,7 @@ public class ShenyuConfig {
+      * @param scheduler the scheduler
+      */
+     public void setScheduler(final Scheduler scheduler) {
++        LOG.warn("[CTEST][SET-PARAM] scheduler" + getStackTrace());
+         this.scheduler = scheduler;
+     }
+     
+@@ -215,6 +249,7 @@ public class ShenyuConfig {
+      * @return the ext plugin
+      */
+     public ExtPlugin getExtPlugin() {
++        LOG.warn("[CTEST][GET-PARAM] extPlugin" + getStackTrace());
+         return extPlugin;
+     }
+     
+@@ -224,6 +259,7 @@ public class ShenyuConfig {
+      * @param extPlugin the ext plugin
+      */
+     public void setExtPlugin(final ExtPlugin extPlugin) {
++        LOG.warn("[CTEST][SET-PARAM] extPlugin" + getStackTrace());
+         this.extPlugin = extPlugin;
+     }
+ 
+@@ -233,6 +269,7 @@ public class ShenyuConfig {
+      * @return the match cache
+      */
+     public MatchCache getMatchCache() {
++        LOG.warn("[CTEST][GET-PARAM] matchCache" + getStackTrace());
+         return matchCache;
+     }
+ 
+@@ -242,6 +279,7 @@ public class ShenyuConfig {
+      * @param matchCache the match cache
+      */
+     public void setMatchCache(final MatchCache matchCache) {
++        LOG.warn("[CTEST][SET-PARAM] matchCache" + getStackTrace());
+         this.matchCache = matchCache;
+     }
+     
+@@ -251,6 +289,7 @@ public class ShenyuConfig {
+      * @return the file
+      */
+     public FileConfig getFile() {
++        LOG.warn("[CTEST][GET-PARAM] file" + getStackTrace());
+         return file;
+     }
+     
+@@ -260,6 +299,7 @@ public class ShenyuConfig {
+      * @param file the file
+      */
+     public void setFile(final FileConfig file) {
++        LOG.warn("[CTEST][SET-PARAM] file" + getStackTrace());
+         this.file = file;
+     }
+     
+@@ -269,6 +309,7 @@ public class ShenyuConfig {
+      * @return the exclude
+      */
+     public ExcludePath getExclude() {
++        LOG.warn("[CTEST][GET-PARAM] exclude" + getStackTrace());
+         return exclude;
+     }
+     
+@@ -278,6 +319,7 @@ public class ShenyuConfig {
+      * @param exclude the exclude
+      */
+     public void setExclude(final ExcludePath exclude) {
++        LOG.warn("[CTEST][SET-PARAM] exclude" + getStackTrace());
+         this.exclude = exclude;
+     }
+     
+@@ -287,6 +329,7 @@ public class ShenyuConfig {
+      * @return the fallback
+      */
+     public FallbackPath getFallback() {
++        LOG.warn("[CTEST][GET-PARAM] fallback" + getStackTrace());
+         return fallback;
+     }
+     
+@@ -296,6 +339,7 @@ public class ShenyuConfig {
+      * @param fallback the fallback
+      */
+     public void setFallback(final FallbackPath fallback) {
++        LOG.warn("[CTEST][SET-PARAM] fallback" + getStackTrace());
+         this.fallback = fallback;
+     }
+     
+@@ -305,6 +349,7 @@ public class ShenyuConfig {
+      * @return the upstream check
+      */
+     public UpstreamCheck getUpstreamCheck() {
++        LOG.warn("[CTEST][GET-PARAM] upstreamcheck" + getStackTrace());
+         return upstreamCheck;
+     }
+     
+@@ -314,6 +359,7 @@ public class ShenyuConfig {
+      * @param upstreamCheck the upstream check
+      */
+     public void setUpstreamCheck(final UpstreamCheck upstreamCheck) {
++        LOG.warn("[CTEST][SET-PARAM] upstreamCheck" + getStackTrace());
+         this.upstreamCheck = upstreamCheck;
+     }
+     
+@@ -323,6 +369,7 @@ public class ShenyuConfig {
+      * @return the cross
+      */
+     public CrossFilterConfig getCross() {
++        LOG.warn("[CTEST][GET-PARAM] cross" + getStackTrace());
+         return cross;
+     }
+     
+@@ -332,6 +379,7 @@ public class ShenyuConfig {
+      * @return the websocket config
+      */
+     public WebsocketConfig getWebsocket() {
++        LOG.warn("[CTEST][GET-PARAM] websocket" + getStackTrace());
+         return websocket;
+     }
+     
+@@ -341,6 +389,7 @@ public class ShenyuConfig {
+      * @param websocket the websocket config
+      */
+     public void setWebsocket(final WebsocketConfig websocket) {
++        LOG.warn("[CTEST][SET-PARAM] websocket" + getStackTrace());
+         this.websocket = websocket;
+     }
+     
+@@ -350,6 +399,7 @@ public class ShenyuConfig {
+      * @param cross the cross
+      */
+     public void setCross(final CrossFilterConfig cross) {
++        LOG.warn("[CTEST][SET-PARAM] cross" + getStackTrace());
+         this.cross = cross;
+     }
+     
+@@ -370,6 +420,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] Scheduler.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -379,6 +430,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] Scheduler.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -388,6 +440,7 @@ public class ShenyuConfig {
+          * @return the type
+          */
+         public String getType() {
++            LOG.warn("[CTEST][GET-PARAM] Scheduler.type" + getStackTrace());
+             return type;
+         }
+     
+@@ -397,6 +450,7 @@ public class ShenyuConfig {
+          * @param type the type
+          */
+         public void setType(final String type) {
++            LOG.warn("[CTEST][SET-PARAM] Scheduler.type" + getStackTrace());
+             this.type = type;
+         }
+     
+@@ -406,6 +460,7 @@ public class ShenyuConfig {
+          * @return the threads
+          */
+         public Integer getThreads() {
++            LOG.warn("[CTEST][GET-PARAM] Scheduler.threads" + getStackTrace());
+             return threads;
+         }
+     
+@@ -415,6 +470,7 @@ public class ShenyuConfig {
+          * @param threads the threads
+          */
+         public void setThreads(final Integer threads) {
++            LOG.warn("[CTEST][SET-PARAM] Scheduler.threads" + getStackTrace());
+             this.threads = threads;
+         }
+         
+@@ -441,6 +497,7 @@ public class ShenyuConfig {
+          * @return the path
+          */
+         public String getPath() {
++            LOG.warn("[CTEST][GET-PARAM] ExtPlugin.path" + getStackTrace());
+             return path;
+         }
+     
+@@ -450,6 +507,7 @@ public class ShenyuConfig {
+          * @param path the path
+          */
+         public void setPath(final String path) {
++            LOG.warn("[CTEST][SET-PARAM] ExtPlugin.path" + getStackTrace());
+             this.path = path;
+         }
+     
+@@ -459,6 +517,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] ExtPlugin.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -468,6 +527,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] ExtPlugin.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -477,6 +537,7 @@ public class ShenyuConfig {
+          * @return the threads
+          */
+         public Integer getThreads() {
++            LOG.warn("[CTEST][GET-PARAM] ExtPlugin.threads" + getStackTrace());
+             return threads;
+         }
+     
+@@ -486,6 +547,7 @@ public class ShenyuConfig {
+          * @param threads the threads
+          */
+         public void setThreads(final Integer threads) {
++            LOG.warn("[CTEST][SET-PARAM] ExtPlugin.threads" + getStackTrace());
+             this.threads = threads;
+         }
+         
+@@ -495,6 +557,7 @@ public class ShenyuConfig {
+          * @return the schedule time
+          */
+         public Integer getScheduleTime() {
++            LOG.warn("[CTEST][GET-PARAM] ExtPlugin.scheduleTime" + getStackTrace());
+             return scheduleTime;
+         }
+     
+@@ -504,6 +567,7 @@ public class ShenyuConfig {
+          * @param scheduleTime the schedule time
+          */
+         public void setScheduleTime(final Integer scheduleTime) {
++            LOG.warn("[CTEST][SET-PARAM] ExtPlugin.scheduleTime" + getStackTrace());
+             this.scheduleTime = scheduleTime;
+         }
+     
+@@ -513,6 +577,7 @@ public class ShenyuConfig {
+          * @return the schedule delay
+          */
+         public Integer getScheduleDelay() {
++            LOG.warn("[CTEST][GET-PARAM] ExtPlugin.scheduleDelay" + getStackTrace());
+             return scheduleDelay;
+         }
+     
+@@ -522,6 +587,7 @@ public class ShenyuConfig {
+          * @param scheduleDelay the schedule delay
+          */
+         public void setScheduleDelay(final Integer scheduleDelay) {
++            LOG.warn("[CTEST][SET-PARAM] ExtPlugin.scheduleDelay" + getStackTrace());
+             this.scheduleDelay = scheduleDelay;
+         }
+     }
+@@ -544,6 +610,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] MatchCache.enabled" + getStackTrace());
+             return enabled;
+         }
+ 
+@@ -553,6 +620,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] MatchCache.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+ 
+@@ -562,6 +630,7 @@ public class ShenyuConfig {
+          * @return the maxFreeMemory
+          */
+         public Integer getMaxFreeMemory() {
++            LOG.warn("[CTEST][GET-PARAM] MatchCache.maxFreeMemory" + getStackTrace());
+             return maxFreeMemory;
+         }
+ 
+@@ -571,6 +640,7 @@ public class ShenyuConfig {
+          * @param maxFreeMemory the maxFreeMemory
+          */
+         public void setMaxFreeMemory(final Integer maxFreeMemory) {
++            LOG.warn("[CTEST][SET-PARAM] MatchCache.maxFreeMemory" + getStackTrace());
+             this.maxFreeMemory = maxFreeMemory;
+         }
+     }
+@@ -590,6 +660,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] ExcludePath.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -599,6 +670,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] ExcludePath.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -608,6 +680,7 @@ public class ShenyuConfig {
+          * @param paths the paths
+          */
+         public void setPaths(final List<String> paths) {
++            LOG.warn("[CTEST][SET-PARAM] ExcludePath.paths" + getStackTrace());
+             this.paths = paths;
+         }
+     
+@@ -617,6 +690,7 @@ public class ShenyuConfig {
+          * @return paths paths
+          */
+         public List<String> getPaths() {
++            LOG.warn("[CTEST][GET-PARAM] ExcludePath.paths" + getStackTrace());
+             return paths;
+         }
+     }
+@@ -636,6 +710,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] FallbackPath.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -645,6 +720,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] FallbackPath.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -654,6 +730,7 @@ public class ShenyuConfig {
+          * @param paths the paths
+          */
+         public void setPaths(final List<String> paths) {
++            LOG.warn("[CTEST][SET-PARAM] FallbackPath.paths" + getStackTrace());
+             this.paths = paths;
+         }
+     
+@@ -663,6 +740,7 @@ public class ShenyuConfig {
+          * @return paths paths
+          */
+         public List<String> getPaths() {
++            LOG.warn("[CTEST][GET-PARAM] FallbackPath.paths" + getStackTrace());
+             return paths;
+         }
+     }
+@@ -682,6 +760,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] Health.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -691,6 +770,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] Health.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -700,6 +780,7 @@ public class ShenyuConfig {
+          * @param paths the paths
+          */
+         public void setPaths(final List<String> paths) {
++            LOG.warn("[CTEST][SET-PARAM] Health.paths" + getStackTrace());
+             this.paths = paths;
+         }
+     
+@@ -709,6 +790,7 @@ public class ShenyuConfig {
+          * @return paths paths
+          */
+         public List<String> getPaths() {
++            LOG.warn("[CTEST][GET-PARAM] Health.paths" + getStackTrace());
+             return paths;
+         }
+     }
+@@ -728,6 +810,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] FileConfig.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -737,6 +820,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] FileConfig.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -746,6 +830,7 @@ public class ShenyuConfig {
+          * @return the file max size
+          */
+         public Integer getMaxSize() {
++            LOG.warn("[CTEST][GET-PARAM] FileConfig.maxSize" + getStackTrace());
+             return maxSize;
+         }
+     
+@@ -755,6 +840,7 @@ public class ShenyuConfig {
+          * @param maxSize the file max size
+          */
+         public void setMaxSize(final Integer maxSize) {
++            LOG.warn("[CTEST][SET-PARAM] FileConfig.maxsize" + getStackTrace());
+             this.maxSize = maxSize;
+         }
+     }
+@@ -772,6 +858,7 @@ public class ShenyuConfig {
+          * @return the local
+          */
+         public boolean getLocal() {
++            LOG.warn("[CTEST][GET-PARAM] SwitchConfig.local" + getStackTrace());
+             return local;
+         }
+     
+@@ -781,6 +868,7 @@ public class ShenyuConfig {
+          * @param local the local
+          */
+         public void setLocal(final boolean local) {
++            LOG.warn("[CTEST][SET-PARAM] SwitchConfig.local" + getStackTrace());
+             this.local = local;
+         }
+         
+@@ -811,6 +899,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -820,6 +909,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -829,6 +919,7 @@ public class ShenyuConfig {
+          * @return the timeout
+          */
+         public Integer getTimeout() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.timeout" + getStackTrace());
+             return timeout;
+         }
+     
+@@ -838,6 +929,7 @@ public class ShenyuConfig {
+          * @param timeout the timeout
+          */
+         public void setTimeout(final Integer timeout) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.timeout" + getStackTrace());
+             this.timeout = timeout;
+         }
+     
+@@ -847,6 +939,7 @@ public class ShenyuConfig {
+          * @return the healthy threshold
+          */
+         public Integer getHealthyThreshold() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.healthyThreshold" + getStackTrace());
+             return healthyThreshold;
+         }
+     
+@@ -856,6 +949,7 @@ public class ShenyuConfig {
+          * @param healthyThreshold the healthy threshold
+          */
+         public void setHealthyThreshold(final Integer healthyThreshold) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.healthyThreshold" + getStackTrace());
+             this.healthyThreshold = healthyThreshold;
+         }
+     
+@@ -865,6 +959,7 @@ public class ShenyuConfig {
+          * @return the unhealthy threshold
+          */
+         public Integer getUnhealthyThreshold() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.unhealthyThreshold" + getStackTrace());
+             return unhealthyThreshold;
+         }
+     
+@@ -874,6 +969,7 @@ public class ShenyuConfig {
+          * @param unhealthyThreshold the unhealthy threshold
+          */
+         public void setUnhealthyThreshold(final Integer unhealthyThreshold) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.unhealthyThreshold" + getStackTrace());
+             this.unhealthyThreshold = unhealthyThreshold;
+         }
+     
+@@ -883,6 +979,7 @@ public class ShenyuConfig {
+          * @return the interval
+          */
+         public Integer getInterval() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.interval" + getStackTrace());
+             return interval;
+         }
+     
+@@ -892,6 +989,7 @@ public class ShenyuConfig {
+          * @param interval the interval
+          */
+         public void setInterval(final Integer interval) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.interval" + getStackTrace());
+             this.interval = interval;
+         }
+     
+@@ -901,6 +999,7 @@ public class ShenyuConfig {
+          * @return the print enabled
+          */
+         public boolean getPrintEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.printEnabled" + getStackTrace());
+             return printEnabled;
+         }
+     
+@@ -910,6 +1009,7 @@ public class ShenyuConfig {
+          * @param printEnabled the print enabled
+          */
+         public void setPrintEnabled(final boolean printEnabled) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.printEnabled" + getStackTrace());
+             this.printEnabled = printEnabled;
+         }
+     
+@@ -919,6 +1019,7 @@ public class ShenyuConfig {
+          * @return the print interval
+          */
+         public Integer getPrintInterval() {
++            LOG.warn("[CTEST][GET-PARAM] UpstreamCheck.printInterval" + getStackTrace());
+             return printInterval;
+         }
+     
+@@ -928,6 +1029,7 @@ public class ShenyuConfig {
+          * @param printInterval the print interval
+          */
+         public void setPrintInterval(final Integer printInterval) {
++            LOG.warn("[CTEST][SET-PARAM] UpstreamCheck.printInterval" + getStackTrace());
+             this.printInterval = printInterval;
+         }
+     }
+@@ -958,12 +1060,12 @@ public class ShenyuConfig {
+         private boolean enabled;
+ 
+         /**
+-         * Comma-separated of “header”.
++         * Comma-separated of ��header��.
+          */
+         private String allowedHeaders = "";
+ 
+         /**
+-         * Comma-separated of “method”.
++         * Comma-separated of ��method��.
+          */
+         private String allowedMethods = "*";
+ 
+@@ -997,6 +1099,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -1006,6 +1109,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -1015,6 +1119,7 @@ public class ShenyuConfig {
+          * @return the value of allowedHeaders
+          */
+         public String getAllowedHeaders() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.allowedHeaders" + getStackTrace());
+             return allowedHeaders = wrapperHeaders(allowedHeaders);
+         }
+     
+@@ -1024,6 +1129,7 @@ public class ShenyuConfig {
+          * @param allowedHeaders allowedHeaders
+          */
+         public void setAllowedHeaders(final String allowedHeaders) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedHeaders" + getStackTrace());
+             this.allowedHeaders = wrapperHeaders(allowedHeaders);
+         }
+     
+@@ -1033,6 +1139,7 @@ public class ShenyuConfig {
+          * @return the value of allowedMethods
+          */
+         public String getAllowedMethods() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.allowedMethods" + getStackTrace());
+             return allowedMethods;
+         }
+     
+@@ -1042,6 +1149,7 @@ public class ShenyuConfig {
+          * @param allowedMethods allowedMethods
+          */
+         public void setAllowedMethods(final String allowedMethods) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedMethods" + getStackTrace());
+             this.allowedMethods = allowedMethods;
+         }
+     
+@@ -1051,6 +1159,7 @@ public class ShenyuConfig {
+          * @return the value of allowedOrigin
+          */
+         public AllowedOriginConfig getAllowedOrigin() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.allowedOrigin" + getStackTrace());
+             return allowedOrigin;
+         }
+     
+@@ -1060,6 +1169,7 @@ public class ShenyuConfig {
+          * @param allowedOrigin allowedOrigin
+          */
+         public void setAllowedOrigin(final AllowedOriginConfig allowedOrigin) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedOrigin" + getStackTrace());
+             this.allowedOrigin = allowedOrigin;
+         }
+ 
+@@ -1069,6 +1179,7 @@ public class ShenyuConfig {
+          * @return the value of allowedAnyOrigin
+          */
+         public boolean isAllowedAnyOrigin() {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedAnyOrigin" + getStackTrace());
+             return allowedAnyOrigin;
+         }
+ 
+@@ -1078,6 +1189,7 @@ public class ShenyuConfig {
+          * @param allowedAnyOrigin allowedExpose
+          */
+         public void setAllowedAnyOrigin(final boolean allowedAnyOrigin) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedAnyOrigin" + getStackTrace());
+             this.allowedAnyOrigin = allowedAnyOrigin;
+         }
+ 
+@@ -1087,6 +1199,7 @@ public class ShenyuConfig {
+          * @return the value of allowedExpose
+          */
+         public String getAllowedExpose() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.allowedExpose" + getStackTrace());
+             return allowedExpose;
+         }
+     
+@@ -1096,6 +1209,7 @@ public class ShenyuConfig {
+          * @param allowedExpose allowedExpose
+          */
+         public void setAllowedExpose(final String allowedExpose) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowedExpose" + getStackTrace());
+             this.allowedExpose = allowedExpose;
+         }
+     
+@@ -1105,6 +1219,7 @@ public class ShenyuConfig {
+          * @return the value of maxAge
+          */
+         public String getMaxAge() {
++            LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.maxAge" + getStackTrace());
+             return maxAge;
+         }
+     
+@@ -1114,6 +1229,7 @@ public class ShenyuConfig {
+          * @param maxAge maxAge
+          */
+         public void setMaxAge(final String maxAge) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.maxAge" + getStackTrace());
+             this.maxAge = maxAge;
+         }
+     
+@@ -1123,6 +1239,7 @@ public class ShenyuConfig {
+          * @return the value of allowCredentials
+          */
+         public boolean isAllowCredentials() {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowCredentials" + getStackTrace());
+             return allowCredentials;
+         }
+     
+@@ -1132,6 +1249,7 @@ public class ShenyuConfig {
+          * @param allowCredentials allowCredentials
+          */
+         public void setAllowCredentials(final boolean allowCredentials) {
++            LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.allowCredentials" + getStackTrace());
+             this.allowCredentials = allowCredentials;
+         }
+ 
+@@ -1156,6 +1274,7 @@ public class ShenyuConfig {
+              * @return the value of spacer
+              */
+             public String getSpacer() {
++                LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.AllowedOriginConfig.spacer" + getStackTrace());
+                 return spacer;
+             }
+ 
+@@ -1165,6 +1284,7 @@ public class ShenyuConfig {
+              * @param spacer spacer
+              */
+             public void setSpacer(final String spacer) {
++                LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.AllowedOriginConfig.spacer" + getStackTrace());
+                 this.spacer = spacer;
+             }
+ 
+@@ -1174,6 +1294,7 @@ public class ShenyuConfig {
+              * @return the value of domain
+              */
+             public String getDomain() {
++                LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.AllowedOriginConfig.domain" + getStackTrace());
+                 return domain;
+             }
+ 
+@@ -1183,6 +1304,7 @@ public class ShenyuConfig {
+              * @param domain domain
+              */
+             public void setDomain(final String domain) {
++                LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.AllowedOriginConfig.domain" + getStackTrace());
+                 this.domain = domain;
+             }
+ 
+@@ -1192,6 +1314,7 @@ public class ShenyuConfig {
+              * @return the value of prefixes
+              */
+             public Set<String> getPrefixes() {
++                LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.AllowedOriginConfig.prefixes" + getStackTrace());
+                 return prefixes;
+             }
+ 
+@@ -1201,6 +1324,7 @@ public class ShenyuConfig {
+              * @param prefixes prefixes
+              */
+             public void setPrefixes(final Set<String> prefixes) {
++                LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.AllowedOriginConfig.prefixes" + getStackTrace());
+                 this.prefixes = prefixes;
+             }
+ 
+@@ -1210,6 +1334,7 @@ public class ShenyuConfig {
+              * @return the value of prefixes
+              */
+             public Set<String> getOrigins() {
++                LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.AllowedOriginConfig.origins" + getStackTrace());
+                 return origins;
+             }
+ 
+@@ -1219,6 +1344,7 @@ public class ShenyuConfig {
+              * @param origins origins
+              */
+             public void setOrigins(final Set<String> origins) {
++                LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.AllowedOriginConfig.origins" + getStackTrace());
+                 this.origins = origins;
+             }
+ 
+@@ -1228,6 +1354,7 @@ public class ShenyuConfig {
+              * @return the value of originRegex
+              */
+             public String getOriginRegex() {
++                LOG.warn("[CTEST][GET-PARAM] CrossFilterConfig.AllowedOriginConfig.originRegex" + getStackTrace());
+                 return originRegex;
+             }
+ 
+@@ -1237,6 +1364,7 @@ public class ShenyuConfig {
+              * @param originRegex originRegex
+              */
+             public void setOriginRegex(final String originRegex) {
++                LOG.warn("[CTEST][SET-PARAM] CrossFilterConfig.AllowedOriginConfig.originRegex" + getStackTrace());
+                 this.originRegex = originRegex;
+             }
+         }
+@@ -1281,6 +1409,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] InstanceConfig.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -1290,6 +1419,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] InstanceConfig.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -1299,6 +1429,7 @@ public class ShenyuConfig {
+          * @return String register type
+          */
+         public String getRegisterType() {
++            LOG.warn("[CTEST][GET-PARAM] InstanceConfig.registerType" + getStackTrace());
+             return registerType;
+         }
+     
+@@ -1308,6 +1439,7 @@ public class ShenyuConfig {
+          * @param registerType registerType
+          */
+         public void setRegisterType(final String registerType) {
++            LOG.warn("[CTEST][SET-PARAM] InstanceConfig.registerType" + getStackTrace());
+             this.registerType = registerType;
+         }
+     
+@@ -1317,6 +1449,7 @@ public class ShenyuConfig {
+          * @return String server lists
+          */
+         public String getServerLists() {
++            LOG.warn("[CTEST][GET-PARAM] InstanceConfig.serverLists" + getStackTrace());
+             return serverLists;
+         }
+     
+@@ -1326,6 +1459,7 @@ public class ShenyuConfig {
+          * @param serverLists serverLists
+          */
+         public void setServerLists(final String serverLists) {
++            LOG.warn("[CTEST][SET-PARAM] InstanceConfig.serverLists" + getStackTrace());
+             this.serverLists = serverLists;
+         }
+     
+@@ -1335,6 +1469,7 @@ public class ShenyuConfig {
+          * @return String props
+          */
+         public Properties getProps() {
++            LOG.warn("[CTEST][GET-PARAM] InstanceConfig.props" + getStackTrace());
+             return props;
+         }
+     
+@@ -1344,6 +1479,7 @@ public class ShenyuConfig {
+          * @param props props
+          */
+         public void setProps(final Properties props) {
++            LOG.warn("[CTEST][SET-PARAM] InstanceConfig.props" + getStackTrace());
+             this.props = props;
+         }
+     }
+@@ -1379,6 +1515,7 @@ public class ShenyuConfig {
+          * @return the serverListRefreshInterval
+          */
+         public Integer getServerListRefreshInterval() {
++            LOG.warn("[CTEST][GET-PARAM] RibbonConfig.serverListRefreshInterval" + getStackTrace());
+             return serverListRefreshInterval;
+         }
+     
+@@ -1388,6 +1525,7 @@ public class ShenyuConfig {
+          * @param serverListRefreshInterval serverListRefreshInterval
+          */
+         public void setServerListRefreshInterval(final Integer serverListRefreshInterval) {
++            LOG.warn("[CTEST][SET-PARAM] RibbonConfig.serverListRefreshInterval" + getStackTrace());
+             this.serverListRefreshInterval = serverListRefreshInterval;
+         }
+     }
+@@ -1422,6 +1560,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] Local.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -1431,6 +1570,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] Local.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -1440,6 +1580,7 @@ public class ShenyuConfig {
+          * @return the key
+          */
+         public String getSha512Key() {
++            LOG.warn("[CTEST][GET-PARAM] Local.sha512Key" + getStackTrace());
+             return sha512Key;
+         }
+     
+@@ -1449,6 +1590,7 @@ public class ShenyuConfig {
+          * @param sha512Key sha512Key
+          */
+         public void setSha512Key(final String sha512Key) {
++            LOG.warn("[CTEST][SET-PARAM] Local.sha512Key" + getStackTrace());
+             this.sha512Key = sha512Key;
+         }
+     }
+@@ -1469,6 +1611,7 @@ public class ShenyuConfig {
+          * @return the max frame payload szie
+          */
+         public Integer getMaxFramePayloadSize() {
++            LOG.warn("[CTEST][GET-PARAM] WebsocketConfig.maxFramePayloadSize" + getStackTrace());
+             return maxFramePayloadSize;
+         }
+     
+@@ -1478,6 +1621,7 @@ public class ShenyuConfig {
+          * @param maxFramePayloadSize the max frame paylod size
+          */
+         public void setMaxFramePayloadSize(final Integer maxFramePayloadSize) {
++            LOG.warn("[CTEST][SET-PARAM] WebsocketConfig.maxFramePayloadSize" + getStackTrace());
+             this.maxFramePayloadSize = maxFramePayloadSize;
+         }
+     }
+@@ -1540,6 +1684,7 @@ public class ShenyuConfig {
+          * @return whether to enable
+          */
+         public Boolean getEnable() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.enable" + getStackTrace());
+             return enable;
+         }
+     
+@@ -1549,6 +1694,7 @@ public class ShenyuConfig {
+          * @param enable the enable
+          */
+         public void setEnable(final Boolean enable) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.enable" + getStackTrace());
+             this.enable = enable;
+         }
+     
+@@ -1558,6 +1704,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool name prefix
+          */
+         public String getPrefix() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.prefix" + getStackTrace());
+             return prefix;
+         }
+     
+@@ -1567,6 +1714,7 @@ public class ShenyuConfig {
+          * @param prefix the prefix
+          */
+         public void setPrefix(final String prefix) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.prefix" + getStackTrace());
+             this.prefix = prefix;
+         }
+     
+@@ -1576,6 +1724,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool core size
+          */
+         public Integer getCorePoolSize() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.corePoolSize" + getStackTrace());
+             return corePoolSize;
+         }
+     
+@@ -1585,6 +1734,7 @@ public class ShenyuConfig {
+          * @param corePoolSize the core pool size
+          */
+         public void setCorePoolSize(final Integer corePoolSize) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.corePoolSize" + getStackTrace());
+             this.corePoolSize = corePoolSize;
+         }
+     
+@@ -1594,6 +1744,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool name prefix
+          */
+         public Integer getMaximumPoolSize() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.maximumPoolSize" + getStackTrace());
+             return maximumPoolSize;
+         }
+     
+@@ -1603,6 +1754,7 @@ public class ShenyuConfig {
+          * @param maximumPoolSize the max pool size
+          */
+         public void setMaximumPoolSize(final Integer maximumPoolSize) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.maximumPoolSize" + getStackTrace());
+             this.maximumPoolSize = maximumPoolSize;
+         }
+     
+@@ -1612,6 +1764,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool keep alive time
+          */
+         public Long getKeepAliveTime() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.keepAliveTime" + getStackTrace());
+             return keepAliveTime;
+         }
+     
+@@ -1621,6 +1774,7 @@ public class ShenyuConfig {
+          * @param keepAliveTime the keep alive time
+          */
+         public void setKeepAliveTime(final Long keepAliveTime) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.keepAliveTime" + getStackTrace());
+             this.keepAliveTime = keepAliveTime;
+         }
+     
+@@ -1630,6 +1784,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool max work queue memory
+          */
+         public Long getMaxWorkQueueMemory() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.maxWorkQueueMemory" + getStackTrace());
+             return maxWorkQueueMemory;
+         }
+     
+@@ -1639,6 +1794,7 @@ public class ShenyuConfig {
+          * @param maxWorkQueueMemory the max work queue memory
+          */
+         public void setMaxWorkQueueMemory(final Long maxWorkQueueMemory) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.maxWorkQueueMemory" + getStackTrace());
+             this.maxWorkQueueMemory = maxWorkQueueMemory;
+         }
+ 
+@@ -1648,6 +1804,7 @@ public class ShenyuConfig {
+          * @return the shared thread pool max work queue free memory
+          */
+         public Integer getMaxFreeMemory() {
++            LOG.warn("[CTEST][GET-PARAM] SharedPool.maxFreeMemory" + getStackTrace());
+             return maxFreeMemory;
+         }
+ 
+@@ -1657,6 +1814,7 @@ public class ShenyuConfig {
+          * @param maxFreeMemory the max work queue free memory
+          */
+         public void setMaxFreeMemory(final Integer maxFreeMemory) {
++            LOG.warn("[CTEST][SET-PARAM] SharedPool.maxFreeMemory" + getStackTrace());
+             this.maxFreeMemory = maxFreeMemory;
+         }
+     }
+@@ -1690,6 +1848,7 @@ public class ShenyuConfig {
+          * @return the enabled
+          */
+         public boolean getEnabled() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.enabled" + getStackTrace());
+             return enabled;
+         }
+     
+@@ -1699,6 +1858,7 @@ public class ShenyuConfig {
+          * @param enabled the enabled
+          */
+         public void setEnabled(final boolean enabled) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.enabled" + getStackTrace());
+             this.enabled = enabled;
+         }
+     
+@@ -1708,6 +1868,7 @@ public class ShenyuConfig {
+          * @return the metrics name
+          */
+         public String getName() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.name" + getStackTrace());
+             return name;
+         }
+     
+@@ -1717,6 +1878,7 @@ public class ShenyuConfig {
+          * @param name the metrics name
+          */
+         public void setName(final String name) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.name" + getStackTrace());
+             this.name = name;
+         }
+     
+@@ -1726,6 +1888,7 @@ public class ShenyuConfig {
+          * @return the host
+          */
+         public String getHost() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.host" + getStackTrace());
+             return host;
+         }
+     
+@@ -1735,6 +1898,7 @@ public class ShenyuConfig {
+          * @param host the host
+          */
+         public void setHost(final String host) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.host" + getStackTrace());
+             this.host = host;
+         }
+     
+@@ -1744,6 +1908,7 @@ public class ShenyuConfig {
+          * @return the port
+          */
+         public Integer getPort() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.port" + getStackTrace());
+             return port;
+         }
+     
+@@ -1753,6 +1918,7 @@ public class ShenyuConfig {
+          * @param port the port
+          */
+         public void setPort(final Integer port) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.port" + getStackTrace());
+             this.port = port;
+         }
+     
+@@ -1762,6 +1928,7 @@ public class ShenyuConfig {
+          * @return the jmx config
+          */
+         public String getJmxConfig() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.jmxConfig" + getStackTrace());
+             return jmxConfig;
+         }
+     
+@@ -1771,6 +1938,7 @@ public class ShenyuConfig {
+          * @param jmxConfig the jmx config
+          */
+         public void setJmxConfig(final String jmxConfig) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.jmxConfig" + getStackTrace());
+             this.jmxConfig = jmxConfig;
+         }
+     
+@@ -1780,6 +1948,7 @@ public class ShenyuConfig {
+          * @return the props
+          */
+         public Properties getProps() {
++            LOG.warn("[CTEST][GET-PARAM] MetricsConfig.props" + getStackTrace());
+             return props;
+         }
+     
+@@ -1789,6 +1958,7 @@ public class ShenyuConfig {
+          * @param props the props
+          */
+         public void setProps(final Properties props) {
++            LOG.warn("[CTEST][SET-PARAM] MetricsConfig.props" + getStackTrace());
+             this.props = props;
+         }
+     }
+-- 
+2.25.1
+

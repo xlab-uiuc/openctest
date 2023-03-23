@@ -21,10 +21,14 @@ def read_tsv(module):
     tsv_file = open("../default_configs/" + module + "-default.tsv")
     read_tsv = csv.reader(tsv_file, delimiter="\t")
     for row in read_tsv:
+        print(row)
         params.append(Param(row[0], row[1], row[2]))
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "shenyu-common":
+        assert len(params) == 38
+        return 38
     else:
         assert len(params) == 90
         return 90
@@ -105,6 +109,8 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "shenyu-common":
+        assert len(params) == 38
     else:
         assert len(params) >= 90
     for param in params:
@@ -117,7 +123,7 @@ def print_params(module):
                 print(param.dvalue)
                 print(param.description)
                 print("----------------------")
-            f.write("SKIP\tSKIP\n")
+            f.write("SKIP SKIP\n")
             unhandled.append(param)
         else:
             pcnt += 1
@@ -125,7 +131,7 @@ def print_params(module):
             tmp_cnt += len(param.gvalues)
             assert len(param.gvalues) <= 2
             if len(param.gvalues) == 1:
-                f.write(str(param.gvalues[0]) + "\tSKIP\n")
+                f.write(str(param.gvalues[0]) + " SKIP\n")
             elif len(param.gvalues) == 2:
                 f.write(str(param.gvalues[0]) + "\t" + str(param.gvalues[1]) + "\n")
             else:
