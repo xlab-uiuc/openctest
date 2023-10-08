@@ -1,0 +1,214 @@
+name	value	description
+hadoop.common.configuration.version	0.23.0	version of this configuration file
+hadoop.tmp.dir	/tmp/hadoop-${user.name}	A base for other temporary directories.
+io.native.lib.available	true	Controls whether to use native libraries for bz2 and zlib compression codecs or not. The property does not control any other native libraries.
+hadoop.http.filter.initializers	org.apache.hadoop.http.lib.StaticUserWebFilter	A comma separated list of class names. Each class in the list must extend org.apache.hadoop.http.FilterInitializer. The corresponding Filter will be initialized. Then, the Filter will be applied to all user facing jsp and servlet web pages. The ordering of the list defines the ordering of the filters.
+hadoop.security.authorization	false	Is service-level authorization enabled?
+hadoop.security.instrumentation.requires.admin	false	Indicates if administrator ACLs are required to access instrumentation servlets (JMX, METRICS, CONF, STACKS).
+hadoop.security.authentication	simple	Possible values are simple (no authentication), and kerberos
+hadoop.security.group.mapping	org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback	Class for user to group mapping (get groups for a given user) for ACL. The default implementation, org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback, will determine if the Java Native Interface (JNI) is available. If JNI is available the implementation will use the API within hadoop to resolve a list of groups for a user. If JNI is not available then the shell implementation, ShellBasedUnixGroupsMapping, is used. This implementation shells out to the Linux/Unix environment with the bash -c groups command to resolve a list of groups for a user.
+hadoop.security.groups.cache.secs	300	This is the config controlling the validity of the entries in the cache containing the user->group mapping. When this duration has expired, then the implementation of the group mapping provider is invoked to get the groups of the user and then cached back.
+hadoop.security.groups.negative-cache.secs	30	Expiration time for entries in the the negative user-to-group mapping caching, in seconds. This is useful when invalid users are retrying frequently. It is suggested to set a small value for this expiration, since a transient error in group lookup could temporarily lock out a legitimate user. Set this to zero or negative value to disable negative user-to-group caching.
+hadoop.security.groups.cache.warn.after.ms	5000	If looking up a single user to group takes longer than this amount of milliseconds, we will log a warning message.
+hadoop.security.group.mapping.ldap.url		The URL of the LDAP server to use for resolving user groups when using the LdapGroupsMapping user to group mapping.
+hadoop.security.group.mapping.ldap.ssl	false	Whether or not to use SSL when connecting to the LDAP server.
+hadoop.security.group.mapping.ldap.ssl.keystore		File path to the SSL keystore that contains the SSL certificate required by the LDAP server.
+hadoop.security.group.mapping.ldap.ssl.keystore.password.file		The path to a file containing the password of the LDAP SSL keystore. IMPORTANT: This file should be readable only by the Unix user running the daemons.
+hadoop.security.group.mapping.ldap.bind.user		The distinguished name of the user to bind as when connecting to the LDAP server. This may be left blank if the LDAP server supports anonymous binds.
+hadoop.security.group.mapping.ldap.bind.password.file		The path to a file containing the password of the bind user. IMPORTANT: This file should be readable only by the Unix user running the daemons.
+hadoop.security.group.mapping.ldap.base		The search base for the LDAP connection. This is a distinguished name, and will typically be the root of the LDAP directory.
+hadoop.security.group.mapping.ldap.search.filter.user	(&(objectClass=user)(sAMAccountName={0}))	An additional filter to use when searching for LDAP users. The default will usually be appropriate for Active Directory installations. If connecting to an LDAP server with a non-AD schema, this should be replaced with (&(objectClass=inetOrgPerson)(uid={0}). {0} is a special string used to denote where the username fits into the filter.
+hadoop.security.group.mapping.ldap.search.filter.group	(objectClass=group)	An additional filter to use when searching for LDAP groups. This should be changed when resolving groups against a non-Active Directory installation. posixGroups are currently not a supported group class.
+hadoop.security.group.mapping.ldap.search.attr.member	member	The attribute of the group object that identifies the users that are members of the group. The default will usually be appropriate for any LDAP installation.
+hadoop.security.group.mapping.ldap.search.attr.group.name	cn	The attribute of the group object that identifies the group name. The default will usually be appropriate for all LDAP systems.
+hadoop.security.group.mapping.ldap.directory.search.timeout	10000	The attribute applied to the LDAP SearchControl properties to set a maximum time limit when searching and awaiting a result. Set to 0 if infinite wait period is desired. Default is 10 seconds. Units in milliseconds.
+hadoop.security.service.user.name.key		For those cases where the same RPC protocol is implemented by multiple servers, this configuration is required for specifying the principal name to use for the service when the client wishes to make an RPC call.
+hadoop.security.uid.cache.secs	14400	This is the config controlling the validity of the entries in the cache containing the userId to userName and groupId to groupName used by NativeIO getFstat().
+hadoop.rpc.protection	authentication	A comma-separated list of protection values for secured sasl connections. Possible values are authentication, integrity and privacy. authentication means authentication only and no integrity or privacy; integrity implies authentication and integrity are enabled; and privacy implies all of authentication, integrity and privacy are enabled. hadoop.security.saslproperties.resolver.class can be used to override the hadoop.rpc.protection for a connection at the server side.
+hadoop.security.saslproperties.resolver.class		SaslPropertiesResolver used to resolve the QOP used for a connection. If not specified, the full set of values specified in hadoop.rpc.protection is used while determining the QOP used for the connection. If a class is specified, then the QOP values returned by the class will be used while determining the QOP used for the connection.
+hadoop.work.around.non.threadsafe.getpwuid	false	Some operating systems or authentication modules are known to have broken implementations of getpwuid_r and getpwgid_r, such that these calls are not thread-safe. Symptoms of this problem include JVM crashes with a stack trace inside these functions. If your system exhibits this issue, enable this configuration parameter to include a lock around the calls as a workaround. An incomplete list of some systems known to have this issue is available at https://wiki.apache.org/hadoop/KnownBrokenPwuidImplementations
+hadoop.kerberos.kinit.command	kinit	Used to periodically renew Kerberos credentials when provided to Hadoop. The default setting assumes that kinit is in the PATH of users running the Hadoop client. Change this to the absolute path to kinit if this is not the case.
+hadoop.security.auth_to_local		Maps kerberos principals to local user names
+io.file.buffer.size	4096	The size of buffer for use in sequence files. The size of this buffer should probably be a multiple of hardware page size (4096 on Intel x86), and it determines how much data is buffered during read and write operations.
+io.bytes.per.checksum	512	The number of bytes per checksum. Must not be larger than io.file.buffer.size.
+io.skip.checksum.errors	false	If true, when a checksum error is encountered while reading a sequence file, entries are skipped, instead of throwing an exception.
+io.compression.codecs		A comma-separated list of the compression codec classes that can be used for compression/decompression. In addition to any classes specified with this property (which take precedence), codec classes on the classpath are discovered using a Java ServiceLoader.
+io.compression.codec.bzip2.library	system-native	The native-code library to be used for compression and decompression by the bzip2 codec. This library could be specified either by by name or the full pathname. In the former case, the library is located by the dynamic linker, usually searching the directories specified in the environment variable LD_LIBRARY_PATH. The value of "system-native" indicates that the default system library should be used. To indicate that the algorithm should operate entirely in Java, specify "java-builtin".
+io.serializations	org.apache.hadoop.io.serializer.WritableSerialization,org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,org.apache.hadoop.io.serializer.avro.AvroReflectSerialization	A list of serialization classes that can be used for obtaining serializers and deserializers.
+io.seqfile.local.dir	${hadoop.tmp.dir}/io/local	The local directory where sequence file stores intermediate data files during merge. May be a comma-separated list of directories on different devices in order to spread disk i/o. Directories that do not exist are ignored.
+io.map.index.skip	0	Number of index entries to skip between each entry. Zero by default. Setting this to values larger than zero can facilitate opening large MapFiles using less memory.
+io.map.index.interval	128	MapFile consist of two files - data file (tuples) and index file (keys). For every io.map.index.interval records written in the data file, an entry (record-key, data-file-position) is written in the index file. This is to allow for doing binary search later within the index file to look up records by their keys and get their closest positions in the data file.
+fs.defaultFS	file:///	The name of the default file system. A URI whose scheme and authority determine the FileSystem implementation. The uri's scheme determines the config property (fs.SCHEME.impl) naming the FileSystem implementation class. The uri's authority is used to determine the host, port, etc. for a filesystem.
+fs.default.name	file:///	Deprecated. Use (fs.defaultFS) property instead
+fs.trash.interval	0	Number of minutes after which the checkpoint gets deleted. If zero, the trash feature is disabled. This option may be configured both on the server and the client. If trash is disabled server side then the client side configuration is checked. If trash is enabled on the server side then the value configured on the server is used and the client configuration value is ignored.
+fs.trash.checkpoint.interval	0	Number of minutes between trash checkpoints. Should be smaller or equal to fs.trash.interval. If zero, the value is set to the value of fs.trash.interval. Every time the checkpointer runs it creates a new checkpoint out of current and removes checkpoints created more than fs.trash.interval minutes ago.
+fs.AbstractFileSystem.file.impl	org.apache.hadoop.fs.local.LocalFs	The AbstractFileSystem for file: uris.
+fs.AbstractFileSystem.har.impl	org.apache.hadoop.fs.HarFs	The AbstractFileSystem for har: uris.
+fs.AbstractFileSystem.hdfs.impl	org.apache.hadoop.fs.Hdfs	The FileSystem for hdfs: uris.
+fs.AbstractFileSystem.viewfs.impl	org.apache.hadoop.fs.viewfs.ViewFs	The AbstractFileSystem for view file system for viewfs: uris (ie client side mount table:).
+fs.AbstractFileSystem.ftp.impl	org.apache.hadoop.fs.ftp.FtpFs	The FileSystem for Ftp: uris.
+fs.ftp.host	0.0.0.0	FTP filesystem connects to this server
+fs.ftp.host.port	21	FTP filesystem connects to fs.ftp.host on this port
+fs.df.interval	60000	Disk usage statistics refresh interval in msec.
+fs.du.interval	600000	File space usage statistics refresh interval in msec.
+fs.s3.block.size	67108864	Block size to use when writing files to S3.
+fs.s3.buffer.dir	${hadoop.tmp.dir}/s3	Determines where on the local filesystem the S3 filesystem should store files before sending them to S3 (or after retrieving them from S3).
+fs.s3.maxRetries	4	The maximum number of retries for reading or writing files to S3, before we signal failure to the application.
+fs.s3.sleepTimeSeconds	10	The number of seconds to sleep between each S3 retry.
+fs.swift.impl	org.apache.hadoop.fs.swift.snative.SwiftNativeFileSystem	The implementation class of the OpenStack Swift Filesystem
+fs.automatic.close	true	By default, FileSystem instances are automatically closed at program exit using a JVM shutdown hook. Setting this property to false disables this behavior. This is an advanced option that should only be used by server applications requiring a more carefully orchestrated shutdown sequence.
+fs.s3n.block.size	67108864	Block size to use when reading files using the native S3 filesystem (s3n: URIs).
+fs.s3n.multipart.uploads.enabled	false	Setting this property to true enables multiple uploads to native S3 filesystem. When uploading a file, it is split into blocks if the size is larger than fs.s3n.multipart.uploads.block.size.
+fs.s3n.multipart.uploads.block.size	67108864	The block size for multipart uploads to native S3 filesystem. Default size is 64MB.
+fs.s3n.multipart.copy.block.size	5368709120	The block size for multipart copy in native S3 filesystem. Default size is 5GB.
+fs.s3n.server-side-encryption-algorithm		Specify a server-side encryption algorithm for S3. The default is NULL, and the only other currently allowable value is AES256.
+fs.s3a.awsAccessKeyId		AWS access key ID. Omit for Role-based authentication.
+fs.s3a.awsSecretAccessKey		AWS secret key. Omit for Role-based authentication.
+fs.s3a.connection.maximum	15	Controls the maximum number of simultaneous connections to S3.
+fs.s3a.connection.ssl.enabled	true	Enables or disables SSL connections to S3.
+fs.s3a.endpoint		AWS S3 endpoint to connect to. An up-to-date list is provided in the AWS Documentation: regions and endpoints. Without this property, the standard region (s3.amazonaws.com) is assumed.
+fs.s3a.proxy.host		Hostname of the (optional) proxy server for S3 connections.
+fs.s3a.proxy.port		Proxy server port. If this property is not set but fs.s3a.proxy.host is, port 80 or 443 is assumed (consistent with the value of fs.s3a.connection.ssl.enabled).
+fs.s3a.proxy.username		Username for authenticating with proxy server.
+fs.s3a.proxy.password		Password for authenticating with proxy server.
+fs.s3a.proxy.domain		Domain for authenticating with proxy server.
+fs.s3a.proxy.workstation		Workstation for authenticating with proxy server.
+fs.s3a.attempts.maximum	10	How many times we should retry commands on transient errors.
+fs.s3a.connection.establish.timeout	5000	Socket connection setup timeout in milliseconds.
+fs.s3a.connection.timeout	50000	Socket connection timeout in milliseconds.
+fs.s3a.paging.maximum	5000	How many keys to request from S3 when doing directory listings at a time.
+fs.s3a.threads.max	256	Maximum number of concurrent active (part)uploads, which each use a thread from the threadpool.
+fs.s3a.threads.core	15	Number of core threads in the threadpool.
+fs.s3a.threads.keepalivetime	60	Number of seconds a thread can be idle before being terminated.
+fs.s3a.max.total.tasks	1000	Number of (part)uploads allowed to the queue before blocking additional uploads.
+fs.s3a.multipart.size	104857600	How big (in bytes) to split upload or copy operations up into.
+fs.s3a.multipart.threshold	2147483647	Threshold before uploads or copies use parallel multipart operations.
+fs.s3a.acl.default		Set a canned ACL for newly created and copied objects. Value may be private, public-read, public-read-write, authenticated-read, log-delivery-write, bucket-owner-read, or bucket-owner-full-control.
+fs.s3a.multipart.purge	false	True if you want to purge existing multipart uploads that may not have been completed/aborted correctly
+fs.s3a.multipart.purge.age	86400	Minimum age in seconds of multipart uploads to purge
+fs.s3a.buffer.dir	${hadoop.tmp.dir}/s3a	Comma separated list of directories that will be used to buffer file uploads to.
+fs.s3a.fast.upload	false	Upload directly from memory instead of buffering to disk first. Memory usage and parallelism can be controlled as up to fs.s3a.multipart.size memory is consumed for each (part)upload actively uploading (fs.s3a.threads.max) or queueing (fs.s3a.max.total.tasks)
+fs.s3a.fast.buffer.size	1048576	Size of initial memory buffer in bytes allocated for an upload. No effect if fs.s3a.fast.upload is false.
+fs.s3a.impl	org.apache.hadoop.fs.s3a.S3AFileSystem	The implementation class of the S3A Filesystem
+io.seqfile.compress.blocksize	1000000	The minimum block size for compression in block compressed SequenceFiles.
+io.seqfile.lazydecompress	true	Should values of block-compressed SequenceFiles be decompressed only when necessary.
+io.seqfile.sorter.recordlimit	1000000	The limit on number of records to be kept in memory in a spill in SequenceFiles.Sorter
+io.mapfile.bloom.size	1048576	The size of BloomFilter-s used in BloomMapFile. Each time this many keys is appended the next BloomFilter will be created (inside a DynamicBloomFilter). Larger values minimize the number of filters, which slightly increases the performance, but may waste too much space if the total number of keys is usually much smaller than this number.
+io.mapfile.bloom.error.rate	0.005	The rate of false positives in BloomFilter-s used in BloomMapFile. As this value decreases, the size of BloomFilter-s increases exponentially. This value is the probability of encountering false positives (default is 0.5%).
+hadoop.util.hash.type	murmur	The default implementation of Hash. Currently this can take one of the two values: 'murmur' to select MurmurHash and 'jenkins' to select JenkinsHash.
+ipc.client.idlethreshold	4000	Defines the threshold number of connections after which connections will be inspected for idleness.
+ipc.client.kill.max	10	Defines the maximum number of clients to disconnect in one go.
+ipc.client.connection.maxidletime	10000	The maximum time in msec after which a client will bring down the connection to the server.
+ipc.client.connect.max.retries	10	Indicates the number of retries a client will make to establish a server connection.
+ipc.client.connect.retry.interval	1000	Indicates the number of milliseconds a client will wait for before retrying to establish a server connection.
+ipc.client.connect.timeout	20000	Indicates the number of milliseconds a client will wait for the socket to establish a server connection.
+ipc.client.connect.max.retries.on.timeouts	45	Indicates the number of retries a client will make on socket timeout to establish a server connection.
+ipc.client.ping	true	Send a ping to the server when timeout on reading the response, if set to true. If no failure is detected, the client retries until at least a byte is read.
+ipc.ping.interval	60000	Timeout on waiting response from server, in milliseconds. The client will send ping when the interval is passed without receiving bytes, if ipc.client.ping is set to true.
+ipc.client.rpc-timeout.ms	0	Timeout on waiting response from server, in milliseconds. Currently this timeout works only when ipc.client.ping is set to true because it uses the same facilities with IPC ping. The timeout overrides the ipc.ping.interval and client will throw exception instead of sending ping when the interval is passed.
+ipc.server.listen.queue.size	128	Indicates the length of the listen queue for servers accepting client connections.
+ipc.maximum.data.length	67108864	This indicates the maximum IPC message length (bytes) that can be accepted by the server. Messages larger than this value are rejected by server immediately. This setting should rarely need to be changed. It merits investigating whether the cause of long RPC messages can be fixed instead, e.g. by splitting into smaller messages.
+hadoop.security.impersonation.provider.class		A class which implements ImpersonationProvider interface, used to authorize whether one user can impersonate a specific user. If not specified, the DefaultImpersonationProvider will be used. If a class is specified, then that class will be used to determine the impersonation capability.
+hadoop.rpc.socket.factory.class.default	org.apache.hadoop.net.StandardSocketFactory	Default SocketFactory to use. This parameter is expected to be formatted as "package.FactoryClassName".
+hadoop.rpc.socket.factory.class.ClientProtocol		SocketFactory to use to connect to a DFS. If null or empty, use hadoop.rpc.socket.class.default. This socket factory is also used by DFSClient to create sockets to DataNodes.
+hadoop.socks.server		Address (host:port) of the SOCKS server to be used by the SocksSocketFactory.
+net.topology.node.switch.mapping.impl	org.apache.hadoop.net.ScriptBasedMapping	The default implementation of the DNSToSwitchMapping. It invokes a script specified in net.topology.script.file.name to resolve node names. If the value for net.topology.script.file.name is not set, the default value of DEFAULT_RACK is returned for all node names.
+net.topology.impl	org.apache.hadoop.net.NetworkTopology	The default implementation of NetworkTopology which is classic three layer one.
+net.topology.script.file.name		The script name that should be invoked to resolve DNS names to NetworkTopology names. Example: the script would take host.foo.bar as an argument, and return /rack1 as the output.
+net.topology.script.number.args	100	The max number of args that the script configured with net.topology.script.file.name should be run with. Each arg is an IP address.
+net.topology.table.file.name		The file name for a topology file, which is used when the net.topology.node.switch.mapping.impl property is set to org.apache.hadoop.net.TableMapping. The file format is a two column text file, with columns separated by whitespace. The first column is a DNS or IP address and the second column specifies the rack where the address maps. If no entry corresponding to a host in the cluster is found, then /default-rack is assumed.
+file.stream-buffer-size	4096	The size of buffer to stream files. The size of this buffer should probably be a multiple of hardware page size (4096 on Intel x86), and it determines how much data is buffered during read and write operations.
+file.bytes-per-checksum	512	The number of bytes per checksum. Must not be larger than file.stream-buffer-size
+file.client-write-packet-size	65536	Packet size for clients to write
+file.blocksize	67108864	Block size
+file.replication	1	Replication factor
+s3.stream-buffer-size	4096	The size of buffer to stream files. The size of this buffer should probably be a multiple of hardware page size (4096 on Intel x86), and it determines how much data is buffered during read and write operations.
+s3.bytes-per-checksum	512	The number of bytes per checksum. Must not be larger than s3.stream-buffer-size
+s3.client-write-packet-size	65536	Packet size for clients to write
+s3.blocksize	67108864	Block size
+s3.replication	3	Replication factor
+s3native.stream-buffer-size	4096	The size of buffer to stream files. The size of this buffer should probably be a multiple of hardware page size (4096 on Intel x86), and it determines how much data is buffered during read and write operations.
+s3native.bytes-per-checksum	512	The number of bytes per checksum. Must not be larger than s3native.stream-buffer-size
+s3native.client-write-packet-size	65536	Packet size for clients to write
+s3native.blocksize	67108864	Block size
+s3native.replication	3	Replication factor
+ftp.stream-buffer-size	4096	The size of buffer to stream files. The size of this buffer should probably be a multiple of hardware page size (4096 on Intel x86), and it determines how much data is buffered during read and write operations.
+ftp.bytes-per-checksum	512	The number of bytes per checksum. Must not be larger than ftp.stream-buffer-size
+ftp.client-write-packet-size	65536	Packet size for clients to write
+ftp.blocksize	67108864	Block size
+ftp.replication	3	Replication factor
+tfile.io.chunk.size	1048576	Value chunk size in bytes. Default to 1MB. Values of the length less than the chunk size is guaranteed to have known value length in read time (See also TFile.Reader.Scanner.Entry.isValueLengthKnown()).
+tfile.fs.output.buffer.size	262144	Buffer size used for FSDataOutputStream in bytes.
+tfile.fs.input.buffer.size	262144	Buffer size used for FSDataInputStream in bytes.
+hadoop.http.authentication.type	simple	Defines authentication used for Oozie HTTP endpoint. Supported values are: simple | kerberos | #AUTHENTICATION_HANDLER_CLASSNAME#
+hadoop.http.authentication.token.validity	36000	Indicates how long (in seconds) an authentication token is valid before it has to be renewed.
+hadoop.http.authentication.signature.secret.file	${user.home}/hadoop-http-auth-signature-secret	The signature secret for signing the authentication tokens. The same secret should be used for JT/NN/DN/TT configurations.
+hadoop.http.authentication.cookie.domain		The domain to use for the HTTP cookie that stores the authentication token. In order to authentiation to work correctly across all Hadoop nodes web-consoles the domain must be correctly set. IMPORTANT: when using IP addresses, browsers ignore cookies with domain settings. For this setting to work properly all nodes in the cluster must be configured to generate URLs with hostname.domain names on it.
+hadoop.http.authentication.simple.anonymous.allowed	true	Indicates if anonymous requests are allowed when using 'simple' authentication.
+hadoop.http.authentication.kerberos.principal	HTTP/_HOST@LOCALHOST	Indicates the Kerberos principal to be used for HTTP endpoint. The principal MUST start with 'HTTP/' as per Kerberos HTTP SPNEGO specification.
+hadoop.http.authentication.kerberos.keytab	${user.home}/hadoop.keytab	Location of the keytab file with the credentials for the principal. Referring to the same keytab file Oozie uses for its Kerberos credentials for Hadoop.
+hadoop.http.cross-origin.enabled	false	Enable/disable the cross-origin (CORS) filter.
+hadoop.http.cross-origin.allowed-origins	*	Comma separated list of origins that are allowed for web services needing cross-origin (CORS) support. Wildcards (*) and patterns allowed
+hadoop.http.cross-origin.allowed-methods	GET,POST,HEAD	Comma separated list of methods that are allowed for web services needing cross-origin (CORS) support.
+hadoop.http.cross-origin.allowed-headers	X-Requested-With,Content-Type,Accept,Origin	Comma separated list of headers that are allowed for web services needing cross-origin (CORS) support.
+hadoop.http.cross-origin.max-age	1800	The number of seconds a pre-flighted request can be cached for web services needing cross-origin (CORS) support.
+dfs.ha.fencing.methods		List of fencing methods to use for service fencing. May contain builtin methods (eg shell and sshfence) or user-defined method.
+dfs.ha.fencing.ssh.connect-timeout	30000	SSH connection timeout, in milliseconds, to use with the builtin sshfence fencer.
+dfs.ha.fencing.ssh.private-key-files		The SSH private key files to use with the builtin sshfence fencer.
+hadoop.http.staticuser.user	dr.who	The user name to filter as, on static web filters while rendering content. An example use is the HDFS web UI (user to be used for browsing files).
+ha.zookeeper.quorum		A list of ZooKeeper server addresses, separated by commas, that are to be used by the ZKFailoverController in automatic failover.
+ha.zookeeper.session-timeout.ms	5000	The session timeout to use when the ZKFC connects to ZooKeeper. Setting this value to a lower value implies that server crashes will be detected more quickly, but risks triggering failover too aggressively in the case of a transient error or network blip.
+ha.zookeeper.parent-znode	/hadoop-ha	The ZooKeeper znode under which the ZK failover controller stores its information. Note that the nameservice ID is automatically appended to this znode, so it is not normally necessary to configure this, even in a federated environment.
+ha.zookeeper.acl	world:anyone:rwcda	A comma-separated list of ZooKeeper ACLs to apply to the znodes used by automatic failover. These ACLs are specified in the same format as used by the ZooKeeper CLI. If the ACL itself contains secrets, you may instead specify a path to a file, prefixed with the '@' symbol, and the value of this configuration will be loaded from within.
+ha.zookeeper.auth		A comma-separated list of ZooKeeper authentications to add when connecting to ZooKeeper. These are specified in the same format as used by the "addauth" command in the ZK CLI. It is important that the authentications specified here are sufficient to access znodes with the ACL specified in ha.zookeeper.acl. If the auths contain secrets, you may instead specify a path to a file, prefixed with the '@' symbol, and the value of this configuration will be loaded from within.
+hadoop.ssl.keystores.factory.class	org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory	The keystores factory to use for retrieving certificates.
+hadoop.ssl.require.client.cert	false	Whether client certificates are required
+hadoop.ssl.hostname.verifier	DEFAULT	The hostname verifier to provide for HttpsURLConnections. Valid values are: DEFAULT, STRICT, STRICT_I6, DEFAULT_AND_LOCALHOST and ALLOW_ALL
+hadoop.ssl.server.conf	ssl-server.xml	Resource file from which ssl server keystore information will be extracted. This file is looked up in the classpath, typically it should be in Hadoop conf/ directory.
+hadoop.ssl.client.conf	ssl-client.xml	Resource file from which ssl client keystore information will be extracted This file is looked up in the classpath, typically it should be in Hadoop conf/ directory.
+hadoop.ssl.enabled	false	Deprecated. Use dfs.http.policy and yarn.http.policy instead.
+hadoop.ssl.enabled.protocols	TLSv1	Protocols supported by the ssl.
+hadoop.jetty.logs.serve.aliases	true	Enable/Disable aliases serving from jetty
+fs.permissions.umask-mode	022	The umask used when creating files and directories. Can be in octal or in symbolic. Examples are: "022" (octal for u=rwx,g=r-x,o=r-x in symbolic), or "u=rwx,g=rwx,o=" (symbolic for 007 in octal).
+ha.health-monitor.connect-retry-interval.ms	1000	How often to retry connecting to the service.
+ha.health-monitor.check-interval.ms	1000	How often to check the service.
+ha.health-monitor.sleep-after-disconnect.ms	1000	How long to sleep after an unexpected RPC error.
+ha.health-monitor.rpc-timeout.ms	45000	Timeout for the actual monitorHealth() calls.
+ha.failover-controller.new-active.rpc-timeout.ms	60000	Timeout that the FC waits for the new active to become active
+ha.failover-controller.graceful-fence.rpc-timeout.ms	5000	Timeout that the FC waits for the old active to go to standby
+ha.failover-controller.graceful-fence.connection.retries	1	FC connection retries for graceful fencing
+ha.failover-controller.cli-check.rpc-timeout.ms	20000	Timeout that the CLI (manual) FC waits for monitorHealth, getServiceState
+ipc.client.fallback-to-simple-auth-allowed	false	When a client is configured to attempt a secure connection, but attempts to connect to an insecure server, that server may instruct the client to switch to SASL SIMPLE (unsecure) authentication. This setting controls whether or not the client will accept this instruction from the server. When false (the default), the client will not allow the fallback to SIMPLE authentication, and will abort the connection.
+fs.client.resolve.remote.symlinks	true	Whether to resolve symlinks when accessing a remote Hadoop filesystem. Setting this to false causes an exception to be thrown upon encountering a symlink. This setting does not apply to local filesystems, which automatically resolve local symlinks.
+nfs.exports.allowed.hosts	* rw	By default, the export can be mounted by any client. The value string contains machine name and access privilege, separated by whitespace characters. The machine name format can be a single host, a Java regular expression, or an IPv4 address. The access privilege uses rw or ro to specify read/write or read-only access of the machines to exports. If the access privilege is not provided, the default is read-only. Entries are separated by ";". For example: "192.168.0.0/22 rw ; host.*\.example\.com ; host1.test.org ro;". Only the NFS gateway needs to restart after this property is updated.
+hadoop.user.group.static.mapping.overrides	dr.who=;	Static mapping of user to groups. This will override the groups if available in the system for the specified user. In otherwords, groups look-up will not happen for these users, instead groups mapped in this configuration will be used. Mapping should be in this format. user1=group1,group2;user2=;user3=group2; Default, "dr.who=;" will consider "dr.who" as user without groups.
+rpc.metrics.quantile.enable	false	Setting this property to true and rpc.metrics.percentiles.intervals to a comma-separated list of the granularity in seconds, the 50/75/90/95/99th percentile latency for rpc queue/processing time in milliseconds are added to rpc metrics.
+rpc.metrics.percentiles.intervals		A comma-separated list of the granularity in seconds for the metrics which describe the 50/75/90/95/99th percentile latency for rpc queue/processing time. The metrics are outputted if rpc.metrics.quantile.enable is set to true.
+hadoop.security.crypto.codec.classes.EXAMPLECIPHERSUITE		The prefix for a given crypto codec, contains a comma-separated list of implementation classes for a given crypto codec (eg EXAMPLECIPHERSUITE). The first implementation will be used if available, others are fallbacks.
+hadoop.security.crypto.codec.classes.aes.ctr.nopadding	org.apache.hadoop.crypto.OpensslAesCtrCryptoCodec,org.apache.hadoop.crypto.JceAesCtrCryptoCodec	Comma-separated list of crypto codec implementations for AES/CTR/NoPadding. The first implementation will be used if available, others are fallbacks.
+hadoop.security.crypto.cipher.suite	AES/CTR/NoPadding	Cipher suite for crypto codec.
+hadoop.security.crypto.jce.provider		The JCE provider name used in CryptoCodec.
+hadoop.security.crypto.buffer.size	8192	The buffer size used by CryptoInputStream and CryptoOutputStream.
+hadoop.security.java.secure.random.algorithm	SHA1PRNG	The java secure random algorithm.
+hadoop.security.secure.random.impl		Implementation of secure random.
+hadoop.security.random.device.file.path	/dev/urandom	OS security random device file path.
+fs.har.impl.disable.cache	true	Don't cache 'har' filesystem instances.
+hadoop.security.kms.client.authentication.retry-count	1	Number of time to retry connecting to KMS on authentication failure
+hadoop.security.kms.client.encrypted.key.cache.size	500	Size of the EncryptedKeyVersion cache Queue for each key
+hadoop.security.kms.client.encrypted.key.cache.low-watermark	0.3f	If size of the EncryptedKeyVersion cache Queue falls below the low watermark, this cache queue will be scheduled for a refill
+hadoop.security.kms.client.encrypted.key.cache.num.refill.threads	2	Number of threads to use for refilling depleted EncryptedKeyVersion cache Queues
+hadoop.security.kms.client.encrypted.key.cache.expiry	43200000	Cache expiry time for a Key, after which the cache Queue for this key will be dropped. Default = 12hrs
+hadoop.htrace.spanreceiver.classes		A comma separated list of the fully-qualified class name of classes implementing SpanReceiver. The tracing system works by collecting information in structs called 'Spans'. It is up to you to choose how you want to receive this information by implementing the SpanReceiver interface.
+ipc.server.max.connections	0	The maximum number of concurrent connections a server is allowed to accept. If this limit is exceeded, incoming connections will first fill the listen queue and then may go to an OS-specific listen overflow queue. The client may fail or timeout, but the server can avoid running out of file descriptors using this feature. 0 means no limit.
+hadoop.registry.rm.enabled	false	Is the registry enabled in the YARN Resource Manager? If true, the YARN RM will, as needed. create the user and system paths, and purge service records when containers, application attempts and applications complete. If false, the paths must be created by other means, and no automatic cleanup of service records will take place.
+hadoop.registry.zk.root	/registry	The root zookeeper node for the registry
+hadoop.registry.zk.session.timeout.ms	60000	Zookeeper session timeout in milliseconds
+hadoop.registry.zk.connection.timeout.ms	15000	Zookeeper connection timeout in milliseconds
+hadoop.registry.zk.retry.times	5	Zookeeper connection retry count before failing
+hadoop.registry.zk.retry.interval.ms	1000	
+hadoop.registry.zk.retry.ceiling.ms	60000	Zookeeper retry limit in milliseconds, during exponential backoff. This places a limit even if the retry times and interval limit, combined with the backoff policy, result in a long retry period
+hadoop.registry.zk.quorum	localhost:2181	List of hostname:port pairs defining the zookeeper quorum binding for the registry
+hadoop.registry.secure	false	Key to set if the registry is secure. Turning it on changes the permissions policy from "open access" to restrictions on kerberos with the option of a user adding one or more auth key pairs down their own tree.
+hadoop.registry.system.acls	sasl:yarn@, sasl:mapred@, sasl:hdfs@	A comma separated list of Zookeeper ACL identifiers with system access to the registry in a secure cluster. These are given full access to all entries. If there is an "@" at the end of a SASL entry it instructs the registry client to append the default kerberos domain.
+hadoop.registry.kerberos.realm		The kerberos realm: used to set the realm of system principals which do not declare their realm, and any other accounts that need the value. If empty, the default realm of the running process is used. If neither are known and the realm is needed, then the registry service/client will fail.
+hadoop.registry.jaas.context	Client	Key to define the JAAS context. Used in secure mode

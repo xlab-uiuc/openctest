@@ -1,2 +1,0 @@
-ftp.bytes-per-checksum	10	100
-hadoop.http.authentication.type	simple	kerberos
