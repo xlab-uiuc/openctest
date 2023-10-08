@@ -11,6 +11,8 @@ function setup_hadoop() {
     mvn clean install -DskipTests
     cd $home_dir/hadoop-hdfs-project/hadoop-hdfs
     mvn package -DskipTests
+    cd $home_dir/hadoop-hdfs-project/hadoop-hdfs-rbf
+    mvn package -DskipTests
 }
 
 function setup_hbase() {

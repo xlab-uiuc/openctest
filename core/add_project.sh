@@ -3,7 +3,7 @@
 function setup_hadoop() {
     [ ! -d "app/ctest-hadoop" ] && git clone https://github.com/xlab-uiuc/hadoop.git app/ctest-hadoop
     cd app/ctest-hadoop
-    git fetch && git checkout ctest-injection
+    git fetch && git checkout trunk
     home_dir=$PWD
     cd $home_dir/hadoop-common-project/hadoop-common
     mvn clean install -DskipTests

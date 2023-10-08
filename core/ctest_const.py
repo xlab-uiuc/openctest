@@ -9,11 +9,13 @@ RUN_CTEST_DIR = os.path.join(CUR_DIR, "run_ctest")
 
 HCOMMON = "hadoop-common"
 HDFS = "hadoop-hdfs"
+HDFSRBF = "hadoop-hdfs-rbf"
 HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 
-CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
+# CTEST_HADOOP_DIR = os.path.join(APP_DIR, "../../../hadoop")
+CTEST_HADOOP_DIR = os.path.join(CUR_DIR, "../../hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
@@ -21,6 +23,7 @@ CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
     HDFS: CTEST_HADOOP_DIR,
+    HDFSRBF: CTEST_HADOOP_DIR,
     HBASE: CTEST_HBASE_DIR,
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
@@ -31,6 +34,7 @@ PROJECT_DIR = {
 MODULE_SUBDIR = {
     HCOMMON: "hadoop-common-project/hadoop-common",
     HDFS: "hadoop-hdfs-project/hadoop-hdfs",
+    HDFSRBF: "hadoop-hdfs-project/hadoop-hdfs-rbf",
     HBASE: "hbase-server",
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
@@ -46,6 +50,7 @@ SUREFIRE_OUTTXT = "{}-output.txt" #testclass
 SUREFIRE_DIR = {
     HCOMMON: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HCOMMON], SUREFIRE_SUBDIR)],
     HDFS: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HDFS], SUREFIRE_SUBDIR)],
+    HDFSRBF: [os.path.join(CTEST_HADOOP_DIR, MODULE_SUBDIR[HDFSRBF], SUREFIRE_SUBDIR)],
     HBASE: [os.path.join(CTEST_HBASE_DIR, MODULE_SUBDIR[HBASE], SUREFIRE_SUBDIR)],
     ZOOKEEPER: [os.path.join(CTEST_ZK_DIR, MODULE_SUBDIR[ZOOKEEPER], SUREFIRE_SUBDIR)],
     ALLUXIO: [
@@ -72,6 +77,7 @@ DEPRECATE_CONF_FILE = {
 DEFAULT_CONF_FILE = {
     HCOMMON: os.path.join(DEFAULT_CONF_DIR, HCOMMON + "-default.tsv"),
     HDFS: os.path.join(DEFAULT_CONF_DIR, HDFS + "-default.tsv"),
+    HDFSRBF: os.path.join(DEFAULT_CONF_DIR, HDFSRBF + "-default.tsv"),
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv")
@@ -86,6 +92,10 @@ INJECTION_PATH = {
     HDFS: [
         os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/core-ctest.xml"),
         os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs/target/classes/hdfs-ctest.xml")
+    ],
+    HDFSRBF: [
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/core-ctest.xml"),
+        os.path.join(CTEST_HADOOP_DIR, "hadoop-hdfs-project/hadoop-hdfs-rbf/target/classes/hdfs-rbf-ctest.xml")
     ],
     HBASE: [
         os.path.join(CTEST_HBASE_DIR, "hbase-server/target/classes/core-ctest.xml"),

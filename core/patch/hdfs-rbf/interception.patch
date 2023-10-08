@@ -1,0 +1,95 @@
+diff --git a/hadoop-common-project/hadoop-common/pom.xml b/hadoop-common-project/hadoop-common/pom.xml
+index 530e18e4b83..9fc70dbeccc 100644
+--- a/hadoop-common-project/hadoop-common/pom.xml
++++ b/hadoop-common-project/hadoop-common/pom.xml
+@@ -509,6 +509,7 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+         <configuration>
+           <systemPropertyVariables>
+             <runningWithNative>${runningWithNative}</runningWithNative>
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index 818ef37eb79..39461edaee9 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -786,6 +786,7 @@ private void handleDeprecation() {
+     // Add default resources
+     addDefaultResource("core-default.xml");
+     addDefaultResource("core-site.xml");
++    addDefaultResource("core-ctest.xml"); //CTEST
+ 
+     // print deprecation warning if hadoop-site.xml is found in classpath
+     ClassLoader cL = Thread.currentThread().getContextClassLoader();
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java b/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
+index 65efaf9dfae..d3f8ab40ad3 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
++++ b/hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/HdfsConfiguration.java
+@@ -38,6 +38,7 @@
+     Configuration.addDefaultResource("hdfs-rbf-default.xml");
+     Configuration.addDefaultResource("hdfs-site.xml");
+     Configuration.addDefaultResource("hdfs-rbf-site.xml");
++    Configuration.addDefaultResource("hdfs-rbf-ctest.xml"); //CTEST
+   }
+ 
+   public HdfsConfiguration() {
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-rbf/pom.xml b/hadoop-hdfs-project/hadoop-hdfs-rbf/pom.xml
+index 0309535b91c..b0f7f1c4258 100644
+--- a/hadoop-hdfs-project/hadoop-hdfs-rbf/pom.xml
++++ b/hadoop-hdfs-project/hadoop-hdfs-rbf/pom.xml
+@@ -126,6 +126,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-surefire-plugin</artifactId>
++        <version>3.0.0-M4</version>
+       </plugin>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/core-ctest.xml b/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/core-ctest.xml
+new file mode 100644
+index 00000000000..db723656af7
+--- /dev/null
++++ b/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/core-ctest.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
++
++<configuration>
++
++</configuration>
+\ No newline at end of file
+diff --git a/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/hdfs-rbf-ctest.xml b/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/hdfs-rbf-ctest.xml
+new file mode 100644
+index 00000000000..db723656af7
+--- /dev/null
++++ b/hadoop-hdfs-project/hadoop-hdfs-rbf/src/main/resources/hdfs-rbf-ctest.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
++
++<configuration>
++
++</configuration>
+\ No newline at end of file
+diff --git a/pom.xml b/pom.xml
+index f4e435c7493..e47571761ae 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -142,6 +142,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
+   <build>
+     <pluginManagement>
+       <plugins>
++        <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <reportFormat>plain</reportFormat>
++          </configuration>
++        </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+-- 
+2.25.1
+

@@ -65,7 +65,7 @@ class Runner:
             return True
         if "sun.reflect" in trace:
             return True
-        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hbase-server":
+        if self.module == "hadoop-common" or self.module == "hadoop-hdfs" or self.module == "hadoop-hdfs-rbf" or self.module == "hbase-server":
             if "org.apache.hadoop.conf" in trace and "Test" not in trace:
                 return True
             if "org.mockito" in trace:
