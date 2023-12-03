@@ -1,0 +1,29 @@
+diff --git a/app/javascript/__support__/i18n.js b/app/javascript/__support__/i18n.js
+index 60f08d964..3aad2a5ee 100644
+--- a/app/javascript/__support__/i18n.js
++++ b/app/javascript/__support__/i18n.js
+@@ -7,6 +7,8 @@ const locale = './config/locales/en.yml';
+ const data = fs.readFileSync(locale, 'utf8');
+ const yamlData = yaml.load(data);
+
+
++console.log("[CTEST] ####", JSON.stringify(yamlData), "####");
++
+ document.body.innerHTML += `<div id="i18n-translations"></div>`;
+ document.getElementById('i18n-translations').dataset.translations =
+   JSON.stringify(yamlData);
+diff --git a/app/javascript/__support__/reaction_images.js b/app/javascript/__support__/reaction_images.js
+index 4c6e9e616..6b1aedf20 100644
+--- a/app/javascript/__support__/reaction_images.js
++++ b/app/javascript/__support__/reaction_images.jsfore
+@@ -12,7 +12,9 @@ const publicReactionIcons = Object.keys(yamlData)
+   )
+   .map((slug) => {
+     const { name, icon, position } = yamlData[slug];
+-
++    const jsonObject = {};
++    jsonObject[slug] = yamlData[slug];
++    console.log("[CTEST] ####", JSON.stringify(jsonObject), "####");
+     return `<img data-name="${name}" data-position="${position}" data-slug="${slug}" src="/assets/${icon}.svg" width="18" height="18" />`;
+   })
+   .join('');

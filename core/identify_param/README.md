@@ -16,6 +16,19 @@ See [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/ope
 ./identify_param.sh hadoop-common
 ``` 
 
+For Forem,
+
+
+```
+python3 identify_params.py log/
+
+
+python3 param_to_test.py log/
+```
+
+
+Generates `result_mapping.json`, `all_params.txt`, `all_test_cases.txt`, and `param_to_test_cases_mapping.json`
+
 
 ### Result
 

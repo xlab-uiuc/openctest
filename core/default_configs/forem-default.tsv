@@ -1,0 +1,166 @@
+en.billboard.menu.aria_label	Toggle dropdown menu	Aria label for the billboard menu
+en.billboard.menu.icon	Dropdown menu	Icon for the billboard menu
+en.billboard.menu.manage_preferences	Manage preferences	Option to manage user preferences
+en.billboard.menu.report_billboard	Report billboard	Option to report a billboard
+en.billboard.menu.what_is_a_billboard	What's a billboard?	Description of what a billboard is
+en.billboard.promoted	Promoted	Label for promoted content
+en.contact_prompts.if_any_questions_html	<a href="/contact">Contact us</a> if you have any questions.	HTML prompt for contacting support with questions
+en.contact_prompts.if_continued_trouble_html	<a href="/contact">Contact us</a> if you continue having trouble.	HTML prompt for contacting support in case of ongoing issues
+en.contact_prompts.if_we_can_help_html	<a href="/contact">Contact us</a> if there is anything we can help with.	HTML prompt offering help from support
+en.core.add_comment	Add comment	Button or option to add a comment
+en.core.and	and	Conjunction 'and' for connecting clauses
+en.core.beta	beta	Label indicating beta version
+en.core.comment	Comment	Label for commenting feature
+en.core.copy_link	Copy link	Option to copy a link
+en.core.counted_organization.one	%{count} organization	Singular form for counting organizations
+en.core.counted_organization.other	%{count} organizations	Plural form for counting organizations
+en.core.counted_user.one	%{count} person	Singular form for counting users
+en.core.counted_user.other	%{count} people	Plural form for counting users
+en.core.edit_profile	Edit profile	Option to edit user profile
+en.core.follow	Follow	Option to follow a user or topic
+en.core.follow_back	Follow back	Option to follow a user in return
+en.core.following	Following	Indicating the state of following
+en.core.following_everyone	You're following %{details} (everyone)	Message indicating following everyone
+en.core.like	Like	Option to like a post or comment
+en.core.loading	loading...	Message indicating something is loading
+en.core.not_following	You're not following anyone	Message indicating no following activity
+en.core.reaction	Reaction	Label for reaction feature
+en.core.report_abuse	Report abuse	Option to report abusive content
+en.core.search	Search	Option to search within the site
+en.core.success_settings	Successfully updated settings.	Confirmation message for successfully updated settings
+en.core.you_are_following	You're following	Message indicating the user's following status
+en.datetime.distance_in_words_ago.about_x_hours.one	about 1 hour ago	Time label for one hour ago
+en.datetime.distance_in_words_ago.about_x_hours.other	about %{count} hours ago	Time label for multiple hours ago
+en.datetime.distance_in_words_ago.about_x_months.one	about 1 month ago	Time label for one month ago
+en.datetime.distance_in_words_ago.about_x_months.other	about %{count} months ago	Time label for multiple months ago
+en.datetime.distance_in_words_ago.about_x_years.one	about 1 year ago	Time label for one year ago
+en.datetime.distance_in_words_ago.about_x_years.other	about %{count} years ago	Time label for multiple years ago
+en.datetime.distance_in_words_ago.almost_x_years.one	almost 1 year ago	Time label for nearly one year ago
+en.datetime.distance_in_words_ago.almost_x_years.other	almost %{count} years ago	Time label for nearly multiple years ago
+en.datetime.distance_in_words_ago.half_a_minute	half a minute ago	Time label for half a minute ago
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	less than a minute ago	Time label for less than one minute ago
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	less than %{count} minutes ago	Time label for less than multiple minutes ago
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	less than 1 second ago	Time label for less than one second ago
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	less than %{count} seconds ago	Time label for less than multiple seconds ago
+en.datetime.distance_in_words_ago.over_x_years.one	over 1 year ago	Time label for over one year ago
+en.datetime.distance_in_words_ago.over_x_years.other	over %{count} years ago	Time label for over multiple years ago
+en.datetime.distance_in_words_ago.x_days.one	1 day ago	Time label for one day ago
+en.datetime.distance_in_words_ago.x_days.other	%{count} days ago	Time label for multiple days ago
+en.datetime.distance_in_words_ago.x_minutes.one	1 minute ago	Time label for one minute ago
+en.datetime.distance_in_words_ago.x_minutes.other	%{count} minutes ago	Time label for multiple minutes ago
+en.datetime.distance_in_words_ago.x_months.one	1 month ago	Time label for one month ago
+en.datetime.distance_in_words_ago.x_months.other	%{count} months ago	Time label for multiple months ago
+en.datetime.distance_in_words_ago.x_seconds.one	1 second ago	Time label for one second ago
+en.datetime.distance_in_words_ago.x_seconds.other	%{count} seconds ago	Time label for multiple seconds ago
+en.datetime.distance_in_words_ago.x_years.one	1 year ago	Time label for one year ago
+en.datetime.distance_in_words_ago.x_years.other	%{count} years ago	Time label for multiple years ago
+en.datetime.expired_ago.about_x_hours.one	Expired about 1 hour ago	Expiration label for one hour ago
+en.datetime.expired_ago.about_x_hours.other	Expired about %{count} hours ago	Expiration label for multiple hours ago
+en.datetime.expired_ago.about_x_months.one	Expired about 1 month ago	Expiration label for one month ago
+en.datetime.expired_ago.about_x_months.other	Expired about %{count} months ago	Expiration label for multiple months ago
+en.datetime.expired_ago.about_x_years.one	Expired about 1 year ago	Expiration label for one year ago
+en.datetime.expired_ago.about_x_years.other	Expired about %{count} years ago	Expiration label for multiple years ago
+en.datetime.expired_ago.almost_x_years.one	Expired almost 1 year ago	Expiration label for nearly one year ago
+en.datetime.expired_ago.almost_x_years.other	Expired almost %{count} years ago	Expiration label for nearly multiple years ago
+en.datetime.expired_ago.half_a_minute	Expired half a minute ago	Expiration label for half a minute ago
+en.datetime.expired_ago.less_than_x_minutes.one	Expired less than a minute ago	Expiration label for less than one minute ago
+en.datetime.expired_ago.less_than_x_minutes.other	Expired less than %{count} minutes ago	Expiration label for less than multiple minutes ago
+en.datetime.expired_ago.less_than_x_seconds.one	Expired less than 1 second ago	Expiration label for less than one second ago
+en.datetime.expired_ago.less_than_x_seconds.other	Expired less than %{count} seconds ago	Expiration label for less than multiple seconds ago
+en.datetime.expired_ago.over_x_years.one	Expired over 1 year ago	Expiration label for over one year ago
+en.datetime.expired_ago.over_x_years.other	Expired over %{count} years ago	Expiration label for over multiple years ago
+en.datetime.expired_ago.x_days.one	Expired 1 day ago	Expiration label for one day ago
+en.datetime.expired_ago.x_days.other	Expired %{count} days ago	Expiration label for multiple days ago
+en.datetime.expired_ago.x_minutes.one	Expired 1 minute ago	Expiration label for one minute ago
+en.datetime.expired_ago.x_minutes.other	Expired %{count} minutes ago	Expiration label for multiple minutes ago
+en.datetime.expired_ago.x_months.one	Expired 1 month ago	Expiration label for one month ago
+en.datetime.expired_ago.x_months.other	Expired %{count} months ago	Expiration label for multiple months ago
+en.datetime.expired_ago.x_seconds.one	Expired 1 second ago	Expiration label for one second ago
+en.datetime.expired_ago.x_seconds.other	Expired %{count} seconds ago	Expiration label for multiple seconds ago
+en.datetime.expired_ago.x_years.one	Expired 1 year ago	Expiration label for one year ago
+en.datetime.expired_ago.x_years.other	Expired %{count} years ago	Expiration label for multiple years ago
+en.datetime.expires_in.about_x_hours.one	Expires in about 1 hour	Label
+en.datetime.expires_in.about_x_hours.other	Expires in about %{count} hours	Time remaining displayed in hours for durations over an hour.
+en.datetime.expires_in.about_x_months.one	Expires in about 1 month	Time remaining displayed as approximately one month.
+en.datetime.expires_in.about_x_months.other	Expires in about %{count} months	Time remaining displayed in months for durations over a month.
+en.datetime.expires_in.about_x_years.one	Expires in about 1 year	Time remaining displayed as approximately one year.
+en.datetime.expires_in.about_x_years.other	Expires in about %{count} years	Time remaining displayed in years for durations over a year.
+en.datetime.expires_in.almost_x_years.one	Expires in almost 1 year	Time remaining displayed as almost one year.
+en.datetime.expires_in.almost_x_years.other	Expires in almost %{count} years	Time remaining displayed as almost a certain number of years.
+en.datetime.expires_in.half_a_minute	Expires in half a minute	Time remaining displayed as half a minute.
+en.datetime.expires_in.less_than_x_minutes.one	Expires in less than a minute	Time remaining displayed for durations less than a minute.
+en.datetime.expires_in.less_than_x_minutes.other	Expires in less than %{count} minutes	Time remaining displayed in minutes for short durations.
+en.datetime.expires_in.less_than_x_seconds.one	Expires in less than 1 second	Time remaining displayed for durations less than one second.
+en.datetime.expires_in.less_than_x_seconds.other	Expires in less than %{count} seconds	Time remaining displayed in seconds for very short durations.
+en.datetime.expires_in.over_x_years.one	Expires in over 1 year	Time remaining displayed as over one year.
+en.datetime.expires_in.over_x_years.other	Expires in over %{count} years	Time remaining displayed as over a certain number of years.
+en.datetime.expires_in.x_days.one	Expires in 1 day	Time remaining displayed as one day.
+en.datetime.expires_in.x_days.other	Expires in %{count} days	Time remaining displayed in days.
+en.datetime.expires_in.x_minutes.one	Expires in 1 minute	Time remaining displayed as one minute.
+en.datetime.expires_in.x_minutes.other	Expires in %{count} minutes	Time remaining displayed in multiple minutes.
+en.datetime.expires_in.x_months.one	Expires in 1 month	Time remaining displayed as one month.
+en.datetime.expires_in.x_months.other	Expires in %{count} months	Time remaining displayed in multiple months.
+en.datetime.expires_in.x_seconds.one	Expires in 1 second	Time remaining displayed as one second.
+en.datetime.expires_in.x_seconds.other	Expires in %{count} seconds	Time remaining displayed in multiple seconds.
+en.datetime.expires_in.x_years.one	Expires in 1 year	Time remaining displayed as one year.
+en.datetime.expires_in.x_years.other	Expires in %{count} years	Time remaining displayed in multiple years.
+en.errors.messages.accepted	must be accepted	Message indicating a field must be accepted.
+en.errors.messages.bad_protocol	must start with %{protocols}	Error message for invalid protocol in URLs.
+en.errors.messages.bad_uri	is an invalid url	Error message for an invalid URL.
+en.errors.messages.blank	can't be blank	Error message indicating a field cannot be blank.
+en.errors.messages.confirmation	doesn't match %{attribute}	Error message for confirmation fields that do not match.
+en.errors.messages.contains_prohibited_characters	contains non-alphanumeric or prohibited unicode characters	Error message for fields containing invalid characters.
+en.errors.messages.empty	can't be empty	Error message indicating a field cannot be empty.
+en.errors.messages.equal_to	must be equal to %{count}	Error message for a value that must equal a specific number.
+en.errors.messages.even	must be even	Error message for a value that must be an even number.
+en.errors.messages.exclusion	is reserved	Error message for a value that is reserved and cannot be used.
+en.errors.messages.general	Error: %{errors}	General error message format.
+en.errors.messages.greater_than	must be greater than %{count}	Error message for a value that must be greater than a specific number.
+en.errors.messages.greater_than_or_equal_to	must be greater than or equal to %{count}	Error message for a value that must be greater than or equal to a specific number.
+en.errors.messages.inclusion	is not included in the list	Error message for a value not included in a specific list.
+en.errors.messages.invalid	is invalid	General error message for an invalid value.
+en.errors.messages.less_than	must be less than %{count}	Error message for a value that must be less than a specific number.
+en.errors.messages.less_than_or_equal_to	must be less than or equal to %{count}	Error message for a value that must be less than or equal to a specific number.
+en.errors.messages.model_invalid	Validation failed:%{errors}	Error message indicating a model validation failure.
+en.errors.messages.not_a_number	is not a number	Error message for a non-numeric value where a number is required.
+en.errors.messages.not_an_integer	must be an integer	Error message for a non-integer value where an integer is required.
+en.errors.messages.odd	must be odd	Error message for a value that must be an odd number.
+en.errors.messages.other_than	must be other than %{count}	Error message for a value that must not equal a specific number.
+en.errors.messages.present	must be blank	Error message indicating that a field must be left blank.
+en.errors.messages.required	must exist	Error message indicating that a field is required.
+en.errors.messages.taken	has already been taken	Error message for a value that is already in use and must be unique.
+en.errors.messages.too_long.one	is too long (maximum is 1 character)	Error message for a value that exceeds the maximum length of one character.
+en.errors.messages.too_long.other	is too long (maximum is %{count} characters)	Error message for a value that exceeds the maximum specified length.
+en.errors.messages.too_short.one	is too short (minimum is 1 character)	Error message for a value that is shorter than the minimum length of one character.
+en.errors.messages.too_short.other	is too short (minimum is %{count} characters)	Error message for a value that is shorter than the specified minimum length.
+en.errors.messages.try_again_email	An error occurred. Please try again or send an email to :%{email}'	Message displayed when an error occurs, with an option to contact via email.
+en.errors.messages.wrong_length.one	is the wrong length (should be 1 character)	Error message for a value that is not the correct length of one character.
+en.errors.messages.wrong_length.other	is the wrong length (should be %{count} characters)	Error message for a value that is not the correct specified length.
+en.time.formats.admin_user	%Y-%m-%d, %H:%M	Time format for admin user display.
+en.time.formats.comment	%B %d, %Y	Date format for comments.
+en.time.formats.email_verified	%b %e '%y, %H:%M	Time format for email verification timestamp.
+en.time.formats.github	%b %d, %Y	Date format used in Github integration.
+en.time.formats.json	%b %e, %Y	Date format for JSON data.
+en.time.formats.medium	%b %-d, %Y	Date format similar to that used by Medium.
+en.time.formats.members	%d %b	Date format for member listings.
+en.time.formats.members_with_year	%d %b, %Y	Date format for member listings including the year.
+en.time.formats.reddit	%b %e '%y	Date format used in Reddit integration.
+en.time.formats.short	%b %-e	Shortened date format.
+en.time.formats.short_with_year	%b %-e, %Y	Shortened date format including the year.
+en.time.formats.short_with_yy	%b %-d '%y	Shortened date format with year in two-digit format.
+en.time.formats.stackexchange	%b %e '%y	Date format used in Stack Exchange integration.
+exploding_head.icon	exploding-head	Icon identifier for the 'Exploding Head' reaction.
+exploding_head.name	Exploding Head	Name for the '
+exploding_head.position	3	Position of the 'Exploding Head' reaction in UI
+fire.icon	fire	Icon identifier for the 'Fire' reaction
+fire.name	Fire	Display name for the 'Fire' reaction
+fire.position	5	Position of the 'Fire' reaction in UI
+like.icon	sparkle-heart	Icon identifier for the 'Like' reaction
+like.name	Like	Display name for the 'Like' reaction
+like.position	1	Position of the 'Like' reaction in UI
+raised_hands.icon	raised-hands	Icon identifier for the 'Raised Hands' reaction
+raised_hands.name	Raised Hands	Display name for the 'Raised Hands' reaction
+raised_hands.position	4	Position of the 'Raised Hands' reaction in UI
+unicorn.icon	multi-unicorn	Icon identifier for the 'Unicorn' reaction
+unicorn.name	Unicorn	Display name for the 'Unicorn' reaction
+unicorn.position	2	Position of the 'Unicorn' reaction in UI

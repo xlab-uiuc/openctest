@@ -1,0 +1,497 @@
+parameter	test_case	value	test_result	testcase_time
+en.billboard.menu.aria_label	should have no a11y violations when rendering users	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should render the correct users	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should follow all suggested users by default	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should properly pluralize with small follower count	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should update the navigation button text and follow status when you follow/unfollow users	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should have a functioning de/select all toggle	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should render a stepper	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should be able to continue to the next step	Toggle dropdown menu	p	unknown
+en.billboard.menu.aria_label	should render a back button	Toggle dropdown menu	p	unknown
+en.billboard.menu.icon	should have no a11y violations when rendering users	Dropdown menu	p	unknown
+en.billboard.menu.icon	should render the correct users	Dropdown menu	p	unknown
+en.billboard.menu.icon	should follow all suggested users by default	Dropdown menu	p	unknownx
+en.billboard.menu.icon	should properly pluralize with small follower count	Dropdown menu	p	unknown
+en.billboard.menu.icon	should update the navigation button text and follow status when you follow/unfollow users	Dropdown menu	p	unknown
+en.billboard.menu.icon	should have a functioning de/select all toggle	Dropdown menu	p	unknown
+en.billboard.menu.icon	should render a stepper	Dropdown menu	p	unknown
+en.billboard.menu.icon	should be able to continue to the next step	Dropdown menu	p	unknown
+en.billboard.menu.icon	should render a back button	Dropdown menu	p	unknown
+en.billboard.menu.manage_preferences	should have no a11y violations when rendering users	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should render the correct users	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should follow all suggested users by default	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should properly pluralize with small follower count	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should update the navigation button text and follow status when you follow/unfollow users	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should have a functioning de/select all toggle	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should render a stepper	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should be able to continue to the next step	Manage preferences	p	unknown
+en.billboard.menu.manage_preferences	should render a back button	Manage preferences	p	unknown
+en.billboard.menu.report_billboard	should have no a11y violations when rendering users	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should render the correct users	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should follow all suggested users by default	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should properly pluralize with small follower count	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should update the navigation button text and follow status when you follow/unfollow users	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should have a functioning de/select all toggle	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should render a stepper	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should be able to continue to the next step	Report billboard	p	unknown
+en.billboard.menu.report_billboard	should render a back button	Report billboard	p	unknown
+en.billboard.menu.what_is_a_billboard	should have no a11y violations when rendering users	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should render the correct users	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should follow all suggested users by default	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should properly pluralize with small follower count	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should update the navigation button text and follow status when you follow/unfollow users	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should have a functioning de/select all toggle	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should render a stepper	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should be able to continue to the next step	What's a billboard?	p	unknown
+en.billboard.menu.what_is_a_billboard	should render a back button	What's a billboard?	p	unknown
+en.billboard.promoted	should have no a11y violations when rendering users	Promoted	p	unknown
+en.billboard.promoted	should render the correct users	Promoted	p	unknown
+en.billboard.promoted	should follow all suggested users by default	Promoted	p	unknown
+en.billboard.promoted	should properly pluralize with small follower count	Promoted	p	unknown
+en.billboard.promoted	should update the navigation button text and follow status when you follow/unfollow users	Promoted	p	unknown
+en.billboard.promoted	should have a functioning de/select all toggle	Promoted	p	unknown
+en.billboard.promoted	should render a stepper	Promoted	p	unknown
+en.billboard.promoted	should be able to continue to the next step	Promoted	p	unknown
+en.billboard.promoted	should render a back button	Promoted	p	unknown
+en.contact_prompts.if_any_questions_html	should have no a11y violations when rendering users	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should render the correct users	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should follow all suggested users by default	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should properly pluralize with small follower count	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should update the navigation button text and follow status when you follow/unfollow users	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should have a functioning de/select all toggle	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should render a stepper	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should be able to continue to the next step	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_any_questions_html	should render a back button	<a href="/contact">Contact us</a> if you have any questions.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should have no a11y violations when rendering users	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should render the correct users	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should follow all suggested users by default	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should properly pluralize with small follower count	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should update the navigation button text and follow status when you follow/unfollow users	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should have a functioning de/select all toggle	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should render a stepper	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should be able to continue to the next step	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_continued_trouble_html	should render a back button	<a href="/contact">Contact us</a> if you continue having trouble.	p	unknown
+en.contact_prompts.if_we_can_help_html	should have no a11y violations when rendering users	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should render the correct users	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should follow all suggested users by default	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should properly pluralize with small follower count	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should update the navigation button text and follow status when you follow/unfollow users	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should have a functioning de/select all toggle	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should render a stepper	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should be able to continue to the next step	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.contact_prompts.if_we_can_help_html	should render a back button	<a href="/contact">Contact us</a> if there is anything we can help with.	p	unknown
+en.core.add_comment	should have no a11y violations when rendering users	Add comment	p	unknown
+en.core.add_comment	should render the correct users	Add comment	p	unknown
+en.core.add_comment	should follow all suggested users by default	Add comment	p	unknown
+en.core.add_comment	should properly pluralize with small follower count	Add comment	p	unknown
+en.core.add_comment	should update the navigation button text and follow status when you follow/unfollow users	Add comment	p	unknown
+en.core.add_comment	should have a functioning de/select all toggle	Add comment	p	unknown
+en.core.add_comment	should render a stepper	Add comment	p	unknown
+en.core.add_comment	should be able to continue to the next step	Add comment	p	unknown
+en.core.add_comment	should render a back button	Add comment	p	unknown
+en.core.and	should have no a11y violations when rendering users	and	p	unknown
+en.core.and	should render the correct users	and	p	unknown
+en.core.and	should follow all suggested users by default	and	p	unknown
+en.core.and	should properly pluralize with small follower count	and	p	unknown
+en.core.and	should update the navigation button text and follow status when you follow/unfollow users	and	p	unknown
+en.core.and	should have a functioning de/select all toggle	and	p	unknown
+en.core.and	should render a stepper	and	p	unknown
+en.core.and	should be able to continue to the next step	and	p	unknown
+en.core.and	should render a back button	and	p	unknown
+en.core.beta	should have no a11y violations when rendering users	beta	p	unknown
+en.core.beta	should render the correct users	beta	p	unknown
+en.core.beta	should follow all suggested users by default	beta	p	unknown
+en.core.beta	should properly pluralize with small follower count	beta	p	unknown
+en.core.beta	should update the navigation button text and follow status when you follow/unfollow users	beta	p	unknown
+en.core.beta	should have a functioning de/select all toggle	beta	p	unknown
+en.core.beta	should render a stepper	beta	p	unknown
+en.core.beta	should be able to continue to the next step	beta	p	unknown
+en.core.beta	should render a back button	beta	p	unknown
+en.core.comment	should have no a11y violations when rendering users	Comment	p	unknown
+en.core.comment	should render the correct users	Comment	p	unknown
+en.core.comment	should follow all suggested users by default	Comment	p	unknown
+en.core.comment	should properly pluralize with small follower count	Comment	p	unknown
+en.core.comment	should update the navigation button text and follow status when you follow/unfollow users	Comment	p	unknown
+en.core.comment	should have a functioning de/select all toggle	Comment	p	unknown
+en.core.comment	should render a stepper	Comment	p	unknown
+en.core.comment	should be able to continue to the next step	Comment	p	unknown
+en.core.comment	should render a back button	Comment	p	unknown
+en.core.copy_link	should have no a11y violations when rendering users	Copy link	p	unknown
+en.core.copy_link	should render the correct users	Copy link	p	unknown
+en.core.copy_link	should follow all suggested users by default	Copy link	p	unknown
+en.core.copy_link	should properly pluralize with small follower count	Copy link	p	unknown
+en.core.copy_link	should update the navigation button text and follow status when you follow/unfollow users	Copy link	p	unknown
+en.core.copy_link	should have a functioning de/select all toggle	Copy link	p	unknown
+en.core.copy_link	should render a stepper	Copy link	p	unknown
+en.core.copy_link	should be able to continue to the next step	Copy link	p	unknown
+en.core.copy_link	should render a back button	Copy link	p	unknown
+en.core.counted_organization.one	should have no a11y violations when rendering users	%{count} organization	p	unknown
+en.core.counted_organization.one	should render the correct users	%{count} organization	p	unknown
+en.core.counted_organization.one	should follow all suggested users by default	%{count} organization	p	unknown
+en.core.counted_organization.one	should properly pluralize with small follower count	%{count} organization	p	unknown
+en.core.counted_organization.one	should update the navigation button text and follow status when you follow/unfollow users	%{count} organization	p	unknown
+en.core.counted_organization.one	should have a functioning de/select all toggle	%{count} organization	p	unknown
+en.core.counted_organization.one	should render a stepper	%{count} organization	p	unknown
+en.core.counted_organization.one	should be able to continue to the next step	%{count} organization	p	unknown
+en.core.counted_organization.one	should render a back button	%{count} organization	p	unknown
+en.core.counted_organization.other	should have no a11y violations when rendering users	%{count} organizations	p	unknown
+en.core.counted_organization.other	should render the correct users	%{count} organizations	p	unknown
+en.core.counted_organization.other	should follow all suggested users by default	%{count} organizations	p	unknown
+en.core.counted_organization.other	should properly pluralize with small follower count	%{count} organizations	p	unknown
+en.core.counted_organization.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} organizations	p	unknown
+en.core.counted_organization.other	should have a functioning de/select all toggle	%{count} organizations	p	unknown
+en.core.counted_organization.other	should render a stepper	%{count} organizations	p	unknown
+en.core.counted_organization.other	should be able to continue to the next step	%{count} organizations	p	unknown
+en.core.counted_organization.other	should render a back button	%{count} organizations	p	unknown
+en.core.counted_user.one	should have no a11y violations when rendering users	%{count} person	p	unknown
+en.core.counted_user.one	should render the correct users	%{count} person	p	unknown
+en.core.counted_user.one	should follow all suggested users by default	%{count} person	p	unknown
+en.core.counted_user.one	should properly pluralize with small follower count	%{count} person	p	unknown
+en.core.counted_user.one	should update the navigation button text and follow status when you follow/unfollow users	%{count} person	p	unknown
+en.core.counted_user.one	should have a functioning de/select all toggle	%{count} person	p	unknown
+en.core.counted_user.one	should render a stepper	%{count} person	p	unknown
+en.core.counted_user.one	should be able to continue to the next step	%{count} person	p	unknown
+en.core.counted_user.one	should render a back button	%{count} person	p	unknown
+en.core.counted_user.other	should have no a11y violations when rendering users	%{count} people	p	unknown
+en.core.counted_user.other	should render the correct users	%{count} people	p	unknown
+en.core.counted_user.other	should follow all suggested users by default	%{count} people	p	unknown
+en.core.counted_user.other	should properly pluralize with small follower count	%{count} people	p	unknown
+en.core.counted_user.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} people	p	unknown
+en.core.counted_user.other	should have a functioning de/select all toggle	%{count} people	p	unknown
+en.core.counted_user.other	should render a stepper	%{count} people	p	unknown
+en.core.counted_user.other	should be able to continue to the next step	%{count} people	p	unknown
+en.core.counted_user.other	should render a back button	%{count} people	p	unknown
+en.core.edit_profile	should have no a11y violations when rendering users	Edit profile	p	unknown
+en.core.edit_profile	should render the correct users	Edit profile	p	unknown
+en.core.edit_profile	should follow all suggested users by default	Edit profile	p	unknown
+en.core.edit_profile	should properly pluralize with small follower count	Edit profile	p	unknown
+en.core.edit_profile	should update the navigation button text and follow status when you follow/unfollow users	Edit profile	p	unknown
+en.core.edit_profile	should have a functioning de/select all toggle	Edit profile	p	unknown
+en.core.edit_profile	should render a stepper	Edit profile	p	unknown
+en.core.edit_profile	should be able to continue to the next step	Edit profile	p	unknown
+en.core.edit_profile	should render a back button	Edit profile	p	unknown
+en.core.follow	should have no a11y violations when rendering users	Follow	p	unknown
+en.core.follow	should render the correct users	Follow	p	unknown
+en.core.follow	should follow all suggested users by default	Follow	p	unknown
+en.core.follow	should properly pluralize with small follower count	Follow	p	unknown
+en.core.follow	should update the navigation button text and follow status when you follow/unfollow users	Follow	p	unknown
+en.core.follow	should have a functioning de/select all toggle	Follow	p	unknown
+en.core.follow	should render a stepper	Follow	p	unknown
+en.core.follow	should be able to continue to the next step	Follow	p	unknown
+en.core.follow	should render a back button	Follow	p	unknown
+en.core.follow_back	should have no a11y violations when rendering users	Follow back	p	unknown
+en.core.follow_back	should render the correct users	Follow back	p	unknown
+en.core.follow_back	should follow all suggested users by default	Follow back	p	unknown
+en.core.follow_back	should properly pluralize with small follower count	Follow back	p	unknown
+en.core.follow_back	should update the navigation button text and follow status when you follow/unfollow users	Follow back	p	unknown
+en.core.follow_back	should have a functioning de/select all toggle	Follow back	p	unknown
+en.core.follow_back	should render a stepper	Follow back	p	unknown
+en.core.follow_back	should be able to continue to the next step	Follow back	p	unknown
+en.core.follow_back	should render a back button	Follow back	p	unknown
+en.core.following	should have no a11y violations when rendering users	Following	p	unknown
+en.core.following	should render the correct users	Following	p	unknown
+en.core.following	should follow all suggested users by default	Following	p	unknown
+en.core.following	should properly pluralize with small follower count	Following	p	unknown
+en.core.following	should update the navigation button text and follow status when you follow/unfollow users	Following	p	unknown
+en.core.following	should have a functioning de/select all toggle	Following	p	unknown
+en.core.following	should render a stepper	Following	p	unknown
+en.core.following	should be able to continue to the next step	Following	p	unknown
+en.core.following	should render a back button	Following	p	unknown
+en.core.following_everyone	should have no a11y violations when rendering users	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should render the correct users	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should follow all suggested users by default	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should properly pluralize with small follower count	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should update the navigation button text and follow status when you follow/unfollow users	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should have a functioning de/select all toggle	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should render a stepper	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should be able to continue to the next step	You're following %{details} (everyone)	p	unknown
+en.core.following_everyone	should render a back button	You're following %{details} (everyone)	p	unknown
+en.core.like	should have no a11y violations when rendering users	Like	p	unknown
+en.core.like	should render the correct users	Like	p	unknown
+en.core.like	should follow all suggested users by default	Like	p	unknown
+en.core.like	should properly pluralize with small follower count	Like	p	unknown
+en.core.like	should update the navigation button text and follow status when you follow/unfollow users	Like	p	unknown
+en.core.like	should have a functioning de/select all toggle	Like	p	unknown
+en.core.like	should render a stepper	Like	p	unknown
+en.core.like	should be able to continue to the next step	Like	p	unknown
+en.core.like	should render a back button	Like	p	unknown
+en.core.loading	should have no a11y violations when rendering users	loading...	p	unknown
+en.core.loading	should render the correct users	loading...	p	unknown
+en.core.loading	should follow all suggested users by default	loading...	p	unknown
+en.core.loading	should properly pluralize with small follower count	loading...	p	unknown
+en.core.loading	should update the navigation button text and follow status when you follow/unfollow users	loading...	p	unknown
+en.core.loading	should have a functioning de/select all toggle	loading...	p	unknown
+en.core.loading	should render a stepper	loading...	p	unknown
+en.core.loading	should be able to continue to the next step	loading...	p	unknown
+en.core.loading	should render a back button	loading...	p	unknown
+en.core.not_following	should have no a11y violations when rendering users	You're not following anyone	p	unknown
+en.core.not_following	should render the correct users	You're not following anyone	p	unknown
+en.core.not_following	should follow all suggested users by default	You're not following anyone	p	unknown
+en.core.not_following	should properly pluralize with small follower count	You're not following anyone	p	unknown
+en.core.not_following	should update the navigation button text and follow status when you follow/unfollow users	You're not following anyone	p	unknown
+en.core.not_following	should have a functioning de/select all toggle	You're not following anyone	p	unknown
+en.core.not_following	should render a stepper	You're not following anyone	p	unknown
+en.core.not_following	should be able to continue to the next step	You're not following anyone	p	unknown
+en.core.not_following	should render a back button	You're not following anyone	p	unknown
+en.core.reaction	should have no a11y violations when rendering users	Reaction	p	unknown
+en.core.reaction	should render the correct users	Reaction	p	unknown
+en.core.reaction	should follow all suggested users by default	Reaction	p	unknown
+en.core.reaction	should properly pluralize with small follower count	Reaction	p	unknown
+en.core.reaction	should update the navigation button text and follow status when you follow/unfollow users	Reaction	p	unknown
+en.core.reaction	should have a functioning de/select all toggle	Reaction	p	unknown
+en.core.reaction	should render a stepper	Reaction	p	unknown
+en.core.reaction	should be able to continue to the next step	Reaction	p	unknown
+en.core.reaction	should render a back button	Reaction	p	unknown
+en.core.report_abuse	should have no a11y violations when rendering users	Report abuse	p	unknown
+en.core.report_abuse	should render the correct users	Report abuse	p	unknown
+en.core.report_abuse	should follow all suggested users by default	Report abuse	p	unknown
+en.core.report_abuse	should properly pluralize with small follower count	Report abuse	p	unknown
+en.core.report_abuse	should update the navigation button text and follow status when you follow/unfollow users	Report abuse	p	unknown
+en.core.report_abuse	should have a functioning de/select all toggle	Report abuse	p	unknown
+en.core.report_abuse	should render a stepper	Report abuse	p	unknown
+en.core.report_abuse	should be able to continue to the next step	Report abuse	p	unknown
+en.core.report_abuse	should render a back button	Report abuse	p	unknown
+en.core.search	should have no a11y violations when rendering users	Search	p	unknown
+en.core.search	should render the correct users	Search	p	unknown
+en.core.search	should follow all suggested users by default	Search	p	unknown
+en.core.search	should properly pluralize with small follower count	Search	p	unknown
+en.core.search	should update the navigation button text and follow status when you follow/unfollow users	Search	p	unknown
+en.core.search	should have a functioning de/select all toggle	Search	p	unknown
+en.core.search	should render a stepper	Search	p	unknown
+en.core.search	should be able to continue to the next step	Search	p	unknown
+en.core.search	should render a back button	Search	p	unknown
+en.core.success_settings	should have no a11y violations when rendering users	Successfully updated settings.	p	unknown
+en.core.success_settings	should render the correct users	Successfully updated settings.	p	unknown
+en.core.success_settings	should follow all suggested users by default	Successfully updated settings.	p	unknown
+en.core.success_settings	should properly pluralize with small follower count	Successfully updated settings.	p	unknown
+en.core.success_settings	should update the navigation button text and follow status when you follow/unfollow users	Successfully updated settings.	p	unknown
+en.core.success_settings	should have a functioning de/select all toggle	Successfully updated settings.	p	unknown
+en.core.success_settings	should render a stepper	Successfully updated settings.	p	unknown
+en.core.success_settings	should be able to continue to the next step	Successfully updated settings.	p	unknown
+en.core.success_settings	should render a back button	Successfully updated settings.	p	unknown
+en.core.you_are_following	should have no a11y violations when rendering users	You're following	p	unknown
+en.core.you_are_following	should render the correct users	You're following	p	unknown
+en.core.you_are_following	should follow all suggested users by default	You're following	p	unknown
+en.core.you_are_following	should properly pluralize with small follower count	You're following	p	unknown
+en.core.you_are_following	should update the navigation button text and follow status when you follow/unfollow users	You're following	p	unknown
+en.core.you_are_following	should have a functioning de/select all toggle	You're following	p	unknown
+en.core.you_are_following	should render a stepper	You're following	p	unknown
+en.core.you_are_following	should be able to continue to the next step	You're following	p	unknown
+en.core.you_are_following	should render a back button	You're following	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should have no a11y violations when rendering users	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should render the correct users	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should follow all suggested users by default	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should properly pluralize with small follower count	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should update the navigation button text and follow status when you follow/unfollow users	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should have a functioning de/select all toggle	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should render a stepper	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should be able to continue to the next step	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.one	should render a back button	about 1 hour ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should have no a11y violations when rendering users	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should render the correct users	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should follow all suggested users by default	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should properly pluralize with small follower count	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should update the navigation button text and follow status when you follow/unfollow users	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should have a functioning de/select all toggle	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should render a stepper	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should be able to continue to the next step	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_hours.other	should render a back button	about %{count} hours ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should have no a11y violations when rendering users	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should render the correct users	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should follow all suggested users by default	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should properly pluralize with small follower count	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should update the navigation button text and follow status when you follow/unfollow users	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should have a functioning de/select all toggle	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should render a stepper	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should be able to continue to the next step	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.one	should render a back button	about 1 month ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should have no a11y violations when rendering users	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should render the correct users	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should follow all suggested users by default	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should properly pluralize with small follower count	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should update the navigation button text and follow status when you follow/unfollow users	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should have a functioning de/select all toggle	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should render a stepper	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should be able to continue to the next step	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_months.other	should render a back button	about %{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should have no a11y violations when rendering users	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should render the correct users	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should follow all suggested users by default	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should properly pluralize with small follower count	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should update the navigation button text and follow status when you follow/unfollow users	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should have a functioning de/select all toggle	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should render a stepper	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should be able to continue to the next step	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.one	should render a back button	about 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should have no a11y violations when rendering users	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should render the correct users	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should follow all suggested users by default	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should properly pluralize with small follower count	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should update the navigation button text and follow status when you follow/unfollow users	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should have a functioning de/select all toggle	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should render a stepper	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should be able to continue to the next step	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.about_x_years.other	should render a back button	about %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should have no a11y violations when rendering users	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should render the correct users	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should follow all suggested users by default	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should properly pluralize with small follower count	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should update the navigation button text and follow status when you follow/unfollow users	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should have a functioning de/select all toggle	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should render a stepper	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should be able to continue to the next step	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.one	should render a back button	almost 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should have no a11y violations when rendering users	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should render the correct users	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should follow all suggested users by default	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should properly pluralize with small follower count	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should update the navigation button text and follow status when you follow/unfollow users	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should have a functioning de/select all toggle	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should render a stepper	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should be able to continue to the next step	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.almost_x_years.other	should render a back button	almost %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should have no a11y violations when rendering users	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should render the correct users	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should follow all suggested users by default	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should properly pluralize with small follower count	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should update the navigation button text and follow status when you follow/unfollow users	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should have a functioning de/select all toggle	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should render a stepper	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should be able to continue to the next step	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.half_a_minute	should render a back button	half a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should have no a11y violations when rendering users	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should render the correct users	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should follow all suggested users by default	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should properly pluralize with small follower count	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should update the navigation button text and follow status when you follow/unfollow users	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should have a functioning de/select all toggle	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should render a stepper	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should be able to continue to the next step	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	should render a back button	less than a minute ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should have no a11y violations when rendering users	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should render the correct users	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should follow all suggested users by default	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should properly pluralize with small follower count	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should update the navigation button text and follow status when you follow/unfollow users	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should have a functioning de/select all toggle	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should render a stepper	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should be able to continue to the next step	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	should render a back button	less than %{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should have no a11y violations when rendering users	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should render the correct users	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should follow all suggested users by default	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should properly pluralize with small follower count	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should update the navigation button text and follow status when you follow/unfollow users	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should have a functioning de/select all toggle	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should render a stepper	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should be able to continue to the next step	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	should render a back button	less than 1 second ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should have no a11y violations when rendering users	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should render the correct users	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should follow all suggested users by default	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should properly pluralize with small follower count	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should update the navigation button text and follow status when you follow/unfollow users	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should have a functioning de/select all toggle	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should render a stepper	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should be able to continue to the next step	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	should render a back button	less than %{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should have no a11y violations when rendering users	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should render the correct users	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should follow all suggested users by default	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should properly pluralize with small follower count	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should update the navigation button text and follow status when you follow/unfollow users	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should have a functioning de/select all toggle	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should render a stepper	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should be able to continue to the next step	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.one	should render a back button	over 1 year ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should have no a11y violations when rendering users	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should render the correct users	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should follow all suggested users by default	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should properly pluralize with small follower count	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should update the navigation button text and follow status when you follow/unfollow users	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should have a functioning de/select all toggle	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should render a stepper	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should be able to continue to the next step	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.over_x_years.other	should render a back button	over %{count} years ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should have no a11y violations when rendering users	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should render the correct users	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should follow all suggested users by default	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should properly pluralize with small follower count	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should update the navigation button text and follow status when you follow/unfollow users	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should have a functioning de/select all toggle	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should render a stepper	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should be able to continue to the next step	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.one	should render a back button	1 day ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should have no a11y violations when rendering users	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should render the correct users	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should follow all suggested users by default	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should properly pluralize with small follower count	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should have a functioning de/select all toggle	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should render a stepper	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should be able to continue to the next step	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_days.other	should render a back button	%{count} days ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should have no a11y violations when rendering users	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should render the correct users	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should follow all suggested users by default	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should properly pluralize with small follower count	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should update the navigation button text and follow status when you follow/unfollow users	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should have a functioning de/select all toggle	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should render a stepper	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should be able to continue to the next step	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.one	should render a back button	1 minute ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should have no a11y violations when rendering users	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should render the correct users	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should follow all suggested users by default	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should properly pluralize with small follower count	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should have a functioning de/select all toggle	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should render a stepper	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should be able to continue to the next step	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_minutes.other	should render a back button	%{count} minutes ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should have no a11y violations when rendering users	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should render the correct users	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should follow all suggested users by default	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should properly pluralize with small follower count	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should update the navigation button text and follow status when you follow/unfollow users	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should have a functioning de/select all toggle	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should render a stepper	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should be able to continue to the next step	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.one	should render a back button	1 month ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should have no a11y violations when rendering users	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should render the correct users	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should follow all suggested users by default	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should properly pluralize with small follower count	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should have a functioning de/select all toggle	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should render a stepper	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should be able to continue to the next step	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_months.other	should render a back button	%{count} months ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should have no a11y violations when rendering users	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should render the correct users	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should follow all suggested users by default	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should properly pluralize with small follower count	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should update the navigation button text and follow status when you follow/unfollow users	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should have a functioning de/select all toggle	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should render a stepper	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should be able to continue to the next step	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.one	should render a back button	1 second ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should have no a11y violations when rendering users	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should render the correct users	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should follow all suggested users by default	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should properly pluralize with small follower count	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should update the navigation button text and follow status when you follow/unfollow users	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should have a functioning de/select all toggle	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should render a stepper	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should be able to continue to the next step	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_seconds.other	should render a back button	%{count} seconds ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should have no a11y violations when rendering users	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should render the correct users	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should follow all suggested users by default	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should properly pluralize with small follower count	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should update the navigation button text and follow status when you follow/unfollow users	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should have a functioning de/select all toggle	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should render a stepper	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should be able to continue to the next step	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.one	should render a back button	1 year ago	p	unknown
+en.datetime.distance_in_words_ago.x_years.other	should have no a11y violations when rendering users	%{count} years ago	p	unknown
