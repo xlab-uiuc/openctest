@@ -1,0 +1,23 @@
+gcChannelsIntervalMs	120000	Time interval for garbage collecting inactive channels
+jwtAlgorithms.0	HS256	First algorithm used for JSON Web Token (JWT) encoding/decoding
+jwtChannelIdKey	channel	Key name in JWT for identifying the channel
+jwtCookieName	test-async-token	Name of the cookie used for storing the JWT
+jwtSecret	test123-test123-test123-test123-test123-test123-test123	This is the secret key used for signing JSON Web Tokens (JWTs)
+logFilename	app.log	Name of the file where logs are written
+logLevel	info	Severity level of the logs being recorded (e.g., info, debug)
+logToFile	FALSE	Boolean indicating whether to log to a file (true) or not (false)
+pingSocketsIntervalMs	20000	Interval for pinging sockets to check their connectivity
+port	8125	Network port used for connecting
+redis.db	10	This parameter specifies the database number to be used in the Redis data store
+redis.host	127.0.0.1	This parameter specifies the hostname or IP address of the Redis server
+redis.password	some pwd	This is the password used for authentication to the Redis server
+redis.port	6379	This defines the port number on which the Redis server is running and accepting connections
+redis.ssl	FALSE	A boolean parameter indicating whether SSL encryption should be used for the connection to the Redis server
+redis.username	default	Username for authenticating with the Redis server
+redis.validateHostname	TRUE	Boolean indicating whether to validate the Redis server's hostname
+redisStreamPrefix	test-async-events-	Prefix for Redis stream keys
+redisStreamReadBlockMs	5000	Time in milliseconds to block when reading from a Redis stream
+redisStreamReadCount	100	Number of messages to read from a Redis stream in one go
+socketResponseTimeoutMs	60000	Timeout in milliseconds for socket responses
+statsd.host	127.0.0.1	This is the hostname or IP address of the StatsD server
+statsd.port	8125	This parameter specifies the port number on which the StatsD server is listening

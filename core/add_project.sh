@@ -48,6 +48,13 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
+function setup_superset() {
+    [ ! -d "app/superset" ] && git clone https://github.com/ishitakarna/superset app/superset
+    cd app/superset
+    git fetch && git checkout ctest
+    npm install
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -64,6 +71,7 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
+            superset) setup_superset ;;
             *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
         esac
     fi

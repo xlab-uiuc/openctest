@@ -1,0 +1,78 @@
+diff --git a/superset-websocket/src/config.ts b/superset-websocket/src/config.ts
+index 7c2504892..ebf12d05b 100644
+--- a/superset-websocket/src/config.ts
++++ b/superset-websocket/src/config.ts
+@@ -96,12 +96,23 @@ function configFromFile(): Partial<ConfigType> {
+   }
+ }
+ 
++function copyOverrides(): Partial<ConfigType> {
++  const configFile = '../config.test.override.json';
++  try {
++    return require(configFile);
++  } catch (err) {
++    console.warn('config.json file not found');
++    return {};
++  }
++}
++
+ const isPresent = (s: string) => /\S+/.test(s);
+ const toNumber = Number;
+ const toBoolean = (s: string) => s.toLowerCase() === 'true';
+ const toStringArray = (s: string) => s.split(',');
+ 
+-function applyEnvOverrides(config: ConfigType): ConfigType {
++function applyEnvOverrides(config_base: ConfigType): ConfigType {
++  let config = _.cloneDeep(config_base)
+   const envVarConfigSetter: { [envVar: string]: (val: string) => void } = {
+     PORT: val => (config.port = toNumber(val)),
+     LOG_LEVEL: val => (config.logLevel = val),
+@@ -138,10 +149,45 @@ function applyEnvOverrides(config: ConfigType): ConfigType {
+     }
+   });
+ 
++  let updated = getUpdatedKeys(config_base, config);
++  console.log("[CTEST][SET-PARAM] " + updated.join(', '));
++
+   return config;
+ }
+ 
++function getUpdatedKeys(obj1: any, obj2: any, prefix: string = ''): string[] {
++  let updatedKeys: string[] = [];
++
++  for (let key in obj1) {
++    if (!obj2.hasOwnProperty(key)) continue;
++
++    const fullKey = prefix ? `${prefix}.${key}` : key;
++    const val1 = obj1[key];
++    const val2 = obj2[key];
++
++    if (typeof val1 === 'object' && val1 !== null && typeof val2 === 'object' && val2 !== null) {
++      if (Array.isArray(val1) && Array.isArray(val2)) {
++        if (!arrayEquals(val1, val2)) {
++          updatedKeys.push(fullKey);
++        }
++      } else {
++        updatedKeys = updatedKeys.concat(getUpdatedKeys(val1, val2, fullKey));
++      }
++    } else if (val1 !== val2) {
++      updatedKeys.push(fullKey);
++    }
++  }
++
++  return updatedKeys;
++}
++
++function arrayEquals(a: any[], b: any[]): boolean {
++  return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((val, index) => val === b[index]);
++}
++
+ export function buildConfig(): ConfigType {
+-  const config = _.merge(defaultConfig(), configFromFile());
++  const config_temp = _.merge(defaultConfig(), configFromFile());
++  const config = _.merge(config_temp, copyOverrides());
++  console.log("[CTEST][GET-PARAM] ####", JSON.stringify(config), "####");
+   return applyEnvOverrides(config);
+-}
++}
+\ No newline at end of file
