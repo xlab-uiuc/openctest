@@ -55,6 +55,14 @@ function setup_hive(){
     mvn clean install -DskipTests
 }
 
+function setup_nifi(){
+    [ ! -d "app/ctest-nifi" ] && git clone https://github.com/lilacyl/nifi.git app/ctest-nifi
+    cd app/ctest-nifi
+    git fetch && git checkout ctest-logging
+    mvn clean install -pl nifi-commons/ -DskipTest
+
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -72,7 +80,8 @@ function main() {
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
             hive) setup_hive ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, hive, and alluxio." ;;
+            nifi) setup_nifi ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, nifi, and alluxio." ;;
         esac
     fi
 }

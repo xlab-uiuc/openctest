@@ -1,0 +1,24 @@
+From 491bb92f79b0e862327ebff7c30dc50c6f0fe1f7 Mon Sep 17 00:00:00 2001
+From: xinyihe4 <xinyihe4@fa22-cs527-018.cs.illinois.edu>
+Date: Sun, 11 Dec 2022 16:06:26 -0600
+Subject: [PATCH 2/2] modify add.sh build
+
+---
+ pom.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pom.xml b/pom.xml
+index 73433e2fcc..89d4ca3b7d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -757,6 +757,7 @@
+                     <artifactId>maven-surefire-plugin</artifactId>
+                     <version>${surefire.version}</version>
+                     <configuration>
++                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                         <systemPropertyVariables>
+                             <java.awt.headless>true</java.awt.headless>
+                         </systemPropertyVariables>
+-- 
+2.25.1
+

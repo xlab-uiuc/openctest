@@ -1,0 +1,46 @@
+From bcfc0afd70f82ee9ea4ef67850284db657ae5712 Mon Sep 17 00:00:00 2001
+From: yinmeng2 <yinmeng2@fa22-cs527-030.cs.illinois.edu>
+Date: Sat, 10 Dec 2022 02:35:13 -0600
+Subject: [PATCH] injection for NiFi Ctest -> Newest version
+
+---
+ .../src/main/java/org/apache/nifi/util/NiFiProperties.java  | 6 ++++++
+ .../src/test/resources/NiFiProperties/conf/ctest.properties | 1 +
+ 2 files changed, 7 insertions(+)
+ create mode 100644 nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties
+
+diff --git a/nifi-commons/nifi-properties/src/main/java/org/apache/nifi/util/NiFiProperties.java b/nifi-commons/nifi-properties/src/main/java/org/apache/nifi/util/NiFiProperties.java
+index 73c3ae20c0..078aa750ad 100644
+--- a/nifi-commons/nifi-properties/src/main/java/org/apache/nifi/util/NiFiProperties.java
++++ b/nifi-commons/nifi-properties/src/main/java/org/apache/nifi/util/NiFiProperties.java
+@@ -52,6 +52,9 @@ import java.util.stream.Stream;
+ public class NiFiProperties extends ApplicationProperties {
+     private static final Logger logger = LoggerFactory.getLogger(NiFiProperties.class);
+ 
++    // ctest injection
++    public static final String CTEST_PROPERTIES_FILE_PATH = "src/test/resources/NiFiProperties/conf/ctest.properties";
++
+     // core properties
+     public static final String PROPERTIES_FILE_PATH = "nifi.properties.file.path";
+     public static final String FLOW_CONFIGURATION_FILE = "nifi.flow.configuration.file";
+@@ -2142,6 +2145,9 @@ public class NiFiProperties extends ApplicationProperties {
+             readFromPropertiesFile(propertiesFilePath, properties);
+         }
+ 
++        // ctest
++        readFromPropertiesFile(CTEST_PROPERTIES_FILE_PATH, properties);
++
+         // The Properties(Properties) constructor does NOT inherit the provided values, just uses them as default values
+         if (additionalProperties != null) {
+             additionalProperties.forEach(properties::put);
+diff --git a/nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties b/nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties
+new file mode 100644
+index 0000000000..1aa10e1dda
+--- /dev/null
++++ b/nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties
+@@ -0,0 +1 @@
++nifi.flow.configuration.file=./target/flow.xml.gz
+\ No newline at end of file
+-- 
+2.25.1
+

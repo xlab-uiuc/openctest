@@ -47,6 +47,12 @@ function setup_alluxio() {
     cd core
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
+function setup_nifi(){
+    [ ! -d "app/ctest-nifi" ] && git clone https://github.com/lilacyl/nifi.git app/ctest-nifi
+    cd app/ctest-nifi
+    git fetch && git checkout ctest-injection 
+    mvn clean install -pl nifi-commons/ -DskipTest
+}
 
 function setup_hive(){
     [ ! -d "app/ctest-hive" ] && git clone https://github.com/lilacyl/hive.git app/ctest-hive
@@ -73,7 +79,8 @@ function main() {
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
             hive) setup_hive ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, and hive." ;;
+            nifi) setup_nifi ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, nifi, and alluxio." ;;
         esac
     fi
 }

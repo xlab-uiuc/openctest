@@ -13,12 +13,14 @@ HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 HIVE = "hive-common"
+NIFI = "nifi-commons"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
+CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -27,6 +29,7 @@ PROJECT_DIR = {
     ZOOKEEPER: CTEST_ZK_DIR,
     ALLUXIO: CTEST_ALLUXIO_DIR,
     HIVE: CTEST_HIVE_DIR,
+    NIFI: CTEST_NIFI_DIR,
 }
 
 
@@ -38,6 +41,7 @@ MODULE_SUBDIR = {
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
     HIVE: "common",
+    NIFI: "nifi-commons",
 }
 
 
@@ -45,6 +49,7 @@ MODULE_SUBDIR = {
 SUREFIRE_SUBDIR = "target/surefire-reports/"
 SUREFIRE_XML = "TEST-{}.xml" # slot is the classname
 HIVE_SUREFIRE_XML =  "TEST-org.apache.hadoop.hive.conf.{}.xml" # slot is the classname
+SUREFIRE_XML_NIFI = "TEST-org.apache.nifi.util.{}.xml" # slot is the classname
 SUREFIRE_TXT = "{}.txt" # testclass
 SUREFIRE_OUTTXT = "{}-output.txt" #testclass 
 
@@ -64,6 +69,7 @@ SUREFIRE_DIR = {
         os.path.join(CTEST_ALLUXIO_DIR, MODULE_SUBDIR[ALLUXIO], "server/master", SUREFIRE_SUBDIR),
     ],
     HIVE: [os.path.join(CTEST_HIVE_DIR, MODULE_SUBDIR[HIVE], SUREFIRE_SUBDIR)],
+    NIFI: [os.path.join(CTEST_NIFI_DIR, MODULE_SUBDIR[NIFI],"nifi-properties", SUREFIRE_SUBDIR)],
 }
 
 # default or deprecate conf path
@@ -81,7 +87,8 @@ DEFAULT_CONF_FILE = {
     HBASE: os.path.join(DEFAULT_CONF_DIR, HBASE + "-default.tsv"),
     ALLUXIO: os.path.join(DEFAULT_CONF_DIR, ALLUXIO + "-default.tsv"),
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
-    HIVE: os.path.join(DEFAULT_CONF_DIR, HIVE + "-default.tsv")
+    HIVE: os.path.join(DEFAULT_CONF_DIR, HIVE + "-default.tsv"),
+    NIFI: os.path.join(DEFAULT_CONF_DIR, NIFI + "-default.tsv"),
 }
 
 
@@ -106,6 +113,9 @@ INJECTION_PATH = {
     ],
     HIVE: [
         os.path.join(CTEST_HIVE_DIR, "conf/hive-ctest.xml")
+    ],
+    NIFI: [
+        os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties")
     ]
 }
 

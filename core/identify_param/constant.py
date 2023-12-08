@@ -8,13 +8,15 @@ CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
 CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
+CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
     "hadoop-hdfs": CTEST_HADOOP_DIR,
     "hbase-server": CTEST_HBASE_DIR,
     "alluxio-core": CTEST_ALLUXIO_DIR,
-    "hive-common": CTEST_HIVE_DIR
+    "hive-common": CTEST_HIVE_DIR,
+    "nifi-commons": CTEST_NIFI_DIR
 }
 
 SRC_SUBDIR = {
@@ -23,7 +25,8 @@ SRC_SUBDIR = {
     "hbase-server": "hbase-server",
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
-    "hive-common":"common"
+    "hive-common":"common",
+    "nifi-commons": ""
 }
 
 MVN_TEST_PATH = {
@@ -33,6 +36,7 @@ MVN_TEST_PATH = {
     "zookeeper-server": os.path.join(CTEST_ZOOKEEPER_DIR, SRC_SUBDIR["zookeeper-server"]),
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
     "hive-common": os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"]),
+    "nifi-commons":os.path.join(CTEST_NIFI_DIR, SRC_SUBDIR["nifi-commons"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -42,6 +46,7 @@ LOCAL_CONF_PATH = {
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "hive-common": "results/hive-common/conf_params.txt",
+    "nifi-commons": "results/nifi-commons/conf_params.txt"
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -71,6 +76,9 @@ CTEST_SUREFIRE_PATH = {
     ],
     "hive-common": [
         os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"], SUREFIRE_SUBDIR)
+    ],
+    "nifi-commons": [
+        os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties", SUREFIRE_SUBDIR)
     ]
 }
 
@@ -94,5 +102,8 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "hive-common": [
         os.path.join("surefire-reports/hive/hive-common", LOCAL_SUREFIRE_SUFFIX)
+    ],
+    "nifi-commons":[
+        os.path.join("surefire-reports/nifi/nifi-commons", LOCAL_SUREFIRE_SUFFIX)
     ],
 }

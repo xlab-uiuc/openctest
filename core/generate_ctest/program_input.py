@@ -3,7 +3,7 @@
 p_input = {
     # run mode
     "run_mode": "generate_ctest", # string
-    # name of the project, i.e. hadoop-common, hadoop-hdfs, see constant.py
+    # name of the project, i.e. hadoop-common, hadoop-hdfs, hive-common, nifi-commons  see constant.py
     "project": "hive-common", # string
     # path to param -> tests json mapping
     "mapping_path": "../../data/ctest_mapping/opensource-hive-common.json", # string
