@@ -226,4 +226,4 @@ nifi.diagnostics.on.shutdown.verbose
 nifi.diagnostics.on.shutdown.directory	"./diagnostics"	
 nifi.diagnostics.on.shutdown.max.filecount	10	
 nifi.diagnostics.on.shutdown.max.directory.size	"10 MB"	
-nifi.performance.tracking.percentage	0	
+nifi.performance.tracking.percentage	0

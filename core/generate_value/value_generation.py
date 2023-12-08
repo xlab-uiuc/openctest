@@ -25,15 +25,12 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
-<<<<<<< HEAD
     if module == "hive-common":
         assert len(params) == 884
         return 884
-=======
     if module == "nifi-commons":
         assert len(params) >= 200
         return len(params)
->>>>>>> upstream/nifi
     else:
         assert len(params) == 90
         return 90
