@@ -59,7 +59,6 @@ def run_test_batch(param_values, associated_test_map):
         print(">>>>[ctest_core] chdir to {}".format(RUN_CTEST_DIR))
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
-        print(print_output)
         test_by_cls = run_test_utils.group_test_by_cls(tests)
         for clsname, methods in test_by_cls.items():
             times, errors = parse_surefire(clsname, methods)
