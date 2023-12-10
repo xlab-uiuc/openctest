@@ -1,0 +1,77 @@
+{
+  "kylin.metadata.url": [
+    "org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties",
+    "org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testRollback",
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test",
+    "org.apache.kylin.common.util.EncryptUtilTest#testNullInput",
+    "org.apache.kylin.common.KylinConfigTest#testSetKylinConfigInEnvIfMissingTakingEmptyProperties",
+    "org.apache.kylin.common.KylinConfigTest#testUnexpectedBlackInPro",
+    "org.apache.kylin.common.util.SourceConfigurationUtilTest#testHiveConf",
+    "org.apache.kylin.common.KylinConfigTest#testGetMetadataUrlPrefix",
+    "org.apache.kylin.common.persistence.ResourceToolTest#testCopy",
+    "org.apache.kylin.common.persistence.HDFSResourceStoreTest#testListResourcesImpl",
+    "org.apache.kylin.common.restclient.RestClientTest#basicTests",
+    "org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testFileStore",
+    "org.apache.kylin.common.KylinConfigTest#testPropertiesHotLoad",
+    "org.apache.kylin.common.KylinConfigTest#testThreadLocalOverride",
+    "org.apache.kylin.common.util.SSHClientTest#testCmd",
+    "org.apache.kylin.common.KylinConfigTest#testBackwardCompatibility",
+    "org.apache.kylin.common.KylinConfigTest#testCreateInstanceFromUriThrowsIllegalStateExceptionOne",
+    "org.apache.kylin.common.KylinConfigTest#testCreateInstanceFromUriThrowsRuntimeException",
+    "org.apache.kylin.common.util.SSHClientTest#testScp",
+    "org.apache.kylin.common.KylinConfigTest#testExtShareTheBase"
+  ],
+  "kylin.storage.hbase.owner-tag": [
+    "org.apache.kylin.common.KylinConfigTest#testPropertiesHotLoad"
+  ],
+  "kylin.query.calcite.extras-props.caseSensitive": [
+    "org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties"
+  ],
+  "kylin.query.calcite.extras-props.conformance": [
+    "org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties"
+  ],
+  "kylin.query.calcite.extras-props.unquotedCasing": [
+    "org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties"
+  ],
+  "kylin.query.calcite.extras-props.quoting": [
+    "org.apache.kylin.common.KylinConfigTest#testCalciteExtrasProperties"
+  ],
+  "kylin.restclient.connection.default-max-per-route": [
+    "org.apache.kylin.common.KylinConfigTest#testCreateInstanceFromUriThrowsRuntimeException",
+    "org.apache.kylin.common.restclient.RestClientTest#basicTests"
+  ],
+  "kylin.job.use-remote-cli": [
+    "org.apache.kylin.common.util.SSHClientTest#testCmd",
+    "org.apache.kylin.common.util.SSHClientTest#testScp"
+  ],
+  "kylin.job.remote-cli-port": [
+    "org.apache.kylin.common.util.SSHClientTest#testCmd",
+    "org.apache.kylin.common.util.SSHClientTest#testScp"
+  ],
+  "kylin.env.zookeeper-base-path": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.server.cluster-name": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.env.zookeeper-base-sleep-time": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.env.zookeeper-is-local": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.env.zookeeper-connect-string": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.server.mode": [
+    "org.apache.kylin.common.zookeeper.KylinServerDiscoveryTest#test"
+  ],
+  "kylin.env.hdfs-working-dir": [
+    "org.apache.kylin.common.persistence.HDFSResourceStoreTest#testListResourcesImpl"
+  ],
+  "kylin.resourcestore.reconnect-base-ms": [
+    "org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testFileStore",
+    "org.apache.kylin.common.persistence.LocalFileResourceStoreTest#testRollback",
+    "org.apache.kylin.common.persistence.ResourceToolTest#testCopy"
+  ]
+}

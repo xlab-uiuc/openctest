@@ -20,7 +20,6 @@ def maven_cmd(test, add_time=False):
     # if you modified the test and want to rerun it, you must use `mvn test`
     test_mode = "surefire:test" if use_surefire else "test"
     if project == "nifi-commons":
-
         cmd = ["mvn", test_mode, "-Dtest={}".format(test), "-Dsurefire.failIfNoSpecifiedTests=false"] + maven_args
     else:
         cmd = ["mvn", test_mode, "-Dtest={}".format(test)] + maven_args

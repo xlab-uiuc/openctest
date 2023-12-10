@@ -80,6 +80,13 @@ function setup_camel() {
 }
 
 
+function setup_kylin(){
+  [ ! -d "app/ctest-kylin" ] && git clone https://github.com/rtao6/kylin.git app/ctest-kylin
+  cd app/ctest-kylin
+  git fetch && git checkout ctest-injection
+  mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -100,7 +107,8 @@ function main() {
             nifi) setup_nifi ;;
             flink) setup_flink ;;
             camel) setup_camel ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, hive, nifi, flink and camel." ;;
+            kylin) setup_kylin ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, hive, nifi, flink, kylin and camel." ;;
         esac
     fi
 }

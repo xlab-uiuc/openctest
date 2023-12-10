@@ -11,6 +11,7 @@ CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
 CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
 CTEST_FLINK_DIR = os.path.join(APP_DIR, "ctest-flink")
 CTEST_CAMEL_DIR = os.path.join(APP_DIR, "ctest-camel")
+CTEST_KYLIN_DIR = os.path.join(APP_DIR, "ctest-kylin")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
@@ -21,7 +22,8 @@ MODULE_PATH = {
     "nifi-commons": CTEST_NIFI_DIR,
     "flink-core": CTEST_FLINK_DIR,
     "camel-core": CTEST_CAMEL_DIR,
-    "hadoop-yarn-common": CTEST_HADOOP_DIR
+    "hadoop-yarn-common": CTEST_HADOOP_DIR,
+    "kylin-common": CTEST_KYLIN_DIR,
 }
 
 SRC_SUBDIR = {
@@ -34,7 +36,9 @@ SRC_SUBDIR = {
     "nifi-commons": "",
     "flink-core": "flink-core",
     "camel-core": "core/camel-core",
-    "hadoop-yarn-common": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common"
+    "hadoop-yarn-common": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common",
+    "kylin-common": "",
+
 }
 
 MVN_TEST_PATH = {
@@ -48,6 +52,7 @@ MVN_TEST_PATH = {
     "flink-core": os.path.join(CTEST_FLINK_DIR, SRC_SUBDIR["flink-core"]),
     "camel-core": os.path.join(CTEST_CAMEL_DIR, SRC_SUBDIR["camel-core"]),
     "hadoop-yarn-common": os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-yarn-common"]),
+    "kylin-common":  os.path.join(CTEST_KYLIN_DIR, SRC_SUBDIR["kylin-common"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -61,6 +66,7 @@ LOCAL_CONF_PATH = {
     "flink-core": "results/flink-core/conf_params.txt",
     "camel-core": "results/camel-core/conf_params.txt",
     "hadoop-yarn-common": "results/hadoop-yarn-common/conf_params.txt",
+    "kylin-common": "results/kylin-common/conf_params.txt",
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -103,6 +109,9 @@ CTEST_SUREFIRE_PATH = {
     "hadoop-yarn-common": [
         os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-yarn-common"], SUREFIRE_SUBDIR)
     ],
+    "kylin-common":  [
+        os.path.join(CTEST_KYLIN_DIR, SUREFIRE_SUBDIR)
+    ],
 }
 
 LOCAL_SUREFIRE_SUFFIX = "surefire-reports/*"
@@ -123,7 +132,6 @@ LOCAL_SUREFIRE_PATH = {
     "alluxio-core": [
         os.path.join("surefire-reports/alluxio-core", LOCAL_SUREFIRE_SUFFIX)
     ],
-<<<<<<< HEAD
     "hive-common": [
         os.path.join("surefire-reports/hive/hive-common", LOCAL_SUREFIRE_SUFFIX)
     ],
@@ -136,9 +144,10 @@ LOCAL_SUREFIRE_PATH = {
     "camel-core": [
         os.path.join("surefire-reports/camel-core", LOCAL_SUREFIRE_SUFFIX)
     ],    
-=======
     "hadoop-yarn-common": [
         os.path.join("surefire-reports/yarn/hadoop-yarn", LOCAL_SUREFIRE_SUFFIX)
     ],
->>>>>>> upstream/yarn
+    "kylin-common": [
+        os.path.join("surefire-reports/kylin-common", LOCAL_SUREFIRE_SUFFIX)
+    ],
 }

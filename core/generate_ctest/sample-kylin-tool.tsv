@@ -1,0 +1,7 @@
+kylin.resourcestore.reconnect-base-ms	50	200
+kylin.metadata.check-copy-on-write	TRUE	SKIP
+kylin.cube.rowkey.max-size	31	126
+kylin.cube.aggrgroup.is-mandatory-only-valid	FALSE	SKIP
+kylin.cube.aggrgroup.max-combination	16384	65536
+kylin.storage.hbase.table-name-prefix	KYLIN	SKIP
+kylin.env	DEV	DEV
