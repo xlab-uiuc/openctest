@@ -62,6 +62,14 @@ function setup_hive(){
     mvn clean install -DskipTests
 }
 
+function setup_flink() {
+    [ ! -d "app/ctest-flink" ] && git clone https://github.com/jessicahuang523/flink app/ctest-flink
+    cd app/ctest-flink
+    git fetch && git checkout ctest-injection
+    cd flink-core
+    mvn clean install -DskipTests
+}
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -80,7 +88,9 @@ function main() {
             alluxio) setup_alluxio ;;
             hive) setup_hive ;;
             nifi) setup_nifi ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, nifi, and alluxio." ;;
+            flink) setup_flink ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, hive, nifi, flink and alluxio." ;;
+            flink) setup_flink ;;
         esac
     fi
 }

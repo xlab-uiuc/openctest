@@ -14,6 +14,7 @@ ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 HIVE = "hive-common"
 NIFI = "nifi-commons"
+FLINK = "flink-core"
 
 CTEST_HADOOP_DIR = os.path.join(APP_DIR, "ctest-hadoop")
 CTEST_HBASE_DIR = os.path.join(APP_DIR, "ctest-hbase")
@@ -21,6 +22,7 @@ CTEST_ZK_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
 CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
+CTEST_FLINK_DIR = os.path.join(APP_DIR, "ctest-flink")
 
 PROJECT_DIR = {
     HCOMMON: CTEST_HADOOP_DIR,
@@ -30,6 +32,7 @@ PROJECT_DIR = {
     ALLUXIO: CTEST_ALLUXIO_DIR,
     HIVE: CTEST_HIVE_DIR,
     NIFI: CTEST_NIFI_DIR,
+    FLINK: CTEST_FLINK_DIR
 }
 
 
@@ -42,6 +45,7 @@ MODULE_SUBDIR = {
     ALLUXIO: "core",
     HIVE: "common",
     NIFI: "nifi-commons",
+    FLINK: "flink-core"
 }
 
 
@@ -70,6 +74,7 @@ SUREFIRE_DIR = {
     ],
     HIVE: [os.path.join(CTEST_HIVE_DIR, MODULE_SUBDIR[HIVE], SUREFIRE_SUBDIR)],
     NIFI: [os.path.join(CTEST_NIFI_DIR, MODULE_SUBDIR[NIFI],"nifi-properties", SUREFIRE_SUBDIR)],
+    FLINK: [os.path.join(CTEST_FLINK_DIR, MODULE_SUBDIR[FLINK], SUREFIRE_SUBDIR)]
 }
 
 # default or deprecate conf path
@@ -89,6 +94,7 @@ DEFAULT_CONF_FILE = {
     ZOOKEEPER: os.path.join(DEFAULT_CONF_DIR, ZOOKEEPER + "-default.tsv"),
     HIVE: os.path.join(DEFAULT_CONF_DIR, HIVE + "-default.tsv"),
     NIFI: os.path.join(DEFAULT_CONF_DIR, NIFI + "-default.tsv"),
+    FLINK: os.path.join(DEFAULT_CONF_DIR, FLINK + "-default.tsv")
 }
 
 
@@ -116,6 +122,9 @@ INJECTION_PATH = {
     ],
     NIFI: [
         os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/ctest.properties")
+    ],
+    FLINK: [
+        os.path.join(CTEST_FLINK_DIR, "flink-core/core-ctest.yaml")
     ]
 }
 

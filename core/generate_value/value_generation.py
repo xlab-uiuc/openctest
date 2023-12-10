@@ -31,6 +31,9 @@ def read_tsv(module):
     if module == "nifi-commons":
         assert len(params) >= 200
         return len(params)
+    elif module == "flink-core":
+        assert len(params) == 32
+        return 32
     else:
         assert len(params) == 90
         return 90
@@ -110,6 +113,8 @@ def print_params(module):
     unhandled = []
     f = open(module + output, "w")
     if module == "zookeeper-server":
+        assert len(params) == 32
+    elif module == "flink-core":
         assert len(params) == 32
     else:
         assert len(params) >= 90

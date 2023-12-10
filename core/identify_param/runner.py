@@ -78,6 +78,9 @@ class Runner:
         if self.module == "alluxio-core":
             if "alluxio.conf" in trace and "Test" not in trace:
                 return True
+        if self.module == "flink-core":
+            if "org.apache.flink.configuration" in trace and "Test" not in trace:
+                return True
         return False
 
     def setInTest(self, stacktrace):
@@ -166,9 +169,8 @@ class Runner:
             if self.module == "alluxio-core":
                 cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
             else:
-                cmd = ["mvn" ,"-pl", "nifi-commons/",  "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false" , "-Dsurefire.failIfNoSpecifiedTests=false"]
+                cmd = ["mvn" , "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false" , "-Dsurefire.failIfNoSpecifiedTests=false"]
             print ("mvn surefire:test -Dtest="+method)
-
             child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
             child.wait()
 

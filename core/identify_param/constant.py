@@ -9,6 +9,7 @@ CTEST_ZOOKEEPER_DIR = os.path.join(APP_DIR, "ctest-zookeeper")
 CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
 CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
+CTEST_FLINK_DIR = os.path.join(APP_DIR, "ctest-flink")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
@@ -16,7 +17,8 @@ MODULE_PATH = {
     "hbase-server": CTEST_HBASE_DIR,
     "alluxio-core": CTEST_ALLUXIO_DIR,
     "hive-common": CTEST_HIVE_DIR,
-    "nifi-commons": CTEST_NIFI_DIR
+    "nifi-commons": CTEST_NIFI_DIR,
+    "flink-core": CTEST_FLINK_DIR
 }
 
 SRC_SUBDIR = {
@@ -26,7 +28,8 @@ SRC_SUBDIR = {
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
     "hive-common":"common",
-    "nifi-commons": ""
+    "nifi-commons": "",
+    "flink-core": "flink-core"
 }
 
 MVN_TEST_PATH = {
@@ -37,6 +40,7 @@ MVN_TEST_PATH = {
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
     "hive-common": os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"]),
     "nifi-commons":os.path.join(CTEST_NIFI_DIR, SRC_SUBDIR["nifi-commons"]),
+    "flink-core": os.path.join(CTEST_FLINK_DIR, SRC_SUBDIR["flink-core"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -46,7 +50,8 @@ LOCAL_CONF_PATH = {
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "hive-common": "results/hive-common/conf_params.txt",
-    "nifi-commons": "results/nifi-commons/conf_params.txt"
+    "nifi-commons": "results/nifi-commons/conf_params.txt",
+    "flink-core": "results/flink-core/conf_params.txt"
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -79,6 +84,9 @@ CTEST_SUREFIRE_PATH = {
     ],
     "nifi-commons": [
         os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties", SUREFIRE_SUBDIR)
+    ],
+    "flink-core": [
+        os.path.join(CTEST_FLINK_DIR, "flink-core", SUREFIRE_SUBDIR)
     ]
 }
 
@@ -106,4 +114,7 @@ LOCAL_SUREFIRE_PATH = {
     "nifi-commons":[
         os.path.join("surefire-reports/nifi/nifi-commons", LOCAL_SUREFIRE_SUFFIX)
     ],
+    "flink-core": [
+        os.path.join("surefire-reports/flink-core", LOCAL_SUREFIRE_SUFFIX)
+    ]
 }

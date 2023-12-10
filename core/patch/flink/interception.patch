@@ -1,0 +1,278 @@
+From cdf186528ac167fdef31829eb4e17a89d6217416 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Wed, 19 Oct 2022 21:24:38 -0500
+Subject: [PATCH 1/6] trial ctest injection
+
+---
+ .../org/apache/flink/configuration/GlobalConfiguration.java  | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java b/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
+index 6340070b330..d8d3200ce60 100644
+--- a/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
++++ b/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
+@@ -41,7 +41,7 @@ public final class GlobalConfiguration {
+ 
+     private static final Logger LOG = LoggerFactory.getLogger(GlobalConfiguration.class);
+ 
+-    public static final String FLINK_CONF_FILENAME = "flink-conf.yaml";
++    public static final String FLINK_CONF_FILENAME = "core-ctest.yaml"; // ctest
+ 
+     // the keys whose values should be hidden
+     private static final String[] SENSITIVE_KEYS =
+@@ -75,7 +75,8 @@ public final class GlobalConfiguration {
+      * @return Returns the loaded global configuration with dynamic properties
+      */
+     public static Configuration loadConfiguration(Configuration dynamicProperties) {
+-        final String configDir = System.getenv(ConfigConstants.ENV_FLINK_CONF_DIR);
++        // final String configDir = System.getenv(ConfigConstants.ENV_FLINK_CONF_DIR);
++        final String configDir = System.getProperty("user.dir"); // ctest
+         if (configDir == null) {
+             return new Configuration(dynamicProperties);
+         }
+-- 
+2.25.1
+
+
+From 8c6295c7a4da045816dc73bd982b016383c90ae8 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Thu, 20 Oct 2022 02:08:18 -0500
+Subject: [PATCH 2/6] injection update
+
+---
+ .../flink/configuration/Configuration.java    | 75 +++++++++++++++++++
+ .../configuration/GlobalConfiguration.java    |  5 +-
+ 2 files changed, 77 insertions(+), 3 deletions(-)
+
+diff --git a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+index d2032c606c4..ee48f21237c 100644
+--- a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
++++ b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+@@ -29,7 +29,11 @@ import org.apache.flink.types.StringValue;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
++import java.io.BufferedReader;
++import java.io.File;
++import java.io.FileInputStream;
+ import java.io.IOException;
++import java.io.InputStreamReader;
+ import java.util.Arrays;
+ import java.util.HashMap;
+ import java.util.HashSet;
+@@ -63,6 +67,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+     private static final byte TYPE_FLOAT = 4;
+     private static final byte TYPE_DOUBLE = 5;
+     private static final byte TYPE_BYTES = 6;
++    private static boolean isFirstThread = true;
+ 
+     /** The log object used for debugging. */
+     private static final Logger LOG = LoggerFactory.getLogger(Configuration.class);
+@@ -75,6 +80,76 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+     /** Creates a new empty configuration. */
+     public Configuration() {
+         this.confData = new HashMap<>();
++        if (isFirstThreadAndFlip()) {
++            ctestInject();
++        }
++    }
++
++    // Ctest
++    private synchronized boolean isFirstThreadAndFlip() {
++        boolean tmp = isFirstThread;
++        isFirstThread = false;
++        return tmp;
++    }
++
++    // Ctest
++    private void ctestInject() {
++        String f = System.getProperty("user.dir") + "/core-ctest.yaml";
++        final File file = new File(f);
++        try (BufferedReader reader =
++                new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
++
++            String line;
++            int lineNo = 0;
++            while ((line = reader.readLine()) != null) {
++                System.out.println(line);
++                lineNo++;
++                // 1. check for comments
++                String[] comments = line.split("#", 2);
++                String conf = comments[0].trim();
++
++                // 2. get key and value
++                if (conf.length() > 0) {
++                    String[] kv = conf.split(": ", 2);
++
++                    // skip line with no valid key-value pair
++                    if (kv.length == 1) {
++                        LOG.warn(
++                                "Error while trying to split key and value in configuration file "
++                                        + file
++                                        + ":"
++                                        + lineNo
++                                        + ": \""
++                                        + line
++                                        + "\"");
++                        continue;
++                    }
++
++                    String key = kv[0].trim();
++                    String value = kv[1].trim();
++
++                    // sanity check
++                    if (key.length() == 0 || value.length() == 0) {
++                        LOG.warn(
++                                "Error after splitting key and value in configuration file "
++                                        + file
++                                        + ":"
++                                        + lineNo
++                                        + ": \""
++                                        + line
++                                        + "\"");
++                        continue;
++                    }
++
++                    setString(key, value);
++                    System.out.println("LOADING:");
++                    System.out.println(key);
++                    System.out.println(value);
++                }
++            }
++        } catch (IOException e) {
++            throw new RuntimeException("Error parsing YAML configuration.", e);
++        }
+     }
+ 
+     /**
+diff --git a/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java b/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
+index d8d3200ce60..6340070b330 100644
+--- a/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
++++ b/flink-core/src/main/java/org/apache/flink/configuration/GlobalConfiguration.java
+@@ -41,7 +41,7 @@ public final class GlobalConfiguration {
+ 
+     private static final Logger LOG = LoggerFactory.getLogger(GlobalConfiguration.class);
+ 
+-    public static final String FLINK_CONF_FILENAME = "core-ctest.yaml"; // ctest
++    public static final String FLINK_CONF_FILENAME = "flink-conf.yaml";
+ 
+     // the keys whose values should be hidden
+     private static final String[] SENSITIVE_KEYS =
+@@ -75,8 +75,7 @@ public final class GlobalConfiguration {
+      * @return Returns the loaded global configuration with dynamic properties
+      */
+     public static Configuration loadConfiguration(Configuration dynamicProperties) {
+-        // final String configDir = System.getenv(ConfigConstants.ENV_FLINK_CONF_DIR);
+-        final String configDir = System.getProperty("user.dir"); // ctest
++        final String configDir = System.getenv(ConfigConstants.ENV_FLINK_CONF_DIR);
+         if (configDir == null) {
+             return new Configuration(dynamicProperties);
+         }
+-- 
+2.25.1
+
+
+From 572f02547d70889b5320dd59854a875671c05abc Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Thu, 20 Oct 2022 19:58:03 -0500
+Subject: [PATCH 3/6] yaml file added
+
+---
+ flink-core/core-ctest.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 flink-core/core-ctest.yaml
+
+diff --git a/flink-core/core-ctest.yaml b/flink-core/core-ctest.yaml
+new file mode 100644
+index 00000000000..c83dfa35751
+--- /dev/null
++++ b/flink-core/core-ctest.yaml
+@@ -0,0 +1 @@
++cluster.processes.halt-on-fatal-error: true
+\ No newline at end of file
+-- 
+2.25.1
+
+
+From 03c890d80064c4741d189336bf61cb763d742f71 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Thu, 20 Oct 2022 19:59:24 -0500
+Subject: [PATCH 4/6] yaml file cleared
+
+---
+ flink-core/core-ctest.yaml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/flink-core/core-ctest.yaml b/flink-core/core-ctest.yaml
+index c83dfa35751..e69de29bb2d 100644
+--- a/flink-core/core-ctest.yaml
++++ b/flink-core/core-ctest.yaml
+@@ -1 +0,0 @@
+-cluster.processes.halt-on-fatal-error: true
+\ No newline at end of file
+-- 
+2.25.1
+
+
+From 5ab2f38a9ebaf40bce32669d3df6339210aee540 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Thu, 20 Oct 2022 23:45:47 -0500
+Subject: [PATCH 5/6] print statement deleteed
+
+---
+ flink-core/core-ctest.yaml                                    | 1 +
+ .../java/org/apache/flink/configuration/Configuration.java    | 4 ----
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/flink-core/core-ctest.yaml b/flink-core/core-ctest.yaml
+index e69de29bb2d..15479032e81 100644
+--- a/flink-core/core-ctest.yaml
++++ b/flink-core/core-ctest.yaml
+@@ -0,0 +1 @@
++jobmanager.scheduler: Adaptive
+\ No newline at end of file
+diff --git a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+index ee48f21237c..0ae59321dfc 100644
+--- a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
++++ b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+@@ -102,7 +102,6 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+             String line;
+             int lineNo = 0;
+             while ((line = reader.readLine()) != null) {
+-                System.out.println(line);
+                 lineNo++;
+                 // 1. check for comments
+                 String[] comments = line.split("#", 2);
+@@ -142,9 +141,6 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+                     }
+ 
+                     setString(key, value);
+-                    System.out.println("LOADING:");
+-                    System.out.println(key);
+-                    System.out.println(value);
+                 }
+             }
+         } catch (IOException e) {
+-- 
+2.25.1
+
+
+From fa7d038b14f833423c849c0e5f90bb4eabf46067 Mon Sep 17 00:00:00 2001
+From: yifanj4 <yifanj4@fa22-cs527-024.cs.illinois.edu>
+Date: Fri, 21 Oct 2022 15:27:17 -0500
+Subject: [PATCH 6/6] yaml file cleaned
+
+---
+ flink-core/core-ctest.yaml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/flink-core/core-ctest.yaml b/flink-core/core-ctest.yaml
+index 15479032e81..e69de29bb2d 100644
+--- a/flink-core/core-ctest.yaml
++++ b/flink-core/core-ctest.yaml
+@@ -1 +0,0 @@
+-jobmanager.scheduler: Adaptive
+\ No newline at end of file
+-- 
+2.25.1
+
