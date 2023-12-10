@@ -70,6 +70,14 @@ function setup_flink() {
     mvn clean install -DskipTests
 }
 
+function setup_camel() {
+    [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
+    cd app/ctest-camel
+    git fetch && git checkout ctest-logging
+    mvn clean install -DskipTests
+}
+
+
 function usage() {
     echo "Usage: add_project.sh <main project>"
     exit 1
@@ -89,8 +97,8 @@ function main() {
             hive) setup_hive ;;
             nifi) setup_nifi ;;
             flink) setup_flink ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, hive, nifi, flink and alluxio." ;;
-            flink) setup_flink ;;
+            camel) setup_camel ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, hive, nifi, flink and camel." ;;
         esac
     fi
 }

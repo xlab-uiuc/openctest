@@ -10,6 +10,7 @@ CTEST_ALLUXIO_DIR = os.path.join(APP_DIR, "ctest-alluxio")
 CTEST_HIVE_DIR = os.path.join(APP_DIR, "ctest-hive")
 CTEST_NIFI_DIR = os.path.join(APP_DIR, "ctest-nifi")
 CTEST_FLINK_DIR = os.path.join(APP_DIR, "ctest-flink")
+CTEST_CAMEL_DIR = os.path.join(APP_DIR, "ctest-camel")
 
 MODULE_PATH = {
     "hadoop-common": CTEST_HADOOP_DIR,
@@ -18,7 +19,8 @@ MODULE_PATH = {
     "alluxio-core": CTEST_ALLUXIO_DIR,
     "hive-common": CTEST_HIVE_DIR,
     "nifi-commons": CTEST_NIFI_DIR,
-    "flink-core": CTEST_FLINK_DIR
+    "flink-core": CTEST_FLINK_DIR,
+    "camel-core": CTEST_CAMEL_DIR
 }
 
 SRC_SUBDIR = {
@@ -29,7 +31,8 @@ SRC_SUBDIR = {
     "alluxio-core": "core",
     "hive-common":"common",
     "nifi-commons": "",
-    "flink-core": "flink-core"
+    "flink-core": "flink-core",
+    "camel-core": "core/camel-core"
 }
 
 MVN_TEST_PATH = {
@@ -41,6 +44,7 @@ MVN_TEST_PATH = {
     "hive-common": os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"]),
     "nifi-commons":os.path.join(CTEST_NIFI_DIR, SRC_SUBDIR["nifi-commons"]),
     "flink-core": os.path.join(CTEST_FLINK_DIR, SRC_SUBDIR["flink-core"]),
+    "camel-core": os.path.join(CTEST_CAMEL_DIR, SRC_SUBDIR["camel-core"]),
 }
 
 LOCAL_CONF_PATH = {
@@ -51,7 +55,8 @@ LOCAL_CONF_PATH = {
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "hive-common": "results/hive-common/conf_params.txt",
     "nifi-commons": "results/nifi-commons/conf_params.txt",
-    "flink-core": "results/flink-core/conf_params.txt"
+    "flink-core": "results/flink-core/conf_params.txt",
+    "camel-core": "results/camel-core/conf_params.txt"
 }
 
 SUREFIRE_SUBDIR = "target/surefire-reports/*"
@@ -87,7 +92,10 @@ CTEST_SUREFIRE_PATH = {
     ],
     "flink-core": [
         os.path.join(CTEST_FLINK_DIR, "flink-core", SUREFIRE_SUBDIR)
-    ]
+    ],
+    "camel-core": [
+        os.path.join(CTEST_CAMEL_DIR, "core/camel-core", SUREFIRE_SUBDIR)
+    ],
 }
 
 LOCAL_SUREFIRE_SUFFIX = "surefire-reports/*"
@@ -116,5 +124,8 @@ LOCAL_SUREFIRE_PATH = {
     ],
     "flink-core": [
         os.path.join("surefire-reports/flink-core", LOCAL_SUREFIRE_SUFFIX)
-    ]
+    ],
+    "camel-core": [
+        os.path.join("surefire-reports/camel-core", LOCAL_SUREFIRE_SUFFIX)
+    ],    
 }
