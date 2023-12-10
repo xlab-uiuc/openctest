@@ -1,0 +1,53 @@
+From 0c8f099c609523cd3b662d531083e431bafa56d2 Mon Sep 17 00:00:00 2001
+From: xinyihe4 <xinyihe4@fa22-cs527-018.cs.illinois.edu>
+Date: Tue, 6 Dec 2022 07:04:53 -0600
+Subject: [PATCH] push injection
+
+---
+ .../src/java/org/apache/hadoop/hive/conf/HiveConf.java   | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java b/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
+index 0517dc0bbc..342bdcc85c 100644
+--- a/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
++++ b/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
+@@ -82,6 +82,7 @@
+   private static boolean loadHiveServer2Config = false;
+   private static URL hiveDefaultURL = null;
+   private static URL hiveSiteURL = null;
++  private static URL hiveCtestURL = null;
+   private static URL hivemetastoreSiteUrl = null;
+   private static URL hiveServer2SiteUrl = null;
+ 
+@@ -146,6 +147,7 @@ public String decode(String value) {
+     hiveSiteURL = findConfigFile(classLoader, "hive-site.xml", true);
+     hivemetastoreSiteUrl = findConfigFile(classLoader, "hivemetastore-site.xml", false);
+     hiveServer2SiteUrl = findConfigFile(classLoader, "hiveserver2-site.xml", false);
++    hiveCtestURL = findConfigFile(classLoader, "hive-ctest.xml", true); //or
+ 
+     for (ConfVars confVar : ConfVars.values()) {
+       vars.put(confVar.varname, confVar);
+@@ -165,6 +167,10 @@ private static URL findConfigFile(ClassLoader classLoader, String name, boolean
+         String homePath = System.getenv("HIVE_HOME");
+         String nameInConf = "conf" + File.separator + name;
+         result = checkConfigFile(new File(homePath, nameInConf));
++        // if (result == null) {
++        //     String ctestPath = "./common/target/";
++        //     result = checkConfigFile(new File(confPath, name));
++        // }
+         if (result == null) {
+           URI jarUri = null;
+           try {
+@@ -5153,6 +5159,9 @@ private void initialize(Class<?> cls) {
+     if (hiveSiteURL != null) {
+       addResource(hiveSiteURL);
+     }
++    if (hiveCtestURL != null){
++        addResource(hiveCtestURL);
++    }
+ 
+     // if embedded metastore is to be used as per config so far
+     // then this is considered like the metastore server case
+-- 
+2.25.1
+

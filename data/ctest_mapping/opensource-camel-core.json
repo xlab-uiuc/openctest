@@ -1,0 +1,523 @@
+{
+  "unknown": [
+    "BeanTest#testBeanTypeExpression",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalNotPresent",
+    "OptionalPropertyPlaceholderBeanTest#testQueryOptionalNotPresentDefaultValue",
+    "BeanTest#testSimpleExpressions",
+    "BeanTest#testNoMethodBeanLookup",
+    "BeanTest#testPredicates",
+    "BeanTest#testBeanTypeAndMethodExpression",
+    "BeanTest#testBeanInstanceAndMethodExpression",
+    "OptionalPropertyPlaceholderBeanTest#testQueryOptionalNotPresent",
+    "OptionalPropertyPlaceholderTest#testPathOptionalNotPresent",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixed"
+  ],
+  "stop": [
+    "OptionalPropertiesDslTest#testPlaceholderDslTest"
+  ],
+  "cool.concat.escaped": [
+    "PropertiesComponentEscapedTest#testEscaped"
+  ],
+  "cool.other.name": [
+    "PropertiesComponentNestedFalseTest#testNestedFalse",
+    "PropertiesComponentNestedTest#testNested",
+    "PropertiesComponentEscapedTest#testEscaped",
+    "RouteIdTest#testRouteIdFailed",
+    "PropertiesRouteIdTest#testPropertiesRouteId",
+    "RouteIdTest#testRouteId"
+  ],
+  "myDelim": [
+    "OptionalPropertyPlaceholderEipTest#testQueryOptionalPresent",
+    "OptionalPropertyPlaceholderEipTest#testQueryOptionalNotPresent"
+  ],
+  "cool.result": [
+    "PropertiesComponentEndpointTest#testPropertiesComponentEndpoints",
+    "PropertiesComponentNestedTest#testNested",
+    "ComponentResolvePropertyPlaceholdersTest#testPropertiesComponentEndpoint",
+    "PropertiesComponentEndpointTest#testPropertiesComponentEndpoint"
+  ],
+  "cool.concat": [
+    "PropertiesComponentNestedFalseTest#testNestedFalse",
+    "PropertiesComponentNestedTest#testNested"
+  ],
+  "keyManagersParameters.algorithm": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "keyManagersParameters.provider": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "keyManagersParameters.keyPassword": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "keyStoreParameters.type": [
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testClientParameters",
+    "KeyStoreParametersTest#testValidParameters",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testServerParameters",
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "KeyStoreParametersTest#testExplicitInvalidProvider",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "KeyStoreParametersTest#testIncorrectResource",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "KeyStoreParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm"
+  ],
+  "keyStoreParamerers.password": [
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testClientParameters",
+    "KeyStoreParametersTest#testValidParameters",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testServerParameters",
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "KeyStoreParametersTest#testExplicitInvalidProvider",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "KeyStoreParametersTest#testIncorrectResource",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "KeyStoreParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm"
+  ],
+  "keyStoreParameters.provider": [
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testClientParameters",
+    "KeyStoreParametersTest#testValidParameters",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testServerParameters",
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "KeyStoreParametersTest#testExplicitInvalidProvider",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "KeyStoreParametersTest#testIncorrectResource",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "KeyStoreParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm"
+  ],
+  "keyStoreParameters.resource": [
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testClientParameters",
+    "KeyStoreParametersTest#testValidParameters",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "KeyManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testServerParameters",
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "KeyStoreParametersTest#testExplicitInvalidProvider",
+    "KeyManagersParametersTest#testAliasedKeyManager",
+    "SSLContextParametersTest#testProvider",
+    "KeyStoreParametersTest#testIncorrectResource",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "KeyStoreParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm"
+  ],
+  "trustManagersParameters.algorithm": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testProvider",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "trustManagersParameters.provider": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testProvider",
+    "TrustManagersParametersTest#testInvalidExplicitAlgorithm",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "TrustManagersParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "TrustManagersParametersTest#testCustomTrustManager",
+    "SSLContextParametersTest#testSessionTimeout",
+    "TrustManagersParametersTest#testCreateTrustManagers",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "sslContextParameters.protocol": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "sslContextParameters.provider": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "sslContextParameters.sessionTimeout": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "cipherSuite.0": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "secureSocketProtocol.0": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "sslContextServerParameters.clientAuthentication": [
+    "SSLContextParametersTest#testCipherSuitesFilter",
+    "SSLContextParametersTest#testPropertyPlaceholders",
+    "SSLContextParametersTest#testFilter",
+    "SSLContextParametersTest#testDefaultSecureSocketProtocol",
+    "SSLContextParametersTest#testServerParametersClientAuthentication",
+    "SSLContextParametersTest#testProvider",
+    "SSLContextParametersTest#testSecureSocketProtocols",
+    "SSLContextParametersTest#testSecureSocketProtocol",
+    "SSLContextParametersTest#testSessionTimeout",
+    "SSLContextParametersTest#testClientParameters",
+    "SSLContextParametersTest#testServerParameters"
+  ],
+  "elephant": [
+    "PropertiesComponentEncodingTest#testPropertiesComponent"
+  ],
+  "myCoolCharset": [
+    "PropertiesComponentEIPChoiceConvertBodyToTest#testConvertToBytesCharset",
+    "PropertiesComponentEIPChoiceConvertBodyToTest#testNullBody",
+    "PropertiesComponentEIPConvertBodyToTest#testConvertToBytesCharset"
+  ],
+  "whereTo": [
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixedTwo",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalPresent",
+    "OptionalPropertyPlaceholderTest#testPathOptionalPresent"
+  ],
+  "maxKeep": [
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalNotPresent",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixedTwo",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalPresent",
+    "OptionalPropertyPlaceholderTest#testQueryOptionalNotPresent",
+    "OptionalPropertyPlaceholderTest#testQueryAndPathOptionalMixed",
+    "OptionalPropertyPlaceholderTest#testQueryOptionalPresent"
+  ],
+  "cool.name": [
+    "BeanTest#testNoMethod",
+    "SimpleTest#testListRemoveByInstance",
+    "SimpleTest#testResultType",
+    "SimpleTest#testOGNLExchangePropertyMap",
+    "SimpleTest#testBodyOGNLSimpleShorthand",
+    "SimpleTest#testCollateEven",
+    "SimpleTest#testOGNLPropertyMapIllegalSyntax",
+    "SimpleTest#testOGNLHeaderList",
+    "SimpleTest#testBodyOGNLList",
+    "SimpleTest#testSimpleExpressionOrPredicate",
+    "OptionalPropertyPlaceholderBeanTest#testQueryOptionalPresent",
+    "SimpleTest#testSimpleFileDir",
+    "SimpleTest#testBodyOGNLAsMap",
+    "SimpleTest#testOGNLHeaderMap",
+    "RouteIdTest#testRouteIdFailed",
+    "SimpleTest#testSimpleCamelId",
+    "SimpleTest#testOGNLBodyEmptyList",
+    "SimpleTest#testSimpleSystemPropertyExpressions",
+    "SimpleTest#testDateExpressions",
+    "SimpleTest#testBodyOgnlReplace",
+    "TransactedPropertyPlaceholderIssueTest#testPropertyPlaceholder",
+    "SimpleTest#testBodyOGNLSimpleOperatorShorthand",
+    "SimpleTest#testIntArrayLength",
+    "PropertiesComponentEIPChoiceSimpleTest#testChoice",
+    "SimpleTest#testEmptyExpression",
+    "RouteIdTest#testRouteId",
+    "SimpleTest#testDateWithConverterExpressions",
+    "SimpleTest#testBodyOGNLOrderList",
+    "BeanTest#testDoubleColon",
+    "SimpleTest#testHeaderAs",
+    "PropertiesRouteIdTest#testPropertiesRouteId"
+  ],
+  "bar": [
+    "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey",
+    "XPathFunctionsTest#testChoiceWithHeaderAndPropertiesSelectCamel",
+    "XPathFunctionsONielProblemTest#testChoiceWithHeaderAndPropertiesSelectCamel",
+    "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectOther",
+    "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey",
+    "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectOther"
+  ],
+  "foo": [
+    "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey",
+    "XPathFunctionsTest#testChoiceWithHeaderAndPropertiesSelectCamel",
+    "XPathFunctionsONielProblemTest#testChoiceWithHeaderAndPropertiesSelectCamel",
+    "XPathFunctionsONielProblemTest#testChoiceWithNoHeaderAndPropertiesSelectOther",
+    "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectDonkey",
+    "XPathFunctionsTest#testChoiceWithNoHeaderAndPropertiesSelectOther"
+  ],
+  "cool.end": [
+    "PropertiesComponentInterceptSendToEndpointTest#testInterceptSendToEndpoint",
+    "InterceptSendToEndpointTest#testInterceptEndpointStop",
+    "PropertiesRouteFromTest#testPropertiesRouteFrom",
+    "PropertiesComponentLookupListenerTest#testListener",
+    "PropertiesComponentInitialPropertiesTest#testPropertiesComponentEndpoint",
+    "InterceptSendToEndpointTest#testInterceptEndpointDirectly",
+    "PropertiesComponentAdviceWithInterceptSendToEndpointTest#testAdviceWithInterceptSendToEndpoint",
+    "InterceptSendToEndpointTest#testInterceptEndpointOnce"
+  ],
+  "bean.foo": [
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupName",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupNameAndType",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryPlain"
+  ],
+  "bean.bar": [
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupName",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupNameAndType",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryPlain"
+  ],
+  "bean.unknown": [
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupName",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryLookupNameAndType",
+    "PropertiesComponentRegistryTest#testPropertiesComponentRegistryPlain"
+  ],
+  "autoStartupProp": [
+    "RouteAutoStartupTest#testRouteAutoStartedUsingProperties"
+  ],
+  "property.complete": [
+    "PropertiesComponentConcatenatePropertiesTest#testWithoutConcatPropertiesComponentDefault"
+  ],
+  "filterParameters.include": [
+    "FilterParametersTest#testPropertyPlaceholders",
+    "FilterParametersTest#testGetIncludePatterns"
+  ],
+  "filterParameters.exclude": [
+    "FilterParametersTest#testPropertyPlaceholders",
+    "FilterParametersTest#testGetIncludePatterns"
+  ],
+  "integration.ftpEnabled": [
+    "PropertiesComponentNegateTest#testNegate"
+  ],
+  "cool.leading": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "cool.trailing": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "cool.both": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "space.leading": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "space.trailing": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "space.both": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "mixed.leading": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "mixed.trailing": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "mixed.both": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "empty.line": [
+    "PropertiesComponentLoadPropertiesFromFileTrimValuesTest#testMustTrimValues"
+  ],
+  "greeting": [
+    "PropertiesComponentLookupListenerTest#testListener"
+  ],
+  "cool.mock": [
+    "PropertiesComponentAdviceWithInterceptSendToEndpointTest#testAdviceWithInterceptSendToEndpoint"
+  ],
+  "xxx": [
+    "OptionalPropertiesDslInvalidSyntaxTest#testPlaceholderDslKeyNotFoundTest"
+  ],
+  "noAutoStartupProp": [
+    "RouteAutoStartupTest#testRouteAutoStartedUsingString",
+    "RouteAutoStartupTest#testRouteNotAutoStartedUsingProperties",
+    "RouteAutoStartupTest#testRouteAutoStartedUsingBoolean"
+  ],
+  "cool.start": [
+    "PropertiesComponentEndpointTest#testPropertiesComponentEndpoints",
+    "PropertiesComponentInterceptFromTest#testPropertiesComponentInterceptFrom",
+    "PropertiesRouteFromTest#testPropertiesRouteFrom"
+  ],
+  "cool.showid": [
+    "PropertiesComponentEndpointTest#testPropertiesComponentEndpoints"
+  ],
+  "cheese.server": [
+    "SimpleTest#testFunctionEnds",
+    "SimpleTest#testSlashBeforeHeader",
+    "SimpleTest#testOGNLMandatoryBodyAsExpression",
+    "SimpleTest#testPropertiesExist",
+    "SimpleTest#testDateAndTimeExpressions",
+    "SimpleTest#testExceptionStacktrace",
+    "SimpleTest#testOGNLHeaderMapWithDot",
+    "SimpleTest#testExceptionClassSimpleName",
+    "SimpleTest#testOGNLCallReplace",
+    "PropertiesComponentSetHeaderSimpleTest#testPropertiesAndSimple",
+    "SimpleTest#testBodyOGNLNullSafeToAvoidNPEShorthand",
+    "SimpleTest#testTypeConstantInnerClass",
+    "SimpleTest#testByteArrayLength",
+    "SimpleTest#testDateNow",
+    "SimpleTest#testNestedTypeFunction",
+    "SimpleTest#testBodyOGNLAsMapWithDot",
+    "SimpleTest#testOGNLPropertyLinesList",
+    "SimpleTest#testOnglOnExchangePropertiesWithBracket",
+    "SimpleTest#testRefExpression",
+    "SimpleTest#testOGNLHeaderLinesList",
+    "SimpleTest#testLanguagesInContext",
+    "SimpleTest#testBodyExpressionUsingAlternativeStartToken",
+    "SimpleTest#testTypeConstant",
+    "SimpleTest#testSimpleSystemEnvironmentExpressionsIfLowercase",
+    "SimpleTest#testBodyOGNLOrderListOutOfBoundsWithNullSafeShorthand",
+    "SimpleTest#testInvalidComplexExpression",
+    "SimpleTest#testTrimSimpleExpressions",
+    "SimpleTest#testHeadersWithBracket",
+    "SimpleTest#testExchangeOgnlExpression",
+    "SimpleTest#testHeaderOgnlOnStringWithOgnlParams",
+    "SimpleTest#testBodyOGNLOrderListShorthand",
+    "SimpleTest#testOnglOnHeadersWithBracket"
+  ],
+  "cheese.type": [
+    "DumpModelAsXmlPlaceholdersTest#testDumpModelAsXml"
+  ],
+  "secureRandomParameters.algorithm": [
+    "SecureRandomParametersTest#testPropertyPlaceholders",
+    "SecureRandomParametersTest#testExplicitInvalidProvider",
+    "SecureRandomParametersTest#testExplicitInvalidAlgorithm"
+  ],
+  "secureRandomParameters.provider": [
+    "SecureRandomParametersTest#testPropertyPlaceholders",
+    "SecureRandomParametersTest#testExplicitInvalidProvider",
+    "SecureRandomParametersTest#testExplicitInvalidAlgorithm"
+  ],
+  "queue": [
+    "InterceptFromPropertyPlaceholderTest#testInterceptFrom"
+  ],
+  "myQueueSize": [
+    "ComponentResolvePropertyPlaceholdersTest#testPropertiesComponentEndpoint"
+  ],
+  "first": [
+    "PropertiesComponentInitialPropertiesTest#testPropertiesComponentEndpoint"
+  ],
+  "second": [
+    "PropertiesComponentInitialPropertiesTest#testPropertiesComponentEndpoint"
+  ],
+  "slipDelimiter": [
+    "RoutingSlipTest#testBodyExpression",
+    "RoutingSlipTest#testUpdatingOfRoutingSlipHeaderSet",
+    "PropertiesComponentEIPRoutingSlipTest#testRoutingSlip"
+  ],
+  "myDelayPattern": [
+    "PropertiesComponentOnExceptionDelayPatternTest#testDelayPattern"
+  ]
+}

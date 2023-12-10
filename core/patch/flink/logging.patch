@@ -1,0 +1,212 @@
+diff --git a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+index 0ae59321dfc..3c259c34a6c 100644
+--- a/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
++++ b/flink-core/src/main/java/org/apache/flink/configuration/Configuration.java
+@@ -183,6 +183,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+             String key, Class<? extends T> defaultValue, ClassLoader classLoader)
+             throws ClassNotFoundException {
+         Optional<Object> o = getRawValue(key);
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         if (!o.isPresent()) {
+             return (Class<T>) defaultValue;
+         }
+@@ -222,6 +223,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public String getString(String key, String defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToString).orElse(defaultValue);
+     }
+ 
+@@ -233,6 +235,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public String getString(ConfigOption<String> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -246,6 +249,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public String getString(ConfigOption<String> configOption, String overrideDefault) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElse(overrideDefault);
+     }
+ 
+@@ -282,6 +286,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public int getInteger(String key, int defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToInt).orElse(defaultValue);
+     }
+ 
+@@ -293,6 +298,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public int getInteger(ConfigOption<Integer> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -343,6 +349,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public long getLong(String key, long defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToLong).orElse(defaultValue);
+     }
+ 
+@@ -354,6 +361,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public long getLong(ConfigOption<Long> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -368,6 +376,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public long getLong(ConfigOption<Long> configOption, long overrideDefault) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElse(overrideDefault);
+     }
+ 
+@@ -405,6 +414,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public boolean getBoolean(String key, boolean defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToBoolean).orElse(defaultValue);
+     }
+ 
+@@ -416,6 +426,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public boolean getBoolean(ConfigOption<Boolean> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -430,6 +441,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public boolean getBoolean(ConfigOption<Boolean> configOption, boolean overrideDefault) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElse(overrideDefault);
+     }
+ 
+@@ -466,6 +478,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public float getFloat(String key, float defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToFloat).orElse(defaultValue);
+     }
+ 
+@@ -477,6 +490,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public float getFloat(ConfigOption<Float> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -491,6 +505,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public float getFloat(ConfigOption<Float> configOption, float overrideDefault) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElse(overrideDefault);
+     }
+ 
+@@ -528,6 +543,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @Deprecated
+     public double getDouble(String key, double defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key).map(ConfigurationUtils::convertToDouble).orElse(defaultValue);
+     }
+ 
+@@ -539,6 +555,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public double getDouble(ConfigOption<Double> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElseGet(configOption::defaultValue);
+     }
+ 
+@@ -553,6 +570,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public double getDouble(ConfigOption<Double> configOption, double overrideDefault) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return getOptional(configOption).orElse(overrideDefault);
+     }
+ 
+@@ -587,6 +605,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      * @return the (default) value associated with the given key.
+      */
+     public byte[] getBytes(String key, byte[] defaultValue) {
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         return getRawValue(key)
+                 .map(
+                         o -> {
+@@ -621,6 +640,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+      */
+     @PublicEvolving
+     public String getValue(ConfigOption<?> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return Optional.ofNullable(
+                         getRawValueFromOption(configOption).orElseGet(configOption::defaultValue))
+                 .map(String::valueOf)
+@@ -643,6 +663,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+ 
+         Object rawValue = getRawValueFromOption(configOption).orElseGet(configOption::defaultValue);
+         try {
++            System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+             return ConfigurationUtils.convertToEnum(rawValue, enumClass);
+         } catch (IllegalArgumentException ex) {
+             final String errorMessage =
+@@ -772,12 +793,14 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+ 
+     @Override
+     public <T> T get(ConfigOption<T> option) {
++        System.out.println("[CTEST][GET-PARAM] " + option.key() + " ");
+         return getOptional(option).orElseGet(option::defaultValue);
+     }
+ 
+     @Override
+     public <T> Optional<T> getOptional(ConfigOption<T> option) {
+         Optional<Object> rawValue = getRawValueFromOption(option);
++        System.out.println("[CTEST][GET-PARAM] " + option.key() + " ");
+         Class<?> clazz = option.getClazz();
+ 
+         try {
+@@ -852,6 +875,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+             }
+             this.confData.put(key, value);
+         }
++        System.out.println("[CTEST][SET-PARAM] " + key + " ");
+     }
+ 
+     private <T> void setValueInternal(String key, T value) {
+@@ -866,7 +890,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+         if (key == null) {
+             throw new NullPointerException("Key must not be null.");
+         }
+-
++        System.out.println("[CTEST][GET-PARAM] " + key + " ");
+         synchronized (this.confData) {
+             final Object valueFromExactKey = this.confData.get(key);
+             if (!canBePrefixMap || valueFromExactKey != null) {
+@@ -882,6 +906,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
+     }
+ 
+     private Optional<Object> getRawValueFromOption(ConfigOption<?> configOption) {
++        System.out.println("[CTEST][GET-PARAM] " + configOption.key() + " ");
+         return applyWithOption(configOption, this::getRawValue);
+     }
+ 

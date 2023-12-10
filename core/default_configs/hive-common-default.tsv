@@ -1,0 +1,1343 @@
+hive.metastore.client.cache.v2.enabled	 true	
+hive.metastore.client.cache.v2.maxSize	1Gb	
+hive.metastore.client.cache.v2.recordStats	 false	
+hive.exec.script.wrapper	 null	
+hive.exec.plan	 	
+hive.exec.stagingdir	 .hive-staging	
+hive.exec.scratchdir	 /tmp/hive	
+hive.repl.rootdir	/user/${system:user.name}/repl/	
+hive.repl.cm.enabled	 false	
+hive.repl.cmrootdir	/user/${system:user.name}/cmroot/	
+hive.repl.cm.retain	10d	
+hive.repl.cm.encryptionzone.rootdir	 .cmroot	
+hive.repl.cm.nonencryptionzone.rootdir		
+hive.repl.cm.interval	3600s	
+hive.repl.ha.datapath.replace.remote.nameservice	 false	
+hive.repl.ha.datapath.replace.remote.nameservice.name	 null	
+hive.repl.replica.functions.root.dir	/user/${system:user.name}/repl/functions/	
+hive.repl.approx.max.load.tasks	10000	
+hive.repl.partitions.dump.parallelism	100	
+hive.repl.table.dump.parallelism	15	
+hive.repl.run.data.copy.tasks.on.target	 true	
+hive.repl.dump.metadata.only	 false	
+hive.repl.retain.prev.dump.dir	 false	
+hive.repl.retain.prev.dump.dir.count	3	
+hive.repl.retain.custom.db.locations.on.target	 true	
+hive.repl.include.materialized.views	 false	
+hive.repl.dump.skip.immutable.data.copy	 false	
+hive.repl.dump.metadata.only.for.external.table	TRUE	
+hive.repl.bootstrap.acid.tables	 false	
+hive.repl.bootstrap.dump.open.txn.timeout	1h	
+hive.repl.bootstrap.dump.abort.write.txn.after.timeout	TRUE	
+hive.repl.add.raw.reserved.namespace	 false	
+hive.repl.include.external.tables	 true	
+hive.repl.bootstrap.external.tables	 false	
+hive.repl.replica.external.table.base.dir	 null	
+hive.repl.external.warehouse.single.copy.task	FALSE	
+hive.repl.external.warehouse.single.copy.task.paths		
+hive.repl.include.authorization.metadata	 false	
+hive.repl.authorization.provider.service	 ranger	
+hive.repl.handle.ranger.deny.policy	FALSE	
+hive.repl.failover.start	FALSE	
+hive.repl.ranger.target.deny.policy	TRUE	
+hive.repl.ranger.client.read.timeout	300s	
+hive.repl.include.atlas.metadata	 false	
+hive.repl.atlas.endpoint	 null	
+hive.repl.atlas.replicatedto	 null	
+hive.repl.atlas.client.read.timeout	7200s	
+hive.repl.external.client.connect.timeout	10s	
+hive.repl.source.cluster.name	 null	
+hive.repl.target.cluster.name	 null	
+hive.repl.retry.initial.delay	60s	
+hive.repl.retry.backoff.coefficient	1.2f	
+hive.repl.retry.jitter	30s	
+hive.repl.retry.max.delay.between.retries	60m	
+hive.repl.retry.total.duration	24h	
+hive.repl.copy.file.list.iterator.retry	 true	
+hive.repl.load.partitions.batch.size	10000	
+hive.repl.load.partitions.with.data.copy.batch.size	1000	
+hive.repl.parallel.copy.tasks	100	
+hive.repl.externaltable.snapshotdiff.copy	FALSE	
+hive.repl.externaltable.snapshot.overwrite.target	TRUE	
+hive.repl.stats.events.count	5	
+hive.exec.local.scratchdir	"${system:java.io.tmpdir} + File.separator + ""${system:user.name}"""	
+hive.downloaded.resources.dir	"${system:java.io.tmpdir} + File.separator + ""${hive.session.id}_resources"""	
+hive.scratch.dir.permission	700	
+hive.exec.submitviachild	 false	
+hive.exec.submit.local.task.via.child	 true	
+hive.exec.script.maxerrsize	100000	
+hive.exec.script.allow.partial.consumption	 false	
+stream.stderr.reporter.prefix	 reporter:	
+stream.stderr.reporter.enabled	 true	
+hive.exec.compress.output	 false	
+hive.exec.compress.intermediate	 false	
+hive.intermediate.compression.codec	 	
+hive.intermediate.compression.type	 	
+hive.exec.reducers.bytes.per.reducer	(long) (256 * 1000 * 1000)	
+hive.exec.reducers.max	1009	
+hive.exec.pre.hooks	 	
+hive.exec.post.hooks	 	
+hive.exec.failure.hooks	 	
+hive.exec.query.redactor.hooks	 	
+hive.client.stats.publishers	 	
+hive.basic.stats.max.threads.factor	2	
+hive.exec.parallel	 false	
+hive.exec.parallel.thread.number	8	
+hive.mapred.reduce.tasks.speculative.execution	 false	
+hive.exec.counters.pull.interval	1000L	
+hive.exec.dynamic.partition	 true	
+hive.exec.dynamic.partition.mode	 nonstrict	
+hive.exec.max.dynamic.partitions	1000	
+hive.exec.max.dynamic.partitions.pernode	100	
+hive.exec.dynamic.partition.type.conversion	 true	
+hive.exec.max.created.files	100000L	
+hive.exec.default.partition.name	 __HIVE_DEFAULT_PARTITION__	
+hive.lockmgr.zookeeper.default.partition.name	 __HIVE_DEFAULT_ZOOKEEPER_PARTITION__	
+hive.exec.show.job.failure.debug.info	 true	
+hive.exec.job.debug.capture.stacktraces	 true	
+hive.exec.job.debug.timeout	30000	
+hive.exec.tasklog.debug.timeout	20000	
+hive.output.file.extension	 null	
+hive.in.test	 false	
+hive.in.iceberg.test	 false	
+hive.in.ssl.test	 false	
+hive.in.repl.test	 false	
+hive.in.ide.test	 false	
+hive.testing.short.logs	 false	
+hive.testing.remove.logs	 true	
+hive.test.load.hostnames	 	
+hive.test.load.interval	10ms	
+hive.test.load.utilization	0.2f	
+hive.in.tez.test	 false	
+hive.mapjoin.testing.no.hash.table.load	 false	
+hive.qtest.additional.partial.mask.pattern	 	
+hive.qtest.additional.partial.mask.replacement.text	 	
+hive.in.repl.test.files.sorted	 false	
+hive.exec.mode.local.auto	 false	
+hive.exec.mode.local.auto.inputbytes.max	134217728L	
+hive.exec.mode.local.auto.input.files.max	4	
+hive.exec.drop.ignorenonexistent	 true	
+hive.ignore.mapjoin.hint	 true	
+hive.file.max.footer	100	
+hive.resultset.use.unique.column.names	 true	
+hive.hook.proto.queue.capacity	64	
+hive.hook.proto.base-directory	 	
+hive.hook.proto.rollover-interval	600s	
+hive.hook.proto.events.clean.freq	1d	
+hive.hook.proto.events.ttl	7d	
+hive.hook.proto.file.per.event	 false	
+hadoop.bin.path	 findHadoopBinary()	
+yarn.bin.path	 findYarnBinary()	
+mapred.bin.path	 findMapRedBinary()	
+fs.har.impl	 org.apache.hadoop.hive.shims.HiveHarFileSystem	
+ileInputFormat.SPLIT_MAXSIZ	256000000L	
+ileInputFormat.SPLIT_MINSIZ	1L	
+ombineFileInputFormat.SPLIT_MINSIZE_PERNOD	1L	
+ombineFileInputFormat.SPLIT_MINSIZE_PERRAC	1L	
+mapreduce.job.reduces	-1	
+hive.metastore.db.type	 DERBY	
+hive.metastore.warehouse.dir	 /user/hive/warehouse	
+hive.metastore.warehouse.external.dir	 null	
+hive.metastore.uris	 	
+hive.metastore.uri.selection	 RANDOM	
+hive.metastore.client.capability.check	 true	
+hive.metastore.client.capabilities	 	
+hive.metastore.client.cache.enabled	 false	
+hive.metastore.client.cache.expiry.time	120s	
+hive.metastore.client.cache.initial.capacity	50	
+hive.metastore.client.cache.max.capacity	50	
+hive.metastore.client.cache.stats.enabled	 false	
+hive.metastore.fastpath	 false	
+hive.metastore.fshandler.threads	15	
+hive.metastore.hbase.file.metadata.threads	1	
+hive.metastore.uri.resolver	 	
+hive.metastore.connect.retries	3	
+hive.metastore.failure.retries	1	
+hive.metastore.port	9083	
+hive.metastore.client.connect.retry.delay	1s	
+hive.metastore.client.socket.timeout	600s	
+hive.metastore.client.socket.lifetime	0s	
+javax.jdo.option.ConnectionPassword	 mine	
+hive.metastore.ds.connection.url.hook	 	
+javax.jdo.option.Multithreaded	 true	
+javax.jdo.option.ConnectionURL	jdbc:derby:;databaseName=metastore_db;create=true	
+hive.metastore.dbaccess.ssl.properties	 	
+hive.hmshandler.retry.attempts	10	
+hive.hmshandler.retry.interval	2000ms	
+hive.hmshandler.force.reload.conf	 false	
+hive.metastore.server.max.message.size	100*1024*1024L	
+hive.metastore.server.min.threads	200	
+hive.metastore.server.max.threads	1000	
+hive.metastore.server.tcp.keepalive	 true	
+hive.metastore.wm.default.pool.size	4	
+hive.metastore.archive.intermediate.original	_INTERMEDIATE_ORIGINAL	
+hive.metastore.archive.intermediate.archived	_INTERMEDIATE_ARCHIVED	
+hive.metastore.archive.intermediate.extracted	_INTERMEDIATE_EXTRACTED	
+hive.metastore.kerberos.keytab.file	 	
+hive.metastore.kerberos.principal	hive-metastore/_HOST@EXAMPLE.COM	
+hive.metastore.client.kerberos.principal		
+hive.metastore.sasl.enabled	 false	
+hive.metastore.thrift.framed.transport.enabled	 false	
+hive.metastore.thrift.compact.protocol.enabled	 false	
+hive.metastore.token.signature	 	
+hive.cluster.delegation.token.store.class	org.apache.hadoop.hive.thrift.MemoryTokenStore	
+hive.cluster.delegation.token.store.zookeeper.connectString	 	
+hive.cluster.delegation.token.store.zookeeper.znode	 /hivedelegation	
+hive.cluster.delegation.token.store.zookeeper.acl	 	
+hive.metastore.cache.pinobjtypes	" ""Table"	
+datanucleus.connectionPoolingType	 HikariCP	
+datanucleus.connectionPool.maxPoolSize	10	
+datanucleus.rdbms.initializeColumnInfo	 NONE	
+datanucleus.schema.validateTables	 false	
+datanucleus.schema.validateColumns	 false	
+datanucleus.schema.validateConstraints	 false	
+datanucleus.storeManagerType	 rdbms	
+datanucleus.schema.autoCreateAll	 false	
+hive.metastore.schema.verification	 true	
+hive.metastore.schema.verification.record.version	 false	
+hive.metastore.schema.info.class	org.apache.hadoop.hive.metastore.MetaStoreSchemaInfo	
+datanucleus.transactionIsolation	 read-committed	
+datanucleus.cache.level2	 false	
+datanucleus.cache.level2.type	 none	
+datanucleus.identifierFactory	datanucleus1	
+datanucleus.rdbms.useLegacyNativeValueStrategy	 true	
+datanucleus.plugin.pluginRegistryBundleCheck	 LOG	
+hive.metastore.batch.retrieve.max	300	
+hive.metastore.batch.retrieve.table.partition.max	1000	
+hive.metastore.init.hooks	 	
+hive.metastore.pre.event.listeners	 	
+hive.metastore.event.listeners	 	
+hive.write.notification.max.batch.size	1000	
+hive.metastore.transactional.event.listeners	 	
+hive.notification.sequence.lock.max.retries	10	
+hive.notification.sequence.lock.retry.sleep.interval	10L	
+hive.metastore.event.db.listener.timetolive	86400s	
+hive.metastore.event.db.notification.api.auth	 true	
+hive.metastore.authorization.storage.checks	 false	
+hive.metastore.authorization.storage.check.externaltable.drop	 true	
+hive.metastore.event.clean.freq	0s	
+hive.metastore.event.expiry.duration	0s	
+hive.metastore.event.message.factory	org.apache.hadoop.hive.metastore.messaging.json.gzip.GzipJSONMessageEncoder	
+hive.metastore.execute.setugi	 true	
+hive.metastore.partition.name.whitelist.pattern	 	
+hive.metastore.integral.jdo.pushdown	 false	
+hive.metastore.try.direct.sql	 true	
+hive.metastore.direct.sql.batch.size	0	
+hive.metastore.try.direct.sql.ddl	 true	
+hive.direct.sql.max.query.length	100	
+hive.direct.sql.max.elements.in.clause	1000	
+hive.direct.sql.max.elements.values.clause	1000	
+hive.metastore.orm.retrieveMapNullsAsEmptyStrings	FALSE	
+hive.metastore.disallow.incompatible.col.type.changes	 true	
+hive.metastore.limit.partition.request	-1	
+hive.table.parameters.default	 	
+hive.ddl.createtablelike.properties.whitelist	 	
+hive.metastore.rawstore.impl	 org.apache.hadoop.hive.metastore.ObjectStore	
+hive.metastore.txn.store.impl	org.apache.hadoop.hive.metastore.txn.CompactionTxnHandler	
+javax.jdo.option.ConnectionDriverName	 org.apache.derby.jdbc.EmbeddedDriver	
+javax.jdo.PersistenceManagerFactoryClass	org.datanucleus.api.jdo.JDOPersistenceManagerFactory	
+hive.metastore.expression.proxy	org.apache.hadoop.hive.ql.optimizer.ppr.PartitionExpressionForMetastore	
+javax.jdo.option.DetachAllOnCommit	 true	
+javax.jdo.option.NonTransactionalRead	 true	
+javax.jdo.option.ConnectionUserName	 APP	
+hive.metastore.end.function.listeners	 	
+hive.metastore.partition.inherit.table.properties	 	
+hive.metastore.filter.hook	 org.apache.hadoop.hive.metastore.DefaultMetaStoreFilterHookImpl	
+hive.metastore.dml.events	 false	
+hive.metastore.client.drop.partitions.using.expressions	 true	
+hive.metastore.aggregate.stats.cache.enabled	 false	
+hive.metastore.aggregate.stats.cache.size	10000	
+hive.metastore.aggregate.stats.cache.max.partitions	10000	
+hive.metastore.aggregate.stats.cache.fpp	(float) 0.01	
+hive.metastore.aggregate.stats.cache.max.variance	(float) 0.01	
+hive.metastore.aggregate.stats.cache.ttl	600s	
+hive.metastore.aggregate.stats.cache.max.writer.wait	5000ms	
+hive.metastore.aggregate.stats.cache.max.reader.wait	1000ms	
+hive.metastore.aggregate.stats.cache.max.full	(float) 0.9	
+hive.metastore.aggregate.stats.cache.clean.until	(float) 0.8	
+hive.metastore.metrics.enabled	 false	
+hive.metastore.use.SSL	 false	
+hive.metastore.keystore.path	 	
+hive.metastore.keystore.password	 	
+hive.metastore.truststore.path	 	
+hive.metastore.truststore.password	 	
+hive.metadata.export.location	 	
+hive.metadata.move.exported.metadata.to.trash	 true	
+hive.cli.errors.ignore	 false	
+hive.cli.print.current.db	 false	
+hive.cli.prompt	 hive	
+hive.metastore.fs.handler.class	 org.apache.hadoop.hive.metastore.HiveMetaStoreFsImpl	
+hive.session.id	 	
+hive.session.silent	 false	
+hive.local.time.zone	 LOCAL	
+hive.session.history.enabled	 false	
+hive.query.string	 	
+hive.query.id	 	
+hive.query.tag	 null	
+hive.jobname.length	50	
+hive.jar.path	 	
+hive.aux.jars.path	 	
+hive.reloadable.aux.jars.path	 	
+hive.added.files.path	 	
+hive.added.jars.path	 	
+hive.added.archives.path	 	
+hive.resource.use.hdfs.location	 true	
+hive.current.database	 	
+hive.auto.progress.timeout	0s	
+hive.script.auto.progress	 false	
+hive.script.operator.id.env.var	 HIVE_SCRIPT_OPERATOR_ID	
+hive.script.operator.truncate.env	 false	
+hive.script.operator.env.blacklist	"hive.txn.valid.txns
+hive.strict.checks.orderby.no.limit	 false
+hive.strict.checks.no.partition.filter	 false
+hive.strict.checks.type.safety	 true
+hive.strict.checks.cartesian.product	 false
+hive.strict.checks.bucketing	 true
+hive.strict.timestamp.conversion	 true
+hive.load.data.owner	 
+hive.mapred.mode	 null
+hive.alias	 
+hive.map.aggr	 true
+hive.groupby.skewindata	 false
+hive.join.shortcut.unmatched.rows	 true
+hive.join.emit.interval	 1000
+hive.join.cache.size	 25000
+hive.join.inner.residual	 false
+hive.ptf.rangecache.size	 10000
+hive.ptf.valuecache.size	 10000
+hive.ptf.valuecache.collect.statistics	 false
+hive.cbo.enable	 true
+hive.cbo.fallback.strategy	 CONSERVATIVE
+hive.cbo.cnf.maxnodes	 -1
+hive.cbo.returnpath.hiveop	 false
+hive.cbo.costmodel.extended	 false
+hive.cbo.costmodel.cpu	 0.000001
+hive.cbo.costmodel.network	 150.0
+hive.cbo.costmodel.local.fs.write	 4.0
+hive.cbo.costmodel.local.fs.read	 4.0
+hive.cbo.costmodel.hdfs.write	 10.0
+hive.cbo.costmodel.hdfs.read	 1.5
+hive.cbo.rule.exclusion.regex	 
+hive.cbo.show.warnings	 true
+hive.cbo.stats.correlated.multi.key.joins	 true
+hive.cardinality.preserving.join.optimization.factor	 1.0f
+hive.transpose.aggr.join	 false
+hive.transpose.aggr.join.unique	 true
+hive.optimize.semijoin.conversion	 true
+hive.order.columnalignment	 true
+hive.materializedview.rewriting	 true
+hive.materializedview.rewriting.sql	 true
+hive.materializedview.rewriting.sql.subquery	 true
+hive.materializedview.rewriting.strategy	 heuristic
+hive.materializedview.rewriting.time.window	 0min
+hive.materializedview.rewriting.incremental	 false
+hive.materializedview.rebuild.incremental	 true
+hive.materializedview.rebuild.incremental.factor	 0.1f
+hive.materializedview.fileformat	 ORC
+hive.materializedview.serde	org.apache.hadoop.hive.ql.io.orc.OrcSerde
+hive.jdbc.pushdown.enable	 true
+hive.jdbc.pushdown.safe.enable	 false
+hive.mapjoin.bucket.cache.size	 100
+hive.mapjoin.optimized.hashtable	 true
+hive.mapjoin.optimized.hashtable.probe.percent	(float) 0.5
+hive.mapjoin.hashtable.load.threads	 2
+hive.mapjoin.hybridgrace.hashtable	 false
+hive.mapjoin.hybridgrace.memcheckfrequency	 1024
+hive.mapjoin.hybridgrace.minwbsize	 524288
+hive.mapjoin.hybridgrace.minnumpartitions	 16
+hive.mapjoin.optimized.hashtable.wbsize	 8 * 1024 * 1024
+hive.mapjoin.hybridgrace.bloomfilter	 true
+hive.mapjoin.full.outer	 true
+hive.test.mapjoin.full.outer.override	none
+hive.smbjoin.cache.rows	 10000
+hive.groupby.mapaggr.checkinterval	 100000
+hive.map.aggr.hash.percentmemory	 (float) 0.5
+hive.mapjoin.followby.map.aggr.hash.percentmemory	 (float) 0.3
+hive.map.aggr.hash.force.flush.memory.threshold	 (float) 0.9
+hive.map.aggr.hash.min.reduction	 (float) 0.99
+hive.map.aggr.hash.min.reduction.lower.bound	 (float) 0.4
+hive.map.aggr.hash.min.reduction.stats	 true
+hive.multigroupby.singlereducer	 true
+hive.map.groupby.sorted	 true
+hive.default.nulls.last	 true
+hive.groupby.position.alias	 false
+hive.orderby.position.alias	 true
+hive.groupby.orderby.position.alias	 false
+hive.new.job.grouping.set.cardinality	 30
+hive.groupby.limit.extrastep	 true
+hive.exec.copyfile.maxnumfiles	 1L
+hive.exec.copyfile.maxsize	 32L * 1024 * 1024 /*32M*/
+hive.udtf.auto.progress	 false
+hive.default.fileformat	 TextFile
+hive.default.fileformat.managed	 none
+hive.default.storage.handler.class	 
+hive.query.result.fileformat	 ResultFileFormat.SEQUENCEFILE.toString()
+hive.fileformat.check	 true
+hive.default.rcfile.serde	org.apache.hadoop.hive.serde2.columnar.LazyBinaryColumnarSerDe
+hive.default.serde	org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+hive.serdes.using.metastore.for.schema	org.apache.hadoop.hive.ql.io.orc.OrcSerde"	
+hive.legacy.schema.for.all.serdes	FALSE	
+hive.querylog.location	"${system:java.io.tmpdir} + File.separator + ""${system:user.name}"""	
+hive.querylog.enable.plan.progress	 true	
+hive.querylog.plan.progress.interval	60000ms	
+hive.script.serde	org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe	
+hive.script.recordreader	org.apache.hadoop.hive.ql.exec.TextRecordReader	
+hive.script.recordwriter	org.apache.hadoop.hive.ql.exec.TextRecordWriter	
+hive.transform.escape.input	 false	
+hive.binary.record.max.length	1000	
+hive.mapred.local.mem	0	
+hive.mapjoin.smalltable.filesize	25000000L	
+hive.exec.schema.evolution	 true	
+orc.force.positional.evolution	 true	
+hive.transactional.table.scan	 false	
+hive.transactional.events.mem	10000000	
+hive.txn.filter.delete.events	 true	
+hive.sample.seednumber	0	
+hive.test.mode	 false	
+hive.exim.test.mode	 false	
+hive.test.mode.prefix	 test_	
+hive.test.mode.samplefreq	32	
+hive.test.mode.nosamplelist	 	
+hive.test.dummystats.aggregator	 	
+hive.test.dummystats.publisher	 	
+hive.test.currenttimestamp	 null	
+hive.test.rollbacktxn	 false	
+hive.test.fail.compaction	 false	
+hive.test.fail.load.dynamic.partition	 false	
+hive.test.fail.heartbeater	 false	
+hive.test.bucketcodec.version	1	
+hive.extend.bucketid.range	 true	
+hive.test.acid.key.index.skip	 false	
+hive.merge.mapfiles	 true	
+hive.merge.mapredfiles	 false	
+hive.merge.tezfiles	 false	
+hive.merge.size.per.task	(long) (256 * 1000 * 1000)	
+hive.merge.smallfiles.avgsize	(long) (16 * 1000 * 1000)	
+hive.merge.rcfile.block.level	 true	
+hive.merge.orcfile.stripe.level	 true	
+hive.use.orc.codec.pool	 false	
+hive.exec.rcfile.use.explicit.header	 true	
+hive.exec.rcfile.use.sync.cache	 true	
+hive.io.rcfile.record.interval	 Integer.MAX_VALUE	
+hive.io.rcfile.column.number.conf	0	
+hive.io.rcfile.tolerate.corruptions	 false	
+hive.io.rcfile.record.buffer.size	4194304	
+parquet.memory.pool.ratio	0.5f	
+hive.parquet.timestamp.skip.conversion	 true	
+hive.parquet.date.proleptic.gregorian	 false	
+hive.parquet.date.proleptic.gregorian.default	 false	
+hive.parquet.timestamp.legacy.conversion.enabled	 true	
+hive.parquet.timestamp.write.legacy.conversion.enabled	 false	
+hive.parquet.infer.binary.as	 binary	
+hive.avro.timestamp.skip.conversion	 false	
+hive.avro.proleptic.gregorian	 false	
+hive.avro.proleptic.gregorian.default	 false	
+hive.avro.timestamp.legacy.conversion.enabled	 true	
+hive.avro.timestamp.write.legacy.conversion.enabled	 false	
+hive.int.timestamp.conversion.in.seconds	 false	
+hive.parquet.write.int64.timestamp	 false	
+hive.parquet.timestamp.time.unit	 micros	
+hive.exec.orc.base.delta.ratio	8	
+hive.exec.orc.delta.streaming.optimizations.enabled	 false	
+hive.exec.orc.split.strategy	 HYBRID	
+hive.exec.orc.blob.storage.split.size	128L * 1024 * 1024	
+hive.exec.orc.writer.llap.memory.manager.enabled	 true	
+hive.streaming.auto.flush.enabled	 true	
+hive.heap.memory.monitor.usage.threshold	0.7f	
+hive.streaming.auto.flush.check.interval.size	100Mb	
+hive.classloader.shade.prefix	 	
+hive.orc.splits.ms.footer.cache.enabled	 false	
+hive.orc.splits.ms.footer.cache.ppd.enabled	 true	
+hive.orc.splits.include.file.footer	 false	
+hive.orc.splits.directory.batch.ms	0	
+hive.orc.splits.include.fileid	 true	
+hive.orc.splits.allow.synthetic.fileid	 true	
+hive.orc.cache.stripe.details.mem.size	256Mb	
+hive.orc.compute.splits.num.threads	10	
+hive.orc.cache.use.soft.references	 false	
+hive.io.sarg.cache.max.weight.mb	10	
+hive.lazysimple.extended_boolean_literal	 false	
+hive.optimize.skewjoin	 false	
+hive.optimize.dynamic.partition.hashjoin	 false	
+hive.auto.convert.join	 true	
+hive.auto.convert.join.noconditionaltask	 true	
+hive.auto.convert.anti.join	 true	
+hive.auto.convert.join.noconditionaltask.size	10000000L	
+hive.auto.convert.join.use.nonstaged	 false	
+hive.skewjoin.key	100000	
+hive.skewjoin.mapjoin.map.tasks	10000	
+hive.skewjoin.mapjoin.min.split	33554432L	
+hive.heartbeat.interval	1000	
+hive.limit.row.max.size	100000L	
+hive.limit.optimize.limit.file	10	
+hive.limit.optimize.enable	 false	
+hive.limit.optimize.fetch.max	50000	
+hive.limit.pushdown.memory.usage	0.1f	
+hive.auto.convert.join.hashtable.max.entries	21000000L	
+hive.xprod.mapjoin.small.table.rows	1	
+hive.auto.convert.join.shuffle.max.size	10000000000L	
+hive.hashtable.key.count.adjustment	0.99f	
+hive.hashtable.initialCapacity	100000	
+hive.hashtable.loadfactor	(float) 0.75	
+hive.mapjoin.followby.gby.localtask.max.memory.usage	(float) 0.55	
+hive.mapjoin.localtask.max.memory.usage	(float) 0.90	
+hive.mapjoin.check.memory.rows	(long)100000	
+hive.input.format	 org.apache.hadoop.hive.ql.io.CombineHiveInputFormat	
+hive.tez.input.format	 org.apache.hadoop.hive.ql.io.HiveInputFormat	
+hive.tez.container.size	-1	
+hive.tez.cpu.vcores	-1	
+hive.tez.java.opts	 null	
+hive.tez.log.level	 INFO	
+hive.tez.hs2.user.access	 true	
+hive.query.name	 null	
+tez.job.name	 HIVE-%s	
+hive.syslog.input.format.file.pruning	 true	
+hive.syslog.input.format.file.time.slice	300s	
+hive.optimize.bucketingsorting	 true	
+hive.mapred.partitioner	 org.apache.hadoop.hive.ql.io.DefaultHivePartitioner	
+hive.enforce.sortmergebucketmapjoin	 false	
+hive.enforce.bucketmapjoin	 false	
+hive.optimize.clustered.sort	 true	
+hive.constraint.notnull.enforce	 true	
+hive.auto.convert.sortmerge.join	 true	
+hive.auto.convert.sortmerge.join.reduce.side	 true	
+hive.auto.convert.sortmerge.join.bigtable.selection.policy	org.apache.hadoop.hive.ql.optimizer.AvgPartitionSizeBasedBigTableSelectorForAutoSMJ	
+hive.auto.convert.sortmerge.join.to.mapjoin	 false	
+hive.exec.script.trust	 false	
+hive.exec.rowoffset	 false	
+hive.optimize.index.filter	 true	
+hive.optimize.ppd	 true	
+hive.optimize.ppd.windowing	 true	
+hive.ppd.recognizetransivity	 true	
+hive.ppd.recognize.column.equalities	 true	
+hive.ppd.remove.duplicatefilters	 true	
+hive.optimize.join.disjunctive.transitive.predicates.pushdown	TRUE	
+hive.optimize.point.lookup	 true	
+hive.optimize.point.lookup.min	2	
+hive.optimize.transform.in.maxnodes	16	
+hive.optimize.countdistinct	 true	
+hive.optimize.partition.columns.separate	 true	
+hive.optimize.constant.propagation	 true	
+hive.optimize.remove.identity.project	 true	
+hive.optimize.metadataonly	 false	
+hive.optimize.null.scan	 true	
+hive.optimize.ppd.storage	 true	
+hive.optimize.groupby	 true	
+hive.optimize.bucketmapjoin	 false	
+hive.optimize.bucketmapjoin.sortedmerge	 false	
+hive.optimize.reducededuplication	 true	
+hive.optimize.reducededuplication.min.reducer	4	
+hive.optimize.joinreducededuplication	 true	
+hive.optimize.sort.dynamic.partition.threshold	0	
+hive.optimize.sampling.orderby	 false	
+hive.optimize.sampling.orderby.number	1000	
+hive.optimize.sampling.orderby.percent	0.1f	
+hive.remove.orderby.in.subquery	 true	
+hive.optimize.distinct.rewrite	 true	
+hive.optimize.union.remove	 false	
+hive.optimize.correlation	 false	
+hive.optimize.limittranspose	 false	
+hive.optimize.limittranspose.reductionpercentage	1.0f	
+hive.optimize.limittranspose.reductiontuples	(long) 0	
+hive.optimize.constraints.join	 true	
+hive.optimize.filter.preds.sort	 true	
+hive.optimize.filter.stats.reduction	 false	
+hive.optimize.skewjoin.compiletime	 false	
+hive.optimize.limit	 true	
+hive.optimize.topnkey	 true	
+hive.optimize.topnkey.max	128	
+hive.optimize.topnkey.efficiency.threshold	0.8f	
+hive.optimize.topnkey.efficiency.check.nbatches	10000	
+hive.optimize.topnkey.partitions.max	64	
+hive.optimize.shared.work	 true	
+hive.optimize.shared.work.extended	 true	
+hive.optimize.shared.work.semijoin	 false	
+hive.optimize.shared.work.merge.ts.schema	 true	
+hive.optimize.shared.work.mapjoin.cache.reuse	 true	
+hive.optimize.shared.work.dppunion	 true	
+hive.optimize.shared.work.dppunion.merge.eventops	 true	
+hive.optimize.shared.work.downstream.merge	 true	
+hive.optimize.shared.work.parallel.edge.support	 true	
+hive.optimize.remove.sq_count_check	 true	
+hive.optimize.update.table.properties.from.serde	 false	
+hive.optimize.update.table.properties.from.serde.list	org.apache.hadoop.hive.serde2.avro.AvroSerDe	
+hive.optimize.scan.probedecode	 true	
+hive.optimize.metadata.query.cache.enabled	 true	
+hive.optimize.view.tables.cache.enabled	 true	
+hive.optimize.cte.materialize.threshold	3	
+hive.optimize.cte.materialize.full.aggregate.only	 true	
+hive.optimize.bi.enabled	 false	
+hive.optimize.bi.rewrite.countdistinct.enabled	TRUE	
+hive.optimize.bi.rewrite.countdistinct.sketch	 hll	
+hive.optimize.bi.rewrite.percentile_disc.enabled	TRUE	
+hive.optimize.bi.rewrite.percentile_disc.sketch	 kll	
+hive.optimize.bi.rewrite.cume_dist.enabled	TRUE	
+hive.optimize.bi.rewrite.cume_dist.sketch	 kll	
+hive.optimize.bi.rewrite.ntile.enabled	TRUE	
+hive.optimize.bi.rewrite.ntile.sketch	 kll	
+hive.optimize.bi.rewrite.rank.enabled	TRUE	
+hive.optimize.bi.rewrite.rank.sketch	 kll	
+hive.stats.estimate	 true	
+hive.stats.ndv.estimate.percent	(float)20	
+hive.stats.join.ndv.readjustment	 false	
+hive.stats.num.nulls.estimate.percent	(float)5	
+hive.stats.autogather	 true	
+hive.stats.column.autogather	 true	
+hive.stats.dbclass	 fs	
+hive.stats.default.publisher	 	
+hive.stats.default.aggregator	 	
+hive.client.stats.counters	 	
+hive.stats.reliable	 false	
+hive.analyze.stmt.collect.partlevel.stats	 true	
+hive.stats.gather.num.threads	10	
+hive.stats.collect.tablekeys	 false	
+hive.stats.collect.scancols	 false	
+hive.stats.ndv.algo	 hll	
+hive.stats.fetch.bitvector	 false	
+hive.stats.ndv.error	(float)20.0	
+hive.stats.estimators.enable	 true	
+hive.metastore.stats.ndv.tuner	(float)0.0	
+hive.metastore.stats.ndv.densityfunction	 false	
+hive.stats.key.prefix	 	
+hive.stats.max.variable.length	100	
+hive.stats.list.num.entries	10	
+hive.stats.map.num.entries	10	
+hive.stats.fetch.column.stats	 true	
+hive.stats.join.factor	(float) 1.1	
+hive.stats.correlated.multi.key.joins	 true	
+hive.stats.filter.range.uniform	 true	
+hive.stats.deserialization.factor	(float) 10.0	
+hive.stats.filter.in.factor	(float) 1.0	
+hive.stats.filter.in.min.ratio	0.0f	
+hive.stats.udtf.factor	(float) 1.0	
+hive.stats.use.bitvectors	 false	
+hive.stats.max.num.stats	(long) 10000	
+hive.thrift.client.max.message.size	1gb	
+hive.support.concurrency	 false	
+hive.lock.manager	 org.apache.hadoop.hive.ql.lockmgr.zookeeper.ZooKeeperHiveLockManager	
+hive.lock.numretries	100	
+hive.unlock.numretries	10	
+hive.lock.sleep.between.retries	60s	
+hive.lock.mapred.only.operation	 false	
+hive.lock.query.string.max.length	1000000	
+hive.mm.allow.originals	 false	
+hive.lock.file.move.protect	 all	
+hive.zookeeper.kerberos.enabled	 true	
+hive.zookeeper.quorum	 	
+hive.zookeeper.client.port	2181	
+hive.zookeeper.session.timeout	120000ms	
+hive.zookeeper.connection.timeout	15s	
+hive.zookeeper.namespace	 hive_zookeeper_namespace	
+hive.zookeeper.clean.extra.nodes	 false	
+hive.zookeeper.connection.max.retries	3	
+hive.zookeeper.connection.basesleeptime	1000ms	
+hive.zookeeper.ssl.client.enable	 false	
+hive.zookeeper.ssl.keystore.location	 	
+hive.zookeeper.ssl.keystore.password	 	
+hive.zookeeper.ssl.truststore.location	 	
+hive.zookeeper.ssl.truststore.password	 	
+hive.zookeeper.killquery.enable	 true	
+hive.zookeeper.killquery.namespace	 killQueries	
+hive.txn.manager	org.apache.hadoop.hive.ql.lockmgr.DummyTxnManager	
+hive.txn.ext.locking.enabled	 false	
+hive.txn.strict.locking.mode	 true	
+hive.txn.nonacid.read.locks	 true	
+hive.txn.read.locks	 true	
+hive.locks.max.partitions	-1	
+hive.txn.xlock.iow	 true	
+hive.txn.xlock.mergeinsert	 false	
+hive.txn.xlock.write	 true	
+hive.txn.stats.enabled	 true	
+hive.txn.acid.dir.cache.duration	120	
+hive.txn.write.acid.version.file	 true	
+hive.txn.readonly.enabled	 false	
+hive.acid.lockless.reads.enabled	 false	
+hive.acid.createtable.softdelete	 false	
+hive.acid.truncate.usebase	 true	
+hive.acid.droppartition.usebase	 false	
+hive.acid.renamepartition.makecopy	 false	
+hive.txn.acid.metrics.max.cache.size	100	
+hive.txn.acid.metrics.reporting.interval	30s	
+hive.txn.acid.metrics.delta.num.threshold	100	
+hive.txn.acid.metrics.obsolete.delta.num.threshold	100	
+hive.txn.acid.metrics.delta.pct.threshold	0.01f	
+hive.txn.timeout	300s	
+hive.txn.heartbeat.threadpool.size	5	
+hive.txn.manager.dump.lock.state.on.acquire.timeout	 false	
+hive.txn.operational.properties	1	
+hive.max.open.txns	100000	
+hive.count.open.txns.interval	1s	
+hive.txn.max.open.batch	1000	
+hive.txn.retryable.sqlex.regex	 	
+hive.compactor.initiator.on	 false	
+hive.compactor.worker.threads	0	
+hive.compactor.worker.timeout	86400s	
+hive.compactor.check.interval	300s	
+hive.compactor.initiator.duration.update.interval	60s	
+hive.compactor.cleaner.duration.update.interval	60s	
+hive.compactor.request.queue	1	
+hive.compactor.delta.num.threshold	10	
+hive.compactor.delta.pct.threshold	0.1f	
+hive.compactor.max.num.delta	500	
+hive.compactor.abortedtxn.threshold	1000	
+hive.compactor.aborted.txn.time.threshold	12h	
+hive.compactor.active.delta.dir.threshold	200	
+hive.compactor.obsolete.delta.dir.threshold	200	
+hive.compactor.small.delta.dir.threshold	200	
+hive.compactor.acid.metrics.logger.frequency	360m	
+hive.compactor.wait.timeout	300000L	
+hive.mr.compactor.gather.stats	 false	
+hive.compactor.gather.stats	 true	
+hive.compactor.initiator.failed.compacts.threshold	2	
+hive.compactor.cleaner.run.interval	5000ms	
+hive.compactor.delayed.cleanup.enabled	 false	
+hive.compactor.cleaner.retention.time.seconds	300s	
+hive.compactor.cleaner.threads.num	1	
+hive.compactor.job.queue	 	
+hive.transactional.concatenate.noblock	 false	
+hive.concatenate.external.table	 false	
+hive.compactor.compact.insert.only	 true	
+hive.compactor.crud.query.based	 false	
+hive.split.grouping.mode	 query	
+hive.compactor.history.retention.succeeded	3	
+hive.compactor.history.retention.failed	3	
+hive.compactor.history.retention.attempted	2	
+hive.compactor.history.reaper.interval	2m	
+hive.timedout.txn.reaper.interval	180s	
+hive.writeset.reaper.interval	60s	
+hive.merge.cardinality.check	 true	
+hive.split.update	 true	
+hive.merge.split.update	 true	
+hive.optimize.acid.meta.columns	 true	
+hive.arrow.root.allocator.limit	 Long.MAX_VALUE	
+hive.arrow.batch.allocator.limit	10_000_000_000L	
+hive.arrow.batch.size	1000	
+hive.druid.indexer.segments.granularity	 DAY	
+hive.druid.indexer.partition.size.max	5000000	
+hive.druid.indexer.memory.rownum.max	75000	
+hive.druid.broker.address.default	localhost:8082	
+hive.druid.coordinator.address.default	localhost:8081	
+hive.druid.overlord.address.default	localhost:8090	
+hive.druid.select.threshold	10000	
+hive.druid.http.numConnection	20	
+hive.druid.http.read.timeout	PT1M	
+hive.druid.sleep.time	PT10S	
+hive.druid.basePersistDirectory	 	
+hive.druid.rollup	 true	
+hive.druid.storage.storageDirectory		
+hive.druid.metadata.base	 druid	
+hive.druid.metadata.db.type	 mysql	
+hive.druid.metadata.username	 	
+hive.druid.metadata.password	 	
+hive.druid.metadata.uri	 	
+hive.druid.working.directory	 /tmp/workingDirectory	
+hive.druid.maxTries	5	
+hive.druid.passiveWaitTimeMs	30000L	
+hive.druid.bitmap.type	 roaring	
+hive.druid.kerberos.enable	 true	
+hive.hbase.wal.enabled	 true	
+hive.hbase.generatehfiles	 false	
+hive.hbase.snapshot.name	 null	
+hive.hbase.snapshot.restoredir	 /tmp	
+hive.security.hbase.urlencode.authorization.uri	 false	
+hive.kudu.master.addresses.default	localhost:7050	
+hive.archive.enabled	 false	
+hive.fetch.task.conversion	 more	
+hive.fetch.task.caching	 true	
+hive.fetch.task.conversion.threshold	1073741824L	
+hive.fetch.task.aggr	 false	
+hive.compute.query.using.stats	 true	
+hive.fetch.output.serde	org.apache.hadoop.hive.serde2.DelimitedJSONSerDe	
+hive.cache.expr.evaluation	 true	
+hive.variable.substitute	 true	
+hive.variable.substitute.depth	40	
+hive.conf.validation	 true	
+hive.semantic.analyzer.hook	 	
+hive.test.authz.sstd.hs2.mode	 false	
+hive.security.authorization.enabled	 false	
+hive.security.authorization.kerberos.use.shortname	 true	
+hive.security.authorization.manager	org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdHiveAuthorizerFactory	
+hive.security.authenticator.manager	org.apache.hadoop.hive.ql.security.HadoopDefaultAuthenticator	
+hive.security.metastore.authorization.manager	org.apache.hadoop.hive.ql.security.authorization.DefaultHiveMetastoreAuthorizationProvider	
+hive.security.metastore.authorization.auth.reads	 true	
+hive.security.metastore.authenticator.manager	org.apache.hadoop.hive.ql.security.HadoopDefaultMetastoreAuthenticator	
+hive.security.authorization.createtable.user.grants	 	
+hive.security.authorization.createtable.group.grants		
+hive.security.authorization.createtable.role.grants	 	
+hive.security.authorization.createtable.owner.grants		
+hive.security.authorization.task.factory	org.apache.hadoop.hive.ql.parse.authorization.HiveAuthorizationTaskFactoryImpl	
+hive.security.authorization.tables.on.storagehandlers	 true	
+hive.security.authorization.sqlstd.confwhitelist	 	
+hive.security.authorization.sqlstd.confwhitelist.append	 	
+hive.cli.print.header	 false	
+hive.cli.print.escape.crlf	 false	
+hive.cli.tez.session.async	 true	
+hive.disable.unsafe.external.table.operations	 true	
+hive.strict.managed.tables	 false	
+hive.external.table.purge.default	 false	
+hive.error.on.empty.partition	 false	
+hive.exim.uri.scheme.whitelist	" ""hdfs"	
+hive.exim.strict.repl.tables	TRUE	
+hive.repl.task.factory	org.apache.hive.hcatalog.api.repl.exim.EximReplicationTaskFactory	
+hive.repl.filter.transactions	 false	
+hive.mapper.cannot.span.multiple.partitions	 false	
+hive.rework.mapredwork	 false	
+hive.io.exception.handlers	 	
+hive.log4j.file	 	
+hive.exec.log4j.file	 	
+hive.async.log.enabled	 true	
+hive.log.explain.output	 false	
+hive.log.explain.output.to.console	 false	
+hive.log.explain.output.include.extended	 true	
+hive.explain.user	 true	
+hive.autogen.columnalias.prefix.label	 _c	
+hive.autogen.columnalias.prefix.includefuncname	 false	
+hive.service.metrics.class	org.apache.hadoop.hive.common.metrics.metrics2.CodahaleMetrics	
+hive.service.metrics.codahale.reporter.classes	"org.apache.hadoop.hive.common.metrics.metrics2.JsonFileMetricsReporter
+hive.service.metrics.reporter	 
+hive.service.metrics.file.location	 /tmp/report.json
+hive.service.metrics.file.frequency	 5000ms
+hive.service.metrics.hadoop2.frequency	 30s
+hive.service.metrics.hadoop2.component	hive
+hive.exec.perf.logger	 org.apache.hadoop.hive.ql.log.PerfLogger
+hive.start.cleanup.scratchdir	 false
+hive.scratchdir.lock	 false
+hive.insert.into.multilevel.dirs	 false
+hive.ctas.external.tables	 true
+hive.insert.into.external.tables	 true
+hive.exec.temporary.table.storage	 default
+hive.query.lifetime.hooks	 
+hive.exec.driver.run.hooks	 
+hive.ddl.output.format	 null
+hive.entity.separator	 @
+hive.entity.capture.transform	 false
+hive.display.partition.cols.separately	 true
+hive.lineage.hook.info.enabled	 false
+hive.ssl.protocol.blacklist	 SSLv2"	
+hive.privilege.synchronizer	 false	
+hive.privilege.synchronizer.interval	1800s	
+hive.server2.clear.dangling.scratchdir	 false	
+hive.server2.clear.dangling.scratchdir.interval	1800s	
+hive.server2.sleep.interval.between.start.attempts	60s	
+hive.server2.max.start.attempts	30L	
+hive.server2.support.dynamic.service.discovery	 false	
+hive.server2.zookeeper.namespace	hiveserver2	
+hive.server2.zookeeper.publish.configs	 true	
+hive.server2.proxy.trustheader	 	
+hive.server2.global.init.file.location	 ${env:HIVE_CONF_DIR}	
+hive.server2.transport.mode	HiveServer2TransportMode.binary.toString()	
+	new StringSet(HiveServer2TransportMode.binary.toString()	
+	HiveServer2TransportMode.all.toString())	
+hive.server2.thrift.bind.host	 	
+hive.driver.parallel.compilation	 false	
+hive.driver.parallel.compilation.global.limit	-1	
+hive.server2.compile.lock.timeout	0s	
+hive.server2.parallel.ops.in.session	 true	
+hive.server2.materializedviews.registry.impl	 DEFAULT	
+hive.server2.materializedviews.registry.refresh.period	1500s	
+hive.server2.webui.host	0.0.0.0	
+hive.server2.webui.port	10002	
+hive.server2.webui.max.threads	50	
+hive.server2.webui.use.ssl	 false	
+hive.server2.webui.keystore.path	 	
+hive.server2.webui.keystore.password	 	
+hive.server2.webui.keystore.type	 	
+hive.server2.webui.exclude.ciphersuites	 	
+hive.server2.webui.keymanagerfactory.algorithm		
+hive.server2.webui.use.spnego	 false	
+hive.server2.webui.spnego.keytab	 	
+hive.server2.webui.spnego.principal	HTTP/_HOST@EXAMPLE.COM	
+hive.server2.webui.max.historic.queries	25	
+hive.server2.webui.use.pam	 false	
+hive.server2.webui.explain.output	 false	
+hive.server2.webui.show.graph	 false	
+hive.server2.webui.max.graph.size	25	
+hive.server2.webui.show.stats	 false	
+hive.server2.webui.enable.cors	 false	
+hive.server2.webui.cors.allowed.origins	 *	
+hive.server2.webui.cors.allowed.methods	" ""GET"	
+hive.server2.webui.cors.allowed.headers	"X-Requested-With
+hive.server2.webui.xframe.enabled	 true
+hive.server2.webui.xframe.value	 SAMEORIGIN
+hive.server2.show.operation.drilldown.link	 false
+hive.server2.active.passive.ha.enable	 false
+hive.server2.active.passive.ha.registry.namespace	hs2ActivePassiveHA
+hive.server2.tez.interactive.queue	 
+hive.server2.wm.namespace	 default
+hive.server2.wm.worker.threads	 4
+hive.server2.wm.allow.any.pool.via.jdbc	 false
+hive.server2.wm.pool.metrics	 true
+hive.server2.tez.wm.am.registry.timeout	 30s
+hive.server2.wm.delayed.move	 false
+hive.server2.wm.delayed.move.timeout	 3600
+hive.server2.wm.delayed.move.validator.interval	 60
+hive.server2.tez.default.queues	 
+hive.server2.tez.sessions.per.default.queue	 1
+hive.server2.tez.initialize.default.sessions	true
+hive.server2.tez.queue.access.check	 false
+hive.server2.tez.session.lifetime	 162h
+hive.server2.tez.session.lifetime.jitter	 3h
+hive.server2.tez.sessions.init.threads	 16
+hive.server2.tez.sessions.restricted.configs	 
+hive.server2.tez.sessions.custom.queue.allowed	true
+hive.server2.logging.operation.enabled	 true
+hive.server2.logging.operation.level	 EXECUTION
+hive.server2.operation.log.cleanup.delay	 300s
+hive.server2.operation.log.purgePolicy.timeToLive	60s
+hive.server2.historic.operation.log.enabled	 false
+hive.server2.historic.operation.log.check.interval	 15m
+hive.server2.operation.log.fetch.maxBytes	 4Mb
+hive.server2.limit.connections.per.user	 0
+hive.server2.limit.connections.per.ipaddress	 0
+hive.server2.limit.connections.per.user.ipaddress	 0
+hive.server2.metrics.enabled	 false
+hive.server2.thrift.http.port	 10001
+hive.server2.thrift.http.path	 cliservice
+hive.server2.thrift.max.message.size	 100*1024*1024
+hive.server2.thrift.http.max.idle.time	 1800s
+hive.server2.thrift.http.worker.keepalive.time	 60s
+hive.server2.thrift.http.request.header.size	 6*1024
+hive.server2.thrift.http.response.header.size	 6*1024
+hive.server2.thrift.http.compression.enabled	 true
+hive.server2.thrift.http.cookie.auth.enabled	 true
+hive.server2.thrift.http.cookie.max.age	 86400s
+hive.server2.thrift.http.cookie.domain	 null
+hive.server2.thrift.http.cookie.path	 null
+hive.server2.thrift.http.cookie.is.secure	 true
+hive.server2.thrift.http.cookie.is.httponly	 true
+hive.server2.thrift.port	 10000
+hive.server2.thrift.sasl.qop	 auth
+hive.server2.thrift.min.worker.threads	 5
+hive.server2.thrift.max.worker.threads	 500
+hive.server2.thrift.exponential.backoff.slot.length	 100ms
+hive.server2.thrift.login.timeout	 20s
+hive.server2.thrift.worker.keepalive.time	 60s
+hive.server2.async.exec.threads	 100
+hive.server2.async.exec.shutdown.timeout	 10s
+hive.server2.async.exec.wait.queue.size	 100
+hive.server2.async.exec.keepalive.time	 10s
+hive.server2.async.exec.async.compile	 false
+hive.server2.long.polling.timeout	 5000ms
+hive.session.impl.classname	 null
+hive.session.impl.withugi.classname	 null
+hive.server2.authentication	 NONE
+hive.server2.trusted.domain	 
+hive.server2.trusted.domain.use.xff.header	 false
+hive.server2.allow.user.substitution	 true
+hive.server2.authentication.kerberos.keytab	 
+hive.server2.authentication.kerberos.principal	 
+hive.server2.authentication.client.kerberos.principal	 
+hive.server2.authentication.spnego.keytab	 
+hive.server2.authentication.spnego.principal	 
+hive.server2.authentication.ldap.url	 null
+hive.server2.authentication.ldap.baseDN	 null
+hive.server2.authentication.ldap.Domain	 null
+hive.server2.authentication.ldap.groupDNPattern	 null
+hive.server2.authentication.ldap.groupFilter	 null
+hive.server2.authentication.ldap.userDNPattern	 null
+hive.server2.authentication.ldap.userFilter	 null
+hive.server2.authentication.ldap.guidKey	 uid
+hive.server2.authentication.ldap.groupMembershipKey	 member
+HIVE_SERVER2_AUTHENTICATION_LDAP_USERMEMBERSHIPKEY_NAME	 null
+hive.server2.authentication.ldap.groupClassKey	 groupOfNames
+hive.server2.authentication.ldap.customLDAPQuery	 null
+hive.server2.authentication.ldap.binddn	 null
+hive.server2.authentication.ldap.bindpw	 null
+hive.server2.custom.authentication.class	 null
+hive.server2.authentication.pam.services	 null
+hive.server2.authentication.jwt.jwks.url	 
+hive.server2.authentication.jwt.jwks.skip.ssl.cert	 false
+hive.server2.saml2.keystore.path	 
+hive.server2.saml2.keystore.password	 
+hive.server2.saml2.private.key.password	 
+hive.server2.saml2.idp.metadata	 
+hive.server2.saml2.sp.entity.id	 
+hive.server2.saml2.sp.force.auth	 false
+hive.server2.saml2.max.authentication.lifetime	 1h
+hive.server2.saml2.blacklisted.signature.algorithms	 
+hive.server2.saml2.acs.index	 
+hive.server2.saml2.sp.callback.url	 
+hive.server2.saml2.want.assertions.signed	 true
+hive.server2.saml2.sign.requests	 false
+hive.server2.saml2.callback.token.ttl	 30s
+hive.server2.saml2.group.attribute.name	
+hive.server2.saml2.group.filter	 
+hive.server2.enable.doAs	 true
+hive.server2.service.users	 null
+hive.distcp.privileged.doAs	hive
+hive.server2.table.type.mapping	 CLASSIC
+hive.server2.session.hook	 
+hive.server2.use.SSL	 false
+hive.server2.keystore.path	 
+hive.server2.keystore.password	 
+hive.server2.keystore.type	 
+hive.server2.keymanagerfactory.algorithm	 
+hive.server2.http.exclude.ciphersuites	 
+hive.server2.binary.include.ciphersuites	 
+hive.server2.builtin.udf.whitelist	 
+hive.server2.builtin.udf.blacklist	 
+hive.allow.udf.load.on.demand	 false
+hive.server2.session.check.interval	 15m
+hive.server2.close.session.on.disconnect	 true
+hive.server2.idle.session.timeout	 4h
+hive.server2.idle.operation.timeout	 2h
+hive.server2.idle.session.check.operation	 true
+hive.server2.thrift.client.retry.limit	 1
+hive.server2.thrift.client.connect.retry.limit	 1
+hive.server2.thrift.client.retry.delay.seconds	 1s
+hive.server2.thrift.client.user	 anonymous
+hive.server2.thrift.client.password	 anonymous
+hive.server2.thrift.resultset.serialize.in.tasks	 false
+hive.server2.thrift.resultset.max.fetch.size	10000
+hive.server2.thrift.resultset.default.fetch.size	 1000
+hive.server2.xsrf.filter.enabled	false
+hive.security.command.whitelist	set"	
+hive.server2.job.credential.provider.path	 	
+hive.server2.graceful.stop.timeout	1800s	
+hive.mv.files.thread	15	
+hive.load.dynamic.partitions.thread	15	
+hive.load.dynamic.partitions.scan.specific.partitions	 true	
+hive.multi.insert.move.tasks.share.dependencies	 false	
+hive.hdfs.encryption.shim.cache.on	 true	
+hive.exec.infer.bucket.sort	 false	
+hive.exec.infer.bucket.sort.num.buckets.power.two	 false	
+hive.optimize.listbucketing	 false	
+hive.server.read.socket.timeout	10s	
+hive.server.tcp.keepalive	 true	
+hive.decode.partition.name	 false	
+hive.execution.engine	 mr	
+hive.execution.mode	 container	
+hive.jar.directory	 null	
+hive.user.install.directory	 /user/	
+hive.masking.algo	sha256	
+hive.vectorized.execution.enabled	 true	
+hive.vectorized.execution.reduce.enabled	 true	
+hive.vectorized.execution.reduce.groupby.enabled	 true	
+hive.vectorized.execution.mapjoin.native.enabled	 true	
+hive.vectorized.execution.mapjoin.native.multikey.only.enabled	 false	
+hive.vectorized.execution.mapjoin.minmax.enabled	 false	
+hive.vectorized.execution.mapjoin.overflow.repeated.threshold	-1	
+hive.vectorized.execution.mapjoin.native.fast.hashtable.enabled	 false	
+hive.vectorized.groupby.checkinterval	100000	
+hive.vectorized.groupby.maxentries	1000000	
+hive.vectorized.groupby.flush.percent	(float) 0.1	
+hive.vectorized.execution.reducesink.new.enabled	 true	
+hive.vectorized.use.vectorized.input.format	 true	
+hive.vectorized.input.format.excludes		
+hive.vectorized.use.vector.serde.deserialize	 true	
+hive.vectorized.use.row.serde.deserialize	 true	
+hive.vectorized.row.serde.inputformat.excludes	"org.apache.parquet.hadoop.ParquetInputFormat
+hive.vectorized.adaptor.usage.mode	 all
+hive.test.vectorized.adaptor.override	 false
+hive.vectorized.execution.ptf.enabled	 true
+hive.vectorized.ptf.max.memory.buffering.batch.count	 25
+hive.vectorized.testing.reducer.batch.size	 -1
+hive.vectorized.reuse.scratch.columns	 true
+hive.vectorized.complex.types.enabled	 true
+hive.vectorized.groupby.complex.types.enabled	 true
+hive.vectorized.row.identifier.enabled	 true
+hive.vectorized.use.checked.expressions	 false
+hive.vectorized.adaptor.suppress.evaluate.exceptions	 false
+hive.vectorized.input.format.supports.enabled	decimal_64
+hive.vectorized.if.expr.mode	 better
+hive.test.vectorized.execution.enabled.override	none
+hive.test.vectorization.suppress.explain.execution.mode	 false
+hive.test.vectorizer.suppress.fatal.exceptions	 true
+hive.vectorized.execution.filesink.arrow.native.enabled	 false
+hive.typecheck.on.insert	 true
+hive.hadoop.classpath	 null
+hive.rpc.query.plan	 false
+hive.plan.mapwork.serialization.skip.properties	 
+hive.compute.splits.in.am	 true
+hive.splits.available.slots.calculator.class.name	org.apache.hadoop.hive.ql.exec.tez.TezAvailableSlotsCalculator
+hive.tez.input.generate.consistent.splits	 true
+hive.prewarm.enabled	 false
+hive.prewarm.numcontainers	 10
+hive.stageid.rearrange	 none
+hive.explain.dependency.append.tasktype	 false
+hive.use.googleregex.engine	false
+hive.counters.group.name	 HIVE
+hive.support.quoted.identifiers	 column
+hive.support.special.characters.tablename	 true
+hive.create.as.external.legacy	 false
+hive.create.as.acid	 false
+hive.create.as.insert.only	 false
+hive.acid.direct.insert.enabled	 true
+hive.txn.xlock.ctas	 true
+hive.users.in.admin.role	 
+hive.compat	 HiveCompat.DEFAULT_COMPAT_LEVEL
+hive.convert.join.bucket.mapjoin.tez	 true
+hive.tez.bmj.use.subcache	 true
+hive.exec.check.crossproducts	 true
+hive.localize.resource.wait.interval	 5000ms
+hive.localize.resource.num.wait.attempts	 5
+hive.tez.auto.reducer.parallelism	 false
+hive.tez.llap.min.reducer.per.executor	 0.33f
+hive.tez.mapreduce.output.committer.class	org.apache.tez.mapreduce.committer.MROutputCommitter
+hive.tez.max.partition.factor	 2f
+hive.tez.min.partition.factor	 0.25f
+hive.tez.bucket.pruning	 true
+hive.tez.bucket.pruning.compat	 true
+hive.tez.dynamic.partition.pruning	 true
+hive.tez.dynamic.partition.pruning.extended	 true
+hive.tez.dynamic.partition.pruning.max.event.size	 1*1024*1024L
+hive.tez.dynamic.partition.pruning.max.data.size	 100*1024*1024L
+hive.tez.dynamic.semijoin.reduction	 true
+hive.tez.min.bloom.filter.entries	 1000000L
+hive.tez.max.bloom.filter.entries	 100000000L
+hive.tez.bloom.filter.factor	 (float) 1.0
+hive.tez.bloom.filter.merge.threads	 1
+hive.tez.bigtable.minsize.semijoin.reduction	 100000000L
+hive.tez.dynamic.semijoin.reduction.threshold	 (float) 0.50
+hive.tez.dynamic.semijoin.reduction.multicolumn	true
+hive.tez.dynamic.semijoin.reduction.for.mapjoin	 false
+hive.tez.dynamic.semijoin.reduction.for.dpp.factor	(float) 1.0
+hive.tez.smb.number.waves	(float) 0.5
+hive.tez.exec.print.summary	false
+hive.tez.session.events.print.summary	none
+hive.tez.exec.inplace.progress	true
+hive.server2.in.place.progress	true
+hive.tez.dag.status.check.interval	 500ms
+hive.tez.container.max.java.heap.fraction	 0.8f
+hive.tez.task.scale.memory.reserve-fraction.min	0.3f
+hive.tez.task.scale.memory.reserve.fraction.max	0.5f
+hive.tez.task.scale.memory.reserve.fraction	-1f
+hive.tez.cartesian-product.enabled	false
+hive.tez.unordered.output.buffer.size.mb	 -1
+hive.llap.io.enabled	 null
+hive.llap.io.cache.only	 false
+hive.llap.io.row.wrapper.enabled	 true
+hive.llap.io.acid	 true
+hive.llap.io.trace.size	 2Mb
+hive.llap.io.trace.always.dump	 false
+hive.llap.io.nonvector.wrapper.enabled	 true
+hive.llap.io.memory.mode	 cache
+hive.llap.io.allocator.alloc.min	 4Kb
+hive.llap.io.allocator.alloc.max	 16Mb
+hive.llap.io.allocator.arena.count	 8
+hive.llap.io.memory.size	 1Gb
+hive.llap.io.allocator.direct	 true
+hive.llap.io.allocator.preallocate	 true
+hive.llap.io.allocator.mmap	 false
+hive.llap.io.allocator.mmap.path	 /tmp
+hive.llap.io.allocator.discard.method	 both
+hive.llap.io.allocator.defrag.headroom	 1Mb
+hive.llap.io.allocator.max.force.eviction	 16Mb
+hive.llap.io.track.cache.usage	 true
+hive.llap.io.use.lrfu	 true
+hive.llap.io.lrfu.lambda	 0.1f
+hive.llap.io.lrfu.hotbuffers.percentage	 0.10f
+hive.llap.io.lrfu.bp.wrapper.size	 64
+hive.llap.cache.allow.synthetic.fileid	 true
+hive.llap.cache.defaultfs.only.native.fileid	 true
+hive.llap.orc.gap.cache	 true
+hive.llap.cache.hydration.strategy.class	 
+hive.llap.cache.hydration.save.dir	 /tmp/hive
+hive.llap.io.use.fileid.path	 true
+hive.llap.io.encode.enabled	 true
+hive.llap.io.encode.formats	org.apache.hadoop.mapred.TextInputFormat,
+hive.llap.io.encode.alloc.size	 256Kb
+hive.llap.io.encode.vector.serde.enabled	 true
+hive.llap.io.encode.vector.serde.async.enabled	true
+hive.llap.io.encode.slice.row.count	 100000
+hive.llap.io.encode.slice.lrr	 true
+hive.llap.io.orc.time.counters	 true
+hive.llap.io.vrb.queue.limit.max	 50000
+hive.llap.io.vrb.queue.limit.min	 1
+hive.llap.io.cvb.memory.consumption.	 1L << 30
+hive.llap.io.proactive.eviction.enabled	 true
+hive.llap.io.proactive.eviction.sweep.interval	 5s
+hive.llap.io.proactive.eviction.instant.dealloc	 false
+hive.llap.io.cache.deletedeltas	 all
+hive.llap.io.path.cache.size	 10Mb
+hive.llap.io.share.object.pools	 false
+hive.llap.auto.allow.uber	 false
+hive.llap.auto.enforce.tree	 true
+hive.llap.auto.enforce.vectorized	 true
+hive.llap.auto.enforce.stats	 true
+hive.llap.auto.max.input.size	 10*1024*1024*1024L
+hive.llap.auto.max.output.size	 1*1024*1024*1024L
+hive.llap.skip.compile.udf.check	 false
+hive.llap.allow.permanent.fns	 true
+hive.llap.execution.mode	 none
+hive.llap.io.etl.skip.format	 encode
+hive.llap.object.cache.enabled	 true
+hive.llap.io.decoding.metrics.percentiles.intervals	 30
+hive.llap.io.threadpool.size	 10
+hive.llap.io.encode.threadpool.multiplier	 2
+hive.llap.kerberos.enabled	 true
+IVE_LLAP_DAEMON_SERVICE_PRINCIPAL_NAM	 
+hive.llap.daemon.keytab.file	 
+hive.llap.webui.spnego.keytab	 
+hive.llap.webui.spnego.principal	 
+hive.llap.task.principal	 
+hive.llap.task.keytab.file	 
+hive.llap.zk.sm.connectionString	 
+hive.llap.zk.sm.session.timeout	 40s
+hive.llap.zk.registry.user	 
+hive.llap.zk.registry.namespace	 null
+hive.llap.daemon.acl	 *
+hive.llap.daemon.acl.blocked	 
+hive.llap.management.acl	 *
+hive.llap.management.acl.blocked	 
+hive.llap.plugin.acl	 *
+hive.llap.plugin.acl.blocked	 
+hive.llap.remote.token.requires.signing	 true
+hive.llap.daemon.delegation.token.lifetime	 14d
+hive.llap.management.rpc.port	 15004
+hive.llap.auto.auth	 false
+hive.llap.daemon.rpc.num.handlers	 5
+hive.llap.plugin.rpc.port	 0
+hive.llap.plugin.rpc.num.handlers	 1
+hive.llap.hdfs.package.dir	 .yarn
+hive.llap.daemon.work.dirs	 
+hive.llap.daemon.yarn.shuffle.port	 15551
+hive.llap.daemon.yarn.container.mb	 -1
+hive.llap.daemon.queue.name	 null
+hive.llap.daemon.container.id	 null
+hive.llap.daemon.nm.address	 null
+hive.llap.daemon.shuffle.dir.watcher.enabled	 false
+hive.llap.daemon.am.liveness.heartbeat.interval.ms	 10000ms
+hive.llap.am.liveness.connection.timeout.ms	 10000ms
+hive.llap.am.use.fqdn	 true
+hive.llap.exec.use.fqdn	 true
+hive.llap.am.liveness.connection.sleep.between.retries.ms	 2000ms
+hive.llap.task.scheduler.timeout.seconds	 60s
+hive.llap.daemon.num.executors	 4
+hive.llap.mapjoin.memory.oversubscribe.factor	 0.2f
+hive.llap.memory.oversubscription.max.executors.per.query	-1
+hive.llap.mapjoin.memory.monitor.check.interval	 100000L
+hive.llap.daemon.am-reporter.max.threads	 4
+hive.llap.daemon.rpc.port	 0
+hive.llap.daemon.memory.per.instance.mb	 4096
+hive.llap.daemon.xmx.headroom	 5%
+hive.llap.daemon.vcpus.per.instance	 4
+hive.llap.daemon.num.file.cleaner.threads	 1
+hive.llap.file.cleanup.delay.seconds	 0s
+hive.llap.daemon.service.hosts	 null
+hive.llap.daemon.service.refresh.interval.sec	 60s
+hive.llap.daemon.communicator.num.threads	 10
+hive.llap.plugin.client.num.threads	 10
+hive.llap.daemon.download.permanent.fns	 false
+hive.llap.task.scheduler.am.collect.daemon.metrics.ms	 0ms
+hive.llap.task.scheduler.am.collect.daemon.metrics.listener	 
+hive.llap.nodehealthchecks.mintasks	 2000
+hive.llap.nodehealthchecks.minintervalduration	 300s
+hive.llap.nodehealthchecks.tasktimeratio	 1.5f
+hive.llap.nodehealthchecks.executorratio	 2.0f
+hive.llap.nodehealthchecks.maxnodes	 1
+hive.llap.task.scheduler.am.registry	 llap
+hive.llap.task.scheduler.am.registry.principal	 
+hive.llap.task.scheduler.am.registry.keytab.file	 
+hive.llap.task.scheduler.node.reenable.min.timeout.ms	 200ms
+hive.llap.task.scheduler.node.reenable.max.timeout.ms	 10000ms
+hive.llap.task.scheduler.node.disable.backoff.factor	 1.5f
+hive.llap.task.scheduler.preempt.independent	 false
+hive.llap.task.scheduler.num.schedulable.tasks.per.node	 0
+hive.llap.task.scheduler.locality.delay	 0ms
+hive.llap.daemon.task.preemption.metrics.intervals	 30"	
+hive.llap.daemon.task.scheduler.wait.queue.size	10	
+hive.llap.daemon.wait.queue.comparator.class.name	org.apache.hadoop.hive.llap.daemon.impl.comparator.ShortestJobFirstComparator	
+hive.llap.daemon.task.scheduler.enable.preemption	 true	
+hive.llap.daemon.metrics.timed.window.average.data.points	0	
+hive.llap.daemon.metrics.timed.window.average.window.length	1m	
+hive.llap.daemon.metrics.simple.average.data.points	0	
+hive.llap.task.communicator.connection.timeout.ms	16000ms	
+hive.llap.task.communicator.listener.thread-count	30	
+hive.llap.max.concurrent.requests.per.daemon	12	
+hive.llap.task.communicator.connection.sleep.between.retries.ms	2000ms	
+hive.llap.daemon.umbilical.port	0	
+hive.llap.daemon.web.port	15002	
+hive.llap.daemon.web.ssl	 false	
+hive.llap.daemon.web.xframe.enabled	 true	
+hive.llap.daemon.web.xframe.value	 SAMEORIGIN	
+hive.llap.client.consistent.splits	 true	
+hive.llap.split.location.provider.class	org.apache.hadoop.hive.ql.exec.tez.HostAffinitySplitLocationProvider	
+hive.llap.validate.acls	 true	
+hive.llap.daemon.output.service.port	15003	
+hive.llap.daemon.output.stream.timeout	120s	
+hive.llap.daemon.output.service.send.buffer.size	128 * 1024	
+hive.llap.daemon.output.service.max.pending.writes	8	
+hive.llap.external.splits.temp.table.storage.format	orc	
+hive.llap.external.client.use.hybrid.calendar	FALSE	
+hive.llap.external.client.cloud.deployment.setup.enabled	 false	
+hive.llap.external.client.cloud.rpc.port	30004	
+hive.llap.external.client.cloud.output.service.port	30005	
+hive.llap.external.client.cloud.jwt.shared.secret.provider	org.apache.hadoop.hive.llap.security.DefaultJwtSharedSecretProvider	
+hive.llap.external.client.cloud.jwt.shared.secret		
+hive.llap.enable.grace.join.in.llap	 false	
+hive.llap.hs2.coordinator.enabled	 true	
+hive.llap.daemon.logger	 Constants.LLAP_LOGGER_NAME_QUERY_ROUTING	
+hive.llap.output.format.arrow	 true	
+hive.llap.lockmetrics.collect	 false	
+hive.llap.task.time.print.summary	 false	
+hive.trigger.validation.interval	500ms	
+hive.reorder.nway.joins	 true	
+hive.merge.nway.joins	 false	
+hive.log.every.n.records	0L	
+hive.msck.path.validation	 throw	
+hive.msck.repair.batch.size	3000	
+hive.msck.repair.batch.max.retries	4	
+hive.server2.llap.concurrent.queries	-1	
+hive.tez.enable.memory.manager	 true	
+hive.hash.table.inflation.factor	(float) 2.0	
+hive.log.trace.id	 	
+hive.mm.avoid.s3.globstatus	 true	
+hive.conf.restricted.list	"hive.security.authenticator.manager
+hive.conf.hidden.list	METASTOREPWD.varname + ,"" + HIVE_SERVER2_SSL_KEYSTORE_PASSWORD.varname"	
+"+ "","" + HIVE_SERVER2_WEBUI_SSL_KEYSTORE_PASSWORD.varname"		
+"        + "","" + DRUID_METADATA_DB_PASSWORD.varname"		
+// Adding the S3 credentials from Hadoop config to be hidden		
+"+ "",fs.s3.awsAccessKeyId"""		
+"+ "",fs.s3.awsSecretAccessKey"""		
+"+ "",fs.s3n.awsAccessKeyId"""		
+"+ "",fs.s3n.awsSecretAccessKey"""		
+"+ "",fs.s3a.access.key"""		
+"+ "",fs.s3a.secret.key"""		
+"+ "",fs.s3a.proxy.password"""		
+"+ "",dfs.adls.oauth2.credential"""		
+"+ "",fs.adl.oauth2.credential"""		
+"+ "",fs.azure.account.oauth2.client.secret"""		
+"        + "",hive.zookeeper.ssl.keystore.location"""		
+"        + "",hive.zookeeper.ssl.keystore.password"""		
+"        + "",hive.zookeeper.ssl.truststore.location"""		
+"        + "",hive.zookeeper.ssl.truststore.password"""		
+hive.conf.internal.variable.list	"hive.added.files.path
+hive.query.max.length	 10Mb
+hive.query.timeout.seconds	 0s
+hive.compute.splits.num.threads	 10
+hive.exec.input.listing.max.threads	 0
+hive.query.reexecution.enabled	 true
+hive.query.reexecution.strategies	overlay"	
+hive.query.reexecution.stats.persist.scope	 metastore	
+hive.txn.retrysnapshot.max.count	5	
+hive.query.reexecution.max.count	1	
+hive.query.reexecution.always.collect.operator.stats	 false	
+hive.query.reexecution.stats.cache.batch.size	-1	
+hive.query.reexecution.stats.cache.size	100_000	
+hive.query.planmapper.link.relnodes	 true	
+hive.query.recompilation.max.count	1	
+hive.scheduled.queries.executor.enabled	 true	
+hive.scheduled.queries.namespace	 hive	
+hive.scheduled.queries.executor.idle.sleep.time	60s	
+hive.scheduled.queries.executor.progress.report.interval	60s	
+hive.scheduled.queries.create.as.enabled	 true	
+hive.security.authorization.scheduled.queries.supported	FALSE	
+hive.scheduled.queries.max.executors	4	
+hive.async.cleanup.service.thread.count	10	
+hive.async.cleanup.service.queue.size	10000	
+hive.query.results.cache.enabled	 true	
+hive.query.results.cache.nontransactional.tables.enabled	 false	
+hive.query.results.cache.wait.for.pending.results	 true	
+hive.query.results.cache.directory	/tmp/hive/_resultscache_	
+hive.query.results.cache.max.entry.lifetime	3600s	
+hive.query.results.cache.max.size	(long) 2 * 1024 * 1024 * 1024	
+hive.query.results.cache.max.entry.size	(long) 10 * 1024 * 1024	
+hive.notification.event.poll.interval	60s	
+hive.notification.event.consumers	org.apache.hadoop.hive.ql.cache.results.QueryResultsCache$InvalidationEventConsumer	
+hive.describe.partitionedtable.ignore.stats	 false	
+hive.server2.iceberg.metadata.generator.threads	10	
+hive.blobstore.supported.schemes	"s3,s3a,s3n"	
+hive.blobstore.use.blobstore.as.scratchdir	 false	
+hive.blobstore.optimizations.enabled	 true	
+hive.additional.config.files	 	

@@ -1,0 +1,67 @@
+From 6fc6ef08ebaa72c25accd51b3c3d7334e8083f56 Mon Sep 17 00:00:00 2001
+From: ConstaT99 <slyvestert@outlook.com>
+Date: Thu, 8 Dec 2022 19:24:52 -0600
+Subject: [PATCH] interception
+
+---
+ .../main/java/org/apache/kylin/common/KylinConfig.java | 10 ++++++++++
+ core-common/src/main/resources/ctest.properties        |  0
+ pom.xml                                                |  3 ++-
+ 3 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 core-common/src/main/resources/ctest.properties
+
+diff --git a/core-common/src/main/java/org/apache/kylin/common/KylinConfig.java b/core-common/src/main/java/org/apache/kylin/common/KylinConfig.java
+index de5c16bfee..e35d5a823f 100644
+--- a/core-common/src/main/java/org/apache/kylin/common/KylinConfig.java
++++ b/core-common/src/main/java/org/apache/kylin/common/KylinConfig.java
+@@ -62,6 +62,7 @@ public class KylinConfig extends KylinConfigBase {
+      */
+     public static final String KYLIN_CONF_PROPERTIES_FILE = "kylin.properties";
+     public static final String KYLIN_DEFAULT_CONF_PROPERTIES_FILE = "kylin-defaults.properties";
++    public static final String CTEST_CONF_PROPERTIES_FILE = "ctest.properties"; // ctest
+     public static final String KYLIN_CONF = "KYLIN_CONF";
+ 
+     // static cached instances
+@@ -128,6 +129,15 @@ public class KylinConfig extends KylinConfigBase {
+                     loadPropertiesFromInputStream(additionalResource.openStream(), defaultOrderedProperties);
+                 }
+             }
++            /**
++             * load ctest parameters
++             */
++            URL ctestResource = Thread.currentThread().getContextClassLoader().getResource(CTEST_CONF_PROPERTIES_FILE);
++            logger.warn("[CTEST][LOAD-PARAM] Loading ctest.properties from {}" , ctestResource.getPath());
++            loadPropertiesFromInputStream(ctestResource.openStream(), defaultOrderedProperties);
++            /**
++             * end ctest
++             */
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+diff --git a/core-common/src/main/resources/ctest.properties b/core-common/src/main/resources/ctest.properties
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/pom.xml b/pom.xml
+index 4153ca9f49..818ccafcf4 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1582,6 +1582,7 @@
+             <configuration>
+               <reportsDirectory>${project.basedir}/../target/surefire-reports
+               </reportsDirectory>
++              <redirectTestOutputToFile>true</redirectTestOutputToFile>
+               <excludes>
+                 <exclude>**/IT*.java</exclude>
+                 <exclude>org.apache.kylin.engine.spark2.NManualBuildAndQueryCuboidTest</exclude>
+@@ -1601,7 +1602,7 @@
+                 </property>
+               </systemProperties>
+               <argLine>-javaagent:${project.build.testOutputDirectory}/jamm.jar
+-                ${argLine} ${surefireArgLine}
++                ${argLine}
+               </argLine>
+             </configuration>
+           </plugin>
+-- 
+2.38.1
+

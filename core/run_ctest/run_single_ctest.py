@@ -2,7 +2,7 @@
 import sys, time
 
 from program_input import p_input
-from main import test_conf_file
+# from main import test_conf_file
 from parse_input import *
 
 project = p_input["project"]
@@ -18,6 +18,8 @@ def main(argv):
         param, value = argv[i].split('=')
         param_value_dict[param] = value
     test_input = extract_conf_diff_from_pair(param_value_dict)
+    # if len(test_input.keys()) == 0:
+    #     test_input=param_value_dict
     test_conf_file(test_input, ctestname)
     print(">>>>[ctest_core] total time: {} seconds".format(time.time() - s))
 
@@ -25,6 +27,8 @@ def test_conf_file(test_input, ctestname):
     params = test_input.keys()
     associated_test_map = {p: [ctestname] for p in params if ctestname in mapping[p]}
     print(">>>>[ctest_core] # parameters associated with the run: {}".format(len(params)))
+    print(associated_test_map)
+    print(test_input)
     tr = run_test_batch(test_input, associated_test_map)
     tup = tr.ran_tests_and_time.pop()
     test, _ = tup.split("\t")

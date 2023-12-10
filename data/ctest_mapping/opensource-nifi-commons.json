@@ -1,0 +1,22 @@
+{
+  "nifi.ui.banner.text": [
+    "NiFiPropertiesTest#testProperties",
+    "NiFiPropertiesTest#testBlankProperties",
+    "NiFiPropertiesTest#testAdditionalOidcScopesAreTrimmed",
+    "NiFiPropertiesTest#testMissingProperties",
+    "NiFiPropertiesTest#testShouldVerifyValidFormatPortValue",
+    "NiFiPropertiesTest#testShouldVerifyValidPortValue",
+    "NiFiPropertiesTest#testShouldVerifyExceptionThrownWhenInValidFormatPortValue",
+    "NiFiPropertiesTest#testValidateProperties"
+  ],
+  "nifi.nar.library.directory": [
+    "NiFiPropertiesTest#testProperties",
+    "NiFiPropertiesTest#testBlankProperties",
+    "NiFiPropertiesTest#testAdditionalOidcScopesAreTrimmed",
+    "NiFiPropertiesTest#testMissingProperties",
+    "NiFiPropertiesTest#testShouldVerifyValidFormatPortValue",
+    "NiFiPropertiesTest#testShouldVerifyValidPortValue",
+    "NiFiPropertiesTest#testShouldVerifyExceptionThrownWhenInValidFormatPortValue",
+    "NiFiPropertiesTest#testValidateProperties"
+  ]
+}

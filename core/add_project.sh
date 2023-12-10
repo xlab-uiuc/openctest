@@ -11,6 +11,8 @@ function setup_hadoop() {
     mvn clean install -DskipTests
     cd $home_dir/hadoop-hdfs-project/hadoop-hdfs
     mvn package -DskipTests
+    cd $home_dir/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common
+    mvn package -DskipTests
 }
 
 function setup_hbase() {
@@ -47,6 +49,43 @@ function setup_alluxio() {
     cd core
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
+function setup_nifi(){
+    [ ! -d "app/ctest-nifi" ] && git clone https://github.com/lilacyl/nifi.git app/ctest-nifi
+    cd app/ctest-nifi
+    git fetch && git checkout ctest-injection 
+    mvn clean install -DskipTest
+}
+
+function setup_hive(){
+    [ ! -d "app/ctest-hive" ] && git clone https://github.com/lilacyl/hive.git app/ctest-hive
+    cd app/ctest-hive
+    git fetch && git checkout ctest-injection
+    cd common
+    mvn clean install -DskipTests
+}
+
+function setup_flink() {
+    [ ! -d "app/ctest-flink" ] && git clone https://github.com/jessicahuang523/flink app/ctest-flink
+    cd app/ctest-flink
+    git fetch && git checkout ctest-injection
+    cd flink-core
+    mvn clean install -DskipTests
+}
+
+function setup_camel() {
+    [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
+    cd app/ctest-camel
+    git fetch && git checkout ctest-logging
+    mvn clean install -DskipTests
+}
+
+
+function setup_kylin(){
+  [ ! -d "app/ctest-kylin" ] && git clone https://github.com/rtao6/kylin.git app/ctest-kylin
+  cd app/ctest-kylin
+  git fetch && git checkout ctest-injection
+  mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
+}
 
 function usage() {
     echo "Usage: add_project.sh <main project>"
@@ -64,7 +103,12 @@ function main() {
             hbase) setup_hbase ;;
             zookeeper) setup_zookeeper ;;
             alluxio) setup_alluxio ;;
-            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper and alluxio." ;;
+            hive) setup_hive ;;
+            nifi) setup_nifi ;;
+            flink) setup_flink ;;
+            camel) setup_camel ;;
+            kylin) setup_kylin ;;
+            *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, alluxio, hive, nifi, flink, kylin and camel." ;;
         esac
     fi
 }
