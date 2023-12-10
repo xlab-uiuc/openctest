@@ -37,6 +37,9 @@ def read_tsv(module):
     elif module == "camel-core":
         assert len(params) == 60
         return 60
+    elif module == "hadoop-yarn-common":
+        assert len(params) == 574
+        return 574
     else:
         assert len(params) == 90
         return 90
@@ -117,10 +120,15 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+<<<<<<< HEAD
     elif module == "flink-core":
         assert len(params) == 32
     elif module == "camel-core":
         assert len(params) == 60
+=======
+    elif module == "hadoop-yarn-common":
+        assert len(params) == 574
+>>>>>>> upstream/yarn
     else:
         assert len(params) >= 90
     for param in params:

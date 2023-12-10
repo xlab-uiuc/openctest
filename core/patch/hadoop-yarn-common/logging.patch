@@ -1,0 +1,121 @@
+diff --git a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+index 5103d3522cf..72d30a988db 100755
+--- a/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
++++ b/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/conf/Configuration.java
+@@ -1225,6 +1225,15 @@ String getProperty(String key) {
+     }
+   }
+ 
++  //CTEST find parameter
++  private String getStackTrace() {
++    String stacktrace = " ";
++    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
++      stacktrace = stacktrace.concat(element.getClassName() + "\t");
++    }
++    return stacktrace;
++  }
++
+   /**
+    * Get the value of the <code>name</code> property, <code>null</code> if
+    * no such property exists. If the key is deprecated, it returns the value of
+@@ -1241,11 +1250,14 @@ String getProperty(String key) {
+    *         or null if no such property exists.
+    */
+   public String get(String name) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = substituteVars(getProps().getProperty(n));
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+@@ -1333,11 +1345,14 @@ public String getTrimmed(String name, String defaultValue) {
+    *         its replacing property and null if no such property exists.
+    */
+   public String getRaw(String name) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = getProps().getProperty(n);
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+@@ -1385,6 +1400,10 @@ public void set(String name, String value) {
+     set(name, value, null);
+   }
+ 
++  public void set(String name, String value, String source) {
++    set(name, value, source, true);
++  }
++  
+   /** 
+    * Set the <code>value</code> of the <code>name</code> property. If 
+    * <code>name</code> is deprecated, it also sets the <code>value</code> to
+@@ -1397,7 +1416,7 @@ public void set(String name, String value) {
+    * (For debugging).
+    * @throws IllegalArgumentException when the value or name is null.
+    */
+-  public void set(String name, String value, String source) {
++  public void set(String name, String value, String source, boolean log_enabled) {
+     Preconditions.checkArgument(
+         name != null,
+         "Property name must not be null");
+@@ -1409,6 +1428,10 @@ public void set(String name, String value, String source) {
+     if (deprecations.getDeprecatedKeyMap().isEmpty()) {
+       getProps();
+     }
++    if(log_enabled) {
++      String msg = "[CTEST][SET-PARAM] " + name + getStackTrace();
++      LOG.warn(msg); //CTEST
++    }
+     getOverlay().setProperty(name, value);
+     getProps().setProperty(name, value);
+     String newSource = (source == null ? "programmatically" : source);
+@@ -1419,6 +1442,10 @@ public void set(String name, String value, String source) {
+       if(altNames != null) {
+         for(String n: altNames) {
+           if(!n.equals(name)) {
++            if(log_enabled) {
++              String msg = "[CTEST][SET-PARAM] " + n + getStackTrace();
++              LOG.warn(msg); //CTEST
++            }
+             getOverlay().setProperty(n, value);
+             getProps().setProperty(n, value);
+             putIntoUpdatingResource(n, new String[] {newSource});
+@@ -1430,6 +1457,10 @@ public void set(String name, String value, String source) {
+       String[] names = handleDeprecation(deprecationContext.get(), name);
+       String altSource = "because " + name + " is deprecated";
+       for(String n : names) {
++        if(log_enabled) {
++          String msg = "[CTEST][SET-PARAM] " + n + getStackTrace();
++          LOG.warn(msg); //CTEST
++        }
+         getOverlay().setProperty(n, value);
+         getProps().setProperty(n, value);
+         putIntoUpdatingResource(n, new String[] {altSource});
+@@ -1502,11 +1533,14 @@ private synchronized Properties getOverlay() {
+    *         doesn't exist.                    
+    */
+   public String get(String name, String defaultValue) {
++    String ctestParam = name; //CTEST
+     String[] names = handleDeprecation(deprecationContext.get(), name);
+     String result = null;
+     for(String n : names) {
++      ctestParam = n; //CTEST
+       result = substituteVars(getProps().getProperty(n, defaultValue));
+     }
++    LOG.warn("[CTEST][GET-PARAM] " + ctestParam); //CTEST
+     return result;
+   }
+ 
+-- 
+2.25.1
+

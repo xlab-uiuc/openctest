@@ -3,17 +3,12 @@
 p_input = {
     # run mode
     "run_mode": "run_ctest", # string
-    # name of the project, i.e. hadoop-common, hadoop-hdfs, hive-common, nifi-commons
-    "project": "hive-common", # string
+    # name of the project, i.e. hadoop-common, hadoop-hdfs
+    "project": "hadoop-common", # string
     # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-hive-common.json", # string
+    "mapping_path": "../../data/ctest_mapping/opensource-hadoop-common.json", # string
     # input directory hosting configuration files to be test, target-project-format specific
-    "conf_file_dir": "sample-hive-common", # string
-    "project": "nifi-commons", # string
-    # path to param -> tests json mapping
-    "mapping_path": "../../data/ctest_mapping/opensource-nifi-commons.json", # string
-    # input directory hosting configuration files to be test, target-project-format specific
-    "conf_file_dir": "sample-nifi-commons", # string
+    "conf_file_dir": "sample-hadoop-common", # string
     # display the terminal output live, without saving any results
     "display_mode": False, # bool
     # whether to use mvn test or mvn surefire:test
