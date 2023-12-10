@@ -19,7 +19,7 @@ MODULE_PATH = {
     "hbase-server": CTEST_HBASE_DIR,
     "alluxio-core": CTEST_ALLUXIO_DIR,
     "hive-common": CTEST_HIVE_DIR,
-    "nifi-commons": CTEST_NIFI_DIR,
+    "nifi-common": CTEST_NIFI_DIR,
     "flink-core": CTEST_FLINK_DIR,
     "camel-core": CTEST_CAMEL_DIR,
     "hadoop-yarn-common": CTEST_HADOOP_DIR,
@@ -33,7 +33,7 @@ SRC_SUBDIR = {
     "zookeeper-server": "zookeeper-server",
     "alluxio-core": "core",
     "hive-common":"common",
-    "nifi-commons": "",
+    "nifi-common": "",
     "flink-core": "flink-core",
     "camel-core": "core/camel-core",
     "hadoop-yarn-common": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common",
@@ -48,7 +48,7 @@ MVN_TEST_PATH = {
     "zookeeper-server": os.path.join(CTEST_ZOOKEEPER_DIR, SRC_SUBDIR["zookeeper-server"]),
     "alluxio-core": os.path.join(CTEST_ALLUXIO_DIR, SRC_SUBDIR["alluxio-core"]),
     "hive-common": os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"]),
-    "nifi-commons":os.path.join(CTEST_NIFI_DIR, SRC_SUBDIR["nifi-commons"]),
+    "nifi-common":os.path.join(CTEST_NIFI_DIR, SRC_SUBDIR["nifi-commons"]),
     "flink-core": os.path.join(CTEST_FLINK_DIR, SRC_SUBDIR["flink-core"]),
     "camel-core": os.path.join(CTEST_CAMEL_DIR, SRC_SUBDIR["camel-core"]),
     "hadoop-yarn-common": os.path.join(CTEST_HADOOP_DIR, SRC_SUBDIR["hadoop-yarn-common"]),
@@ -62,7 +62,7 @@ LOCAL_CONF_PATH = {
     "zookeeper-server": "results/zookeeper-server/conf_params.txt",
     "alluxio-core": "results/alluxio-core/conf_params.txt",
     "hive-common": "results/hive-common/conf_params.txt",
-    "nifi-commons": "results/nifi-commons/conf_params.txt",
+    "nifi-common": "results/nifi-commons/conf_params.txt",
     "flink-core": "results/flink-core/conf_params.txt",
     "camel-core": "results/camel-core/conf_params.txt",
     "hadoop-yarn-common": "results/hadoop-yarn-common/conf_params.txt",
@@ -97,7 +97,7 @@ CTEST_SUREFIRE_PATH = {
     "hive-common": [
         os.path.join(CTEST_HIVE_DIR, SRC_SUBDIR["hive-common"], SUREFIRE_SUBDIR)
     ],
-    "nifi-commons": [
+    "nifi-common": [
         os.path.join(CTEST_NIFI_DIR, "nifi-commons/nifi-properties", SUREFIRE_SUBDIR)
     ],
     "flink-core": [
@@ -135,7 +135,7 @@ LOCAL_SUREFIRE_PATH = {
     "hive-common": [
         os.path.join("surefire-reports/hive/hive-common", LOCAL_SUREFIRE_SUFFIX)
     ],
-    "nifi-commons":[
+    "nifi-common":[
         os.path.join("surefire-reports/nifi/nifi-commons", LOCAL_SUREFIRE_SUFFIX)
     ],
     "flink-core": [

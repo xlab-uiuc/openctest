@@ -28,7 +28,7 @@ def read_tsv(module):
     if module == "hive-common":
         assert len(params) == 884
         return 884
-    if module == "nifi-commons":
+    if module == "nifi-common":
         assert len(params) >= 200
         return len(params)
     elif module == "flink-core":

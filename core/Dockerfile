@@ -7,7 +7,7 @@ RUN \
   apt-get install -y git && \
 # Install python
   apt-get update && \
-  apt-get install -y python python-dev python3-pip python3-virtualenv && \
+  apt-get install -y python python-dev python-pip python-virtualenv python3-pip python3-virtualenv && \
   rm -rf /var/lib/apt/lists/* && \
 # Install misc
   apt-get update && \

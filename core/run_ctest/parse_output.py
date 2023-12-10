@@ -19,7 +19,7 @@ def parse_surefire(clsname, expected_methods):
     try:
         fpath = None
         for surefire_path in SUREFIRE_DIR[project]:
-            if project == "nifi-commons":
+            if project == "nifi-common":
                 xml_path = os.path.join(surefire_path, SUREFIRE_XML_NIFI.format(clsname))
             else:
                 xml_path = os.path.join(surefire_path, SUREFIRE_XML.format(clsname))
