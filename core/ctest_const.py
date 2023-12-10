@@ -13,7 +13,7 @@ HBASE = "hbase-server"
 ZOOKEEPER = "zookeeper-server"
 ALLUXIO = "alluxio-core"
 HIVE = "hive-common"
-NIFI = "nifi-commons"
+NIFI = "nifi-common"
 FLINK = "flink-core"
 CAMEL = "camel-core"
 HYARNCOMMON = "hadoop-yarn-common"
@@ -53,7 +53,7 @@ MODULE_SUBDIR = {
     ZOOKEEPER: "zookeeper-server",
     ALLUXIO: "core",
     HIVE: "common",
-    NIFI: "nifi-commons",
+    NIFI: "nifi-common",
     FLINK: "flink-core",
     CAMEL: "core/camel-core",
     HYARNCOMMON: "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common",
