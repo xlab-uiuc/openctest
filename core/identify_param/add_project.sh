@@ -47,7 +47,6 @@ function setup_alluxio() {
     mvn clean install -DskipTests -Dcheckstyle.skip -Dlicense.skip -Dfindbugs.skip -Dmaven.javadoc.skip=true
 }
 
-<<<<<<< HEAD
 function setup_hive(){
     [ ! -d "app/ctest-hive" ] && git clone https://github.com/lilacyl/hive.git app/ctest-hive
     cd app/ctest-hive
@@ -69,12 +68,12 @@ function setup_flink() {
     cd app/ctest-flink
     git fetch && git checkout ctest-get-set
     cd flink-core
-=======
+}
+
 function setup_camel() {
     [ ! -d "app/ctest-camel" ] && git clone https://github.com/wenhsinghuang/camel.git app/ctest-camel
     cd app/ctest-camel
     git fetch && git checkout ctest-injection
->>>>>>> upstream/main
     mvn clean install -DskipTests
 }
 
@@ -97,6 +96,7 @@ function main() {
             hive) setup_hive ;;
             nifi) setup_nifi ;;
             flink) setup_flink ;;
+            camel) setup_camel;;
             *) echo "Unexpected project: $project - only support hadoop, hbase, zookeeper, hive, alluxio, nifi, flink and camel." ;;
         esac
     fi
