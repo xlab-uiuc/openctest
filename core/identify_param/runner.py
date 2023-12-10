@@ -1,4 +1,5 @@
 import glob
+import asyncio
 import constant
 import utils
 import xml.etree.ElementTree as ET
@@ -10,7 +11,7 @@ import time
 import shutil
 from optparse import OptionParser
 
-class Runner:
+class AsyncRunner:
 
     def __init__(self, module, aggressive=False):
         self.module = module
@@ -27,6 +28,16 @@ class Runner:
         print("num of params: " + str(len(self.params)))
 
         os.makedirs("results/%s/logs/" % (self.module), exist_ok=True)
+
+        self.out_dir = os.path.join(os.getcwd(), f"{self.module}-mvn-test-output/")
+        self.report_dir = os.path.join(os.getcwd(), f"{self.module}-mvn-test-reports/")
+        self.old_path = os.getcwd()
+
+        os.makedirs(os.path.join("results", self.module, "logs"), exist_ok=True)
+
+        self.getter_record = open(os.path.join("results", self.module, "logs", "getter-record"), "w")
+        self.setter_record = open(os.path.join("results", self.module, "logs", "setter-record"), "w")
+        self.time_record = open(os.path.join("results", self.module, "logs", "time-record"), "w")
 
         self.getter_record = open("results/%s/logs/getter-record" % (self.module), "w")
         self.setter_record = open("results/%s/logs/setter-record" % (self.module), "w")
@@ -149,11 +160,8 @@ class Runner:
         json.dump(method_list, json_file)
         json_file.close()
 
-    def run_individual_testmethod(self):
-        all_test_methods = json.load(open("%s" % (self.run_list)))
-        length = len(all_test_methods)
-        print("number of all test methods: " + str(length))
-
+    async def run_individual_testmethod(self, method):
+        await asyncio.sleep(0.1)
         old_path = os.getcwd()
         print(old_path)
         os.chdir(constant.MVN_TEST_PATH[self.module])
@@ -163,68 +171,73 @@ class Runner:
         report_dir = old_path + "/" + self.module + "-mvn-test-reports/"
         os.makedirs(out_dir, exist_ok=True)
         os.makedirs(report_dir, exist_ok=True)
+        method_out = open(out_dir + method + "-log.txt", "w+")
+        method_report_path = report_dir + method + "-report.txt"
+        start_time_for_this_method = time.time()
 
-        for method in all_test_methods:
-            print("==================================================================================")
-            assert method.count("#") == 1, "there should be only one #, but actually you have: " + method
 
-            method_out = open(out_dir + method + "-log.txt", "w+")
-            method_report_path = report_dir + method + "-report.txt"
-            start_time_for_this_method = time.time()
+        if self.module == "alluxio-core":
+            cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+        elif self.module == "kylin-common":
+            cmd = ["mvn", "-pl", "core-common", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
+        else:
+            cmd = ["mvn" , "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false" , "-Dsurefire.failIfNoSpecifiedTests=false"]
+        print ("mvn surefire:test -Dtest="+method)
+        command = " ".join(cmd)
+        print(command)
+        child = await asyncio.create_subprocess_exec(*cmd, stdout=method_out, stderr=method_out)
+        return_code = await child.wait()
 
-            if self.module == "alluxio-core":
-                cmd = ["mvn", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
-            elif self.module == "kylin-common":
-                cmd = ["mvn", "-pl", "core-common", "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false"]
-            else:
-                cmd = ["mvn" , "surefire:test", "-Dtest=" + method, "-DfailIfNoTests=false" , "-Dsurefire.failIfNoSpecifiedTests=false"]
-            print ("mvn surefire:test -Dtest="+method)
-            command = " ".join(cmd)
-            print(command)
-            child = subprocess.Popen(cmd, stdout=method_out, stderr=method_out)
-            child.wait()
+        finish_time_for_this_method = time.time()
+        time_elapsed = finish_time_for_this_method - start_time_for_this_method
+        print("time elapsed: " + str(time_elapsed))
+        method_out.seek(0)
+        pass_or_not = self.test_pass_or_not(method_out.read())
+        method_out.close()
+        self.time_record.write(method + " " + str(time_elapsed) + "\n")
 
-            finish_time_for_this_method = time.time()
-            time_elapsed = finish_time_for_this_method - start_time_for_this_method
-            print("time elapsed: " + str(time_elapsed))
-            method_out.seek(0)
-            pass_or_not = self.test_pass_or_not(method_out.read())
-            method_out.close()
-            self.time_record.write(method + " " + str(time_elapsed) + "\n")
+        if pass_or_not:
+            print(method + " success")
+        else:
+            print(method + " failure")
+            self.failure_list.append(method)
 
-            if pass_or_not:
-                print(method + " success")
-            else:
-                print(method + " failure")
-                self.failure_list.append(method)
-                continue
+        class_name = method.split("#")[0]
+        suffix_filename_to_check = class_name  + ".txt"
+        if self.module == "kylin-common" or "kylin-tool" or "kylin-cube"  or "kylin-storage":
+            suffix_filename_to_check = class_name + "-output" + ".txt"
+        full_path = self.get_full_report_path(suffix_filename_to_check)
+        print(full_path)
+        if full_path == "none":
+            print("no report for " + method)
+            self.no_report_list.append(method)
+        else:
+            shutil.copy(full_path, method_report_path)
+            self.parse(open(full_path, "r").readlines(), method)
 
-            class_name = method.split("#")[0]
-            suffix_filename_to_check = class_name  + ".txt"
-            if self.module == "kylin-common" or "kylin-tool" or "kylin-cube"  or "kylin-storage":
-                suffix_filename_to_check = class_name + "-output" + ".txt"
-            full_path = self.get_full_report_path(suffix_filename_to_check)
-            print(full_path)
-            if full_path == "none":
-                print("no report for " + method)
-                self.no_report_list.append(method)
-            else:
-                shutil.copy(full_path, method_report_path)
-                self.parse(open(full_path, "r").readlines(), method)
+    async def run_all_testmethods(self):
+        all_test_methods = json.load(open(self.run_list))
+        tasks = [self.run_individual_testmethod(method) for method in all_test_methods]
+        await asyncio.gather(*tasks)
+
+    async def cleanup_and_persist(self):
 
         shutil.rmtree(out_dir)
         shutil.rmtree(report_dir)
         os.chdir(old_path)
-
         self.getter_record.close()
         self.setter_record.close()
         self.time_record.close()
-
         self.persist_list(self.setter_list, "setter")
         self.persist_list(self.getter_list, "getter")
         self.persist_list(self.other_list, "other")
         self.persist_list(self.no_report_list, "no_report")
         self.persist_list(self.failure_list, "failure")
+
+    async def main(self):
+        await self.run_all_testmethods()
+        await self.cleanup_and_persist()
+        print("total time: {} mins".format((time.time() - s) / 60))
 
 if __name__ == "__main__":
     s = time.time()
@@ -235,6 +248,6 @@ if __name__ == "__main__":
     (options, args) = parser.parse_args()
     module = args[0]
     aggr = options.aggressive
-    runner = Runner(module, aggr)
-    runner.run_individual_testmethod()
+    async_runner = AsyncRunner(module, aggr)
+    asyncio.run(async_runner.main())
     print("total time: {} mins".format((time.time() - s) / 60))
