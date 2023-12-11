@@ -1,0 +1,1232 @@
+{
+    "index.test.ts": {
+        "it_builds_a_valid_Redis_URL_with_a_password": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "it_increments_a_valid_Redis_stream_ID": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "sends_data_to_channel": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "stale_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "success_with_results": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "error": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "closing_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "multiple_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "services_health_checks": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "success_no_results": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "invalid_JWT": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "no_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "active_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "valid_JWT,_with_lastId_and_lastFirehoseId": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "error_sending_data_to_client": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "it_builds_a_valid_Redis_URL_with_SSL": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "it_builds_a_valid_Redis_URL_from_defaults": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "responds_with_a_404_when_not_found": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "valid_upgrade": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "it_handles_an_invalid_Redis_stream_ID": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "valid_JWT,_with_lastId": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "valid_JWT,_no_channel": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "valid_JWT,_no_lastId": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "channel_not_present": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "closed_sockets": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "invalid_channel": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        }
+    },
+    "config.test.ts": {
+        "should_correctly_apply_partial_configuration_overrides": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_perform_deep_merge_between_configs": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "buildConfig_performs_deep_merge_between_configs": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_override_Redis_config_with_environment_variables": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_override_StatsD_config_with_environment_variables": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_provide_consistent_configuration_on_multiple_calls": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_use_default_values_for_missing_environment_variables": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_override_JWT_config_with_environment_variables": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_clean_up_environment_variables_after_use": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_build_default_configuration": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "should_handle_invalid_environment_variable_values": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        },
+        "buildConfig_builds_configuration_and_applies_env_var_overrides": {
+            "port": 8080,
+            "logLevel": "info",
+            "logToFile": false,
+            "logFilename": "app.log",
+            "redisStreamPrefix": "test-async-events-",
+            "redisStreamReadCount": 100,
+            "redisStreamReadBlockMs": 5000,
+            "jwtAlgorithms": [
+                "HS256"
+            ],
+            "jwtSecret": "test123-test123-test123-test123-test123-test123-test123",
+            "jwtCookieName": "test-async-token",
+            "jwtChannelIdKey": "channel",
+            "socketResponseTimeoutMs": 60000,
+            "pingSocketsIntervalMs": 20000,
+            "gcChannelsIntervalMs": 120000,
+            "statsd": {
+                "host": "127.0.0.1",
+                "port": 8125,
+                "globalTags": []
+            },
+            "redis": {
+                "host": "127.0.0.1",
+                "port": 6379,
+                "password": "some pwd",
+                "username": "default",
+                "db": 10,
+                "ssl": false,
+                "validateHostname": true
+            }
+        }
+    },
+    "merge.spec.ts": {
+        "accepts_empty_arrays_for_`mergeScriptCovs`": null,
+        "accepts_arrays_with_a_single_item_for_`mergeFunctionCovs`": null,
+        "accepts_arrays_with_a_single_item_for_`mergeProcessCovs`": null,
+        "handles_block_coverage_merged_into_function_coverage": null,
+        "accepts_arrays_with_a_single_item_for_`mergeScriptCovs`": null,
+        "accepts_empty_arrays_for_`mergeProcessCovs`": null,
+        "handles_function_coverage_merged_into_block_coverage": null,
+        "accepts_empty_arrays_for_`mergeFunctionCovs`": null
+    }
+}

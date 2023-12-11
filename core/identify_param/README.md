@@ -16,6 +16,14 @@ See [Identifying Parameters Exercised in Tests](https://github.com/xlab-uiuc/ope
 ./identify_param.sh hadoop-common
 ``` 
 
+For Apache Superset
+
+```
+    python3 identify_params.py <directory_path> <log_directory>
+    python3 gen_param_to_case.py <directory_path> <log_directory>
+```
+
+Generates 4 files - `result_mapping.json`, `all_test_cases.json`, `all_params.json`, and `flattened_params_to_tests.json`
 
 ### Result
 

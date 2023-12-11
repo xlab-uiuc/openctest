@@ -1,0 +1,12 @@
+diff --git a/superset-websocket/src/config.ts b/superset-websocket/src/config.ts
+index 7c2504892..229a426a3 100644
+--- a/superset-websocket/src/config.ts
++++ b/superset-websocket/src/config.ts
+@@ -143,5 +143,6 @@ function applyEnvOverrides(config: ConfigType): ConfigType {
+
+
+ export function buildConfig(): ConfigType {
+   const config = _.merge(defaultConfig(), configFromFile());
++  console.log("[CTEST][GET-PARAM] ####", JSON.stringify(config), "####");
+   return applyEnvOverrides(config);
+ }
