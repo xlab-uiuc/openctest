@@ -28,6 +28,12 @@ p_input = {
 
 *Second*, run `./generate_ctest.sh`.
 
+For Forem,
+```
+python3 gen_ctest.py <params_file> <test_cases_file> <report_file>
+```
+
+
 ### Result
 
 **Test result** is collected per parameter and stored in `test_result/<project>/test_reuslt_<parameter>.tsv`.  `test_result/<project>/missing_test_<parameter>.tsv` stores tests whose Maven test report was missing while the test result is being collected.

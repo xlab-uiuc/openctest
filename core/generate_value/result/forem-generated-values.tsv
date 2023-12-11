@@ -1,0 +1,166 @@
+en.billboard.menu.aria_label	Toggle dropdown menu	SKIP
+en.billboard.menu.icon	Dropdown menu	SKIP
+en.billboard.menu.manage_preferences	Manage preferences	SKIP
+en.billboard.menu.report_billboard	Report billboard	SKIP
+en.billboard.menu.what_is_a_billboard	What's a billboard?	SKIP
+en.billboard.promoted	Promoted	SKIP
+en.contact_prompts.if_any_questions_html	<a href="/contact">Contact us</a> if you have any questions.	SKIP
+en.contact_prompts.if_continued_trouble_html	<a href="/contact">Contact us</a> if you continue having trouble.	SKIP
+en.contact_prompts.if_we_can_help_html	<a href="/contact">Contact us</a> if there is anything we can help with.	SKIP
+en.core.add_comment	Add comment	SKIP
+en.core.and	and	SKIP
+en.core.beta	beta	SKIP
+en.core.comment	Comment	SKIP
+en.core.copy_link	Copy link	SKIP
+en.core.counted_organization.one	%{count} organization	SKIP
+en.core.counted_organization.other	%{count} organizations	SKIP
+en.core.counted_user.one	%{count} person	SKIP
+en.core.counted_user.other	%{count} people	SKIP
+en.core.edit_profile	Edit profile	SKIP
+en.core.follow	Follow	SKIP
+en.core.follow_back	Follow back	SKIP
+en.core.following	Following	SKIP
+en.core.following_everyone	You're following %{details} (everyone)	SKIP
+en.core.like	Like	SKIP
+en.core.loading	loading...	SKIP
+en.core.not_following	You're not following anyone	SKIP
+en.core.reaction	Reaction	SKIP
+en.core.report_abuse	Report abuse	SKIP
+en.core.search	Search	SKIP
+en.core.success_settings	Successfully updated settings.	SKIP
+en.core.you_are_following	You're following	SKIP
+en.datetime.distance_in_words_ago.about_x_hours.one	about 1 hour ago	SKIP
+en.datetime.distance_in_words_ago.about_x_hours.other	about %{count} hours ago	SKIP
+en.datetime.distance_in_words_ago.about_x_months.one	about 1 month ago	SKIP
+en.datetime.distance_in_words_ago.about_x_months.other	about %{count} months ago	SKIP
+en.datetime.distance_in_words_ago.about_x_years.one	about 1 year ago	SKIP
+en.datetime.distance_in_words_ago.about_x_years.other	about %{count} years ago	SKIP
+en.datetime.distance_in_words_ago.almost_x_years.one	almost 1 year ago	SKIP
+en.datetime.distance_in_words_ago.almost_x_years.other	almost %{count} years ago	SKIP
+en.datetime.distance_in_words_ago.half_a_minute	half a minute ago	SKIP
+en.datetime.distance_in_words_ago.less_than_x_minutes.one	less than a minute ago	SKIP
+en.datetime.distance_in_words_ago.less_than_x_minutes.other	less than %{count} minutes ago	SKIP
+en.datetime.distance_in_words_ago.less_than_x_seconds.one	less than 1 second ago	SKIP
+en.datetime.distance_in_words_ago.less_than_x_seconds.other	less than %{count} seconds ago	SKIP
+en.datetime.distance_in_words_ago.over_x_years.one	over 1 year ago	SKIP
+en.datetime.distance_in_words_ago.over_x_years.other	over %{count} years ago	SKIP
+en.datetime.distance_in_words_ago.x_days.one	1 day ago	SKIP
+en.datetime.distance_in_words_ago.x_days.other	%{count} days ago	SKIP
+en.datetime.distance_in_words_ago.x_minutes.one	1 minute ago	SKIP
+en.datetime.distance_in_words_ago.x_minutes.other	%{count} minutes ago	SKIP
+en.datetime.distance_in_words_ago.x_months.one	1 month ago	SKIP
+en.datetime.distance_in_words_ago.x_months.other	%{count} months ago	SKIP
+en.datetime.distance_in_words_ago.x_seconds.one	1 second ago	SKIP
+en.datetime.distance_in_words_ago.x_seconds.other	%{count} seconds ago	SKIP
+en.datetime.distance_in_words_ago.x_years.one	1 year ago	SKIP
+en.datetime.distance_in_words_ago.x_years.other	%{count} years ago	SKIP
+en.datetime.expired_ago.about_x_hours.one	Expired about 1 hour ago	SKIP
+en.datetime.expired_ago.about_x_hours.other	Expired about %{count} hours ago	SKIP
+en.datetime.expired_ago.about_x_months.one	Expired about 1 month ago	SKIP
+en.datetime.expired_ago.about_x_months.other	Expired about %{count} months ago	SKIP
+en.datetime.expired_ago.about_x_years.one	Expired about 1 year ago	SKIP
+en.datetime.expired_ago.about_x_years.other	Expired about %{count} years ago	SKIP
+en.datetime.expired_ago.almost_x_years.one	Expired almost 1 year ago	SKIP
+en.datetime.expired_ago.almost_x_years.other	Expired almost %{count} years ago	SKIP
+en.datetime.expired_ago.half_a_minute	Expired half a minute ago	SKIP
+en.datetime.expired_ago.less_than_x_minutes.one	Expired less than a minute ago	SKIP
+en.datetime.expired_ago.less_than_x_minutes.other	Expired less than %{count} minutes ago	SKIP
+en.datetime.expired_ago.less_than_x_seconds.one	Expired less than 1 second ago	SKIP
+en.datetime.expired_ago.less_than_x_seconds.other	Expired less than %{count} seconds ago	SKIP
+en.datetime.expired_ago.over_x_years.one	Expired over 1 year ago	SKIP
+en.datetime.expired_ago.over_x_years.other	Expired over %{count} years ago	SKIP
+en.datetime.expired_ago.x_days.one	Expired 1 day ago	SKIP
+en.datetime.expired_ago.x_days.other	Expired %{count} days ago	SKIP
+en.datetime.expired_ago.x_minutes.one	Expired 1 minute ago	SKIP
+en.datetime.expired_ago.x_minutes.other	Expired %{count} minutes ago	SKIP
+en.datetime.expired_ago.x_months.one	Expired 1 month ago	SKIP
+en.datetime.expired_ago.x_months.other	Expired %{count} months ago	SKIP
+en.datetime.expired_ago.x_seconds.one	Expired 1 second ago	SKIP
+en.datetime.expired_ago.x_seconds.other	Expired %{count} seconds ago	SKIP
+en.datetime.expired_ago.x_years.one	Expired 1 year ago	SKIP
+en.datetime.expired_ago.x_years.other	Expired %{count} years ago	SKIP
+en.datetime.expires_in.about_x_hours.one	Expires in about 1 hour	SKIP
+en.datetime.expires_in.about_x_hours.other	Expires in about %{count} hours	SKIP
+en.datetime.expires_in.about_x_months.one	Expires in about 1 month	SKIP
+en.datetime.expires_in.about_x_months.other	Expires in about %{count} months	SKIP
+en.datetime.expires_in.about_x_years.one	Expires in about 1 year	SKIP
+en.datetime.expires_in.about_x_years.other	Expires in about %{count} years	SKIP
+en.datetime.expires_in.almost_x_years.one	Expires in almost 1 year	SKIP
+en.datetime.expires_in.almost_x_years.other	Expires in almost %{count} years	SKIP
+en.datetime.expires_in.half_a_minute	Expires in half a minute	SKIP
+en.datetime.expires_in.less_than_x_minutes.one	Expires in less than a minute	SKIP
+en.datetime.expires_in.less_than_x_minutes.other	Expires in less than %{count} minutes	SKIP
+en.datetime.expires_in.less_than_x_seconds.one	Expires in less than 1 second	SKIP
+en.datetime.expires_in.less_than_x_seconds.other	Expires in less than %{count} seconds	SKIP
+en.datetime.expires_in.over_x_years.one	Expires in over 1 year	SKIP
+en.datetime.expires_in.over_x_years.other	Expires in over %{count} years	SKIP
+en.datetime.expires_in.x_days.one	Expires in 1 day	SKIP
+en.datetime.expires_in.x_days.other	Expires in %{count} days	SKIP
+en.datetime.expires_in.x_minutes.one	Expires in 1 minute	SKIP
+en.datetime.expires_in.x_minutes.other	Expires in %{count} minutes	SKIP
+en.datetime.expires_in.x_months.one	Expires in 1 month	SKIP
+en.datetime.expires_in.x_months.other	Expires in %{count} months	SKIP
+en.datetime.expires_in.x_seconds.one	Expires in 1 second	SKIP
+en.datetime.expires_in.x_seconds.other	Expires in %{count} seconds	SKIP
+en.datetime.expires_in.x_years.one	Expires in 1 year	SKIP
+en.datetime.expires_in.x_years.other	Expires in %{count} years	SKIP
+en.errors.messages.accepted	must be accepted	SKIP
+en.errors.messages.bad_protocol	must start with %{protocols}	SKIP
+en.errors.messages.bad_uri	is an invalid url	SKIP
+en.errors.messages.blank	can't be blank	SKIP
+en.errors.messages.confirmation	doesn't match %{attribute}	SKIP
+en.errors.messages.contains_prohibited_characters	contains non-alphanumeric or prohibited unicode characters	SKIP
+en.errors.messages.empty	can't be empty	SKIP
+en.errors.messages.equal_to	must be equal to %{count}	SKIP
+en.errors.messages.even	must be even	SKIP
+en.errors.messages.exclusion	is reserved	SKIP
+en.errors.messages.general	Error: %{errors}	SKIP
+en.errors.messages.greater_than	must be greater than %{count}	SKIP
+en.errors.messages.greater_than_or_equal_to	must be greater than or equal to %{count}	SKIP
+en.errors.messages.inclusion	is not included in the list	SKIP
+en.errors.messages.invalid	is invalid	SKIP
+en.errors.messages.less_than	must be less than %{count}	SKIP
+en.errors.messages.less_than_or_equal_to	must be less than or equal to %{count}	SKIP
+en.errors.messages.model_invalid	Validation failed:%{errors}	SKIP
+en.errors.messages.not_a_number	is not a number	SKIP
+en.errors.messages.not_an_integer	must be an integer	SKIP
+en.errors.messages.odd	must be odd	SKIP
+en.errors.messages.other_than	must be other than %{count}	SKIP
+en.errors.messages.present	must be blank	SKIP
+en.errors.messages.required	must exist	SKIP
+en.errors.messages.taken	has already been taken	SKIP
+en.errors.messages.too_long.one	is too long (maximum is 1 character)	SKIP
+en.errors.messages.too_long.other	is too long (maximum is %{count} characters)	SKIP
+en.errors.messages.too_short.one	is too short (minimum is 1 character)	SKIP
+en.errors.messages.too_short.other	is too short (minimum is %{count} characters)	SKIP
+en.errors.messages.try_again_email	An error occurred. Please try again or send an email to :%{email}'	SKIP
+en.errors.messages.wrong_length.one	is the wrong length (should be 1 character)	SKIP
+en.errors.messages.wrong_length.other	is the wrong length (should be %{count} characters)	SKIP
+en.time.formats.admin_user	%Y-%m-%d	 %H:%M
+en.time.formats.comment	%B %d	 %Y
+en.time.formats.email_verified	%b %e '%y	 %H:%M
+en.time.formats.github	%b %d	 %Y
+en.time.formats.json	%b %e	 %Y
+en.time.formats.medium	%b %-d	 %Y
+en.time.formats.members	%d %b	SKIP
+en.time.formats.members_with_year	%d %b	 %Y
+en.time.formats.reddit	%b %e '%y	SKIP
+en.time.formats.short	%b %-e	SKIP
+en.time.formats.short_with_year	%b %-e	 %Y
+en.time.formats.short_with_yy	%b %-d '%y	SKIP
+en.time.formats.stackexchange	%b %e '%y	SKIP
+exploding_head.icon	exploding-head	SKIP
+exploding_head.name	Exploding Head	SKIP
+exploding_head.position	1	6
+fire.icon	fire	SKIP
+fire.name	Fire	SKIP
+fire.position	1	10
+like.icon	sparkle-heart	SKIP
+like.name	Like	SKIP
+like.position	0	2
+raised_hands.icon	raised-hands	SKIP
+raised_hands.name	Raised Hands	SKIP
+raised_hands.position	1	8
+unicorn.icon	multi-unicorn	SKIP
+unicorn.name	Unicorn	SKIP
+unicorn.position	1	4

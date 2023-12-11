@@ -25,6 +25,9 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    elif module == "forem":
+        assert len(params) == 166
+        return 166 
     else:
         assert len(params) == 90
         return 90
@@ -105,20 +108,26 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "forem":
+        assert len(params) == 166
     else:
         assert len(params) >= 90
     for param in params:
         f.write(param.name + "\t")
         tmp_cnt = 0
         if len(param.gvalues) == 0:
-            if DEBUG:
-                print("----------------------")
-                print(param.name)
-                print(param.dvalue)
-                print(param.description)
-                print("----------------------")
-            f.write("SKIP\tSKIP\n")
-            unhandled.append(param)
+            if module == "forem":
+                f.write(str(param.dvalue) + "\tSKIP\n")  # Write default value for forem
+                tmp_cnt += 1
+            else:
+                if DEBUG:
+                    print("----------------------")
+                    print(param.name)
+                    print(param.dvalue)
+                    print(param.description)
+                    print("----------------------")
+                f.write("SKIP\tSKIP\n")
+                unhandled.append(param)
         else:
             pcnt += 1
             tmp_cnt += 1 # for the default value
