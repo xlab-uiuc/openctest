@@ -14,8 +14,10 @@ import run_test_utils
 display_mode = p_input["display_mode"]
 project = p_input["project"]
 cmd_timeout = p_input["cmd_timeout"]
-testing_dir = os.path.join(PROJECT_DIR[project], MODULE_SUBDIR[project])
-
+if project in [KCOMMON]:
+    testing_dir = os.path.join(PROJECT_DIR[project])
+else:
+    testing_dir = os.path.join(PROJECT_DIR[project],MODULE_SUBDIR[project])
 
 def run_test_batch(param_values, associated_test_map):
     print(">>>>[ctest_core] start running ctests for {} parameters".format(len(associated_test_map)))
@@ -38,6 +40,7 @@ def run_test_batch(param_values, associated_test_map):
         if display_mode:
             os.system(" ".join(cmd))
             continue
+        
 
         process = Popen(cmd, stdout=PIPE, stderr=PIPE)
         stdout = ""
@@ -59,7 +62,6 @@ def run_test_batch(param_values, associated_test_map):
         print(">>>>[ctest_core] chdir to {}".format(RUN_CTEST_DIR))
 
         print_output = run_test_utils.strip_ansi(stdout.decode("ascii", "ignore"))
-        print(print_output)
         test_by_cls = run_test_utils.group_test_by_cls(tests)
         for clsname, methods in test_by_cls.items():
             times, errors = parse_surefire(clsname, methods)

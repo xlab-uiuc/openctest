@@ -25,6 +25,24 @@ def read_tsv(module):
     if module == "zookeeper-server":
         assert len(params) == 32
         return 32
+    if module == "hive-common":
+        assert len(params) == 884
+        return 884
+    if module == "nifi-common":
+        assert len(params) >= 200
+        return len(params)
+    elif module == "flink-core":
+        assert len(params) == 32
+        return 32
+    elif module == "camel-core":
+        assert len(params) == 60
+        return 60
+    elif module == "hadoop-yarn-common":
+        assert len(params) == 574
+        return 574
+    elif module == "kylin-common" :
+        assert len(params) == 283
+        return 283
     else:
         assert len(params) == 90
         return 90
@@ -94,6 +112,25 @@ def infer_category(param, module):
             return ZKLIMIT
         if isZKSize(name):
             return ZKSIZE
+    
+    if module == "kylin":
+        if isZKDirPath(name):
+            return ZKDIR
+        if isZKPort(name):
+            return ZKPORT
+        if isZKPortAddress(name):
+            return ZKPORTADDRESS
+        if isZKLimit(name):
+            return ZKLIMIT
+        if isZKSize(name):
+            return ZKSIZE
+        if isRatio(name):
+            return RATIO
+        if isEnv(name):
+            return ENV
+        if isMetadataUrl(name):
+            return MURL
+
     if isPotentialFloat(name):
         return POTENTIALFLOAT
     return NONE
@@ -105,6 +142,12 @@ def print_params(module):
     f = open(module + output, "w")
     if module == "zookeeper-server":
         assert len(params) == 32
+    elif module == "flink-core":
+        assert len(params) == 32
+    elif module == "camel-core":
+        assert len(params) == 60
+    elif module == "hadoop-yarn-common":
+        assert len(params) == 574
     else:
         assert len(params) >= 90
     for param in params:
@@ -164,12 +207,23 @@ def generate(module):
     generators[NAMESERVICES] = genNameservices
     generators[INTERFACE] = genInterface
     generators[POTENTIALFLOAT] = genPotentialFloat
+
     if module == "zookeeper-server":
         generators[ZKDIR] = genZKDir
         generators[ZKLIMIT] = genZKLimit
         generators[ZKSIZE] = genZKSize
         generators[ZKPORT] = genZKPort
         generators[ZKPORTADDRESS] = genZKPortAddress
+    if module == "kylin":
+        generators[ZKDIR] = genZKDir
+        generators[ZKLIMIT] = genZKLimit
+        generators[ZKSIZE] = genZKSize
+        generators[ZKPORT] = genZKPort
+        generators[ZKPORTADDRESS] = genZKPortAddress
+        generators[RATIO] = genRatio
+        generators[ENV] = genEnv
+        generators[MURL] = genMetadataUrl
+
     for param in params:
         param.gvalues = generators[param.cate](param)
 

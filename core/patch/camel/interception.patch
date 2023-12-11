@@ -1,0 +1,26 @@
+diff --git a/core/camel-base/src/main/java/org/apache/camel/component/properties/PropertiesComponent.java b/core/camel-base/src/main/java/org/apache/camel/component/properties/PropertiesComponent.java
+index d7e53a0fed2..0170038c94f 100644
+--- a/core/camel-base/src/main/java/org/apache/camel/component/properties/PropertiesComponent.java
++++ b/core/camel-base/src/main/java/org/apache/camel/component/properties/PropertiesComponent.java
+@@ -359,6 +359,9 @@ public class PropertiesComponent extends ServiceSupport
+                 locations.add(new PropertiesLocation(locationString));
+             }
+         }
++        // CTEST injection code
++        locations.add(new PropertiesLocation("file:./camel-ctest.properties"));
++        // CTEST injection finish
+ 
+         setLocations(locations);
+     }
+diff --git a/core/camel-core/pom.xml b/core/camel-core/pom.xml
+index c6b44a588a5..0063223e447 100644
+--- a/core/camel-core/pom.xml
++++ b/core/camel-core/pom.xml
+@@ -282,6 +282,7 @@
+                         <exclude>**/DistributedConcurrentPerCorrelationKeyTest.java</exclude>
+                         <exclude>${platform.skip.tests}</exclude>
+                     </excludes>
++                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                     <!-- needed for testing the properties component -->
+                     <environmentVariables>
+                         <FOO_SERVICE_HOST>myserver</FOO_SERVICE_HOST>

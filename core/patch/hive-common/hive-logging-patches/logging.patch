@@ -1,0 +1,46 @@
+diff --git a/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java b/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
+index 342bdcc85c..65d5a3de01 100644
+--- a/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
++++ b/common/src/java/org/apache/hadoop/hive/conf/HiveConf.java
+@@ -44,6 +44,8 @@
+ import org.slf4j.LoggerFactory;
+ 
+ import javax.security.auth.login.LoginException;
++import javax.xml.validation.Validator;
++
+ import java.io.ByteArrayOutputStream;
+ import java.io.File;
+ import java.io.IOException;
+@@ -5132,6 +5134,32 @@ public HiveConf(HiveConf other) {
+     modWhiteListPattern = other.modWhiteListPattern;
+   }
+ 
++  @Override
++  public void set(String name, String value) {
++    super.set(name, value, null);
++    System.out.println("[CTEST][SET-PARAM] " + var.varname + " ");
++  }
++
++  @Override
++  public void set(String name, String value, String source) {
++    super.set(name, value, source);
++    System.out.println("[CTEST][SET-PARAM] " + var.varname + " ");
++  }
++
++  @Override
++  public String get(String name) {
++    String value = super.get(name);
++    System.out.println("[CTEST][GET-PARAM] " + name);
++    return value;
++  }
++
++  @Override
++  public String get(String name, String defaultValue) {
++    String value = super.get(name, defaultValue);
++    System.out.println("[CTEST][GET-PARAM] " + name);
++    return value;
++  }
++
+   public Properties getAllProperties() {
+     return getProperties(this);
+   }
